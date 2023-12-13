@@ -1,0 +1,2 @@
+*.uasset !text !filter !merge !diff
+*.umap !text !filter !merge !diff
