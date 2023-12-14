@@ -26,18 +26,22 @@ AKannaCharacter::AKannaCharacter()
 	SpringArmDefaultLength=200.f;
 	SpringArmDefaultOffset=FVector(0.f,50.f,20.f);
 
+	CapsuleDefaultHalfHeight = 88.f;
+
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 	GetCharacterMovement()->RotationRate = FRotator(0.f,400.f,0.f);
 
 	SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
-	SpringArm->SetupAttachment(GetRootComponent());
+	//SpringArm->SetupAttachment(GetRootComponent());
+	SpringArm->SetupAttachment(GetMesh());
 	SpringArm->TargetArmLength = SpringArmDefaultLength;
 	SpringArm->SocketOffset = SpringArmDefaultOffset;
 
 	ViewCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	ViewCamera->SetupAttachment(SpringArm);
 
-
+	// enable crouching
+	GetCharacterMovement()->GetNavAgentPropertiesRef().bCanCrouch = true;
 }
 
 // Called when the game starts or when spawned
@@ -126,18 +130,23 @@ void AKannaCharacter::Roll()
 {
 	if (ActionState == EActionState::EAS_Neutral) //구르기는 중립 상태에서만 가능
 	{
-		GetCharacterMovement()->MaxWalkSpeed = 800.f;
-
 		PlayRollMontage();
 		ActionState = EActionState::EAS_Rolling;
 	}
+
+	//캡슐 콜라이더 크기 반으로 줄이기
+	Crouch();
+	//SpringArm->SocketOffset = FVector(0.f, 50.f, 60.f);
 }
 
 void AKannaCharacter::RollEnd()
 {
-	GetCharacterMovement()->MaxWalkSpeed = 400.f;
-
 	ActionState = EActionState::EAS_Neutral;
+
+	//캡슐 콜라이더 크기 원상복구
+	UnCrouch();
+	//SpringArm->TargetArmLength = SpringArmDefaultLength;
+	//SpringArm->SocketOffset = SpringArmDefaultOffset;
 }
 
 void AKannaCharacter::PlayAttackMontage()
