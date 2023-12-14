@@ -101,10 +101,10 @@ private:
 	UPROPERTY(VisibleAnywhere)
 	UCameraComponent* ViewCamera;
 
-	UPROPERTY()
-	float SpringArmDefaultLength = 200.f;
+	UPROPERTY(BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	float SpringArmDefaultLength;
 
-	UPROPERTY()
+	UPROPERTY(BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	FVector SpringArmDefaultOffset;
 
 	UPROPERTY(VisibleInstanceOnly)
@@ -115,4 +115,7 @@ private:
 
 	UPROPERTY(EditDefaultsOnly, Category = Montages)
 	UAnimMontage* RollMontage;
+
+	UPROPERTY()
+	float CapsuleDefaultHalfHeight;
 };
