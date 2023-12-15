@@ -27,5 +27,8 @@ void UKannaAnimInstance::NativeUpdateAnimation(float DeltaTime)
 		IsFalling = KannaCharacterMovement->IsFalling();
 		CharacterState = KannaCharacter->GetCharacterState();
 		ActionState = KannaCharacter->GetActionState();
+
+		CharacterSpeed = KannaCharacter->GetVelocity().Length();
+		CharacterDirection = CalculateDirection(KannaCharacter->GetVelocity(), KannaCharacter->GetActorRotation());
 	}
 }

@@ -83,14 +83,18 @@ void AKannaCharacter::Aim()
 {
 	if(CharacterState == ECharacterState::ECS_Unarmed) return; //비무장 상태일 시 Action State 바꾸지 않음, 카메라만 줌 인
 
-	UE_LOG(LogTemp, Log, TEXT("Aim"));
 	ActionState = EActionState::EAS_Aiming;
+
+	GetCharacterMovement()->MaxWalkSpeed = 200.f; // 조준 중에는 이동속도 감소
+	GetCharacterMovement()->bOrientRotationToMovement = false; // 캐릭터가 방향키에 따라 회전하지 않음 (조준 방향 유지)
 }
 
 void AKannaCharacter::ReleaseAim()
 {
-	UE_LOG(LogTemp, Log, TEXT("ReleaseAim"));
 	ActionState = EActionState::EAS_Neutral;
+
+	GetCharacterMovement()->MaxWalkSpeed = 400.f;
+	GetCharacterMovement()->bOrientRotationToMovement = true;
 }
 
 void AKannaCharacter::Interact()
@@ -132,6 +136,8 @@ void AKannaCharacter::Roll()
 	{
 		PlayRollMontage();
 		ActionState = EActionState::EAS_Rolling;
+		
+		OnRollStart(); // 카메라 워킹 이벤트 Invoke
 	}
 
 	//캡슐 콜라이더 크기 반으로 줄이기

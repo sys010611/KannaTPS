@@ -89,6 +89,9 @@ protected:
 	UFUNCTION(BlueprintCallable)
 	void RollEnd();
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnRollStart();
+
 private:
 	ECharacterState CharacterState = ECharacterState::ECS_Unarmed;
 
@@ -118,4 +121,5 @@ private:
 
 	UPROPERTY()
 	float CapsuleDefaultHalfHeight;
+
 };

@@ -39,4 +39,10 @@ public:
 
 	UPROPERTY(BlueprintReadOnly, meta = (AllowPrivateAccess = "true"), Category = "Movement | Character State")
 	EActionState ActionState;
+
+	UPROPERTY(BlueprintReadOnly, Category = Movement)
+	float CharacterSpeed;
+
+	UPROPERTY(BlueprintReadOnly, Category = Movement)
+	float CharacterDirection;
 };
