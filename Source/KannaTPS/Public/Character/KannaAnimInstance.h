@@ -45,4 +45,7 @@ public:
 
 	UPROPERTY(BlueprintReadOnly, Category = Movement)
 	float CharacterDirection;
+
+	UPROPERTY(BlueprintReadonly)
+	float Pitch;
 };
