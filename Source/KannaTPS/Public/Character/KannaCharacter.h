@@ -66,6 +66,9 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
 	UInputAction* AttackAction;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
+	UInputAction* FireAction;
+
 
 	/*input callback*/
 	void Move(const FInputActionValue& Value);
@@ -76,6 +79,7 @@ protected:
 	void SwitchWeapon();
 	void Attack();
 	void Roll();
+	void Fire();
 
 
 	//Play animation montage
@@ -92,7 +96,11 @@ protected:
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnRollStart();
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnWeaponChange();
+
 private:
+	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	ECharacterState CharacterState = ECharacterState::ECS_Unarmed;
 
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
@@ -118,6 +126,9 @@ private:
 
 	UPROPERTY(EditDefaultsOnly, Category = Montages)
 	UAnimMontage* RollMontage;
+
+	UPROPERTY(EditDefaultsOnly, Category = Montages)
+	UAnimMontage* FireMontage;
 
 	UPROPERTY()
 	float CapsuleDefaultHalfHeight;

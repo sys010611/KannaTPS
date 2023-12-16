@@ -111,6 +111,8 @@ void AKannaCharacter::SwitchWeapon()
 		CharacterState = ECharacterState::ECS_Unarmed;
 	else if (CharacterState == ECharacterState::ECS_Unarmed)
 		CharacterState = ECharacterState::ECS_ArmedWithPistol;
+
+	OnWeaponChange(); // 블루프린트 이벤트 invoke
 }
 
 void AKannaCharacter::Attack()
@@ -122,37 +124,6 @@ void AKannaCharacter::Attack()
 		PlayAttackMontage();
 		ActionState = EActionState::EAS_Attacking;
 	}
-}
-
-void AKannaCharacter::AttackEnd()
-{
-	ActionState = EActionState::EAS_Neutral;
-	GetCharacterMovement()->MovementMode = EMovementMode::MOVE_Walking; //공격 완료 후 Movement Mode 초기화 
-}
-
-void AKannaCharacter::Roll()
-{
-	if (ActionState == EActionState::EAS_Neutral) //구르기는 중립 상태에서만 가능
-	{
-		PlayRollMontage();
-		ActionState = EActionState::EAS_Rolling;
-		
-		OnRollStart(); // 카메라 워킹 이벤트 Invoke
-	}
-
-	//캡슐 콜라이더 크기 반으로 줄이기
-	Crouch();
-	//SpringArm->SocketOffset = FVector(0.f, 50.f, 60.f);
-}
-
-void AKannaCharacter::RollEnd()
-{
-	ActionState = EActionState::EAS_Neutral;
-
-	//캡슐 콜라이더 크기 원상복구
-	UnCrouch();
-	//SpringArm->TargetArmLength = SpringArmDefaultLength;
-	//SpringArm->SocketOffset = SpringArmDefaultOffset;
 }
 
 void AKannaCharacter::PlayAttackMontage()
@@ -180,6 +151,27 @@ void AKannaCharacter::PlayAttackMontage()
 	}
 }
 
+void AKannaCharacter::AttackEnd()
+{
+	ActionState = EActionState::EAS_Neutral;
+	GetCharacterMovement()->MovementMode = EMovementMode::MOVE_Walking; //공격 완료 후 Movement Mode 초기화 
+}
+
+void AKannaCharacter::Roll()
+{
+	if (ActionState == EActionState::EAS_Neutral) //구르기는 중립 상태에서만 가능
+	{
+		PlayRollMontage();
+		ActionState = EActionState::EAS_Rolling;
+		
+		OnRollStart(); // 카메라 워킹 이벤트 Invoke
+	}
+
+	//캡슐 콜라이더 크기 반으로 줄이기
+	Crouch();
+	//SpringArm->SocketOffset = FVector(0.f, 50.f, 60.f);
+}
+
 void AKannaCharacter::PlayRollMontage()
 {
 	UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance();
@@ -187,6 +179,27 @@ void AKannaCharacter::PlayRollMontage()
 	if (AnimInstance && RollMontage)
 	{
 		AnimInstance->Montage_Play(RollMontage);
+	}
+}
+
+void AKannaCharacter::RollEnd()
+{
+	ActionState = EActionState::EAS_Neutral;
+
+	//캡슐 콜라이더 크기 원상복구
+	UnCrouch();
+}
+
+void AKannaCharacter::Fire()
+{
+	if (ActionState == EActionState::EAS_Aiming) // 조준 중일 때만 사격 가능
+	{
+		UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance();
+
+		if (AnimInstance && FireMontage)
+		{
+			AnimInstance->Montage_Play(FireMontage);
+		}
 	}
 }
 
@@ -212,5 +225,6 @@ void AKannaCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComp
 		EnhancedInputComponent->BindAction(SwitchWeaponAction, ETriggerEvent::Triggered, this, &AKannaCharacter::SwitchWeapon);
 		EnhancedInputComponent->BindAction(AttackAction, ETriggerEvent::Triggered, this, &AKannaCharacter::Attack);
 		EnhancedInputComponent->BindAction(RollAction, ETriggerEvent::Triggered, this, &AKannaCharacter::Roll);
+		EnhancedInputComponent->BindAction(FireAction, ETriggerEvent::Triggered, this, &AKannaCharacter::Fire);
 	}
 }
