@@ -16,6 +16,8 @@ class UCameraComponent;
 class AItem;
 struct FInputActionValue;
 class UAnimMontage;
+class IGunInterface;
+class USphereComponent;
 
 
 UCLASS()
@@ -37,6 +39,11 @@ public:
 
 	FORCEINLINE ECharacterState GetCharacterState() const { return CharacterState; }
 	FORCEINLINE EActionState GetActionState() const { return ActionState; }
+
+	UFUNCTION(BlueprintCallable)
+	void SetPunchHitbox(ECollisionEnabled::Type CollisionEnabled);
+	UFUNCTION(BlueprintCallable)
+	void SetKickHitbox(ECollisionEnabled::Type CollisionEnabled);
 
 protected:
 	// Called when the game starts or when spawned
@@ -97,7 +104,10 @@ protected:
 	void OnRollStart();
 
 	UFUNCTION(BlueprintImplementableEvent)
-	void OnWeaponChange();
+	void SetNeutralStateSpeed();
+
+	UFUNCTION()
+	void OnHitboxOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
 private:
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
@@ -130,7 +140,11 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = Montages)
 	UAnimMontage* FireMontage;
 
-	UPROPERTY()
-	float CapsuleDefaultHalfHeight;
+	UPROPERTY(EditDefaultsOnly, Category = Hitbox)
+	USphereComponent* PunchHitbox;
 
+	UPROPERTY(EditDefaultsOnly, Category = Hitbox)
+	USphereComponent* KickHitbox;
+
+	IGunInterface* CurrentWeapon;
 };

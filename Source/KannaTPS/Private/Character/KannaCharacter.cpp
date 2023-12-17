@@ -3,6 +3,7 @@
 
 #include "Character/KannaCharacter.h"
 #include "Components/CapsuleComponent.h"
+#include "Components/SphereComponent.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
@@ -26,8 +27,6 @@ AKannaCharacter::AKannaCharacter()
 	SpringArmDefaultLength=200.f;
 	SpringArmDefaultOffset=FVector(0.f,50.f,20.f);
 
-	CapsuleDefaultHalfHeight = 88.f;
-
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 	GetCharacterMovement()->RotationRate = FRotator(0.f,400.f,0.f);
 
@@ -42,6 +41,35 @@ AKannaCharacter::AKannaCharacter()
 
 	// enable crouching
 	GetCharacterMovement()->GetNavAgentPropertiesRef().bCanCrouch = true;
+
+	//근접공격 히트박스 셋업
+	PunchHitbox = CreateDefaultSubobject<USphereComponent>(TEXT("PunchHitbox"));
+	KickHitbox = CreateDefaultSubobject<USphereComponent>(TEXT("KickHitbox"));
+	//소켓에 부착
+	PunchHitbox->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetIncludingScale, TEXT("LeftHand"));
+	KickHitbox->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetIncludingScale, TEXT("RightFoot"));
+	//범위 설정
+	PunchHitbox->SetSphereRadius(30.f);
+	KickHitbox->SetSphereRadius(20.f);
+	//충돌판정 없음이 기본
+	PunchHitbox->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	KickHitbox->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+}
+
+void AKannaCharacter::SetPunchHitbox(ECollisionEnabled::Type CollisionEnabled)
+{
+	if (PunchHitbox)
+	{
+		PunchHitbox->SetCollisionEnabled(CollisionEnabled);
+	}
+}
+
+void AKannaCharacter::SetKickHitbox(ECollisionEnabled::Type CollisionEnabled)
+{
+	if (KickHitbox)
+	{
+		KickHitbox->SetCollisionEnabled(CollisionEnabled);
+	}
 }
 
 // Called when the game starts or when spawned
@@ -56,6 +84,9 @@ void AKannaCharacter::BeginPlay()
 			Subsystem->AddMappingContext(InputMappingContext, 0);
 		}
 	}
+
+	PunchHitbox->OnComponentBeginOverlap.AddDynamic(this, &AKannaCharacter::OnHitboxOverlap);
+	KickHitbox->OnComponentBeginOverlap.AddDynamic(this, &AKannaCharacter::OnHitboxOverlap);
 }
 
 void AKannaCharacter::Move(const FInputActionValue& Value)
@@ -93,7 +124,7 @@ void AKannaCharacter::ReleaseAim()
 {
 	ActionState = EActionState::EAS_Neutral;
 
-	GetCharacterMovement()->MaxWalkSpeed = 400.f;
+	SetNeutralStateSpeed();
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 }
 
@@ -107,12 +138,14 @@ void AKannaCharacter::Interact()
 
 void AKannaCharacter::SwitchWeapon()
 {
+	if(ActionState == EActionState::EAS_Aiming) return;
+
 	if(CharacterState == ECharacterState::ECS_ArmedWithPistol)
 		CharacterState = ECharacterState::ECS_Unarmed;
 	else if (CharacterState == ECharacterState::ECS_Unarmed)
 		CharacterState = ECharacterState::ECS_ArmedWithPistol;
 
-	OnWeaponChange(); // 블루프린트 이벤트 invoke
+	SetNeutralStateSpeed(); // 블루프린트 이벤트 invoke
 }
 
 void AKannaCharacter::Attack()
@@ -188,6 +221,11 @@ void AKannaCharacter::RollEnd()
 
 	//캡슐 콜라이더 크기 원상복구
 	UnCrouch();
+}
+
+void AKannaCharacter::OnHitboxOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+	UE_LOG(LogTemp, Log, TEXT("%s"), *(OverlappedComponent->GetName()));
 }
 
 void AKannaCharacter::Fire()
