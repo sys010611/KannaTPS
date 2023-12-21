@@ -16,7 +16,7 @@ class UCameraComponent;
 class AItem;
 struct FInputActionValue;
 class UAnimMontage;
-class IGunInterface;
+class AGun;
 class USphereComponent;
 
 
@@ -42,8 +42,15 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void SetPunchHitbox(ECollisionEnabled::Type CollisionEnabled);
+
 	UFUNCTION(BlueprintCallable)
 	void SetKickHitbox(ECollisionEnabled::Type CollisionEnabled);
+
+	UFUNCTION(BlueprintCallable)
+	FORCEINLINE void SetCurrentWeapon(AGun* Weapon) {CurrentWeapon = Weapon; }
+
+	UFUNCTION()
+	FORCEINLINE void AddWeaponToList(AGun* Weapon) {WeaponList.Add(Weapon); }
 
 protected:
 	// Called when the game starts or when spawned
@@ -76,6 +83,9 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
 	UInputAction* FireAction;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
+	UInputAction* ReloadAction;
+
 
 	/*input callback*/
 	void Move(const FInputActionValue& Value);
@@ -87,6 +97,7 @@ protected:
 	void Attack();
 	void Roll();
 	void Fire();
+	void Reload();
 
 
 	//Play animation montage
@@ -104,9 +115,12 @@ protected:
 	void OnRollStart();
 
 	UFUNCTION(BlueprintImplementableEvent)
+	void OnAimStart();
+
+	UFUNCTION(BlueprintImplementableEvent)
 	void SetNeutralStateSpeed();
 
-	UFUNCTION()
+	UFUNCTION(BlueprintNativeEvent)
 	void OnHitboxOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
 private:
@@ -146,5 +160,9 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = Hitbox)
 	USphereComponent* KickHitbox;
 
-	IGunInterface* CurrentWeapon;
+	UPROPERTY()
+	AGun* CurrentWeapon;
+
+	UPROPERTY()
+	TArray<AGun*> WeaponList;
 };

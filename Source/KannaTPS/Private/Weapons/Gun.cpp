@@ -11,6 +11,7 @@ AGun::AGun()
 	PrimaryActorTick.bCanEverTick = true;
 
 	GunMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Mesh"));
+	GunMesh->SetupAttachment(GetRootComponent());
 }
 
 // Called when the game starts or when spawned
@@ -20,12 +21,20 @@ void AGun::BeginPlay()
 	
 }
 
-void AGun::Fire()
+void AGun::Fire(FVector& StartPoint, FVector& Direction)
 {
 }
 
+
 void AGun::Reload()
 {
+	UE_LOG(LogTemp,Warning, TEXT("RELOAD"));
+
+	int32 ReloadingAmmo = MaxAmmo - CurrentAmmo;
+
+	TotalAmmo -= ReloadingAmmo;
+
+	CurrentAmmo = MaxAmmo;
 }
 
 // Called every frame

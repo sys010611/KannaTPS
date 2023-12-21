@@ -13,6 +13,7 @@
 #include "InputActionValue.h"
 #include "Items/Item.h"
 #include "Animation/AnimMontage.h"
+#include "Weapons/Gun.h"
 
 // Sets default values
 AKannaCharacter::AKannaCharacter()
@@ -49,8 +50,8 @@ AKannaCharacter::AKannaCharacter()
 	PunchHitbox->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetIncludingScale, TEXT("LeftHand"));
 	KickHitbox->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetIncludingScale, TEXT("RightFoot"));
 	//범위 설정
-	PunchHitbox->SetSphereRadius(30.f);
-	KickHitbox->SetSphereRadius(20.f);
+	PunchHitbox->SetSphereRadius(50.f);
+	KickHitbox->SetSphereRadius(50.f);
 	//충돌판정 없음이 기본
 	PunchHitbox->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	KickHitbox->SetCollisionEnabled(ECollisionEnabled::NoCollision);
@@ -58,18 +59,14 @@ AKannaCharacter::AKannaCharacter()
 
 void AKannaCharacter::SetPunchHitbox(ECollisionEnabled::Type CollisionEnabled)
 {
-	if (PunchHitbox)
-	{
+	if (PunchHitbox) //널 체크
 		PunchHitbox->SetCollisionEnabled(CollisionEnabled);
-	}
 }
 
 void AKannaCharacter::SetKickHitbox(ECollisionEnabled::Type CollisionEnabled)
 {
-	if (KickHitbox)
-	{
+	if (KickHitbox) //널 체크
 		KickHitbox->SetCollisionEnabled(CollisionEnabled);
-	}
 }
 
 // Called when the game starts or when spawned
@@ -113,8 +110,10 @@ void AKannaCharacter::Look(const FInputActionValue& Value)
 void AKannaCharacter::Aim()
 {
 	if(CharacterState == ECharacterState::ECS_Unarmed) return; //비무장 상태일 시 Action State 바꾸지 않음, 카메라만 줌 인
+	if(ActionState != EActionState::EAS_Neutral) return;
 
 	ActionState = EActionState::EAS_Aiming;
+	OnAimStart();
 
 	GetCharacterMovement()->MaxWalkSpeed = 200.f; // 조준 중에는 이동속도 감소
 	GetCharacterMovement()->bOrientRotationToMovement = false; // 캐릭터가 방향키에 따라 회전하지 않음 (조준 방향 유지)
@@ -138,25 +137,31 @@ void AKannaCharacter::Interact()
 
 void AKannaCharacter::SwitchWeapon()
 {
-	if(ActionState == EActionState::EAS_Aiming) return;
+	if(ActionState != EActionState::EAS_Neutral) return;
 
-	if(CharacterState == ECharacterState::ECS_ArmedWithPistol)
+	if (CharacterState == ECharacterState::ECS_ArmedWithPistol) // 권총 -> 맨손
+	{
 		CharacterState = ECharacterState::ECS_Unarmed;
-	else if (CharacterState == ECharacterState::ECS_Unarmed)
+		CurrentWeapon = nullptr;
+	}
+	else if (CharacterState == ECharacterState::ECS_Unarmed) //맨손 -> 권총
+	{
 		CharacterState = ECharacterState::ECS_ArmedWithPistol;
+		CurrentWeapon = WeaponList[0];
+	}
 
-	SetNeutralStateSpeed(); // 블루프린트 이벤트 invoke
+	SetNeutralStateSpeed(); // 중립 상태일 때의 걷기 속도 조정
 }
 
 void AKannaCharacter::Attack()
 {
-	if (ActionState == EActionState::EAS_Neutral) //근접 공격은 중립 상태에서만 가능
-	{
-		GetCharacterMovement()->DisableMovement(); //공격 중에는 움직이지 않도록
+	if (ActionState != EActionState::EAS_Neutral || CharacterState == ECharacterState::ECS_Unarmed) return;
 
-		PlayAttackMontage();
-		ActionState = EActionState::EAS_Attacking;
-	}
+	//GetCharacterMovement()->DisableMovement(); //공격 중에는 움직이지 않도록
+	Controller->SetIgnoreMoveInput(true);
+
+	PlayAttackMontage();
+	ActionState = EActionState::EAS_Attacking;
 }
 
 void AKannaCharacter::PlayAttackMontage()
@@ -187,22 +192,21 @@ void AKannaCharacter::PlayAttackMontage()
 void AKannaCharacter::AttackEnd()
 {
 	ActionState = EActionState::EAS_Neutral;
-	GetCharacterMovement()->MovementMode = EMovementMode::MOVE_Walking; //공격 완료 후 Movement Mode 초기화 
+	//GetCharacterMovement()->MovementMode = EMovementMode::MOVE_Walking; //공격 완료 후 Movement Mode 초기화 
+	Controller->SetIgnoreMoveInput(false);
 }
 
 void AKannaCharacter::Roll()
 {
-	if (ActionState == EActionState::EAS_Neutral) //구르기는 중립 상태에서만 가능
-	{
-		PlayRollMontage();
-		ActionState = EActionState::EAS_Rolling;
-		
-		OnRollStart(); // 카메라 워킹 이벤트 Invoke
-	}
+	if(ActionState != EActionState::EAS_Neutral) return; //구르기는 중립 상태에서만 가능
+
+	PlayRollMontage();
+	ActionState = EActionState::EAS_Rolling;
+
+	OnRollStart(); // 카메라 워킹 이벤트 Invoke
 
 	//캡슐 콜라이더 크기 반으로 줄이기
 	Crouch();
-	//SpringArm->SocketOffset = FVector(0.f, 50.f, 60.f);
 }
 
 void AKannaCharacter::PlayRollMontage()
@@ -223,29 +227,39 @@ void AKannaCharacter::RollEnd()
 	UnCrouch();
 }
 
-void AKannaCharacter::OnHitboxOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+void AKannaCharacter::OnHitboxOverlap_Implementation(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	UE_LOG(LogTemp, Log, TEXT("%s"), *(OverlappedComponent->GetName()));
 }
 
-void AKannaCharacter::Fire()
+void AKannaCharacter::Fire() // 여기서는 상태 전환, 애니메이션만 재생
 {
-	if (ActionState == EActionState::EAS_Aiming) // 조준 중일 때만 사격 가능
-	{
-		UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance();
+	if (ActionState != EActionState::EAS_Aiming) return; // 조준 중일 때만 사격 가능
+		
+	UAnimInstance * AnimInstance = GetMesh()->GetAnimInstance();
 
-		if (AnimInstance && FireMontage)
-		{
-			AnimInstance->Montage_Play(FireMontage);
-		}
+	if (AnimInstance && FireMontage)
+	{
+		AnimInstance->Montage_Play(FireMontage);
 	}
+
+	FVector StartPoint = ViewCamera->GetComponentLocation() + ViewCamera->GetForwardVector() * 100;
+	FVector Direction = ViewCamera->GetForwardVector();
+
+	if(CurrentWeapon)
+		CurrentWeapon->Fire(StartPoint, Direction); // 총의 발사는 인터페이스에 delegate
+}
+
+void AKannaCharacter::Reload()
+{
+	if (CurrentWeapon)
+		CurrentWeapon->Reload(); // 총의 재장전을 인터페이스에 delegate
 }
 
 // Called every frame
 void AKannaCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 
 // Called to bind functionality to input
@@ -264,5 +278,6 @@ void AKannaCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComp
 		EnhancedInputComponent->BindAction(AttackAction, ETriggerEvent::Triggered, this, &AKannaCharacter::Attack);
 		EnhancedInputComponent->BindAction(RollAction, ETriggerEvent::Triggered, this, &AKannaCharacter::Roll);
 		EnhancedInputComponent->BindAction(FireAction, ETriggerEvent::Triggered, this, &AKannaCharacter::Fire);
+		EnhancedInputComponent->BindAction(ReloadAction, ETriggerEvent::Triggered, this, &AKannaCharacter::Reload);
 	}
 }

@@ -4,13 +4,19 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "GunInterface.h"
 #include "Gun.generated.h"
 
 class USkeletalMeshComponent;
 
-UCLASS()
-class KANNATPS_API AGun : public AActor, public IGunInterface
+UENUM()
+enum class EFireMode
+{
+	EFM_SEMIAUTO,
+	EFM_AUTO
+};
+
+UCLASS(Abstract)
+class KANNATPS_API AGun : public AActor
 {
 	GENERATED_BODY()
 	
@@ -21,14 +27,13 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	virtual void Fire(FVector& StartPoint, FVector& Direction);
+
+	virtual void Reload();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
-	virtual void Fire() override;
-
-	virtual void Reload() override;
-
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	int32 CurrentAmmo;
@@ -36,9 +41,19 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	int32 TotalAmmo;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	int32 MaxAmmo;
 
-private:
+	UPROPERTY()
+	EFireMode FireMode;
+
 	UPROPERTY(VisibleAnywhere)
 	USkeletalMeshComponent* GunMesh;
+
+	UPROPERTY(VisibleAnywhere)
+	float Range;
+
+private:
+
 
 };
