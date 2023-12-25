@@ -14,6 +14,7 @@
 #include "Items/Item.h"
 #include "Animation/AnimMontage.h"
 #include "Weapons/Gun.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 AKannaCharacter::AKannaCharacter()
@@ -49,9 +50,6 @@ AKannaCharacter::AKannaCharacter()
 	//소켓에 부착
 	PunchHitbox->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetIncludingScale, TEXT("LeftHand"));
 	KickHitbox->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetIncludingScale, TEXT("RightFoot"));
-	//범위 설정
-	PunchHitbox->SetSphereRadius(50.f);
-	KickHitbox->SetSphereRadius(50.f);
 	//충돌판정 없음이 기본
 	PunchHitbox->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	KickHitbox->SetCollisionEnabled(ECollisionEnabled::NoCollision);
@@ -150,6 +148,12 @@ void AKannaCharacter::SwitchWeapon()
 		CurrentWeapon = WeaponList[0];
 	}
 
+	if(CurrentWeapon)
+	{
+		CurrentWeapon->SetOwner(this);
+		CurrentWeapon->SetInstigator(this);
+	}
+
 	SetNeutralStateSpeed(); // 중립 상태일 때의 걷기 속도 조정
 }
 
@@ -229,7 +233,18 @@ void AKannaCharacter::RollEnd()
 
 void AKannaCharacter::OnHitboxOverlap_Implementation(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	UE_LOG(LogTemp, Log, TEXT("%s"), *(OverlappedComponent->GetName()));
+	//UE_LOG(LogTemp, Log, TEXT("%s"), *(OverlappedComponent->GetName()));
+
+	UGameplayStatics::ApplyDamage(
+		OtherActor,
+		100.f,
+		GetController(),
+		this,
+		UDamageType::StaticClass()
+	);
+
+	if(GetWorld())
+		UGameplayStatics::PlaySound2D(GetWorld(), MeleeAttackSound);
 }
 
 void AKannaCharacter::Fire() // 여기서는 상태 전환, 애니메이션만 재생
