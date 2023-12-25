@@ -53,6 +53,9 @@ protected:
 	UPROPERTY(VisibleAnywhere)
 	float Range;
 
+	UPROPERTY(VisibleAnywhere)
+	float Damage;
+
 private:
 
 

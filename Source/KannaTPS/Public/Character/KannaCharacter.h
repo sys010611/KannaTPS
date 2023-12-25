@@ -165,4 +165,7 @@ private:
 
 	UPROPERTY()
 	TArray<AGun*> WeaponList;
+
+	UPROPERTY(EditDefaultsOnly, Category = Sound)
+	USoundBase* MeleeAttackSound;
 };

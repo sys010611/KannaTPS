@@ -15,6 +15,7 @@ APistol::APistol()
 	FireMode = EFireMode::EFM_SEMIAUTO;
 
 	Range = 10000.f;
+	Damage = 35.f;
 }
 
 // Called when the game starts or when spawned
@@ -42,15 +43,11 @@ void APistol::Tick(float DeltaTime)
 
 void APistol::Fire(FVector& StartPoint, FVector& Direction)
 {
-	UE_LOG(LogTemp, Warning, TEXT("PISTOL FIRE")); //로그에 출력
-
 	FHitResult HitResult;
 	FVector EndPoint = StartPoint + Direction * Range;
 
 	if (GetWorld())
 	{
-		DrawDebugLine(GetWorld(), StartPoint, EndPoint, FColor::Red, true, -1.f, 0, 2.f);
-
 		if (GetWorld()->LineTraceSingleByChannel(
 			HitResult,
 			StartPoint,
@@ -59,7 +56,20 @@ void APistol::Fire(FVector& StartPoint, FVector& Direction)
 		{
 			if (HitResult.GetActor())
 			{
-				UE_LOG(LogTemp, Warning, TEXT("%s"), *(HitResult.GetActor())->GetName());
+				if (IHitInterface* HitObject = Cast<IHitInterface>(HitResult.GetActor()))
+				{
+					HitObject->GetHit();
+				}
+
+				UGameplayStatics::ApplyPointDamage(
+					HitResult.GetActor(),
+					Damage,
+					Direction,
+					HitResult,
+					GetInstigator()->GetController(),
+					this,
+					UDamageType::StaticClass()
+				);
 			}
 		}
 	}
