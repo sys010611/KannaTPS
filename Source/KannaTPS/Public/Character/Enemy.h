@@ -28,6 +28,8 @@ public:
 
 	virtual void GetHit() override;
 
+	//EEnemyState EnemyState = EEnemyState::EES_Chase;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -39,7 +41,4 @@ private:
 
 	UPROPERTY(VisibleAnywhere)
 	UAttributeComponent* Attributes;
-
-	//UPROPERTY(VisibleAnywhere);
-	//UHealthBarComponent* HealthBarWidget;
 };

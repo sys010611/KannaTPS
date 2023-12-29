@@ -107,11 +107,12 @@ void AKannaCharacter::Look(const FInputActionValue& Value)
 
 void AKannaCharacter::Aim()
 {
-	if(CharacterState == ECharacterState::ECS_Unarmed) return; //비무장 상태일 시 Action State 바꾸지 않음, 카메라만 줌 인
-	if(ActionState != EActionState::EAS_Neutral) return;
+	OnAimStart(); // 블루프린트 이벤트 (카메라 확대)
+
+	if (CharacterState == ECharacterState::ECS_Unarmed) return;
+	if (ActionState != EActionState::EAS_Neutral) return;
 
 	ActionState = EActionState::EAS_Aiming;
-	OnAimStart();
 
 	GetCharacterMovement()->MaxWalkSpeed = 200.f; // 조준 중에는 이동속도 감소
 	GetCharacterMovement()->bOrientRotationToMovement = false; // 캐릭터가 방향키에 따라 회전하지 않음 (조준 방향 유지)
@@ -250,6 +251,7 @@ void AKannaCharacter::OnHitboxOverlap_Implementation(UPrimitiveComponent* Overla
 void AKannaCharacter::Fire() // 여기서는 상태 전환, 애니메이션만 재생
 {
 	if (ActionState != EActionState::EAS_Aiming) return; // 조준 중일 때만 사격 가능
+	if (CurrentWeapon == nullptr) return;
 		
 	UAnimInstance * AnimInstance = GetMesh()->GetAnimInstance();
 
