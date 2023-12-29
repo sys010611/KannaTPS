@@ -16,3 +16,12 @@ enum class EActionState : uint8
 	EAS_Rolling UMETA(DisplayName = "Rolling"),
 	EAS_Aiming UMETA(DisplayName = "Aiming"),
 };
+
+//UENUM(BlueprintType)
+//enum class EEnemyState : uint8
+//{
+//	EES_Patrol UMETA(DisplayName = "Patrol"),
+//	EES_Chase UMETA(DisplayName = "Chase"),
+//	EES_Hide UMETA(DisplayName = "Hide"),
+//	EES_Attack UMETA(DisplayName = "Attack"),
+//};

@@ -6,6 +6,10 @@
 #include "HUD/HealthBarComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "Kismet/GameplayStatics.h"
+#include "AIController.h"
+#include "Weapons/AssultRifle.h"
+#include "Components/ChildActorComponent.h"
 
 // Sets default values
 AEnemy::AEnemy()
@@ -19,6 +23,12 @@ AEnemy::AEnemy()
 	Attributes = CreateDefaultSubobject<UAttributeComponent>(TEXT("Attributes"));
 	//HealthBarWidget = CreateDefaultSubobject<UHealthBarComponent>(TEXT("HealthBar"));
 	//HealthBarWidget->SetupAttachment(GetRootComponent());
+
+	//엉뚱한 곳을 향하지 않도록
+	GetCharacterMovement()->bOrientRotationToMovement = true;
+	bUseControllerRotationPitch = false;
+	bUseControllerRotationYaw = false;
+	bUseControllerRotationRoll = false;
 }
 
 // Called when the game starts or when spawned
