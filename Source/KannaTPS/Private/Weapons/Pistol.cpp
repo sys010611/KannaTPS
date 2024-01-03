@@ -73,5 +73,6 @@ void APistol::Fire(FVector& StartPoint, FVector& Direction)
 			}
 		}
 	}
+
 }
 
