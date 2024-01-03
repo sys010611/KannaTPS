@@ -10,6 +10,7 @@
 #include "AIController.h"
 #include "Weapons/AssultRifle.h"
 #include "Components/ChildActorComponent.h"
+#include "GameFramework/Controller.h"
 
 // Sets default values
 AEnemy::AEnemy()
@@ -57,7 +58,16 @@ float AEnemy::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AC
 	return DamageAmount;
 }
 
-void AEnemy::Die(FDamageEvent const& DamageEvent)
+void AEnemy::Die_Implementation(FDamageEvent const& DamageEvent)
+{
+	//죽을 때 래그돌 효과 (함수가 너무 길어져서 따로 떼어냄)
+	RagdollEffect(DamageEvent);
+
+	//AI 컨트롤러 떼기
+	GetController()->UnPossess();
+}
+
+void AEnemy::RagdollEffect(const FDamageEvent& DamageEvent)
 {
 	// 캡슐 콜라이더 비활성화
 	UCapsuleComponent* Capsule = GetCapsuleComponent();
@@ -68,7 +78,7 @@ void AEnemy::Die(FDamageEvent const& DamageEvent)
 	SetActorEnableCollision(true);
 
 	GetMesh()->SetAllBodiesSimulatePhysics(true);
-	GetMesh()->SetSimulatePhysics(true); // 래그돌을 활성화하는 핵심 함수이다. 사실 이것 하나만 있어도 되긴 한다.
+	GetMesh()->SetSimulatePhysics(true); // 래그돌을 활성화하는 핵심 함수이다.
 	GetMesh()->WakeAllRigidBodies();
 	GetMesh()->bBlendPhysics = true;
 
