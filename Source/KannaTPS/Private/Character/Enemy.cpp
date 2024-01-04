@@ -43,6 +43,11 @@ void AEnemy::BeginPlay()
 	//}
 }
 
+bool AEnemy::IsDead()
+{
+	return Attributes->IsDead();
+}
+
 float AEnemy::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
 {
 	if (Attributes)
@@ -58,13 +63,15 @@ float AEnemy::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AC
 	return DamageAmount;
 }
 
-void AEnemy::Die_Implementation(FDamageEvent const& DamageEvent)
+void AEnemy::Die(FDamageEvent const& DamageEvent)
 {
 	//죽을 때 래그돌 효과 (함수가 너무 길어져서 따로 떼어냄)
 	RagdollEffect(DamageEvent);
 
 	//AI 컨트롤러 떼기
 	GetController()->UnPossess();
+
+	CeaseFire();
 }
 
 void AEnemy::RagdollEffect(const FDamageEvent& DamageEvent)

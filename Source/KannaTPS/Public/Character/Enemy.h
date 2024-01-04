@@ -34,10 +34,15 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	UFUNCTION(BlueprintNativeEvent)
 	void Die(FDamageEvent const& DamageEvent);
 
 	void RagdollEffect(const FDamageEvent& DamageEvent);
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void CeaseFire();
+
+	UFUNCTION(BlueprintCallable)
+	bool IsDead();
 
 private:	
 	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser) override;
