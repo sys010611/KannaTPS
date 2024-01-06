@@ -30,4 +30,7 @@ public:
 
 	UPROPERTY(BlueprintReadOnly, Category = Movement)
 	float GroundSpeed;
+
+	UPROPERTY(BlueprintReadWrite, Category = Movement)
+	bool IsCrouching;
 };
