@@ -112,6 +112,18 @@ void AEnemy::RagdollEffect(const FDamageEvent& DamageEvent)
 	}
 }
 
+void AEnemy::NoticePlayer()
+{
+	//이동속도 증가
+	GetCharacterMovement()->MaxWalkSpeed = 600.f;
+}
+
+void AEnemy::AwarePlayer()
+{
+	//이동속도 증가
+	GetCharacterMovement()->MaxWalkSpeed = 600.f;
+}
+
 // Called every frame
 void AEnemy::Tick(float DeltaTime)
 {

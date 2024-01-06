@@ -7,6 +7,7 @@
 #include "Gun.generated.h"
 
 class USkeletalMeshComponent;
+class UArrowComponent;
 
 UENUM()
 enum class EFireMode
@@ -34,6 +35,9 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void MuzzleFlashEffect();
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	int32 CurrentAmmo;

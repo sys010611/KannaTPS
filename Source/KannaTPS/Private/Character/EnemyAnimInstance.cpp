@@ -25,5 +25,6 @@ void UEnemyAnimInstance::NativeUpdateAnimation(float DeltaTime)
 	if (EnemyCharacterMovement)
 	{
 		GroundSpeed = UKismetMathLibrary::VSizeXY(EnemyCharacterMovement->Velocity);
+		IsCrouching = EnemyCharacterMovement->IsCrouching();
 	}
 }

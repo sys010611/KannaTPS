@@ -5,6 +5,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "Character/KannaCharacter.h"
 #include "Character/Enemy.h"
+#include "Perception/AISense_Hearing.h"
 
 // Sets default values
 APistol::APistol()
@@ -74,5 +75,16 @@ void APistol::Fire(FVector& StartPoint, FVector& Direction)
 		}
 	}
 
+	//총구 화염 효과
+	MuzzleFlashEffect();
+
+	//소음 효과
+	UAISense_Hearing::ReportNoiseEvent(
+		GetWorld(),
+		GetActorLocation(),
+		1.f,
+		UGameplayStatics::GetPlayerPawn(GetWorld(), 0),
+		6000.f
+	);
 }
 

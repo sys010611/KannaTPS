@@ -10,6 +10,7 @@
 class UAttributeComponent;
 class UWidgetComponent;
 class UHealthBarComponent;
+class USoundAttenuation;
 
 UCLASS()
 class KANNATPS_API AEnemy : public ACharacter, public IHitInterface
@@ -43,6 +44,15 @@ protected:
 
 	UFUNCTION(BlueprintCallable)
 	bool IsDead();
+
+	UFUNCTION(BlueprintCallable)
+	void NoticePlayer();
+
+	UFUNCTION(BlueprintCallable)
+	void AwarePlayer();
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Sound")
+	USoundAttenuation* GunfireAttenuation;
 
 private:	
 	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser) override;
