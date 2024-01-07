@@ -31,5 +31,6 @@ void UKannaAnimInstance::NativeUpdateAnimation(float DeltaTime)
 		CharacterSpeed = KannaCharacter->GetVelocity().Length();
 		CharacterDirection = CalculateDirection(KannaCharacter->GetVelocity(), KannaCharacter->GetActorRotation());
 		Pitch = KannaCharacter->GetBaseAimRotation().Pitch;
+		IsInCover = KannaCharacter->GetIsInCover();
 	}
 }
