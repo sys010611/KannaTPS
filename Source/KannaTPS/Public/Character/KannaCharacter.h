@@ -18,6 +18,7 @@ struct FInputActionValue;
 class UAnimMontage;
 class AGun;
 class USphereComponent;
+struct FEnhancedInputActionValueBinding;
 
 
 UCLASS()
@@ -37,8 +38,10 @@ public:
 
 	FORCEINLINE void SetOverlappingItem(AItem* Item) { OverlappingItem = Item; }
 
+	// Getter
 	FORCEINLINE ECharacterState GetCharacterState() const { return CharacterState; }
 	FORCEINLINE EActionState GetActionState() const { return ActionState; }
+	FORCEINLINE bool GetIsInCover() const {return IsInCover;}
 
 	UFUNCTION(BlueprintCallable)
 	void SetPunchHitbox(ECollisionEnabled::Type CollisionEnabled);
@@ -85,6 +88,11 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
 	UInputAction* ReloadAction;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
+	UInputAction* CoverAction;
+
+	FEnhancedInputActionValueBinding* MoveActionBinding;
 
 
 	/*input callback*/
@@ -98,6 +106,7 @@ protected:
 	void Roll();
 	void Fire();
 	void Reload();
+	void TakeCover();
 
 
 	//Play animation montage
@@ -122,6 +131,19 @@ protected:
 
 	UFUNCTION(BlueprintNativeEvent)
 	void OnHitboxOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+	void WallTrace();
+
+	void CoverTrace();
+
+	void TakeCoverBP();
+
+	void StartCover(FVector& PlaneNormal);
+
+	void StopCover();
+
+	bool RightHit;
+	bool LeftHit;
 
 private:
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
@@ -168,4 +190,7 @@ private:
 
 	UPROPERTY(EditDefaultsOnly, Category = Sound)
 	USoundBase* MeleeAttackSound;
+
+	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	bool IsInCover;
 };

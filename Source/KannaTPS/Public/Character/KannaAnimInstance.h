@@ -46,6 +46,9 @@ public:
 	UPROPERTY(BlueprintReadOnly, Category = Movement)
 	float CharacterDirection;
 
-	UPROPERTY(BlueprintReadonly)
+	UPROPERTY(BlueprintReadonly, Category = Movement)
 	float Pitch;
+
+	UPROPERTY(BlueprintReadOnly, Category = Movement)
+	bool IsInCover;
 };
