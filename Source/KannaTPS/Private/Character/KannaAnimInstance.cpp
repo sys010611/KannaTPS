@@ -25,6 +25,7 @@ void UKannaAnimInstance::NativeUpdateAnimation(float DeltaTime)
 	{
 		GroundSpeed = UKismetMathLibrary::VSizeXY(KannaCharacterMovement->Velocity);
 		IsFalling = KannaCharacterMovement->IsFalling();
+		IsCrouching = KannaCharacterMovement->IsCrouching();
 		CharacterState = KannaCharacter->GetCharacterState();
 		ActionState = KannaCharacter->GetActionState();
 
