@@ -51,4 +51,7 @@ public:
 
 	UPROPERTY(BlueprintReadOnly, Category = Movement)
 	bool IsInCover;
+
+	UPROPERTY(BlueprintReadOnly, Category = Movement)
+	bool IsCrouching;
 };

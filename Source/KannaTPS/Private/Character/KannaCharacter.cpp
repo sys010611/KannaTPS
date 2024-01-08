@@ -62,11 +62,19 @@ void AKannaCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	// 엄폐중이고, 키보드에서 손을 뗐을 시 캐릭터가 엄폐물 방향을 향함
+	// 엄폐중이고, 키보드에서 손을 뗐을 시 캐릭터의 방향 결정
 	if (IsInCover && (GetVelocity().Length() == 0))
 	{
-		FVector Direction = GetCharacterMovement()->GetPlaneConstraintNormal() * (-1.f);
-		AddMovementInput(Direction);
+		if (bIsCrouched)
+		{
+			FVector Direction = GetCharacterMovement()->GetPlaneConstraintNormal() * -1.f; //벽면을 바라봄
+			AddMovementInput(Direction);
+		}
+		else
+		{
+			FVector Direction = GetCharacterMovement()->GetPlaneConstraintNormal(); //벽을 등짐
+			AddMovementInput(Direction);
+		}
 	}
 }
 
@@ -97,6 +105,8 @@ void AKannaCharacter::BeginPlay()
 
 	PunchHitbox->OnComponentBeginOverlap.AddDynamic(this, &AKannaCharacter::OnHitboxOverlap);
 	KickHitbox->OnComponentBeginOverlap.AddDynamic(this, &AKannaCharacter::OnHitboxOverlap);
+
+	IsCameraAtRight = true;
 }
 
 void AKannaCharacter::Move(const FInputActionValue& Value)
@@ -143,7 +153,9 @@ void AKannaCharacter::ReleaseAim()
 {
 	ActionState = EActionState::EAS_Neutral;
 
-	SetNeutralStateSpeed();
+	if(!IsInCover)
+		GetCharacterMovement()->MaxWalkSpeed = 400.f;
+		//SetNeutralStateSpeed();
 
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 }
@@ -177,7 +189,7 @@ void AKannaCharacter::SwitchWeapon()
 		CurrentWeapon->SetInstigator(this);
 	}
 
-	SetNeutralStateSpeed(); // 중립 상태일 때의 걷기 속도 조정
+	//SetNeutralStateSpeed(); // 중립 상태일 때의 걷기 속도 조정
 }
 
 void AKannaCharacter::Attack()
@@ -310,8 +322,12 @@ void AKannaCharacter::TakeCover()
 
 void AKannaCharacter::WallTrace()
 {
-	FVector Start = GetActorLocation();
-	FVector End = GetActorLocation() + GetActorForwardVector() * 100.f;
+	//낮은 엄폐물 탐지
+	FVector LowStart = GetActorLocation();
+	FVector LowEnd = GetActorLocation() + GetActorForwardVector() * 100.f;
+	//높은 엄폐물 탐지
+	FVector HighStart = GetActorLocation() + FVector(0.f,0.f,80.f);
+	FVector HighEnd = HighStart + GetActorForwardVector() * 100.f;
 
 	if (GetWorld())
 	{
@@ -320,17 +336,18 @@ void AKannaCharacter::WallTrace()
 		FCollisionQueryParams CollisionParameters; // 트레이싱이 자기자신은 무시하도록
 		CollisionParameters.AddIgnoredActor(this);
 
-		if (GetWorld()->LineTraceSingleByChannel
-			(HitResult, 
-			Start, 
-			End, 
-			ECC_GameTraceChannel1, CollisionParameters
-			)
-		)
+		//높은 엄폐물 탐지 시도
+		if (GetWorld()->LineTraceSingleByChannel(HitResult, HighStart, HighEnd, ECC_GameTraceChannel1, CollisionParameters))
 		{
-			StartCover(HitResult.Normal); //벽면의 법선벡터
+			DrawDebugLine(GetWorld(), HighStart, HighEnd, FColor(255,0,0), true, 10.f, 0, 5.f);
+			StartCover(HitResult.Normal, false);
 		}
-
+		//낮은 엄폐물 탐지 시도
+		else if (GetWorld()->LineTraceSingleByChannel(HitResult, LowStart, LowEnd, ECC_GameTraceChannel1, CollisionParameters))
+		{
+			DrawDebugLine(GetWorld(), LowStart, LowEnd, FColor(255, 0, 0), true, 10.f, 0, 5.f);
+			StartCover(HitResult.Normal, true);
+		}
 	}
 }
 
@@ -433,14 +450,23 @@ void AKannaCharacter::CoverTrace()
 	}
 }
 
-void AKannaCharacter::StartCover(FVector& PlaneNormal)
+void AKannaCharacter::StartCover(FVector& PlaneNormal, bool IsLowCover)
 {
 	GetCharacterMovement()->SetPlaneConstraintEnabled(true);
 	GetCharacterMovement()->SetPlaneConstraintNormal(PlaneNormal);
 
 	IsInCover = true;
 
-	Crouch();	
+	if (IsLowCover)
+	{
+		Crouch();
+	}
+	else
+	{
+		GetCharacterMovement()->MaxWalkSpeed = 200.f;
+
+		GetCharacterMovement()->RotationRate.Yaw = 1500.f;
+	}
 }
 
 void AKannaCharacter::StopCover()
@@ -450,6 +476,9 @@ void AKannaCharacter::StopCover()
 	IsInCover = false;
 
 	UnCrouch();
+
+	GetCharacterMovement()->MaxWalkSpeed = 400.f;
+	GetCharacterMovement()->RotationRate.Yaw = 500.f;
 }
 
 // Called to bind functionality to input
@@ -471,5 +500,6 @@ void AKannaCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComp
 		EnhancedInputComponent->BindAction(FireAction, ETriggerEvent::Triggered, this, &AKannaCharacter::Fire);
 		EnhancedInputComponent->BindAction(ReloadAction, ETriggerEvent::Triggered, this, &AKannaCharacter::Reload);
 		EnhancedInputComponent->BindAction(CoverAction, ETriggerEvent::Triggered, this, &AKannaCharacter::TakeCover);
+		EnhancedInputComponent->BindAction(SwitchCameraAction, ETriggerEvent::Triggered, this, &AKannaCharacter::SwitchCameraPos);
 	}
 }

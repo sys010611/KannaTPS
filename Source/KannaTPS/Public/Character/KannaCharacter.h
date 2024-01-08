@@ -92,6 +92,9 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
 	UInputAction* CoverAction;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
+	UInputAction* SwitchCameraAction;
+
 	FEnhancedInputActionValueBinding* MoveActionBinding;
 
 
@@ -132,15 +135,19 @@ protected:
 	UFUNCTION(BlueprintNativeEvent)
 	void OnHitboxOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void SwitchCameraPos();
+
 	void WallTrace();
 
 	void CoverTrace();
 
 	void TakeCoverBP();
 
-	void StartCover(FVector& PlaneNormal);
+	void StartCover(FVector& PlaneNormal, bool IsLowCover);
 
 	void StopCover();
+
 
 	bool RightHit;
 	bool LeftHit;
@@ -193,4 +200,7 @@ private:
 
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	bool IsInCover;
+
+	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	bool IsCameraAtRight;
 };
