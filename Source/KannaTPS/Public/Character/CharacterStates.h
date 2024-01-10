@@ -17,6 +17,14 @@ enum class EActionState : uint8
 	EAS_Aiming UMETA(DisplayName = "Aiming"),
 };
 
+UENUM(BlueprintType)
+enum class EAimingDirection : uint8
+{
+	EAD_Neutral UMETA(DisplayName = "Neutral"),
+	EAD_Left UMETA(DisplayName = "Left"),
+	EAD_Right UMETA(DisplayName = "Right")
+};
+
 //UENUM(BlueprintType)
 //enum class EEnemyState : uint8
 //{
