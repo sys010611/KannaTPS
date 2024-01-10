@@ -54,4 +54,7 @@ public:
 
 	UPROPERTY(BlueprintReadOnly, Category = Movement)
 	bool IsCrouching;
+
+	UPROPERTY(BlueprintReadOnly, meta = (AllowPrivateAccess = "true"), Category = "Movement | Aiming Direction")
+	EAimingDirection AimingDirection;
 };

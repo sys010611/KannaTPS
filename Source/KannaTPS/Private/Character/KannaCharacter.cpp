@@ -70,11 +70,11 @@ void AKannaCharacter::Tick(float DeltaTime)
 			FVector Direction = GetCharacterMovement()->GetPlaneConstraintNormal() * -1.f; //벽면을 바라봄
 			AddMovementInput(Direction);
 		}
-		else
-		{
-			FVector Direction = GetCharacterMovement()->GetPlaneConstraintNormal(); //벽을 등짐
-			AddMovementInput(Direction);
-		}
+		//else
+		//{
+		//	FVector Direction = GetCharacterMovement()->GetPlaneConstraintNormal() * -1.f; //벽을 등짐
+		//	AddMovementInput(Direction);
+		//}
 	}
 }
 
@@ -107,6 +107,8 @@ void AKannaCharacter::BeginPlay()
 	KickHitbox->OnComponentBeginOverlap.AddDynamic(this, &AKannaCharacter::OnHitboxOverlap);
 
 	IsCameraAtRight = true;
+
+	AimingDirection = EAimingDirection::EAD_Neutral;
 }
 
 void AKannaCharacter::Move(const FInputActionValue& Value)
@@ -143,10 +145,43 @@ void AKannaCharacter::Aim()
 	if (CharacterState == ECharacterState::ECS_Unarmed) return;
 	if (ActionState != EActionState::EAS_Neutral) return;
 
+	if (IsInCover && !GetCharacterMovement()->IsCrouching()) //서서 엄폐중 -> 오른쪽, 왼쪽 조준으로 나뉨
+	{
+		FHitResult HitResult;
+
+		FCollisionQueryParams CollisionParameters;
+		CollisionParameters.AddIgnoredActor(this);
+
+		FVector ActorLocation = GetActorLocation();
+		UCharacterMovementComponent* Movement = GetCharacterMovement();
+
+		//벽의 방향
+		FVector WallDirection = Movement->GetPlaneConstraintNormal() * (-1.f);
+
+		CheckLeftRightHit(WallDirection, ActorLocation, HitResult, CollisionParameters);
+
+		if (LeftHit && !RightHit)
+			AimingDirection = EAimingDirection::EAD_Right;
+		else if(RightHit && !LeftHit)
+			AimingDirection = EAimingDirection::EAD_Left;
+		else if (!RightHit && !LeftHit)
+			AimingDirection = EAimingDirection::EAD_Right;
+		else if (RightHit && LeftHit)// 오른쪽, 왼쪽 모두 빈 공간이 없음 -> 조준 불가
+		{
+			return;
+		}
+	}
+	else
+	{
+		AimingDirection = EAimingDirection::EAD_Neutral;
+	}
+
 	ActionState = EActionState::EAS_Aiming;
 
 	GetCharacterMovement()->MaxWalkSpeed = 200.f; // 조준 중에는 이동속도 감소
 	GetCharacterMovement()->bOrientRotationToMovement = false; // 캐릭터가 방향키에 따라 회전하지 않음 (조준 방향 유지)
+
+
 }
 
 void AKannaCharacter::ReleaseAim()
@@ -365,39 +400,7 @@ void AKannaCharacter::CoverTrace()
 	//원하는 벡터는 캐릭터가 벽을 향하는 방향의 벡터이므로, -1을 곱해준다.
 	FVector WallDirection = Movement->GetPlaneConstraintNormal() * (-1.f);
 
-	//Right Vector는 벽면을 바라보고 섰을 때 오른쪽 방향을 나타낸다. 먼저 Rotator를 만들고, 거기서 벡터를 뽑아낸다.
-	//변수명을 RightRotator로 했는데, RightVector를 뽑아내기 위한 것이어서 그렇지 실제 방향은 WallDirection이다.
-	//MakeRotFromX는 X축에만 기반하여 Rotator를 만든다는 의미이다.
-	FRotator RightRotator = UKismetMathLibrary::MakeRotFromX(WallDirection);
-	FVector RightVector = UKismetMathLibrary::GetRightVector(RightRotator);
-
-	//캐릭터의 살짝 우측에서 벽 방향으로 라인트레이싱을 수행할 것이다.
-	FVector RightStart = ActorLocation + RightVector * 45.f;
-	FVector RightEnd = RightStart + WallDirection * 200.f;
-
-	//라인트레이싱이 맞았다면 RightHit이 true
-	RightHit = GetWorld()->LineTraceSingleByChannel
-		(HitResult, 
-		RightStart, 
-		RightEnd, 
-		ECollisionChannel::ECC_GameTraceChannel1, 
-		CollisionParameters);
-
-	//이번엔 같은 작업을 왼쪽에서 할 것이다.
-	//WallDirection의 반대 방향 Rotator를 만들고, 거기서 RightVector를 뽑아내면 그건 캐릭터 기준 왼쪽이된다.
-	FRotator LeftRotator = UKismetMathLibrary::MakeRotFromX(WallDirection * (-1.f));
-	FVector LeftVector = UKismetMathLibrary::GetRightVector(LeftRotator);
-
-	FVector LeftStart = ActorLocation + LeftVector * 45.f;
-	FVector LeftEnd = LeftStart + WallDirection * 200.f;
-
-	//Set Left Hit
-	LeftHit = GetWorld()->LineTraceSingleByChannel(
-		HitResult, 
-		LeftStart, 
-		LeftEnd, 
-		ECollisionChannel::ECC_GameTraceChannel1, 
-		CollisionParameters);
+	CheckLeftRightHit(WallDirection, ActorLocation, HitResult, CollisionParameters);
 
 	//MoveActionBinding은 이동 인풋 값을 가져다쓰기 위해 만든 것이다. 이에 대한 설명도 후술할 것이다.
 	FVector2D MoveVector = MoveActionBinding->GetValue().Get<FVector2D>();
@@ -448,6 +451,48 @@ void AKannaCharacter::CoverTrace()
 		// 계산된 MovementScale에 따라 캐릭터를 이동시킨다.
 		AddMovementInput(PlayerRightVector, MovementScale);
 	}
+
+	if ((MoveVector.X > 0 && !IsCameraAtRight) || (MoveVector.X < 0 && IsCameraAtRight))
+	{
+		SwitchCameraPos();
+	}
+}
+
+void AKannaCharacter::CheckLeftRightHit(FVector& WallDirection, FVector& ActorLocation, FHitResult& HitResult, FCollisionQueryParams& CollisionParameters)
+{
+	//Right Vector는 벽면을 바라보고 섰을 때 오른쪽 방향을 나타낸다. 먼저 Rotator를 만들고, 거기서 벡터를 뽑아낸다.
+	//변수명을 RightRotator로 했는데, RightVector를 뽑아내기 위한 것이어서 그렇지 실제 방향은 WallDirection이다.
+	//MakeRotFromX는 X축에만 기반하여 Rotator를 만든다는 의미이다.
+	FRotator RightRotator = UKismetMathLibrary::MakeRotFromX(WallDirection);
+	FVector RightVector = UKismetMathLibrary::GetRightVector(RightRotator);
+
+	//캐릭터의 살짝 우측에서 벽 방향으로 라인트레이싱을 수행할 것이다.
+	FVector RightStart = ActorLocation + RightVector * 45.f;
+	FVector RightEnd = RightStart + WallDirection * 200.f;
+
+	//라인트레이싱이 맞았다면 RightHit이 true
+	RightHit = GetWorld()->LineTraceSingleByChannel
+	(HitResult,
+		RightStart,
+		RightEnd,
+		ECollisionChannel::ECC_GameTraceChannel1,
+		CollisionParameters);
+
+	//이번엔 같은 작업을 왼쪽에서 할 것이다.
+	//WallDirection의 반대 방향 Rotator를 만들고, 거기서 RightVector를 뽑아내면 그건 캐릭터 기준 왼쪽이된다.
+	FRotator LeftRotator = UKismetMathLibrary::MakeRotFromX(WallDirection * (-1.f));
+	FVector LeftVector = UKismetMathLibrary::GetRightVector(LeftRotator);
+
+	FVector LeftStart = ActorLocation + LeftVector * 45.f;
+	FVector LeftEnd = LeftStart + WallDirection * 200.f;
+
+	//Set Left Hit
+	LeftHit = GetWorld()->LineTraceSingleByChannel(
+		HitResult,
+		LeftStart,
+		LeftEnd,
+		ECollisionChannel::ECC_GameTraceChannel1,
+		CollisionParameters);
 }
 
 void AKannaCharacter::StartCover(FVector& PlaneNormal, bool IsLowCover)
@@ -465,7 +510,7 @@ void AKannaCharacter::StartCover(FVector& PlaneNormal, bool IsLowCover)
 	{
 		GetCharacterMovement()->MaxWalkSpeed = 200.f;
 
-		GetCharacterMovement()->RotationRate.Yaw = 1500.f;
+		//GetCharacterMovement()->RotationRate.Yaw = 1500.f;
 	}
 }
 
@@ -478,7 +523,7 @@ void AKannaCharacter::StopCover()
 	UnCrouch();
 
 	GetCharacterMovement()->MaxWalkSpeed = 400.f;
-	GetCharacterMovement()->RotationRate.Yaw = 500.f;
+	//GetCharacterMovement()->RotationRate.Yaw = 500.f;
 }
 
 // Called to bind functionality to input

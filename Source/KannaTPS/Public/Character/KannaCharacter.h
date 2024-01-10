@@ -42,6 +42,7 @@ public:
 	FORCEINLINE ECharacterState GetCharacterState() const { return CharacterState; }
 	FORCEINLINE EActionState GetActionState() const { return ActionState; }
 	FORCEINLINE bool GetIsInCover() const {return IsInCover;}
+	FORCEINLINE EAimingDirection GetAimingDirection() const { return AimingDirection; }
 
 	UFUNCTION(BlueprintCallable)
 	void SetPunchHitbox(ECollisionEnabled::Type CollisionEnabled);
@@ -129,8 +130,8 @@ protected:
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnAimStart();
 
-	UFUNCTION(BlueprintImplementableEvent)
-	void SetNeutralStateSpeed();
+	//UFUNCTION(BlueprintImplementableEvent)
+	//void SetNeutralStateSpeed();
 
 	UFUNCTION(BlueprintNativeEvent)
 	void OnHitboxOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
@@ -142,14 +143,17 @@ protected:
 
 	void CoverTrace();
 
-	void TakeCoverBP();
+	void CheckLeftRightHit(FVector& WallDirection, FVector& ActorLocation, FHitResult& HitResult, FCollisionQueryParams& CollisionParameters);
+
+	//void TakeCoverBP();
 
 	void StartCover(FVector& PlaneNormal, bool IsLowCover);
 
 	void StopCover();
 
-
+	//캐릭터의 오른쪽에서 정면으로 라인트레이싱 한 결과를 담는 변수
 	bool RightHit;
+	//캐릭터의 오른쪽에서 정면으로 라인트레이싱 한 결과를 담는 변수
 	bool LeftHit;
 
 private:
@@ -203,4 +207,7 @@ private:
 
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	bool IsCameraAtRight;
+
+	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	EAimingDirection AimingDirection = EAimingDirection::EAD_Neutral;
 };

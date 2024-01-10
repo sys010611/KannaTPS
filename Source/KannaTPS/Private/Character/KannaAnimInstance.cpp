@@ -28,6 +28,7 @@ void UKannaAnimInstance::NativeUpdateAnimation(float DeltaTime)
 		IsCrouching = KannaCharacterMovement->IsCrouching();
 		CharacterState = KannaCharacter->GetCharacterState();
 		ActionState = KannaCharacter->GetActionState();
+		AimingDirection = KannaCharacter->GetAimingDirection();
 
 		CharacterSpeed = KannaCharacter->GetVelocity().Length();
 		CharacterDirection = CalculateDirection(KannaCharacter->GetVelocity(), KannaCharacter->GetActorRotation());
