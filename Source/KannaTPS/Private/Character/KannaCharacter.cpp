@@ -245,7 +245,7 @@ void AKannaCharacter::PlayAttackMontage()
 	if (AnimInstance && AttackMontage) //null check
 	{
 		AnimInstance->Montage_Play(AttackMontage);
-		const int32 RandNum = FMath::RandRange(1, 2);
+		const int32 RandNum = FMath::RandRange(1, 3);
 		FName SectionName = FName();
 
 		switch (RandNum)
@@ -255,6 +255,9 @@ void AKannaCharacter::PlayAttackMontage()
 			break;
 		case 2:
 			SectionName = FName("Attack2");
+			break;
+		case 3:
+			SectionName = FName("Attack3");
 			break;
 		default:
 			break;
@@ -272,7 +275,7 @@ void AKannaCharacter::AttackEnd()
 
 void AKannaCharacter::Roll()
 {
-	if(ActionState != EActionState::EAS_Neutral) return; //구르기는 중립 상태에서만 가능
+	if(ActionState != EActionState::EAS_Neutral || IsInCover) return; //구르기는 중립 상태에서만 가능
 
 	PlayRollMontage();
 	ActionState = EActionState::EAS_Rolling;
@@ -509,8 +512,6 @@ void AKannaCharacter::StartCover(FVector& PlaneNormal, bool IsLowCover)
 	else
 	{
 		GetCharacterMovement()->MaxWalkSpeed = 200.f;
-
-		//GetCharacterMovement()->RotationRate.Yaw = 1500.f;
 	}
 }
 
