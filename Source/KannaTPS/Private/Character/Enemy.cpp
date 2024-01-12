@@ -3,7 +3,6 @@
 
 #include "Character/Enemy.h"
 #include "Components/AttributeComponent.h"
-#include "HUD/HealthBarComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Kismet/GameplayStatics.h"

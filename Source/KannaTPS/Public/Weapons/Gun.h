@@ -8,6 +8,7 @@
 
 class USkeletalMeshComponent;
 class UArrowComponent;
+class AKannaCharacter;
 
 UENUM()
 enum class EFireMode
@@ -32,12 +33,21 @@ public:
 
 	virtual void Reload();
 
+	FORCEINLINE bool IsShootable() {return CurrentAmmo > 0;}
+
+	FORCEINLINE int32 GetCurrentAmmo() {return CurrentAmmo;}
+
+	FORCEINLINE int32 GetTotalAmmo() { return TotalAmmo; }
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void MuzzleFlashEffect();
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	AKannaCharacter* KannaCharacter;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	int32 CurrentAmmo;
@@ -61,6 +71,5 @@ protected:
 	float Damage;
 
 private:
-
 
 };

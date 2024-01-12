@@ -7,6 +7,8 @@
 #include "Gun.h"
 #include "Pistol.generated.h"
 
+class AKannaCharacter;
+
 UCLASS()
 class KANNATPS_API APistol : public AGun
 {
@@ -25,5 +27,4 @@ protected:
 	virtual void BeginPlay() override;
 
 private:	
-
 };

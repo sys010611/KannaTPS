@@ -19,6 +19,7 @@ class UAnimMontage;
 class AGun;
 class USphereComponent;
 struct FEnhancedInputActionValueBinding;
+class UKannaTPSOverlay;
 
 
 UCLASS()
@@ -55,6 +56,8 @@ public:
 
 	UFUNCTION()
 	FORCEINLINE void AddWeaponToList(AGun* Weapon) {WeaponList.Add(Weapon); }
+
+	FORCEINLINE UKannaTPSOverlay* GetKannaTPSOverlay() {return KannaTPSOverlay;}
 
 protected:
 	// Called when the game starts or when spawned
@@ -139,6 +142,9 @@ protected:
 	UFUNCTION(BlueprintImplementableEvent)
 	void SwitchCameraPos();
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void SpreadCrosshair();
+
 	void WallTrace();
 
 	void CoverTrace();
@@ -153,10 +159,12 @@ protected:
 
 	//캐릭터의 오른쪽에서 정면으로 라인트레이싱 한 결과를 담는 변수
 	bool RightHit;
-	//캐릭터의 오른쪽에서 정면으로 라인트레이싱 한 결과를 담는 변수
+	//캐릭터의 왼쪽에서 정면으로 라인트레이싱 한 결과를 담는 변수
 	bool LeftHit;
 
 private:
+	void InitKannaTpsOverlay();
+
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	ECharacterState CharacterState = ECharacterState::ECS_Unarmed;
 
@@ -210,4 +218,6 @@ private:
 
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	EAimingDirection AimingDirection = EAimingDirection::EAD_Neutral;
+
+	UKannaTPSOverlay* KannaTPSOverlay;
 };
