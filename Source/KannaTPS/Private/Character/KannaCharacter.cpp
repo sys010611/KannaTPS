@@ -16,6 +16,8 @@
 #include "Weapons/Gun.h"
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetMathLibrary.h"
+#include "HUD/KannaTPSHUD.h"
+#include "HUD/KannaTPSOverlay.h"
 
 // Sets default values
 AKannaCharacter::AKannaCharacter()
@@ -56,6 +58,28 @@ AKannaCharacter::AKannaCharacter()
 	KickHitbox->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 }
 
+// Called when the game starts or when spawned
+void AKannaCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+
+	if (APlayerController* PlayerController = Cast<APlayerController>(GetController()))
+	{
+		if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer()))
+		{
+			Subsystem->AddMappingContext(InputMappingContext, 0);
+		}
+	}
+
+	PunchHitbox->OnComponentBeginOverlap.AddDynamic(this, &AKannaCharacter::OnHitboxOverlap);
+	KickHitbox->OnComponentBeginOverlap.AddDynamic(this, &AKannaCharacter::OnHitboxOverlap);
+
+	IsCameraAtRight = true;
+
+	AimingDirection = EAimingDirection::EAD_Neutral;
+
+	InitKannaTpsOverlay();
+}
 
 // Called every frame
 void AKannaCharacter::Tick(float DeltaTime)
@@ -78,6 +102,22 @@ void AKannaCharacter::Tick(float DeltaTime)
 	}
 }
 
+void AKannaCharacter::InitKannaTpsOverlay()
+{
+	if (APlayerController* PlayerController = Cast<APlayerController>(GetController()))
+	{
+		AKannaTPSHUD* KannaTPSHUD = Cast<AKannaTPSHUD>(PlayerController->GetHUD());
+		if (KannaTPSHUD)
+		{
+			KannaTPSOverlay = KannaTPSHUD->GetKannaTPSOverlay();
+			if (KannaTPSOverlay)
+			{
+				KannaTPSOverlay->HideAmmoText();
+			}
+		}
+	}
+}
+
 void AKannaCharacter::SetPunchHitbox(ECollisionEnabled::Type CollisionEnabled)
 {
 	if (PunchHitbox) //널 체크
@@ -88,27 +128,6 @@ void AKannaCharacter::SetKickHitbox(ECollisionEnabled::Type CollisionEnabled)
 {
 	if (KickHitbox) //널 체크
 		KickHitbox->SetCollisionEnabled(CollisionEnabled);
-}
-
-// Called when the game starts or when spawned
-void AKannaCharacter::BeginPlay()
-{
-	Super::BeginPlay();
-
-	if (APlayerController* PlayerController = Cast<APlayerController>(GetController()))
-	{
-		if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer()))
-		{
-			Subsystem->AddMappingContext(InputMappingContext, 0);
-		}
-	}
-
-	PunchHitbox->OnComponentBeginOverlap.AddDynamic(this, &AKannaCharacter::OnHitboxOverlap);
-	KickHitbox->OnComponentBeginOverlap.AddDynamic(this, &AKannaCharacter::OnHitboxOverlap);
-
-	IsCameraAtRight = true;
-
-	AimingDirection = EAimingDirection::EAD_Neutral;
 }
 
 void AKannaCharacter::Move(const FInputActionValue& Value)
@@ -225,6 +244,13 @@ void AKannaCharacter::SwitchWeapon()
 	}
 
 	//SetNeutralStateSpeed(); // 중립 상태일 때의 걷기 속도 조정
+
+	if (KannaTPSOverlay && CurrentWeapon)
+	{
+		KannaTPSOverlay->ShowAmmoText();
+		KannaTPSOverlay->SetTotalAmmoText(CurrentWeapon->GetTotalAmmo());
+		KannaTPSOverlay->SetCurrentAmmoText(CurrentWeapon->GetCurrentAmmo());
+	}
 }
 
 void AKannaCharacter::Attack()
@@ -328,16 +354,19 @@ void AKannaCharacter::Fire() // 여기서는 상태 전환, 애니메이션만 �
 		
 	UAnimInstance * AnimInstance = GetMesh()->GetAnimInstance();
 
-	if (AnimInstance && FireMontage)
-	{
-		AnimInstance->Montage_Play(FireMontage);
-	}
-
 	FVector StartPoint = ViewCamera->GetComponentLocation() + ViewCamera->GetForwardVector() * 100;
 	FVector Direction = ViewCamera->GetForwardVector();
 
-	if(CurrentWeapon)
+	if (CurrentWeapon && CurrentWeapon->IsShootable()) // 널체크 -> 발사 가능 확인
+	{
 		CurrentWeapon->Fire(StartPoint, Direction); // 총의 발사는 인터페이스에 delegate
+
+		if (AnimInstance && FireMontage)
+		{
+			AnimInstance->Montage_Play(FireMontage);
+			SpreadCrosshair();
+		}
+	}
 }
 
 void AKannaCharacter::Reload()

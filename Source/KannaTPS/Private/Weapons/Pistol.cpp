@@ -2,10 +2,11 @@
 
 
 #include "Weapons/Pistol.h"
-#include "Kismet/GameplayStatics.h"
-#include "Character/KannaCharacter.h"
 #include "Character/Enemy.h"
 #include "Perception/AISense_Hearing.h"
+#include "Character/KannaCharacter.h"
+#include "Kismet/GameplayStatics.h"
+#include "HUD/KannaTPSOverlay.h"
 
 // Sets default values
 APistol::APistol()
@@ -17,6 +18,8 @@ APistol::APistol()
 
 	Range = 10000.f;
 	Damage = 35.f;
+
+	MaxAmmo = 17;
 }
 
 // Called when the game starts or when spawned
@@ -24,14 +27,15 @@ void APistol::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	AKannaCharacter* KannaCharacter = Cast<AKannaCharacter>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
-
 	if (KannaCharacter)
 	{
 		KannaCharacter->AddWeaponToList(this); //권총은 시작할 때부터 가지고 있어야 한다.
 
 		this->AttachToComponent(KannaCharacter->GetMesh(), FAttachmentTransformRules::SnapToTargetIncludingScale, FName("Pistol_Socket"));
 	}
+
+	TotalAmmo = 255;
+	CurrentAmmo = 17;
 }
 
 
@@ -44,6 +48,8 @@ void APistol::Tick(float DeltaTime)
 
 void APistol::Fire(FVector& StartPoint, FVector& Direction)
 {
+	Super::Fire(StartPoint, Direction);
+
 	FHitResult HitResult;
 	FVector EndPoint = StartPoint + Direction * Range;
 
@@ -86,5 +92,7 @@ void APistol::Fire(FVector& StartPoint, FVector& Direction)
 		UGameplayStatics::GetPlayerPawn(GetWorld(), 0),
 		6000.f
 	);
+
+	KannaCharacter->GetKannaTPSOverlay()->SetCurrentAmmoText(CurrentAmmo);
 }
 
