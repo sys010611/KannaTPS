@@ -81,6 +81,12 @@ void APistol::Fire(FVector& StartPoint, FVector& Direction)
 		}
 	}
 
+	UAnimInstance* AnimInstance = GunMesh->GetAnimInstance();
+	if (SlideMontage && AnimInstance)
+	{
+		AnimInstance->Montage_Play(SlideMontage);
+	}
+
 	//총구 화염 효과
 	MuzzleFlashEffect();
 

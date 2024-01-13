@@ -27,4 +27,6 @@ protected:
 	virtual void BeginPlay() override;
 
 private:	
+	UPROPERTY(EditDefaultsOnly)
+	UAnimMontage* SlideMontage;
 };

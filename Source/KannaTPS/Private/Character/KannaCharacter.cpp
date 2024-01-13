@@ -159,10 +159,9 @@ void AKannaCharacter::Look(const FInputActionValue& Value)
 
 void AKannaCharacter::Aim()
 {
-	OnAimStart(); // 블루프린트 이벤트 (카메라 확대)
+	//OnAimStart(); // 블루프린트 이벤트 (카메라 확대)
 
-	if (CharacterState == ECharacterState::ECS_Unarmed) return;
-	if (ActionState != EActionState::EAS_Neutral) return;
+	if (CharacterState == ECharacterState::ECS_Unarmed || ActionState != EActionState::EAS_Neutral) return;
 
 	if (IsInCover && !GetCharacterMovement()->IsCrouching()) //서서 엄폐중 -> 오른쪽, 왼쪽 조준으로 나뉨
 	{
@@ -205,7 +204,10 @@ void AKannaCharacter::Aim()
 
 void AKannaCharacter::ReleaseAim()
 {
-	ActionState = EActionState::EAS_Neutral;
+	if (ActionState != EActionState::EAS_Reloading) // 장전 중이었을 때는 조준을 풀어도 계속 장전하도록
+	{
+		ActionState = EActionState::EAS_Neutral;
+	}
 
 	if(!IsInCover)
 		GetCharacterMovement()->MaxWalkSpeed = 400.f;
@@ -245,11 +247,18 @@ void AKannaCharacter::SwitchWeapon()
 
 	//SetNeutralStateSpeed(); // 중립 상태일 때의 걷기 속도 조정
 
-	if (KannaTPSOverlay && CurrentWeapon)
+	if (KannaTPSOverlay)
 	{
-		KannaTPSOverlay->ShowAmmoText();
-		KannaTPSOverlay->SetTotalAmmoText(CurrentWeapon->GetTotalAmmo());
-		KannaTPSOverlay->SetCurrentAmmoText(CurrentWeapon->GetCurrentAmmo());
+		if (CurrentWeapon)
+		{
+			KannaTPSOverlay->ShowAmmoText();
+			KannaTPSOverlay->SetTotalAmmoText(CurrentWeapon->GetTotalAmmo());
+			KannaTPSOverlay->SetCurrentAmmoText(CurrentWeapon->GetCurrentAmmo());
+		}
+		else
+		{
+			KannaTPSOverlay->HideAmmoText();
+		}
 	}
 }
 
@@ -372,7 +381,19 @@ void AKannaCharacter::Fire() // 여기서는 상태 전환, 애니메이션만 �
 void AKannaCharacter::Reload()
 {
 	if (CurrentWeapon)
+	{
+		ReleaseAim();
+		ActionState = EActionState::EAS_Reloading;
+	}
+}
+
+void AKannaCharacter::ReloadEnd()
+{
+	if (CurrentWeapon)
+	{
 		CurrentWeapon->Reload(); // 총의 재장전을 인터페이스에 delegate
+		ActionState = EActionState::EAS_Neutral;
+	}
 }
 
 void AKannaCharacter::TakeCover()

@@ -34,6 +34,11 @@ void AGun::Fire(FVector& StartPoint, FVector& Direction)
 
 void AGun::Reload()
 {
+	if (MaxAmmo == CurrentAmmo)
+	{
+		return;
+	}
+
 	UE_LOG(LogTemp,Warning, TEXT("RELOAD"));
 
 	int32 ReloadingAmmo = MaxAmmo - CurrentAmmo;
