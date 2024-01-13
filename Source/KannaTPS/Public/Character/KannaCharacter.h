@@ -44,6 +44,7 @@ public:
 	FORCEINLINE EActionState GetActionState() const { return ActionState; }
 	FORCEINLINE bool GetIsInCover() const {return IsInCover;}
 	FORCEINLINE EAimingDirection GetAimingDirection() const { return AimingDirection; }
+	FORCEINLINE bool GetIsReloading() const { return IsReloading; }
 
 	UFUNCTION(BlueprintCallable)
 	void SetPunchHitbox(ECollisionEnabled::Type CollisionEnabled);
@@ -126,6 +127,9 @@ protected:
 
 	UFUNCTION(BlueprintCallable)
 	void RollEnd();
+
+	UFUNCTION(BlueprintCallable)
+	void ReloadEnd();
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnRollStart();
@@ -215,6 +219,9 @@ private:
 
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	bool IsCameraAtRight;
+
+	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	bool IsReloading;
 
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	EAimingDirection AimingDirection = EAimingDirection::EAD_Neutral;
