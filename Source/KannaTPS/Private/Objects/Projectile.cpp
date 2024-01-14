@@ -4,6 +4,7 @@
 #include "Objects/Projectile.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "Character/KannaCharacter.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 AProjectile::AProjectile()
@@ -36,6 +37,7 @@ void AProjectile::Damage(UPrimitiveComponent* HitComponent, AActor* OtherActor, 
 	if (Cast<AKannaCharacter>(OtherActor))
 	{
 		UE_LOG(LogTemp, Warning, TEXT("플레이어 피격!"));
+		UGameplayStatics::ApplyDamage(OtherActor, 20.f, nullptr, this, UDamageType::StaticClass());
 	}
 
 	Destroy();
