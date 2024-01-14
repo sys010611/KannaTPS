@@ -20,6 +20,7 @@ class AGun;
 class USphereComponent;
 struct FEnhancedInputActionValueBinding;
 class UKannaTPSOverlay;
+class UAttributeComponent;
 
 
 UCLASS()
@@ -169,6 +170,13 @@ protected:
 private:
 	void InitKannaTpsOverlay();
 
+	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser) override;
+
+	void Die();
+
+	FORCEINLINE void DisableMovement() { Controller->SetIgnoreMoveInput(true); }
+	void EnableMovement();
+
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	ECharacterState CharacterState = ECharacterState::ECS_Unarmed;
 
@@ -199,6 +207,12 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = Montages)
 	UAnimMontage* FireMontage;
 
+	UPROPERTY(EditDefaultsOnly, Category = Montages)
+	UAnimMontage* StunMontage;
+
+	UPROPERTY(EditDefaultsOnly, Category = Montages)
+	UAnimMontage* DieMontage;
+
 	UPROPERTY(EditDefaultsOnly, Category = Hitbox)
 	USphereComponent* PunchHitbox;
 
@@ -226,5 +240,9 @@ private:
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	EAimingDirection AimingDirection = EAimingDirection::EAD_Neutral;
 
+	UPROPERTY()
 	UKannaTPSOverlay* KannaTPSOverlay;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	UAttributeComponent* Attributes;
 };

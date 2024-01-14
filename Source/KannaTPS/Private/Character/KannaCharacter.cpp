@@ -18,6 +18,7 @@
 #include "Kismet/KismetMathLibrary.h"
 #include "HUD/KannaTPSHUD.h"
 #include "HUD/KannaTPSOverlay.h"
+#include "Components/AttributeComponent.h"
 
 // Sets default values
 AKannaCharacter::AKannaCharacter()
@@ -56,6 +57,8 @@ AKannaCharacter::AKannaCharacter()
 	//충돌판정 없음이 기본
 	PunchHitbox->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	KickHitbox->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+
+	Attributes = CreateDefaultSubobject<UAttributeComponent>(TEXT("Attributes"));
 }
 
 // Called when the game starts or when spawned
@@ -86,20 +89,20 @@ void AKannaCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	// 엄폐중이고, 키보드에서 손을 뗐을 시 캐릭터의 방향 결정
-	if (IsInCover && (GetVelocity().Length() == 0))
-	{
-		if (bIsCrouched)
-		{
-			FVector Direction = GetCharacterMovement()->GetPlaneConstraintNormal() * -1.f; //벽면을 바라봄
-			AddMovementInput(Direction);
-		}
-		//else
-		//{
-		//	FVector Direction = GetCharacterMovement()->GetPlaneConstraintNormal() * -1.f; //벽을 등짐
-		//	AddMovementInput(Direction);
-		//}
-	}
+	//// 엄폐중이고, 키보드에서 손을 뗐을 시 캐릭터의 방향 결정
+	//if (IsInCover && (GetVelocity().Length() == 0))
+	//{
+	//	if (bIsCrouched)
+	//	{
+	//		FVector Direction = GetCharacterMovement()->GetPlaneConstraintNormal() * -1.f; //벽면을 바라봄
+	//		AddMovementInput(Direction);
+	//	}
+	//	//else
+	//	//{
+	//	//	FVector Direction = GetCharacterMovement()->GetPlaneConstraintNormal() * -1.f; //벽을 등짐
+	//	//	AddMovementInput(Direction);
+	//	//}
+	//}
 }
 
 void AKannaCharacter::InitKannaTpsOverlay()
@@ -116,6 +119,64 @@ void AKannaCharacter::InitKannaTpsOverlay()
 			}
 		}
 	}
+}
+
+float AKannaCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
+{
+	if (Attributes)
+	{
+		Attributes->ReceiveDamage(DamageAmount);
+
+		//if (Attributes->IsDead())
+		//{
+		//	Die();
+		//}
+		//else 
+		if (Attributes->GetCurrentHealth() < 40.f)
+		{
+			UE_LOG(LogTemp, Log, TEXT("체력 위험, 스턴"));
+			UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance();
+			if (AnimInstance && StunMontage)
+			{
+				DisableMovement();
+
+				FTimerHandle MemberTimerHandle;
+				GetWorldTimerManager().SetTimer(MemberTimerHandle, this, &AKannaCharacter::EnableMovement, 1.f);
+
+				if (ActionState != EActionState::EAS_Stunned)
+				{
+					AnimInstance->Montage_Play(StunMontage);
+					ActionState = EActionState::EAS_Stunned;
+				}
+			}
+		}
+	}
+
+	return DamageAmount;
+}
+
+void AKannaCharacter::Die()
+{
+	//UE_LOG(LogTemp, Log, TEXT("사망"));
+
+	//if (ActionState == EActionState::EAS_Aiming)
+	//{
+	//	ReleaseAim();
+	//}
+
+	//DisableMovement();
+
+	//UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance();
+	//if (AnimInstance && DieMontage)
+	//{
+	//	AnimInstance->Montage_Play(DieMontage);
+	//}
+}
+
+void AKannaCharacter::EnableMovement()
+{
+	Controller->SetIgnoreMoveInput(false);
+	ActionState = EActionState::EAS_Neutral;
 }
 
 void AKannaCharacter::SetPunchHitbox(ECollisionEnabled::Type CollisionEnabled)
