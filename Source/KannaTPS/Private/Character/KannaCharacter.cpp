@@ -245,8 +245,6 @@ void AKannaCharacter::SwitchWeapon()
 		CurrentWeapon->SetInstigator(this);
 	}
 
-	//SetNeutralStateSpeed(); // 중립 상태일 때의 걷기 속도 조정
-
 	if (KannaTPSOverlay)
 	{
 		if (CurrentWeapon)
@@ -380,7 +378,7 @@ void AKannaCharacter::Fire() // 여기서는 상태 전환, 애니메이션만 �
 
 void AKannaCharacter::Reload()
 {
-	if (CurrentWeapon)
+	if (CurrentWeapon && CurrentWeapon->IsReloadable())
 	{
 		ReleaseAim();
 		ActionState = EActionState::EAS_Reloading;

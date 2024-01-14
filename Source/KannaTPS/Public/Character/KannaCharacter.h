@@ -205,7 +205,7 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = Hitbox)
 	USphereComponent* KickHitbox;
 
-	UPROPERTY()
+	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	AGun* CurrentWeapon;
 
 	UPROPERTY()
