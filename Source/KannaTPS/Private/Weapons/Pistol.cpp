@@ -98,7 +98,5 @@ void APistol::Fire(FVector& StartPoint, FVector& Direction)
 		UGameplayStatics::GetPlayerPawn(GetWorld(), 0),
 		6000.f
 	);
-
-	KannaCharacter->GetKannaTPSOverlay()->SetCurrentAmmoText(CurrentAmmo);
 }
 

@@ -29,15 +29,15 @@ void AGun::BeginPlay()
 void AGun::Fire(FVector& StartPoint, FVector& Direction)
 {
 	CurrentAmmo = FMath::Clamp(CurrentAmmo-1, 0, MaxAmmo);
+
+	KannaCharacter->GetKannaTPSOverlay()->SetCurrentAmmoText(CurrentAmmo);
 }
 
 
 void AGun::Reload()
 {
 	if (MaxAmmo == CurrentAmmo)
-	{
 		return;
-	}
 
 	UE_LOG(LogTemp,Warning, TEXT("RELOAD"));
 

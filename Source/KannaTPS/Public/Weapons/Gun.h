@@ -35,6 +35,8 @@ public:
 
 	FORCEINLINE bool IsShootable() {return CurrentAmmo > 0;}
 
+	FORCEINLINE bool IsReloadable() {return CurrentAmmo < MaxAmmo;}
+
 	FORCEINLINE int32 GetCurrentAmmo() {return CurrentAmmo;}
 
 	FORCEINLINE int32 GetTotalAmmo() { return TotalAmmo; }
@@ -61,7 +63,7 @@ protected:
 	UPROPERTY()
 	EFireMode FireMode;
 
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	USkeletalMeshComponent* GunMesh;
 
 	UPROPERTY(VisibleAnywhere)
