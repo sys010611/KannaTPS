@@ -41,6 +41,12 @@ public:
 
 	FORCEINLINE int32 GetTotalAmmo() { return TotalAmmo; }
 
+	FORCEINLINE USkeletalMeshComponent* GetMesh() { return GunMesh; }
+
+	// 총기를 안보이게 했을 때 이벤트. 탄창도 같이 숨기는 역할을 함.
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnVisibilityChanged(bool Visibility);
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

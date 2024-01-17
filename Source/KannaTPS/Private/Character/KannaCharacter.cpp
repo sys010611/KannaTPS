@@ -19,6 +19,8 @@
 #include "HUD/KannaTPSHUD.h"
 #include "HUD/KannaTPSOverlay.h"
 #include "Components/AttributeComponent.h"
+#include "HUD/DamageIndicator.h"
+#include "Kismet/KismetSystemLibrary.h"
 
 // Sets default values
 AKannaCharacter::AKannaCharacter()
@@ -81,6 +83,8 @@ void AKannaCharacter::BeginPlay()
 
 	AimingDirection = EAimingDirection::EAD_Neutral;
 
+
+	//위젯 초기화
 	InitKannaTpsOverlay();
 }
 
@@ -118,6 +122,9 @@ void AKannaCharacter::InitKannaTpsOverlay()
 				KannaTPSOverlay->HideAmmoText();
 			}
 		}
+		DamageIndicator = CreateWidget<UDamageIndicator>(PlayerController, DamageIndicatorClass);
+		DamageIndicator->AddToViewport();
+		DamageIndicator->SetRenderOpacity(0.f);
 	}
 }
 
@@ -152,7 +159,39 @@ float AKannaCharacter::TakeDamage(float DamageAmount, FDamageEvent const& Damage
 		}
 	}
 
+	if (DamageIndicator)
+	{
+		if (DamageIndicator->GetRenderOpacity() == 0.f)
+		{
+			DamageIndicator->SetRenderOpacity(1.f);
+
+			DamageIndicator->Causer = EventInstigator->GetPawn();
+
+			FLatentActionInfo Info;
+			Info.CallbackTarget = this;
+			Info.Linkage = 0;
+			Info.ExecutionFunction = FName("FadeOutDamageIndicator");
+			Info.UUID = 123;
+			UKismetSystemLibrary::RetriggerableDelay(GetWorld(), 3.f, Info);
+		}
+		else
+		{
+			DamageIndicator->Causer = EventInstigator->GetPawn();
+		}
+	}
+
+	if (BulletHitSound)
+	{
+		UGameplayStatics::PlaySound2D(GetWorld(), BulletHitSound);
+	}
+
 	return DamageAmount;
+}
+
+void AKannaCharacter::FadeOutDamageIndicator()
+{
+	DamageIndicator->PlayFadeAnim();
+	//DamageIndicator->RemoveWidget();
 }
 
 void AKannaCharacter::Die()
@@ -292,6 +331,8 @@ void AKannaCharacter::SwitchWeapon()
 	if (CharacterState == ECharacterState::ECS_ArmedWithPistol) // 권총 -> 맨손
 	{
 		CharacterState = ECharacterState::ECS_Unarmed;
+		CurrentWeapon->GetMesh()->SetVisibility(false);
+		CurrentWeapon->OnVisibilityChanged(false);
 		CurrentWeapon = nullptr;
 	}
 	else if (CharacterState == ECharacterState::ECS_Unarmed) //맨손 -> 권총
@@ -304,6 +345,9 @@ void AKannaCharacter::SwitchWeapon()
 	{
 		CurrentWeapon->SetOwner(this);
 		CurrentWeapon->SetInstigator(this);
+
+		CurrentWeapon->GetMesh()->SetVisibility(true);
+		CurrentWeapon->OnVisibilityChanged(true);
 	}
 
 	if (KannaTPSOverlay)

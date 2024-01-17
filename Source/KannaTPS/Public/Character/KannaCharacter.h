@@ -21,6 +21,7 @@ class USphereComponent;
 struct FEnhancedInputActionValueBinding;
 class UKannaTPSOverlay;
 class UAttributeComponent;
+class UDamageIndicator;
 
 
 UCLASS()
@@ -132,14 +133,14 @@ protected:
 	UFUNCTION(BlueprintCallable)
 	void ReloadEnd();
 
+	UFUNCTION(BlueprintCallable)
+	void FadeOutDamageIndicator();
+
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnRollStart();
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnAimStart();
-
-	//UFUNCTION(BlueprintImplementableEvent)
-	//void SetNeutralStateSpeed();
 
 	UFUNCTION(BlueprintNativeEvent)
 	void OnHitboxOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
@@ -151,15 +152,9 @@ protected:
 	void SpreadCrosshair();
 
 	void WallTrace();
-
 	void CoverTrace();
-
 	void CheckLeftRightHit(FVector& WallDirection, FVector& ActorLocation, FHitResult& HitResult, FCollisionQueryParams& CollisionParameters);
-
-	//void TakeCoverBP();
-
 	void StartCover(FVector& PlaneNormal, bool IsLowCover);
-
 	void StopCover();
 
 	//캐릭터의 오른쪽에서 정면으로 라인트레이싱 한 결과를 담는 변수
@@ -169,9 +164,7 @@ protected:
 
 private:
 	void InitKannaTpsOverlay();
-
 	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser) override;
-
 	void Die();
 
 	FORCEINLINE void DisableMovement() { Controller->SetIgnoreMoveInput(true); }
@@ -228,6 +221,9 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = Sound)
 	USoundBase* MeleeAttackSound;
 
+	UPROPERTY(EditDefaultsOnly, Category = Sound)
+	USoundBase* BulletHitSound;
+
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	bool IsInCover;
 
@@ -245,4 +241,10 @@ private:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	UAttributeComponent* Attributes;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	TSubclassOf<UDamageIndicator> DamageIndicatorClass;
+
+	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	UDamageIndicator* DamageIndicator;
 };

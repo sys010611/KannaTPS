@@ -37,7 +37,7 @@ void AProjectile::Damage(UPrimitiveComponent* HitComponent, AActor* OtherActor, 
 	if (Cast<AKannaCharacter>(OtherActor))
 	{
 		UE_LOG(LogTemp, Warning, TEXT("플레이어 피격!"));
-		UGameplayStatics::ApplyDamage(OtherActor, 20.f, nullptr, this, UDamageType::StaticClass());
+		UGameplayStatics::ApplyDamage(OtherActor, 20.f, GetInstigator()->GetController(), this, UDamageType::StaticClass());
 	}
 
 	Destroy();

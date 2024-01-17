@@ -36,6 +36,9 @@ void APistol::BeginPlay()
 
 	TotalAmmo = 255;
 	CurrentAmmo = 17;
+
+	GunMesh->SetVisibility(false);
+	OnVisibilityChanged(false);
 }
 
 
