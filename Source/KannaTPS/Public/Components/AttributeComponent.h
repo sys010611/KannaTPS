@@ -19,10 +19,13 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 	void ReceiveDamage(float Damage);
-
+	
+	FORCEINLINE void EnableHealthRegen() { IsRecovering = true;};
+	FORCEINLINE void DisableHealthRegen() { IsRecovering = false; };
 	FORCEINLINE float GetCurrentHealth() {return CurrentHealth;}
-
 	FORCEINLINE bool IsDead() { return CurrentHealth == 0; }
+
+
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
@@ -33,4 +36,9 @@ private:
 
 	UPROPERTY(EditAnywhere, Category = "Actor Attributes")
 	float MaxHealth;
+
+	UPROPERTY(EditAnywhere, Category = "Actor Attributes")
+	float RecoverRate;
+
+	bool IsRecovering;
 };

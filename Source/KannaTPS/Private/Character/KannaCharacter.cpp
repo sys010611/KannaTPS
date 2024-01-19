@@ -93,20 +93,22 @@ void AKannaCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	//// 엄폐중이고, 키보드에서 손을 뗐을 시 캐릭터의 방향 결정
-	//if (IsInCover && (GetVelocity().Length() == 0))
-	//{
-	//	if (bIsCrouched)
-	//	{
-	//		FVector Direction = GetCharacterMovement()->GetPlaneConstraintNormal() * -1.f; //벽면을 바라봄
-	//		AddMovementInput(Direction);
-	//	}
-	//	//else
-	//	//{
-	//	//	FVector Direction = GetCharacterMovement()->GetPlaneConstraintNormal() * -1.f; //벽을 등짐
-	//	//	AddMovementInput(Direction);
-	//	//}
-	//}
+	// 엄폐중이고, 키보드에서 손을 뗐을 시 캐릭터의 방향 결정
+	if (IsInCover && (GetVelocity().Length() == 0))
+	{
+		if (bIsCrouched)
+		{
+			FVector Direction = GetCharacterMovement()->GetPlaneConstraintNormal() * -1.f; //벽면을 바라봄
+			AddMovementInput(Direction);
+		}
+		//else
+		//{
+		//	FVector Direction = GetCharacterMovement()->GetPlaneConstraintNormal() * -1.f; //벽을 등짐
+		//	AddMovementInput(Direction);
+		//}
+	}
+
+	UE_LOG(LogTemp, Log, TEXT(" %f"), Attributes->GetCurrentHealth());
 }
 
 void AKannaCharacter::InitKannaTpsOverlay()
@@ -128,7 +130,7 @@ void AKannaCharacter::InitKannaTpsOverlay()
 	}
 }
 
-float AKannaCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
+float AKannaCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)													
 {
 	if (Attributes)
 	{
@@ -139,7 +141,7 @@ float AKannaCharacter::TakeDamage(float DamageAmount, FDamageEvent const& Damage
 		//	Die();
 		//}
 		//else 
-		if (Attributes->GetCurrentHealth() < 40.f)
+		if (Attributes->GetCurrentHealth() < 30.f)
 		{
 			UE_LOG(LogTemp, Log, TEXT("체력 위험, 스턴"));
 			UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance();
@@ -147,8 +149,9 @@ float AKannaCharacter::TakeDamage(float DamageAmount, FDamageEvent const& Damage
 			{
 				DisableMovement();
 
-				FTimerHandle MemberTimerHandle;
-				GetWorldTimerManager().SetTimer(MemberTimerHandle, this, &AKannaCharacter::EnableMovement, 1.f);
+				// 타이머 이용해서 1초 후 스턴 풀리도록
+				FTimerHandle StunTimerHandle;
+				GetWorldTimerManager().SetTimer(StunTimerHandle, this, &AKannaCharacter::EnableMovement, 1.f);
 
 				if (ActionState != EActionState::EAS_Stunned)
 				{
@@ -157,6 +160,15 @@ float AKannaCharacter::TakeDamage(float DamageAmount, FDamageEvent const& Damage
 				}
 			}
 		}
+		else
+		{
+			PlayHitMontage();
+		}
+
+		// 데미지 받고 3초 뒤 자동회복 시작
+		Attributes->DisableHealthRegen();
+		FTimerHandle RecoverTimerHandle;
+		GetWorldTimerManager().SetTimer(RecoverTimerHandle, Attributes, &UAttributeComponent::EnableHealthRegen, 3.f);
 	}
 
 	if (DamageIndicator)
@@ -196,20 +208,20 @@ void AKannaCharacter::FadeOutDamageIndicator()
 
 void AKannaCharacter::Die()
 {
-	//UE_LOG(LogTemp, Log, TEXT("사망"));
+	UE_LOG(LogTemp, Log, TEXT("사망"));
 
-	//if (ActionState == EActionState::EAS_Aiming)
-	//{
-	//	ReleaseAim();
-	//}
+	if (ActionState == EActionState::EAS_Aiming)
+	{
+		ReleaseAim();
+	}
 
-	//DisableMovement();
+	DisableMovement();
 
-	//UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance();
-	//if (AnimInstance && DieMontage)
-	//{
-	//	AnimInstance->Montage_Play(DieMontage);
-	//}
+	UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance();
+	if (AnimInstance && DieMontage)
+	{
+		PlayDieMontage(AnimInstance);
+	}
 }
 
 void AKannaCharacter::EnableMovement()
@@ -376,34 +388,6 @@ void AKannaCharacter::Attack()
 	ActionState = EActionState::EAS_Attacking;
 }
 
-void AKannaCharacter::PlayAttackMontage()
-{
-	UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance();
-
-	if (AnimInstance && AttackMontage) //null check
-	{
-		AnimInstance->Montage_Play(AttackMontage);
-		const int32 RandNum = FMath::RandRange(1, 3);
-		FName SectionName = FName();
-
-		switch (RandNum)
-		{
-		case 1:
-			SectionName = FName("Attack1");
-			break;
-		case 2:
-			SectionName = FName("Attack2");
-			break;
-		case 3:
-			SectionName = FName("Attack3");
-			break;
-		default:
-			break;
-		}
-		AnimInstance->Montage_JumpToSection(SectionName, AttackMontage);
-	}
-}
-
 void AKannaCharacter::AttackEnd()
 {
 	ActionState = EActionState::EAS_Neutral;
@@ -424,6 +408,29 @@ void AKannaCharacter::Roll()
 	Crouch();
 }
 
+void AKannaCharacter::PlayMontageBySection(UAnimMontage* Montage, const FName& SectionName)
+{
+	UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance();
+
+	if (AnimInstance && Montage)
+	{
+		AnimInstance->Montage_Play(Montage);
+		AnimInstance->Montage_JumpToSection(SectionName, Montage);
+	}
+}
+
+void AKannaCharacter::PlayAttackMontage()
+{
+	if (AttackMontageSections.Num() <= 0) return;
+	const int32 MaxIndex = AttackMontageSections.Num() - 1;
+	const int32 Index = FMath::RandRange(0, MaxIndex);
+
+	if (AttackMontage)
+	{
+		PlayMontageBySection(AttackMontage, AttackMontageSections[Index]);
+	}
+}
+
 void AKannaCharacter::PlayRollMontage()
 {
 	UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance();
@@ -432,6 +439,23 @@ void AKannaCharacter::PlayRollMontage()
 	{
 		AnimInstance->Montage_Play(RollMontage);
 	}
+}
+
+void AKannaCharacter::PlayHitMontage()
+{
+	if (HitMontageSections.Num() <= 0) return;
+	const int32 MaxIndex = HitMontageSections.Num() - 1;
+	const int32 Index = FMath::RandRange(0, MaxIndex);
+
+	if (HitMontage)
+	{
+		PlayMontageBySection(HitMontage, HitMontageSections[Index]);
+	}
+}
+
+void AKannaCharacter::PlayDieMontage(UAnimInstance* AnimInstance)
+{
+	AnimInstance->Montage_Play(DieMontage);
 }
 
 void AKannaCharacter::RollEnd()

@@ -21,6 +21,7 @@ AEnemy::AEnemy()
 	GetMesh()->SetGenerateOverlapEvents(true);
 
 	Attributes = CreateDefaultSubobject<UAttributeComponent>(TEXT("Attributes"));
+	Attributes->SetComponentTickEnabled(false);
 	//HealthBarWidget = CreateDefaultSubobject<UHealthBarComponent>(TEXT("HealthBar"));
 	//HealthBarWidget->SetupAttachment(GetRootComponent());
 

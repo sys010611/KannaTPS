@@ -32,21 +32,18 @@ class KANNATPS_API AKannaCharacter : public ACharacter
 public:
 	// Sets default values for this character's properties
 	AKannaCharacter();
-
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	FORCEINLINE void SetOverlappingItem(AItem* Item) { OverlappingItem = Item; }
-
-	// Getter
 	FORCEINLINE ECharacterState GetCharacterState() const { return CharacterState; }
 	FORCEINLINE EActionState GetActionState() const { return ActionState; }
 	FORCEINLINE bool GetIsInCover() const {return IsInCover;}
 	FORCEINLINE EAimingDirection GetAimingDirection() const { return AimingDirection; }
 	FORCEINLINE bool GetIsReloading() const { return IsReloading; }
+	FORCEINLINE UKannaTPSOverlay* GetKannaTPSOverlay() { return KannaTPSOverlay; }
+	FORCEINLINE void SetOverlappingItem(AItem* Item) { OverlappingItem = Item; }
 
 	UFUNCTION(BlueprintCallable)
 	void SetPunchHitbox(ECollisionEnabled::Type CollisionEnabled);
@@ -60,12 +57,12 @@ public:
 	UFUNCTION()
 	FORCEINLINE void AddWeaponToList(AGun* Weapon) {WeaponList.Add(Weapon); }
 
-	FORCEINLINE UKannaTPSOverlay* GetKannaTPSOverlay() {return KannaTPSOverlay;}
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	// Input Action
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
 	UInputMappingContext* InputMappingContext;
 
@@ -102,6 +99,7 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
 	UInputAction* SwitchCameraAction;
 
+
 	FEnhancedInputActionValueBinding* MoveActionBinding;
 
 
@@ -120,10 +118,12 @@ protected:
 
 
 	//Play animation montage
+	void PlayMontageBySection(UAnimMontage* Montage, const FName& SectionName);
 	void PlayAttackMontage();
 	void PlayRollMontage();
+	void PlayHitMontage();
 
-
+	//AnimationNotify
 	UFUNCTION(BlueprintCallable)
 	void AttackEnd();
 
@@ -133,30 +133,35 @@ protected:
 	UFUNCTION(BlueprintCallable)
 	void ReloadEnd();
 
-	UFUNCTION(BlueprintCallable)
-	void FadeOutDamageIndicator();
-
+	//Camera walking
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnRollStart();
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnAimStart();
 
-	UFUNCTION(BlueprintNativeEvent)
-	void OnHitboxOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
-
 	UFUNCTION(BlueprintImplementableEvent)
 	void SwitchCameraPos();
+
+
+	// Widget
+	UFUNCTION(BlueprintCallable)
+	void FadeOutDamageIndicator();
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void SpreadCrosshair();
 
+
+	UFUNCTION(BlueprintNativeEvent)
+	void OnHitboxOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+
+	//Cover
 	void WallTrace();
 	void CoverTrace();
 	void CheckLeftRightHit(FVector& WallDirection, FVector& ActorLocation, FHitResult& HitResult, FCollisionQueryParams& CollisionParameters);
 	void StartCover(FVector& PlaneNormal, bool IsLowCover);
 	void StopCover();
-
 	//캐릭터의 오른쪽에서 정면으로 라인트레이싱 한 결과를 담는 변수
 	bool RightHit;
 	//캐릭터의 왼쪽에서 정면으로 라인트레이싱 한 결과를 담는 변수
@@ -167,15 +172,19 @@ private:
 	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser) override;
 	void Die();
 
-	FORCEINLINE void DisableMovement() { Controller->SetIgnoreMoveInput(true); }
-	void EnableMovement();
+	void PlayDieMontage(UAnimInstance* AnimInstance);
 
+	/*State*/
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	ECharacterState CharacterState = ECharacterState::ECS_Unarmed;
 
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	EActionState ActionState = EActionState::EAS_Neutral;
 
+	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	EAimingDirection AimingDirection = EAimingDirection::EAD_Neutral;
+
+	/*Component*/
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	USpringArmComponent* SpringArm;
 
@@ -188,9 +197,11 @@ private:
 	UPROPERTY(BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	FVector SpringArmDefaultOffset;
 
+	/*Item*/
 	UPROPERTY(VisibleInstanceOnly)
 	AItem* OverlappingItem;
 
+	/*Animation Montage*/
 	UPROPERTY(EditDefaultsOnly, Category = Montages)
 	UAnimMontage* AttackMontage;
 
@@ -206,24 +217,39 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = Montages)
 	UAnimMontage* DieMontage;
 
+	UPROPERTY(EditDefaultsOnly, Category = Montages)
+	UAnimMontage* HitMontage;
+
+	UPROPERTY(EditAnywhere, Category = Montages)
+	TArray<FName> AttackMontageSections;
+
+	UPROPERTY(EditAnywhere, Category = Montages)
+	TArray<FName> HitMontageSections;
+
+	/*Melee Attack Hitbox*/
 	UPROPERTY(EditDefaultsOnly, Category = Hitbox)
 	USphereComponent* PunchHitbox;
 
 	UPROPERTY(EditDefaultsOnly, Category = Hitbox)
 	USphereComponent* KickHitbox;
 
+	/*Weapon*/
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	AGun* CurrentWeapon;
 
 	UPROPERTY()
 	TArray<AGun*> WeaponList;
 
+
+	/*Sound*/
 	UPROPERTY(EditDefaultsOnly, Category = Sound)
 	USoundBase* MeleeAttackSound;
 
 	UPROPERTY(EditDefaultsOnly, Category = Sound)
 	USoundBase* BulletHitSound;
 
+
+	/*Flag*/
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	bool IsInCover;
 
@@ -233,18 +259,24 @@ private:
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	bool IsReloading;
 
-	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	EAimingDirection AimingDirection = EAimingDirection::EAD_Neutral;
 
+	/*Widget*/
 	UPROPERTY()
 	UKannaTPSOverlay* KannaTPSOverlay;
-
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	UAttributeComponent* Attributes;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	TSubclassOf<UDamageIndicator> DamageIndicatorClass;
 
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	UDamageIndicator* DamageIndicator;
+
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	UAttributeComponent* Attributes;
+
+
+	FORCEINLINE void DisableMovement() { Controller->SetIgnoreMoveInput(true); }
+
+	void EnableMovement();
+
 };
