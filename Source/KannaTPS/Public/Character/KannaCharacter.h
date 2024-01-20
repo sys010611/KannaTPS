@@ -99,7 +99,6 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
 	UInputAction* SwitchCameraAction;
 
-
 	FEnhancedInputActionValueBinding* MoveActionBinding;
 
 
@@ -272,6 +271,12 @@ private:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	UAttributeComponent* Attributes;
+
+	/*Material*/
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"), Category = Material)
+	UMaterialInstance* ScreenDamage;
+	UPROPERTY()
+	UMaterialInstanceDynamic* ScreenDamageDynamic;
 
 	/*Camera Shake*/
 	UPROPERTY(EditDefaultsOnly, meta = (AllowPrivateAccess = "true"), Category = CameraShake)

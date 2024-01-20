@@ -21,6 +21,9 @@
 #include "Components/AttributeComponent.h"
 #include "HUD/DamageIndicator.h"
 #include "Kismet/KismetSystemLibrary.h"
+#include "Components/PostProcessComponent.h"
+#include "Engine/PostProcessVolume.h"
+
 
 // Sets default values
 AKannaCharacter::AKannaCharacter()
@@ -83,9 +86,13 @@ void AKannaCharacter::BeginPlay()
 
 	AimingDirection = EAimingDirection::EAD_Neutral;
 
-
 	//위젯 초기화
 	InitKannaTpsOverlay();
+
+	// 화면 데미지 효과 포스트 프로세스 생성, 초기화
+	ScreenDamageDynamic = UMaterialInstanceDynamic::Create(ScreenDamage, GetWorld());
+	APostProcessVolume* Volume = Cast<APostProcessVolume>(UGameplayStatics::GetActorOfClass(GetWorld(), APostProcessVolume::StaticClass()));
+	Volume->Settings.WeightedBlendables.Array.Add(FWeightedBlendable(1.f, ScreenDamageDynamic));
 }
 
 // Called every frame
@@ -110,6 +117,11 @@ void AKannaCharacter::Tick(float DeltaTime)
 	}
 
 	UE_LOG(LogTemp, Log, TEXT(" %f"), Attributes->GetCurrentHealth());
+
+
+	float ScreenDamageRadius =
+		FMath::GetMappedRangeValueClamped(TRange<float>(0.f, 100.f), TRange<float>(0.3f, 1.f), Attributes->GetCurrentHealth());
+	ScreenDamageDynamic->SetScalarParameterValue(FName("Radius"), ScreenDamageRadius);
 }
 
 void AKannaCharacter::InitKannaTpsOverlay()
@@ -142,22 +154,25 @@ float AKannaCharacter::TakeDamage(float DamageAmount, FDamageEvent const& Damage
 		//	Die();
 		//}
 		//else 
-		if (Attributes->GetCurrentHealth() < 30.f)
+		if (Attributes->GetCurrentHealth() < 40.f)
 		{
-			UE_LOG(LogTemp, Log, TEXT("체력 위험, 스턴"));
-			UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance();
-			if (AnimInstance && StunMontage)
+			bool IsStunned = UKismetMathLibrary::RandomBoolWithWeight(0.1f);
+			if (IsStunned)
 			{
-				DisableMovement();
-
-				// 타이머 이용해서 1초 후 스턴 풀리도록
-				FTimerHandle StunTimerHandle;
-				GetWorldTimerManager().SetTimer(StunTimerHandle, this, &AKannaCharacter::EnableMovement, 1.f);
-
-				if (ActionState != EActionState::EAS_Stunned)
+				UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance();
+				if (AnimInstance && StunMontage)
 				{
-					AnimInstance->Montage_Play(StunMontage);
-					ActionState = EActionState::EAS_Stunned;
+					DisableMovement();
+
+					// 타이머 이용해서 1초 후 스턴 풀리도록
+					FTimerHandle StunTimerHandle;
+					GetWorldTimerManager().SetTimer(StunTimerHandle, this, &AKannaCharacter::EnableMovement, 1.f);
+
+					if (ActionState != EActionState::EAS_Stunned)
+					{
+						AnimInstance->Montage_Play(StunMontage);
+						ActionState = EActionState::EAS_Stunned;
+					}
 				}
 			}
 		}
@@ -189,19 +204,16 @@ float AKannaCharacter::TakeDamage(float DamageAmount, FDamageEvent const& Damage
 		}
 		else
 		{
-			DamageIndicator->Causer = EventInstigator->GetPawn();
+			if(EventInstigator)
+				DamageIndicator->Causer = EventInstigator->GetPawn();
 		}
 	}
 
 	if (BulletHitSound)
-	{
 		UGameplayStatics::PlaySound2D(GetWorld(), BulletHitSound);
-	}
 
 	if (HitCameraShake)
-	{
 		UGameplayStatics::PlayWorldCameraShake(GetWorld(), HitCameraShake, GetActorLocation(), 0.f, 500.f);
-	}
 
 	return DamageAmount;
 }
@@ -507,11 +519,11 @@ void AKannaCharacter::Fire() // 여기서는 상태 전환, 애니메이션만 �
 			AnimInstance->Montage_Play(FireMontage);
 			SpreadCrosshair();
 		}
-	}
-
-	if (FireCameraShake)
-	{
-		UGameplayStatics::PlayWorldCameraShake(GetWorld(), FireCameraShake, GetActorLocation(), 0.f, 500.f);
+		
+		if (FireCameraShake)
+		{
+			UGameplayStatics::PlayWorldCameraShake(GetWorld(), FireCameraShake, GetActorLocation(), 0.f, 500.f);
+		}
 	}
 }
 
@@ -564,13 +576,13 @@ void AKannaCharacter::WallTrace()
 		//높은 엄폐물 탐지 시도
 		if (GetWorld()->LineTraceSingleByChannel(HitResult, HighStart, HighEnd, ECC_GameTraceChannel1, CollisionParameters))
 		{
-			DrawDebugLine(GetWorld(), HighStart, HighEnd, FColor(255,0,0), true, 10.f, 0, 5.f);
+			//DrawDebugLine(GetWorld(), HighStart, HighEnd, FColor(255,0,0), true, 10.f, 0, 5.f);
 			StartCover(HitResult.Normal, false);
 		}
 		//낮은 엄폐물 탐지 시도
 		else if (GetWorld()->LineTraceSingleByChannel(HitResult, LowStart, LowEnd, ECC_GameTraceChannel1, CollisionParameters))
 		{
-			DrawDebugLine(GetWorld(), LowStart, LowEnd, FColor(255, 0, 0), true, 10.f, 0, 5.f);
+			//DrawDebugLine(GetWorld(), LowStart, LowEnd, FColor(255, 0, 0), true, 10.f, 0, 5.f);
 			StartCover(HitResult.Normal, true);
 		}
 	}
