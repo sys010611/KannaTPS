@@ -104,6 +104,7 @@ void AKannaCharacter::Tick(float DeltaTime)
 		//else
 		//{
 		//	FVector Direction = GetCharacterMovement()->GetPlaneConstraintNormal() * -1.f; //벽을 등짐
+
 		//	AddMovementInput(Direction);
 		//}
 	}
@@ -197,13 +198,17 @@ float AKannaCharacter::TakeDamage(float DamageAmount, FDamageEvent const& Damage
 		UGameplayStatics::PlaySound2D(GetWorld(), BulletHitSound);
 	}
 
+	if (HitCameraShake)
+	{
+		UGameplayStatics::PlayWorldCameraShake(GetWorld(), HitCameraShake, GetActorLocation(), 0.f, 500.f);
+	}
+
 	return DamageAmount;
 }
 
 void AKannaCharacter::FadeOutDamageIndicator()
 {
 	DamageIndicator->PlayFadeAnim();
-	//DamageIndicator->RemoveWidget();
 }
 
 void AKannaCharacter::Die()
@@ -502,6 +507,11 @@ void AKannaCharacter::Fire() // 여기서는 상태 전환, 애니메이션만 �
 			AnimInstance->Montage_Play(FireMontage);
 			SpreadCrosshair();
 		}
+	}
+
+	if (FireCameraShake)
+	{
+		UGameplayStatics::PlayWorldCameraShake(GetWorld(), FireCameraShake, GetActorLocation(), 0.f, 500.f);
 	}
 }
 

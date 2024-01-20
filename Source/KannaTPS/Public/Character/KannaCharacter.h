@@ -270,13 +270,16 @@ private:
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	UDamageIndicator* DamageIndicator;
 
-
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	UAttributeComponent* Attributes;
 
+	/*Camera Shake*/
+	UPROPERTY(EditDefaultsOnly, meta = (AllowPrivateAccess = "true"), Category = CameraShake)
+	TSubclassOf<UCameraShakeBase> FireCameraShake;
+	UPROPERTY(EditDefaultsOnly, meta = (AllowPrivateAccess = "true"), Category = CameraShake)
+	TSubclassOf<UCameraShakeBase> HitCameraShake;
 
+	/*Movement*/
 	FORCEINLINE void DisableMovement() { Controller->SetIgnoreMoveInput(true); }
-
 	void EnableMovement();
-
 };

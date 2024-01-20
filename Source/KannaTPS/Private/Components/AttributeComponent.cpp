@@ -14,6 +14,8 @@ UAttributeComponent::UAttributeComponent()
 
 	CurrentHealth = 100.f;
 	MaxHealth = 100.f;
+
+	RecoverRate = 20.f;
 }
 
 
