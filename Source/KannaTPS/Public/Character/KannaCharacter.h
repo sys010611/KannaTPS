@@ -284,7 +284,19 @@ private:
 	UPROPERTY(EditDefaultsOnly, meta = (AllowPrivateAccess = "true"), Category = CameraShake)
 	TSubclassOf<UCameraShakeBase> HitCameraShake;
 
+	/*Spawning Actor Classes*/
+	UPROPERTY(EditDefaultsOnly, meta = (AllowPrivateAccess = "true"), Category = CameraShake)
+	TSubclassOf<AActor> HaloClass;
+	UPROPERTY(EditDefaultsOnly, meta = (AllowPrivateAccess = "true"), Category = CameraShake)
+	TSubclassOf<AGun> PistolClass;
+
 	/*Movement*/
 	FORCEINLINE void DisableMovement() { Controller->SetIgnoreMoveInput(true); }
 	void EnableMovement();
+
+	UFUNCTION(BlueprintCallable)
+	void EnableHealthRegen();
+
+	FLatentActionInfo FadeInfo;
+	FLatentActionInfo HealthInfo;
 };

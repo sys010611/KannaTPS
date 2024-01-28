@@ -23,6 +23,7 @@ public:
 	FORCEINLINE void EnableHealthRegen() { IsRecovering = true;};
 	FORCEINLINE void DisableHealthRegen() { IsRecovering = false; };
 	FORCEINLINE float GetCurrentHealth() {return CurrentHealth;}
+	FORCEINLINE float GetExGaugePercent() { return ExGaugePercent; }
 	FORCEINLINE bool IsDead() { return CurrentHealth == 0; }
 
 
@@ -39,6 +40,11 @@ private:
 
 	UPROPERTY(EditAnywhere, Category = "Actor Attributes")
 	float RecoverRate;
+
+	UPROPERTY(EditAnywhere, Category = "Actor Attributes")
+	float ExRegenRate;
+
+	float ExGaugePercent;
 
 	bool IsRecovering;
 };

@@ -16,6 +16,7 @@ UAttributeComponent::UAttributeComponent()
 	MaxHealth = 100.f;
 
 	RecoverRate = 20.f;
+	ExRegenRate = 0.01f;
 }
 
 
@@ -44,6 +45,9 @@ void UAttributeComponent::TickComponent(float DeltaTime, ELevelTick TickType, FA
 			IsRecovering = false;
 		}
 	}
+
+	ExGaugePercent += DeltaTime * ExRegenRate;
+	ExGaugePercent = FMath::Clamp(ExGaugePercent, 0, 100);
 }
 
 void UAttributeComponent::ReceiveDamage(float Damage)

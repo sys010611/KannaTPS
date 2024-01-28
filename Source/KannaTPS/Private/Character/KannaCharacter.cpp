@@ -92,7 +92,24 @@ void AKannaCharacter::BeginPlay()
 	// 화면 데미지 효과 포스트 프로세스 생성, 초기화
 	ScreenDamageDynamic = UMaterialInstanceDynamic::Create(ScreenDamage, GetWorld());
 	APostProcessVolume* Volume = Cast<APostProcessVolume>(UGameplayStatics::GetActorOfClass(GetWorld(), APostProcessVolume::StaticClass()));
-	Volume->Settings.WeightedBlendables.Array.Add(FWeightedBlendable(1.f, ScreenDamageDynamic));
+	if(Volume)
+		Volume->Settings.WeightedBlendables.Array.Add(FWeightedBlendable(1.f, ScreenDamageDynamic));
+
+
+	//FLatentInfo 초기화
+	FadeInfo.CallbackTarget = this;
+	FadeInfo.Linkage = 0;
+	FadeInfo.ExecutionFunction = FName("FadeOutDamageIndicator");
+	FadeInfo.UUID = 2;
+
+	HealthInfo.CallbackTarget = this;
+	HealthInfo.Linkage = 0;
+	HealthInfo.ExecutionFunction = FName("EnableHealthRegen");
+	HealthInfo.UUID = GetUniqueID();
+
+	// 헤일로, 권총 스폰
+	GetWorld()->SpawnActor(HaloClass);
+	GetWorld()->SpawnActor(PistolClass);
 }
 
 // Called every frame
@@ -100,28 +117,38 @@ void AKannaCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	// 엄폐중이고, 키보드에서 손을 뗐을 시 캐릭터의 방향 결정
-	if (IsInCover && (GetVelocity().Length() == 0))
+	// 가만히 엄폐중일 때 캐릭터의 방향 결정
+	if (IsInCover && (GetVelocity().Length() == 0) && ActionState == EActionState::EAS_Neutral)
 	{
+		FVector Forward = GetCharacterMovement()->GetPlaneConstraintNormal() * -1.f; //벽면을 바라보는 방향
 		if (bIsCrouched)
 		{
-			FVector Direction = GetCharacterMovement()->GetPlaneConstraintNormal() * -1.f; //벽면을 바라봄
-			AddMovementInput(Direction);
+			AddMovementInput(Forward);
 		}
-		//else
-		//{
-		//	FVector Direction = GetCharacterMovement()->GetPlaneConstraintNormal() * -1.f; //벽을 등짐
-
-		//	AddMovementInput(Direction);
-		//}
+		else
+		{
+			FVector RightVector = UKismetMathLibrary::GetRightVector(Forward.Rotation());
+			FRotator RightRotator = Forward.Rotation() + UKismetMathLibrary::MakeRotator(0,0,90.f);
+			if (IsCameraAtRight) //카메라 우측 -> 캐릭터도 우측을 바라봄
+			{
+				SetActorRotation(FMath::RInterpConstantTo(GetActorRotation(), RightRotator, DeltaTime, 700.f));
+			}
+			else //카메라 좌측 -> 캐릭터도 좌측을 바라봄
+			{
+				SetActorRotation(FMath::RInterpConstantTo(GetActorRotation(), RightRotator * -1.f, DeltaTime, 700.f));
+			}
+			
+		}
 	}
 
-	UE_LOG(LogTemp, Log, TEXT(" %f"), Attributes->GetCurrentHealth());
-
+	//UE_LOG(LogTemp, Log, TEXT(" %f"), Attributes->GetCurrentHealth());
 
 	float ScreenDamageRadius =
-		FMath::GetMappedRangeValueClamped(TRange<float>(0.f, 100.f), TRange<float>(0.3f, 1.f), Attributes->GetCurrentHealth());
+		FMath::GetMappedRangeValueClamped(TRange<float>(0.f, 100.f), TRange<float>(0.5f, 1.f), Attributes->GetCurrentHealth());
 	ScreenDamageDynamic->SetScalarParameterValue(FName("Radius"), ScreenDamageRadius);
+
+	if(Attributes && KannaTPSOverlay)
+	KannaTPSOverlay->SetExGaugePercent(Attributes->GetExGaugePercent());
 }
 
 void AKannaCharacter::InitKannaTpsOverlay()
@@ -183,30 +210,17 @@ float AKannaCharacter::TakeDamage(float DamageAmount, FDamageEvent const& Damage
 
 		// 데미지 받고 3초 뒤 자동회복 시작
 		Attributes->DisableHealthRegen();
-		FTimerHandle RecoverTimerHandle;
-		GetWorldTimerManager().SetTimer(RecoverTimerHandle, Attributes, &UAttributeComponent::EnableHealthRegen, 3.f);
+
+		UKismetSystemLibrary::RetriggerableDelay(GetWorld(), 3.f, HealthInfo);
 	}
 
-	if (DamageIndicator)
+	if (DamageIndicator && EventInstigator)
 	{
-		if (DamageIndicator->GetRenderOpacity() == 0.f)
-		{
-			DamageIndicator->SetRenderOpacity(1.f);
+		DamageIndicator->SetRenderOpacity(1.f);
 
-			DamageIndicator->Causer = EventInstigator->GetPawn();
+		DamageIndicator->Causer = EventInstigator->GetPawn();
 
-			FLatentActionInfo Info;
-			Info.CallbackTarget = this;
-			Info.Linkage = 0;
-			Info.ExecutionFunction = FName("FadeOutDamageIndicator");
-			Info.UUID = 123;
-			UKismetSystemLibrary::RetriggerableDelay(GetWorld(), 3.f, Info);
-		}
-		else
-		{
-			if(EventInstigator)
-				DamageIndicator->Causer = EventInstigator->GetPawn();
-		}
+		UKismetSystemLibrary::RetriggerableDelay(GetWorld(), 3.f, FadeInfo);
 	}
 
 	if (BulletHitSound)
@@ -245,6 +259,11 @@ void AKannaCharacter::EnableMovement()
 {
 	Controller->SetIgnoreMoveInput(false);
 	ActionState = EActionState::EAS_Neutral;
+}
+
+void AKannaCharacter::EnableHealthRegen()
+{
+	Attributes->EnableHealthRegen();
 }
 
 void AKannaCharacter::SetPunchHitbox(ECollisionEnabled::Type CollisionEnabled)
@@ -312,7 +331,13 @@ void AKannaCharacter::Aim()
 		else if(RightHit && !LeftHit)
 			AimingDirection = EAimingDirection::EAD_Left;
 		else if (!RightHit && !LeftHit)
-			AimingDirection = EAimingDirection::EAD_Right;
+		{
+			if(IsCameraAtRight)
+				AimingDirection = EAimingDirection::EAD_Right;
+			else
+				AimingDirection = EAimingDirection::EAD_Left;
+		}
+			
 		else if (RightHit && LeftHit)// 오른쪽, 왼쪽 모두 빈 공간이 없음 -> 조준 불가
 		{
 			return;
@@ -366,8 +391,11 @@ void AKannaCharacter::SwitchWeapon()
 	}
 	else if (CharacterState == ECharacterState::ECS_Unarmed) //맨손 -> 권총
 	{
-		CharacterState = ECharacterState::ECS_ArmedWithPistol;
-		CurrentWeapon = WeaponList[0];
+		if (WeaponList.Num() > 0)
+		{
+			CharacterState = ECharacterState::ECS_ArmedWithPistol;
+			CurrentWeapon = WeaponList[0];
+		}
 	}
 
 	if(CurrentWeapon)
