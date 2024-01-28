@@ -7,6 +7,7 @@
 #include "KannaTPSOverlay.generated.h"
 
 class UTextBlock;
+class UProgressBar;
 
 UCLASS()
 class KANNATPS_API UKannaTPSOverlay : public UUserWidget
@@ -21,6 +22,8 @@ public:
 	void HideAmmoText();
 
 	void ShowAmmoText();
+
+	void SetExGaugePercent(float percent);
 	
 private:
 	// meta = BindWidget은 블루프린트에서의 변수와 연동시키겠다는 의미이다.
@@ -32,4 +35,7 @@ private:
 
 	UPROPERTY(meta = (BindWidget))
 	UTextBlock* AmmoTextSlash;
+
+	UPROPERTY(meta = (BindWidget))
+	UProgressBar* ExGauge;
 };

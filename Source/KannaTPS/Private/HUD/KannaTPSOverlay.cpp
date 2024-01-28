@@ -3,6 +3,7 @@
 
 #include "HUD/KannaTPSOverlay.h"
 #include "Components/TextBlock.h"
+#include "Components/ProgressBar.h"
 
 void UKannaTPSOverlay::SetCurrentAmmoText(int32 Amount)
 {
@@ -34,4 +35,9 @@ void UKannaTPSOverlay::ShowAmmoText()
 	CurrentAmmoText->SetVisibility(ESlateVisibility::Visible);
 	TotalAmmoText->SetVisibility(ESlateVisibility::Visible);
 	AmmoTextSlash->SetVisibility(ESlateVisibility::Visible);
+}
+
+void UKannaTPSOverlay::SetExGaugePercent(float Percent)
+{
+	ExGauge->SetPercent(Percent);
 }
