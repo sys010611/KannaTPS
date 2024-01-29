@@ -43,16 +43,23 @@ public:
 
 	FORCEINLINE USkeletalMeshComponent* GetMesh() { return GunMesh; }
 
+	FORCEINLINE UArrowComponent* GetMuzzle() {return Muzzle;}
+
+	FORCEINLINE void ReadyExSkill() {ExSkillReady = true;}
+
 	// 총기를 안보이게 했을 때 이벤트. 탄창도 같이 숨기는 역할을 함.
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnVisibilityChanged(bool Visibility);
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	UArrowComponent* Muzzle;
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	UFUNCTION(BlueprintImplementableEvent)
-	void MuzzleFlashEffect();
+	UFUNCTION(BlueprintCallable)
+	void PlayMuzzleFlashEffect();
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	AKannaCharacter* KannaCharacter;
@@ -77,6 +84,11 @@ protected:
 
 	UPROPERTY(VisibleAnywhere)
 	float Damage;
+
+	UPROPERTY(EditDefaultsOnly)
+	UParticleSystem* MuzzleFlashEffect;
+
+	bool ExSkillReady;
 
 private:
 

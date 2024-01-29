@@ -8,6 +8,7 @@
 #include "Pistol.generated.h"
 
 class AKannaCharacter;
+class AProjectile;
 
 UCLASS()
 class KANNATPS_API APistol : public AGun
@@ -29,4 +30,7 @@ protected:
 private:	
 	UPROPERTY(EditDefaultsOnly)
 	UAnimMontage* SlideMontage;
+
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<AProjectile> ExProjectileClass;
 };

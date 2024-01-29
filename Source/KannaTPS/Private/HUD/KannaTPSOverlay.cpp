@@ -5,6 +5,11 @@
 #include "Components/TextBlock.h"
 #include "Components/ProgressBar.h"
 
+void UKannaTPSOverlay::NativeTick(const FGeometry& MyGeometry, float InDeltatime)
+{
+	ExNumberText->SetText(FText::AsNumber((int32)(ExGauge->Percent * 10)));
+}
+
 void UKannaTPSOverlay::SetCurrentAmmoText(int32 Amount)
 {
 	if (CurrentAmmoText)

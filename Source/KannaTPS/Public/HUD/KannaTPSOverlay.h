@@ -15,6 +15,8 @@ class KANNATPS_API UKannaTPSOverlay : public UUserWidget
 	GENERATED_BODY()
 
 public:
+	virtual void NativeTick(const FGeometry& MyGeometry, float InDeltatime) override;
+
 	void SetCurrentAmmoText(int32 amount);
 
 	void SetTotalAmmoText(int32 amount);
@@ -24,7 +26,7 @@ public:
 	void ShowAmmoText();
 
 	void SetExGaugePercent(float percent);
-	
+
 private:
 	// meta = BindWidget은 블루프린트에서의 변수와 연동시키겠다는 의미이다.
 	UPROPERTY(meta = (BindWidget))
@@ -38,4 +40,7 @@ private:
 
 	UPROPERTY(meta = (BindWidget))
 	UProgressBar* ExGauge;
+
+	UPROPERTY(meta = (BindWidget))
+	UTextBlock* ExNumberText;
 };
