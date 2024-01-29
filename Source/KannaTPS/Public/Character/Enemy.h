@@ -11,6 +11,8 @@ class UAttributeComponent;
 class UWidgetComponent;
 class UHealthBarComponent;
 class USoundAttenuation;
+class AProjectile;
+class AGun;
 
 UCLASS()
 class KANNATPS_API AEnemy : public ACharacter, public IHitInterface
@@ -39,8 +41,13 @@ protected:
 
 	void RagdollEffect(const FDamageEvent& DamageEvent);
 
+	void OneShot();
+
 	UFUNCTION(BlueprintImplementableEvent)
 	void CeaseFire();
+
+	UFUNCTION(BlueprintCallable)
+	void Shoot();
 
 	UFUNCTION(BlueprintCallable)
 	bool IsDead();
@@ -57,10 +64,47 @@ protected:
 	UPROPERTY(BlueprintReadWrite)
 	ACharacter* TargetCharacter;
 
+
 private:	
 	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser) override;
 
+	void PlayHitMontage();
+
+	void PlayMontageBySection(UAnimMontage* Montage, const FName& SectionName);
+
+	UPROPERTY(EditAnywhere, Category = Montage)
+	UAnimMontage* HitMontage;
+
+	UPROPERTY(EditAnywhere, Category = Montage)
+	TArray<FName> HitMontageSections;
 
 	UPROPERTY(VisibleAnywhere)
 	UAttributeComponent* Attributes;
+
+	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	float Pitch;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	UArrowComponent* BulletStartPos;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	TSubclassOf<AGun> AssultRifleClass;
+
+	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	AGun* AssultRifle;
+
+	UPROPERTY(EditDefaultsOnly, meta = (AllowPrivateAccess = "true"))
+	TSubclassOf<AProjectile> ProjectileClass;
+
+	UPROPERTY(EditDefaultsOnly, meta = (AllowPrivateAccess = "true"))
+	USoundBase* GunSound;
+
+	UPROPERTY(EditDefaultsOnly, meta = (AllowPrivateAccess = "true"))
+	USoundAttenuation* GunSoundAttenuation;
+
+	UPROPERTY(EditDefaultsOnly, meta = (AllowPrivateAccess = "true"))
+	UParticleSystem* GunfireEffect;
+
+	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	FTimerHandle ShootTimer;
 };

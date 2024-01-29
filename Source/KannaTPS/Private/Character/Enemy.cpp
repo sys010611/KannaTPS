@@ -4,12 +4,17 @@
 #include "Character/Enemy.h"
 #include "Components/AttributeComponent.h"
 #include "Components/CapsuleComponent.h"
+#include "Components/ArrowComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "Kismet/KismetMathLibrary.h"
 #include "AIController.h"
-#include "Weapons/AssultRifle.h"
+#include "Weapons/Gun.h"
 #include "Components/ChildActorComponent.h"
 #include "GameFramework/Controller.h"
+#include "Perception/AIPerceptionSystem.h"
+#include "Perception/AISense_Touch.h"
+#include "Objects/Projectile.h"
 
 // Sets default values
 AEnemy::AEnemy()
@@ -30,6 +35,9 @@ AEnemy::AEnemy()
 	bUseControllerRotationPitch = false;
 	bUseControllerRotationYaw = false;
 	bUseControllerRotationRoll = false;
+
+	BulletStartPos = CreateDefaultSubobject<UArrowComponent>(TEXT("BulletStartPos"));
+	BulletStartPos->SetupAttachment(GetRootComponent());
 }
 
 // Called when the game starts or when spawned
@@ -37,10 +45,60 @@ void AEnemy::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	//if (HealthBarWidget)
-	//{
-	//	HealthBarWidget->SetHealthPercent(.7f);
-	//}
+	if (AssultRifleClass)
+	{
+		FActorSpawnParameters Param;
+		Param.Owner = this;
+		AssultRifle = GetWorld()->SpawnActor<AGun>(AssultRifleClass, Param);
+		if(AssultRifle)
+			AssultRifle->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetIncludingScale, FName("Rifle_Socket"));
+	}
+}
+
+// Called every frame
+void AEnemy::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+}
+
+void AEnemy::OneShot()
+{
+	if (!TargetCharacter)
+		return;
+
+	// 플레이어를 바라보도록
+	FRotator DesiredRotation = UKismetMathLibrary::FindLookAtRotation(GetActorLocation(), TargetCharacter->GetActorLocation());
+
+	//피치 설정
+	Pitch = DesiredRotation.Pitch;
+	if (TargetCharacter->bIsCrouched)
+		Pitch += 5;
+
+	//그 외 설정
+	SetActorRotation(FRotator(0.f, DesiredRotation.Yaw, DesiredRotation.Roll));
+
+	//투사체 스폰
+	FVector SpawnLocation = BulletStartPos->GetComponentLocation();
+	FRotator SpawnRotation = BulletStartPos->GetComponentRotation();
+	//투사체 방향에 랜덤성 부여
+	SpawnRotation.Pitch += FMath::RandRange(-3.f, 3.f);
+	SpawnRotation.Yaw += FMath::RandRange(-3.f, 3.f);
+
+	FActorSpawnParameters Param;
+	Param.Instigator = this;
+	GetWorld()->SpawnActor<AProjectile>(ProjectileClass, SpawnLocation, SpawnRotation, Param);
+
+	UGameplayStatics::PlaySoundAtLocation(GetWorld(), GunSound, GetActorLocation(), 1.f, 1.f, 0.f, GunSoundAttenuation);
+	UGameplayStatics::SpawnEmitterAttached(
+		GunfireEffect, AssultRifle->GetMuzzle(), NAME_None, FVector::ZeroVector, FRotator::ZeroRotator, FVector::One() * 20.f);
+	
+	return;
+}
+
+void AEnemy::Shoot()
+{
+	GetWorldTimerManager().SetTimer(ShootTimer, this, &AEnemy::OneShot, .1f, true);
 }
 
 bool AEnemy::IsDead()
@@ -60,7 +118,35 @@ float AEnemy::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AC
 
 	UE_LOG(LogTemp, Warning, TEXT("Enemy HP: %f"), Attributes->GetCurrentHealth())
 
+	// 플레이어 감지 이벤트 실행
+	UAIPerceptionSystem* PerceptionSystem = UAIPerceptionSystem::GetCurrent(this);
+	PerceptionSystem->OnEvent(FAITouchEvent(this, EventInstigator->GetPawn(), GetActorLocation()));
+
 	return DamageAmount;
+}
+
+void AEnemy::PlayHitMontage()
+{
+	if (HitMontageSections.Num() <= 0) return;
+	const int32 MaxIndex = HitMontageSections.Num() - 1;
+	const int32 Index = FMath::RandRange(0, MaxIndex);
+
+	if (HitMontage)
+	{
+		PlayMontageBySection(HitMontage, HitMontageSections[Index]);
+	}
+}
+
+
+void AEnemy::PlayMontageBySection(UAnimMontage* Montage, const FName& SectionName)
+{
+	UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance();
+
+	if (AnimInstance && Montage)
+	{
+		AnimInstance->Montage_Play(Montage);
+		AnimInstance->Montage_JumpToSection(SectionName, Montage);
+	}
 }
 
 void AEnemy::Die(FDamageEvent const& DamageEvent)
@@ -124,13 +210,6 @@ void AEnemy::AwarePlayer()
 	GetCharacterMovement()->MaxWalkSpeed = 600.f;
 }
 
-// Called every frame
-void AEnemy::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-
-}
-
 // Called to bind functionality to input
 void AEnemy::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
@@ -140,6 +219,6 @@ void AEnemy::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 void AEnemy::GetHit() // 파티클 이펙트 기능 담당, 데미지 판정은 따로 TakeDamage에서
 {
-	
+	PlayHitMontage();
 }
 

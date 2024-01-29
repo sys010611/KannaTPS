@@ -15,8 +15,8 @@ UAttributeComponent::UAttributeComponent()
 	CurrentHealth = 100.f;
 	MaxHealth = 100.f;
 
-	RecoverRate = 20.f;
-	ExRegenRate = 0.01f;
+	//RecoverRate = 20.f;
+	//ExRegenRate = 0.01f;
 }
 
 
@@ -35,7 +35,7 @@ void UAttributeComponent::TickComponent(float DeltaTime, ELevelTick TickType, FA
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	// ...
+	// 체력 자동회복
 	if (IsRecovering)
 	{
 		CurrentHealth += DeltaTime * RecoverRate;
@@ -45,9 +45,9 @@ void UAttributeComponent::TickComponent(float DeltaTime, ELevelTick TickType, FA
 			IsRecovering = false;
 		}
 	}
-
+	// EX 게이지 증가
 	ExGaugePercent += DeltaTime * ExRegenRate;
-	ExGaugePercent = FMath::Clamp(ExGaugePercent, 0, 100);
+	ExGaugePercent = FMath::Clamp(ExGaugePercent, 0, 1.f);
 }
 
 void UAttributeComponent::ReceiveDamage(float Damage)

@@ -99,6 +99,9 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
 	UInputAction* SwitchCameraAction;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
+	UInputAction* ExSkillAction;
+
 	FEnhancedInputActionValueBinding* MoveActionBinding;
 
 
@@ -114,6 +117,7 @@ protected:
 	void Fire();
 	void Reload();
 	void TakeCover();
+	void ExSkill();
 
 
 	//Play animation montage
@@ -299,4 +303,5 @@ private:
 
 	FLatentActionInfo FadeInfo;
 	FLatentActionInfo HealthInfo;
+
 };

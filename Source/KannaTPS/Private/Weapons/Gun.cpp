@@ -6,6 +6,7 @@
 #include "Character/KannaCharacter.h"
 #include "Kismet/GameplayStatics.h"
 #include "HUD/KannaTPSOverlay.h"
+#include "Components/ArrowComponent.h"
 
 // Sets default values
 AGun::AGun()
@@ -15,6 +16,9 @@ AGun::AGun()
 
 	GunMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Mesh"));
 	GunMesh->SetupAttachment(GetRootComponent());
+
+	Muzzle = CreateDefaultSubobject<UArrowComponent>(TEXT("Muzzle"));
+	Muzzle->SetupAttachment(GetMesh());
 }
 
 // Called when the game starts or when spawned
@@ -24,6 +28,16 @@ void AGun::BeginPlay()
 	
 	KannaCharacter = Cast<AKannaCharacter>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
 
+	ExSkillReady = false;
+}
+
+void AGun::PlayMuzzleFlashEffect()
+{
+	if (MuzzleFlashEffect)
+	{
+		UGameplayStatics::SpawnEmitterAttached(
+			MuzzleFlashEffect, Muzzle, NAME_None, FVector::ZeroVector, FRotator::ZeroRotator, FVector::One() * 20.f);
+	}
 }
 
 void AGun::Fire(FVector& StartPoint, FVector& Direction)

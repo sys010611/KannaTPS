@@ -95,21 +95,21 @@ void AKannaCharacter::BeginPlay()
 	if(Volume)
 		Volume->Settings.WeightedBlendables.Array.Add(FWeightedBlendable(1.f, ScreenDamageDynamic));
 
+	// 헤일로, 권총 스폰
+	GetWorld()->SpawnActor(HaloClass);
+	GetWorld()->SpawnActor(PistolClass);
 
 	//FLatentInfo 초기화
+	
 	FadeInfo.CallbackTarget = this;
 	FadeInfo.Linkage = 0;
 	FadeInfo.ExecutionFunction = FName("FadeOutDamageIndicator");
-	FadeInfo.UUID = 2;
+	FadeInfo.UUID = GetUniqueID();
 
 	HealthInfo.CallbackTarget = this;
 	HealthInfo.Linkage = 0;
 	HealthInfo.ExecutionFunction = FName("EnableHealthRegen");
 	HealthInfo.UUID = GetUniqueID();
-
-	// 헤일로, 권총 스폰
-	GetWorld()->SpawnActor(HaloClass);
-	GetWorld()->SpawnActor(PistolClass);
 }
 
 // Called every frame
@@ -141,14 +141,12 @@ void AKannaCharacter::Tick(float DeltaTime)
 		}
 	}
 
-	//UE_LOG(LogTemp, Log, TEXT(" %f"), Attributes->GetCurrentHealth());
-
 	float ScreenDamageRadius =
 		FMath::GetMappedRangeValueClamped(TRange<float>(0.f, 100.f), TRange<float>(0.5f, 1.f), Attributes->GetCurrentHealth());
 	ScreenDamageDynamic->SetScalarParameterValue(FName("Radius"), ScreenDamageRadius);
 
 	if(Attributes && KannaTPSOverlay)
-	KannaTPSOverlay->SetExGaugePercent(Attributes->GetExGaugePercent());
+		KannaTPSOverlay->SetExGaugePercent(Attributes->GetExGaugePercent());
 }
 
 void AKannaCharacter::InitKannaTpsOverlay()
@@ -263,6 +261,7 @@ void AKannaCharacter::EnableMovement()
 
 void AKannaCharacter::EnableHealthRegen()
 {
+	UE_LOG(LogTemp,Warning, TEXT("자동회복 시작!!!"));
 	Attributes->EnableHealthRegen();
 }
 
@@ -583,6 +582,11 @@ void AKannaCharacter::TakeCover()
 	{
 		WallTrace(); // 엄폐물이 있는지 탐지
 	}
+}
+
+void AKannaCharacter::ExSkill()
+{
+	CurrentWeapon->ReadyExSkill();
 }
 
 void AKannaCharacter::WallTrace()

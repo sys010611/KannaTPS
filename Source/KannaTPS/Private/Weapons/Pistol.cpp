@@ -7,6 +7,9 @@
 #include "Character/KannaCharacter.h"
 #include "Kismet/GameplayStatics.h"
 #include "HUD/KannaTPSOverlay.h"
+#include "Objects/Projectile.h"
+#include "Components/ArrowComponent.h"
+#include "Kismet/KismetMathLibrary.h"
 
 // Sets default values
 APistol::APistol()
@@ -66,20 +69,34 @@ void APistol::Fire(FVector& StartPoint, FVector& Direction)
 		{
 			if (HitResult.GetActor())
 			{
-				if (IHitInterface* HitObject = Cast<IHitInterface>(HitResult.GetActor()))
+				if (ExSkillReady && ExProjectileClass)
 				{
-					HitObject->GetHit();
+					UE_LOG(LogTemp, Warning, TEXT("EX 스킬!!"));
+					//투사체 스폰
+					FVector SpawnLocation = Muzzle->GetComponentLocation();
+					FRotator SpawnRotation = UKismetMathLibrary::FindLookAtRotation(SpawnLocation, HitResult.ImpactPoint);
+					
+					FActorSpawnParameters Param;
+					Param.Instigator = GetInstigator();
+					GetWorld()->SpawnActor<AProjectile>(ExProjectileClass, SpawnLocation, SpawnRotation, Param);
 				}
+				else
+				{
+					if (IHitInterface* HitObject = Cast<IHitInterface>(HitResult.GetActor()))
+					{
+						HitObject->GetHit();
+					}
 
-				UGameplayStatics::ApplyPointDamage(
-					HitResult.GetActor(),
-					Damage,
-					Direction,
-					HitResult,
-					GetInstigator()->GetController(),
-					this,
-					UDamageType::StaticClass()
-				);
+					UGameplayStatics::ApplyPointDamage(
+						HitResult.GetActor(),
+						Damage,
+						Direction,
+						HitResult,
+						GetInstigator()->GetController(),
+						this,
+						UDamageType::StaticClass()
+					);
+				}
 			}
 		}
 	}
@@ -91,7 +108,8 @@ void APistol::Fire(FVector& StartPoint, FVector& Direction)
 	}
 
 	//총구 화염 효과
-	MuzzleFlashEffect();
+	PlayMuzzleFlashEffect();
+
 
 	//소음 효과
 	UAISense_Hearing::ReportNoiseEvent(
