@@ -51,15 +51,15 @@ public:
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnVisibilityChanged(bool Visibility);
 
+	UFUNCTION(BlueprintCallable)
+	void PlayMuzzleFlashEffect();
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	UArrowComponent* Muzzle;
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
-	UFUNCTION(BlueprintCallable)
-	void PlayMuzzleFlashEffect();
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	AKannaCharacter* KannaCharacter;
@@ -85,7 +85,7 @@ protected:
 	UPROPERTY(VisibleAnywhere)
 	float Damage;
 
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(EditDefaultsOnly, meta = (AllowPrivateAccess = "true"), Category = VFX)
 	UParticleSystem* MuzzleFlashEffect;
 
 	bool ExSkillReady;
