@@ -104,12 +104,12 @@ void AKannaCharacter::BeginPlay()
 	FadeInfo.CallbackTarget = this;
 	FadeInfo.Linkage = 0;
 	FadeInfo.ExecutionFunction = FName("FadeOutDamageIndicator");
-	FadeInfo.UUID = GetUniqueID();
+	FadeInfo.UUID = 1;
 
 	HealthInfo.CallbackTarget = this;
 	HealthInfo.Linkage = 0;
 	HealthInfo.ExecutionFunction = FName("EnableHealthRegen");
-	HealthInfo.UUID = GetUniqueID();
+	HealthInfo.UUID = 2;
 }
 
 // Called every frame
@@ -232,6 +232,7 @@ float AKannaCharacter::TakeDamage(float DamageAmount, FDamageEvent const& Damage
 
 void AKannaCharacter::FadeOutDamageIndicator()
 {
+	UE_LOG(LogTemp, Warning, TEXT("표시기 페이드아웃!!"));
 	DamageIndicator->PlayFadeAnim();
 }
 
@@ -586,7 +587,7 @@ void AKannaCharacter::TakeCover()
 
 void AKannaCharacter::ExSkill()
 {
-	CurrentWeapon->ReadyExSkill();
+	CurrentWeapon->ReadyExSkill(); // 무기에 델리게이트
 }
 
 void AKannaCharacter::WallTrace()
@@ -778,5 +779,6 @@ void AKannaCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComp
 		EnhancedInputComponent->BindAction(ReloadAction, ETriggerEvent::Triggered, this, &AKannaCharacter::Reload);
 		EnhancedInputComponent->BindAction(CoverAction, ETriggerEvent::Triggered, this, &AKannaCharacter::TakeCover);
 		EnhancedInputComponent->BindAction(SwitchCameraAction, ETriggerEvent::Triggered, this, &AKannaCharacter::SwitchCameraPos);
+		EnhancedInputComponent->BindAction(ExSkillAction, ETriggerEvent::Triggered, this, &AKannaCharacter::ExSkill);
 	}
 }

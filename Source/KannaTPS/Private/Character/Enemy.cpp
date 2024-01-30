@@ -90,8 +90,7 @@ void AEnemy::OneShot()
 	GetWorld()->SpawnActor<AProjectile>(ProjectileClass, SpawnLocation, SpawnRotation, Param);
 
 	UGameplayStatics::PlaySoundAtLocation(GetWorld(), GunSound, GetActorLocation(), 1.f, 1.f, 0.f, GunSoundAttenuation);
-	UGameplayStatics::SpawnEmitterAttached(
-		GunfireEffect, AssultRifle->GetMuzzle(), NAME_None, FVector::ZeroVector, FRotator::ZeroRotator, FVector::One() * 20.f);
+	AssultRifle->PlayMuzzleFlashEffect();
 	
 	return;
 }
@@ -146,6 +145,7 @@ void AEnemy::PlayMontageBySection(UAnimMontage* Montage, const FName& SectionNam
 	{
 		AnimInstance->Montage_Play(Montage);
 		AnimInstance->Montage_JumpToSection(SectionName, Montage);
+		UE_LOG(LogTemp,Warning, TEXT("적 피격 애니메이션"));
 	}
 }
 
