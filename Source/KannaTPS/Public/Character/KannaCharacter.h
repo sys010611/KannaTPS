@@ -176,6 +176,9 @@ private:
 	void Die();
 
 	void PlayDieMontage(UAnimInstance* AnimInstance);
+	
+	UFUNCTION(BlueprintCallable)
+	bool IsCameraAtRight();
 
 	/*State*/
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
@@ -257,7 +260,7 @@ private:
 	bool IsInCover;
 
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	bool IsCameraAtRight;
+	bool IsCameraMoving;
 
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	bool IsReloading;

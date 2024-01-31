@@ -145,7 +145,7 @@ void AEnemy::PlayMontageBySection(UAnimMontage* Montage, const FName& SectionNam
 	{
 		AnimInstance->Montage_Play(Montage);
 		AnimInstance->Montage_JumpToSection(SectionName, Montage);
-		UE_LOG(LogTemp,Warning, TEXT("적 피격 애니메이션"));
+		//UE_LOG(LogTemp,Warning, TEXT("적 피격 애니메이션"));
 	}
 }
 

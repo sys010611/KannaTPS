@@ -82,9 +82,8 @@ void AKannaCharacter::BeginPlay()
 	PunchHitbox->OnComponentBeginOverlap.AddDynamic(this, &AKannaCharacter::OnHitboxOverlap);
 	KickHitbox->OnComponentBeginOverlap.AddDynamic(this, &AKannaCharacter::OnHitboxOverlap);
 
-	IsCameraAtRight = true;
-
 	AimingDirection = EAimingDirection::EAD_Neutral;
+	IsCameraMoving = false;
 
 	//위젯 초기화
 	InitKannaTpsOverlay();
@@ -127,15 +126,16 @@ void AKannaCharacter::Tick(float DeltaTime)
 		}
 		else
 		{
-			FVector RightVector = UKismetMathLibrary::GetRightVector(Forward.Rotation());
-			FRotator RightRotator = Forward.Rotation() + UKismetMathLibrary::MakeRotator(0,0,90.f);
-			if (IsCameraAtRight) //카메라 우측 -> 캐릭터도 우측을 바라봄
+			//FVector RightVector = UKismetMathLibrary::GetRightVector(Forward.Rotation());
+			if (IsCameraAtRight()) //카메라 우측 -> 캐릭터도 우측을 바라봄
 			{
+				FRotator RightRotator = Forward.Rotation() + UKismetMathLibrary::MakeRotator(0, 0, 90.f);
 				SetActorRotation(FMath::RInterpConstantTo(GetActorRotation(), RightRotator, DeltaTime, 700.f));
 			}
 			else //카메라 좌측 -> 캐릭터도 좌측을 바라봄
 			{
-				SetActorRotation(FMath::RInterpConstantTo(GetActorRotation(), RightRotator * -1.f, DeltaTime, 700.f));
+				FRotator LeftRotator = Forward.Rotation() + UKismetMathLibrary::MakeRotator(0, 0, -90.f);
+				SetActorRotation(FMath::RInterpConstantTo(GetActorRotation(), LeftRotator, DeltaTime, 700.f));
 			}
 			
 		}
@@ -193,7 +193,7 @@ float AKannaCharacter::TakeDamage(float DamageAmount, FDamageEvent const& Damage
 					FTimerHandle StunTimerHandle;
 					GetWorldTimerManager().SetTimer(StunTimerHandle, this, &AKannaCharacter::EnableMovement, 1.f);
 
-					if (ActionState != EActionState::EAS_Stunned)
+					if (ActionState != EActionState::EAS_Stunned && ActionState != EActionState::EAS_Rolling)
 					{
 						AnimInstance->Montage_Play(StunMontage);
 						ActionState = EActionState::EAS_Stunned;
@@ -232,7 +232,6 @@ float AKannaCharacter::TakeDamage(float DamageAmount, FDamageEvent const& Damage
 
 void AKannaCharacter::FadeOutDamageIndicator()
 {
-	UE_LOG(LogTemp, Warning, TEXT("표시기 페이드아웃!!"));
 	DamageIndicator->PlayFadeAnim();
 }
 
@@ -262,7 +261,6 @@ void AKannaCharacter::EnableMovement()
 
 void AKannaCharacter::EnableHealthRegen()
 {
-	UE_LOG(LogTemp,Warning, TEXT("자동회복 시작!!!"));
 	Attributes->EnableHealthRegen();
 }
 
@@ -332,7 +330,7 @@ void AKannaCharacter::Aim()
 			AimingDirection = EAimingDirection::EAD_Left;
 		else if (!RightHit && !LeftHit)
 		{
-			if(IsCameraAtRight)
+			if(IsCameraAtRight())
 				AimingDirection = EAimingDirection::EAD_Right;
 			else
 				AimingDirection = EAimingDirection::EAD_Left;
@@ -503,6 +501,11 @@ void AKannaCharacter::PlayDieMontage(UAnimInstance* AnimInstance)
 	AnimInstance->Montage_Play(DieMontage);
 }
 
+bool AKannaCharacter::IsCameraAtRight()
+{
+	return SpringArm->SocketOffset.Y > 0;
+}
+
 void AKannaCharacter::RollEnd()
 {
 	ActionState = EActionState::EAS_Neutral;
@@ -637,8 +640,7 @@ void AKannaCharacter::CoverTrace()
 
 	CheckLeftRightHit(WallDirection, ActorLocation, HitResult, CollisionParameters);
 
-	//MoveActionBinding은 이동 인풋 값을 가져다쓰기 위해 만든 것이다. 이에 대한 설명도 후술할 것이다.
-	FVector2D MoveVector = MoveActionBinding->GetValue().Get<FVector2D>();
+	FVector2D MoveVector = MoveActionBinding->GetValue().Get<FVector2D>(); //MoveActionBinding은 이동 인풋 값을 가져다쓰기 위해 만든 것이다.
 	//PlayerRightVector는 카메라로 보는 시점 기준 오른쪽 방향 벡터이다.
 	FVector PlayerRightVector = UKismetMathLibrary::GetRightVector(UKismetMathLibrary::MakeRotator(0.f, 0.f, GetControlRotation().Yaw));
 
@@ -687,7 +689,8 @@ void AKannaCharacter::CoverTrace()
 		AddMovementInput(PlayerRightVector, MovementScale);
 	}
 
-	if ((MoveVector.X > 0 && !IsCameraAtRight) || (MoveVector.X < 0 && IsCameraAtRight))
+	bool bIsCameraAtRight = IsCameraAtRight();
+	if ((MoveVector.X > 0 && !bIsCameraAtRight) || (MoveVector.X < 0 && bIsCameraAtRight))
 	{
 		SwitchCameraPos();
 	}
