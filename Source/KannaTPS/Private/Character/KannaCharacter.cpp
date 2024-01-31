@@ -126,7 +126,6 @@ void AKannaCharacter::Tick(float DeltaTime)
 		}
 		else
 		{
-			//FVector RightVector = UKismetMathLibrary::GetRightVector(Forward.Rotation());
 			if (IsCameraAtRight()) //카메라 우측 -> 캐릭터도 우측을 바라봄
 			{
 				FRotator RightRotator = Forward.Rotation() + UKismetMathLibrary::MakeRotator(0, 0, 90.f);
@@ -141,10 +140,12 @@ void AKannaCharacter::Tick(float DeltaTime)
 		}
 	}
 
+	// 화면 가장자리 데미지 효과
 	float ScreenDamageRadius =
 		FMath::GetMappedRangeValueClamped(TRange<float>(0.f, 100.f), TRange<float>(0.5f, 1.f), Attributes->GetCurrentHealth());
 	ScreenDamageDynamic->SetScalarParameterValue(FName("Radius"), ScreenDamageRadius);
 
+	//EX 게이지 동기화
 	if(Attributes && KannaTPSOverlay)
 		KannaTPSOverlay->SetExGaugePercent(Attributes->GetExGaugePercent());
 }
@@ -501,6 +502,11 @@ void AKannaCharacter::PlayDieMontage(UAnimInstance* AnimInstance)
 	AnimInstance->Montage_Play(DieMontage);
 }
 
+bool AKannaCharacter::CanUseExSkill()
+{
+	return Attributes->GetExGaugePercent() >= 0.3f;
+}
+
 bool AKannaCharacter::IsCameraAtRight()
 {
 	return SpringArm->SocketOffset.Y > 0;
@@ -590,7 +596,11 @@ void AKannaCharacter::TakeCover()
 
 void AKannaCharacter::ExSkill()
 {
-	CurrentWeapon->ReadyExSkill(); // 무기에 델리게이트
+	if (CurrentWeapon->HasExSkill && CanUseExSkill()) //Ex 스킬을 쓸 수 있는 무기라면
+	{
+		CurrentWeapon->ReadyExSkill(); // 무기에 델리게이트
+		Attributes->SubtractExGaugePercent(0.3f);
+	}
 }
 
 void AKannaCharacter::WallTrace()

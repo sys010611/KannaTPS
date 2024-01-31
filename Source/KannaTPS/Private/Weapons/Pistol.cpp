@@ -20,9 +20,11 @@ APistol::APistol()
 	FireMode = EFireMode::EFM_SEMIAUTO;
 
 	Range = 10000.f;
-	Damage = 35.f;
+	Damage = 20.f;
 
 	MaxAmmo = 17;
+
+	HasExSkill = true;
 }
 
 // Called when the game starts or when spawned
@@ -42,6 +44,13 @@ void APistol::BeginPlay()
 
 	GunMesh->SetVisibility(false);
 	OnVisibilityChanged(false);
+}
+
+void APistol::ReadyExSkill()
+{
+	Super::ReadyExSkill();
+
+	// 총구로 빛 모이는 이펙트
 }
 
 
@@ -71,14 +80,7 @@ void APistol::Fire(FVector& StartPoint, FVector& Direction)
 			{
 				if (ExSkillReady && ExProjectileClass)
 				{
-					UE_LOG(LogTemp, Warning, TEXT("EX 스킬!!"));
-					//투사체 스폰
-					FVector SpawnLocation = Muzzle->GetComponentLocation();
-					FRotator SpawnRotation = UKismetMathLibrary::FindLookAtRotation(SpawnLocation, HitResult.ImpactPoint);
-					
-					FActorSpawnParameters Param;
-					Param.Instigator = GetInstigator();
-					GetWorld()->SpawnActor<AProjectile>(ExProjectileClass, SpawnLocation, SpawnRotation, Param);
+					FireExSkill(HitResult);
 				}
 				else
 				{
@@ -119,5 +121,18 @@ void APistol::Fire(FVector& StartPoint, FVector& Direction)
 		UGameplayStatics::GetPlayerPawn(GetWorld(), 0),
 		6000.f
 	);
+}
+
+void APistol::FireExSkill(FHitResult& HitResult)
+{
+	//투사체 스폰
+	FVector SpawnLocation = Muzzle->GetComponentLocation();
+	FRotator SpawnRotation = UKismetMathLibrary::FindLookAtRotation(SpawnLocation, HitResult.ImpactPoint);
+
+	FActorSpawnParameters Param;
+	Param.Instigator = GetInstigator();
+	GetWorld()->SpawnActor<AProjectile>(ExProjectileClass, SpawnLocation, SpawnRotation, Param);
+
+	ExSkillReady = false;
 }
 
