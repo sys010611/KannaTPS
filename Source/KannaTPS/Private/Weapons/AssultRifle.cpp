@@ -10,6 +10,8 @@ AAssultRifle::AAssultRifle()
 	PrimaryActorTick.bCanEverTick = false;
 
 	FireMode = EFireMode::EFM_AUTO;
+
+	HasExSkill = false;
 }
 
 // Called when the game starts or when spawned

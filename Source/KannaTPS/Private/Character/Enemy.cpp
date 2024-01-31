@@ -109,6 +109,19 @@ float AEnemy::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AC
 {
 	if (Attributes)
 	{
+		// 총알의 충격을 받는 연출
+		if (DamageEvent.IsOfType(FPointDamageEvent::ClassID))
+		{
+			FPointDamageEvent PointDmg = *((FPointDamageEvent*)(&DamageEvent));
+			{
+				UE_LOG(LogTemp, Warning, TEXT("Hit Point: %s"), *(PointDmg.HitInfo.BoneName.ToString()));
+				if (PointDmg.HitInfo.BoneName == FName("Neck")) //헤드샷 맞으면 추가 데미지
+				{
+					DamageAmount += 25.f;
+				}
+			}
+		}
+
 		Attributes->ReceiveDamage(DamageAmount);
 		
 		if (Attributes->IsDead())
@@ -117,7 +130,7 @@ float AEnemy::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AC
 
 	UE_LOG(LogTemp, Warning, TEXT("Enemy HP: %f"), Attributes->GetCurrentHealth())
 
-	// 플레이어 감지 이벤트 실행
+	// 플레이어 감지 자극
 	UAIPerceptionSystem* PerceptionSystem = UAIPerceptionSystem::GetCurrent(this);
 	PerceptionSystem->OnEvent(FAITouchEvent(this, EventInstigator->GetPawn(), GetActorLocation()));
 
@@ -193,7 +206,6 @@ void AEnemy::RagdollEffect(const FDamageEvent& DamageEvent)
 		FPointDamageEvent PointDmg = *((FPointDamageEvent*)(&DamageEvent));
 		{
 			GetMesh()->AddImpulseAtLocation(PointDmg.ShotDirection * 10000, PointDmg.HitInfo.ImpactPoint, PointDmg.HitInfo.BoneName);
-			UE_LOG(LogTemp, Warning, TEXT("Hit Point: %s"), *(PointDmg.HitInfo.BoneName.ToString()));
 		}
 	}
 }

@@ -41,7 +41,6 @@ public:
 	FORCEINLINE EActionState GetActionState() const { return ActionState; }
 	FORCEINLINE bool GetIsInCover() const {return IsInCover;}
 	FORCEINLINE EAimingDirection GetAimingDirection() const { return AimingDirection; }
-	FORCEINLINE bool GetIsReloading() const { return IsReloading; }
 	FORCEINLINE UKannaTPSOverlay* GetKannaTPSOverlay() { return KannaTPSOverlay; }
 	FORCEINLINE void SetOverlappingItem(AItem* Item) { OverlappingItem = Item; }
 
@@ -174,9 +173,8 @@ private:
 	void InitKannaTpsOverlay();
 	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser) override;
 	void Die();
-
 	void PlayDieMontage(UAnimInstance* AnimInstance);
-	
+	bool CanUseExSkill();
 	UFUNCTION(BlueprintCallable)
 	bool IsCameraAtRight();
 

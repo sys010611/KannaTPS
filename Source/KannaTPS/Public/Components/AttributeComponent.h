@@ -24,6 +24,7 @@ public:
 	FORCEINLINE void DisableHealthRegen() { IsRecovering = false; };
 	FORCEINLINE float GetCurrentHealth() {return CurrentHealth;}
 	FORCEINLINE float GetExGaugePercent() { return ExGaugePercent; }
+	FORCEINLINE void SubtractExGaugePercent(float Amount) {ExGaugePercent -= Amount;}
 	FORCEINLINE bool IsDead() { return CurrentHealth == 0; }
 
 

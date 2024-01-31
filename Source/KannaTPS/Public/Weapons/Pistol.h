@@ -23,6 +23,7 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	virtual void Fire(FVector& StartPoint, FVector& Direction) override;
+	void FireExSkill(FHitResult& HitResult);
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -33,4 +34,6 @@ private:
 
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<AProjectile> ExProjectileClass;
+
+	virtual void ReadyExSkill() override;
 };
