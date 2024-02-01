@@ -8,7 +8,7 @@
 #include "Pistol.generated.h"
 
 class AKannaCharacter;
-class AProjectile;
+class AExProjectile;
 
 UCLASS()
 class KANNATPS_API APistol : public AGun
@@ -29,11 +29,17 @@ protected:
 	virtual void BeginPlay() override;
 
 private:	
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(EditDefaultsOnly, Category = Montage)
 	UAnimMontage* SlideMontage;
 
-	UPROPERTY(EditDefaultsOnly)
-	TSubclassOf<AProjectile> ExProjectileClass;
+	UPROPERTY(EditDefaultsOnly, Category = ExSkill)
+	TSubclassOf<AExProjectile> ExProjectileClass;
+
+	UPROPERTY(EditDefaultsOnly, Category = ExSkill)
+	UParticleSystem* ExChargeEffect;
+
+	UPROPERTY()
+	UParticleSystemComponent* ExChargeEffectComp;
 
 	virtual void ReadyExSkill() override;
 };

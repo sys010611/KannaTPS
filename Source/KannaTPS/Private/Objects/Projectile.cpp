@@ -9,13 +9,6 @@
 // Sets default values
 AProjectile::AProjectile()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = false;
-
-	Projectile = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Projectile"));
-	SetRootComponent(Projectile);
-
-	ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("ProjectileMovement"));
 	ProjectileMovement->InitialSpeed = 10000.f;
 	ProjectileMovement->MaxSpeed = 10000.f;
 	ProjectileMovement->ProjectileGravityScale = 0.f;
@@ -27,9 +20,15 @@ void AProjectile::BeginPlay()
 	Super::BeginPlay();
 	
 	Projectile->OnComponentHit.AddDynamic(this, &AProjectile::Damage);
-
-	SetLifeSpan(2.f);
 }
+
+// Called every frame
+void AProjectile::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+}
+
 
 void AProjectile::Damage(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
@@ -41,11 +40,3 @@ void AProjectile::Damage(UPrimitiveComponent* HitComponent, AActor* OtherActor, 
 
 	Destroy();
 }
-
-// Called every frame
-void AProjectile::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-
-}
-

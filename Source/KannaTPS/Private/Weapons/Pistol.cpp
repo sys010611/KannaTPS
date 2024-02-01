@@ -7,9 +7,11 @@
 #include "Character/KannaCharacter.h"
 #include "Kismet/GameplayStatics.h"
 #include "HUD/KannaTPSOverlay.h"
-#include "Objects/Projectile.h"
+#include "Objects/ExProjectile.h"
 #include "Components/ArrowComponent.h"
 #include "Kismet/KismetMathLibrary.h"
+#include "Particles/ParticleSystemComponent.h"
+#include "Particles/ParticleSystem.h"
 
 // Sets default values
 APistol::APistol()
@@ -51,6 +53,11 @@ void APistol::ReadyExSkill()
 	Super::ReadyExSkill();
 
 	// 총구로 빛 모이는 이펙트
+	if (ExChargeEffect)
+	{
+		ExChargeEffectComp = UGameplayStatics::SpawnEmitterAttached(
+			ExChargeEffect, Muzzle, NAME_None, FVector::ZeroVector, FRotator(90.f, 0.f,0.f), FVector::One() * 6);
+	}
 }
 
 
@@ -125,13 +132,15 @@ void APistol::Fire(FVector& StartPoint, FVector& Direction)
 
 void APistol::FireExSkill(FHitResult& HitResult)
 {
+	ExChargeEffectComp->Deactivate();
+
 	//투사체 스폰
 	FVector SpawnLocation = Muzzle->GetComponentLocation();
 	FRotator SpawnRotation = UKismetMathLibrary::FindLookAtRotation(SpawnLocation, HitResult.ImpactPoint);
 
 	FActorSpawnParameters Param;
 	Param.Instigator = GetInstigator();
-	GetWorld()->SpawnActor<AProjectile>(ExProjectileClass, SpawnLocation, SpawnRotation, Param);
+	GetWorld()->SpawnActor<AExProjectile>(ExProjectileClass, SpawnLocation, SpawnRotation, Param);
 
 	ExSkillReady = false;
 }
