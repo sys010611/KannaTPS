@@ -78,6 +78,12 @@ private:
 	UPROPERTY(EditAnywhere, Category = Montage)
 	TArray<FName> HitMontageSections;
 
+	UPROPERTY(EditDefaultsOnly, Category = Sound)
+	USoundBase* BulletHitSound;
+
+	UPROPERTY(EditDefaultsOnly, meta = (AllowPrivateAccess = "true"))
+	USoundBase* GunSound;
+
 	UPROPERTY(VisibleAnywhere)
 	UAttributeComponent* Attributes;
 
@@ -97,10 +103,7 @@ private:
 	TSubclassOf<AProjectile> ProjectileClass;
 
 	UPROPERTY(EditDefaultsOnly, meta = (AllowPrivateAccess = "true"))
-	USoundBase* GunSound;
-
-	UPROPERTY(EditDefaultsOnly, meta = (AllowPrivateAccess = "true"))
-	USoundAttenuation* GunSoundAttenuation;
+	USoundAttenuation* SoundAttenuation;
 
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	FTimerHandle ShootTimer;

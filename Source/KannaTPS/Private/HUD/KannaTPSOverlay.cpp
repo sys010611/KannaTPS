@@ -7,7 +7,7 @@
 
 void UKannaTPSOverlay::NativeTick(const FGeometry& MyGeometry, float InDeltatime)
 {
-	ExNumberText->SetText(FText::AsNumber((int32)(ExGauge->Percent * 10)));
+	ExNumberText->SetText(FText::AsNumber((int32)(ExGauge->GetPercent() * 10)));
 }
 
 void UKannaTPSOverlay::SetCurrentAmmoText(int32 Amount)

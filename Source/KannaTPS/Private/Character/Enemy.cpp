@@ -89,7 +89,7 @@ void AEnemy::OneShot()
 	Param.Instigator = this;
 	GetWorld()->SpawnActor<AProjectile>(ProjectileClass, SpawnLocation, SpawnRotation, Param);
 
-	UGameplayStatics::PlaySoundAtLocation(GetWorld(), GunSound, GetActorLocation(), 1.f, 1.f, 0.f, GunSoundAttenuation);
+	UGameplayStatics::PlaySoundAtLocation(GetWorld(), GunSound, GetActorLocation(), 1.f, 1.f, 0.f, SoundAttenuation);
 	AssultRifle->PlayMuzzleFlashEffect();
 	
 	return;
@@ -133,6 +133,9 @@ float AEnemy::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AC
 	// 플레이어 감지 자극
 	UAIPerceptionSystem* PerceptionSystem = UAIPerceptionSystem::GetCurrent(this);
 	PerceptionSystem->OnEvent(FAITouchEvent(this, EventInstigator->GetPawn(), GetActorLocation()));
+
+	if (BulletHitSound)
+	UGameplayStatics::PlaySoundAtLocation(GetWorld(), BulletHitSound, GetActorLocation(), 1.f, 1.f, 0.f, SoundAttenuation);
 
 	return DamageAmount;
 }

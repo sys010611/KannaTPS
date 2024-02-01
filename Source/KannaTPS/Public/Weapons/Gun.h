@@ -28,23 +28,16 @@ public:
 
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
 	virtual void Fire(FVector& StartPoint, FVector& Direction);
-
 	virtual void Reload();
 
 	FORCEINLINE bool IsShootable() {return CurrentAmmo > 0;}
-
 	FORCEINLINE bool IsReloadable() {return CurrentAmmo < MaxAmmo;}
-
+	FORCEINLINE bool IsExSkillReady() { return ExSkillReady; }
 	FORCEINLINE int32 GetCurrentAmmo() {return CurrentAmmo;}
-
 	FORCEINLINE int32 GetTotalAmmo() { return TotalAmmo; }
-
 	FORCEINLINE USkeletalMeshComponent* GetMesh() { return GunMesh; }
-
 	FORCEINLINE UArrowComponent* GetMuzzle() {return Muzzle;}
-
 	FORCEINLINE virtual void ReadyExSkill() {ExSkillReady = true;}
 
 	// 총기를 안보이게 했을 때 이벤트. 탄창도 같이 숨기는 역할을 함.

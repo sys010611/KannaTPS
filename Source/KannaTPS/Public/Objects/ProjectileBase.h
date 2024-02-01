@@ -4,20 +4,18 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "Objects/ProjectileBase.h"
-#include "Projectile.generated.h"
+#include "ProjectileBase.generated.h"
 
 class UProjectileMovementComponent;
-class ProjectileBase;
 
-UCLASS()
-class KANNATPS_API AProjectile : public AProjectileBase
+UCLASS(Abstract)
+class KANNATPS_API AProjectileBase : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	AProjectile();
+	AProjectileBase();
 
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -26,11 +24,17 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	UFUNCTION()
+	/* 순수 가상함수 */
 	virtual void Damage(
-		UPrimitiveComponent* HitComponent,
-		AActor* OtherActor,
-		UPrimitiveComponent* OtherComp,
+		UPrimitiveComponent* HitComponent, 
+		AActor* OtherActor, 
+		UPrimitiveComponent* OtherComp, 
 		FVector NormalImpulse,
-		const FHitResult& Hit) override;
+		const FHitResult& Hit) PURE_VIRTUAL (AProjectileBase::Damage,);
+
+	UPROPERTY(EditDefaultsOnly)
+	UStaticMeshComponent* Projectile;
+
+	UPROPERTY(EditDefaultsOnly)
+	UProjectileMovementComponent* ProjectileMovement;
 };

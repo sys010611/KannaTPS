@@ -247,6 +247,12 @@ private:
 
 	/*Sound*/
 	UPROPERTY(EditDefaultsOnly, Category = Sound)
+	USoundBase* GunSound;
+
+	UPROPERTY(EditDefaultsOnly, Category = Sound)
+	USoundBase* ExSkillGunSound;
+
+	UPROPERTY(EditDefaultsOnly, Category = Sound)
 	USoundBase* MeleeAttackSound;
 
 	UPROPERTY(EditDefaultsOnly, Category = Sound)

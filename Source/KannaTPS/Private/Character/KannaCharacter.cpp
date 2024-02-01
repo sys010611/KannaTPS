@@ -561,6 +561,15 @@ void AKannaCharacter::Fire() // 여기서는 상태 전환, 애니메이션만 �
 		{
 			UGameplayStatics::PlayWorldCameraShake(GetWorld(), FireCameraShake, GetActorLocation(), 0.f, 500.f);
 		}
+
+		if (CurrentWeapon->IsExSkillReady() && ExSkillGunSound)
+		{
+			UGameplayStatics::PlaySound2D(GetWorld(), ExSkillGunSound);
+		}
+		else
+		{
+			UGameplayStatics::PlaySound2D(GetWorld(), GunSound);
+		}
 	}
 }
 
@@ -596,7 +605,7 @@ void AKannaCharacter::TakeCover()
 
 void AKannaCharacter::ExSkill()
 {
-	if (CurrentWeapon->HasExSkill && CanUseExSkill()) //Ex 스킬을 쓸 수 있는 무기라면
+	if (CurrentWeapon->HasExSkill && !CurrentWeapon->IsExSkillReady() && CanUseExSkill())
 	{
 		CurrentWeapon->ReadyExSkill(); // 무기에 델리게이트
 		Attributes->SubtractExGaugePercent(0.3f);

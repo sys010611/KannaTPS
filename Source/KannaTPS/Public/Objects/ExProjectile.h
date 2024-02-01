@@ -5,19 +5,19 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Objects/ProjectileBase.h"
-#include "Projectile.generated.h"
+#include "ExProjectile.generated.h"
 
 class UProjectileMovementComponent;
 class ProjectileBase;
 
 UCLASS()
-class KANNATPS_API AProjectile : public AProjectileBase
+class KANNATPS_API AExProjectile : public AProjectileBase
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	AProjectile();
+	AExProjectile();
 
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
