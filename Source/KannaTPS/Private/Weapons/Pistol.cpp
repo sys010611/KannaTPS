@@ -56,7 +56,7 @@ void APistol::ReadyExSkill()
 	if (ExChargeEffect)
 	{
 		ExChargeEffectComp = UGameplayStatics::SpawnEmitterAttached(
-			ExChargeEffect, Muzzle, NAME_None, FVector::ZeroVector, FRotator(90.f, 0.f,0.f), FVector::One() * 6);
+			ExChargeEffect, Muzzle, NAME_None, FVector::ZeroVector, FRotator(90.f, 0.f,0.f), FVector::One() * 10);
 	}
 }
 

@@ -33,4 +33,15 @@ protected:
 		UPrimitiveComponent* OtherComp,
 		FVector NormalImpulse,
 		const FHitResult& Hit) override;
+
+	void SpawnBustedText(const FVector& SpawnLocation, const FVector& InstigatorLocation);
+
+private:
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<AActor> BustedText;
+
+	UPROPERTY(EditDefaultsOnly)
+	USoundBase* HitSound;
+
+	float TextOffset;
 };
