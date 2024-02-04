@@ -109,6 +109,10 @@ float AEnemy::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AC
 {
 	if (Attributes)
 	{
+		if (Attributes->IsDead())
+			return DamageAmount;
+
+
 		// 총알의 충격을 받는 연출
 		if (DamageEvent.IsOfType(FPointDamageEvent::ClassID))
 		{
@@ -202,6 +206,7 @@ void AEnemy::RagdollEffect(const FDamageEvent& DamageEvent)
 
 	//30초 뒤에 시체 사라짐
 	SetLifeSpan(30.f);
+	AssultRifle->SetLifeSpan(30.f);
 
 	// 총알의 충격을 받는 연출
 	if (DamageEvent.IsOfType(FPointDamageEvent::ClassID))

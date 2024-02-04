@@ -172,6 +172,7 @@ protected:
 private:
 	void InitKannaTpsOverlay();
 	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser) override;
+	bool CanBeStunned();
 	void Die();
 	void PlayDieMontage(UAnimInstance* AnimInstance);
 	bool CanUseExSkill();
@@ -214,6 +215,9 @@ private:
 
 	UPROPERTY(EditDefaultsOnly, Category = Montages)
 	UAnimMontage* FireMontage;
+
+	UPROPERTY(EditDefaultsOnly, Category = Montages)
+	UAnimMontage* ExFireMontage;
 
 	UPROPERTY(EditDefaultsOnly, Category = Montages)
 	UAnimMontage* StunMontage;

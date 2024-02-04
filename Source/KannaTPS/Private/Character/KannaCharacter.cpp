@@ -120,23 +120,34 @@ void AKannaCharacter::Tick(float DeltaTime)
 	if (IsInCover && (GetVelocity().Length() == 0) && ActionState == EActionState::EAS_Neutral)
 	{
 		FVector Forward = GetCharacterMovement()->GetPlaneConstraintNormal() * -1.f; //벽면을 바라보는 방향
-		if (bIsCrouched)
+		//if (bIsCrouched)
+		//{
+		//	AddMovementInput(Forward);
+		//}
+		//else
+		//{
+		//	if (IsCameraAtRight()) //카메라 우측 -> 캐릭터도 우측을 바라봄
+		//	{
+		//		FRotator RightRotator = Forward.Rotation() + UKismetMathLibrary::MakeRotator(0, 0, 90.f);
+		//		SetActorRotation(FMath::RInterpConstantTo(GetActorRotation(), RightRotator, DeltaTime, 700.f));
+		//	}
+		//	else //카메라 좌측 -> 캐릭터도 좌측을 바라봄
+		//	{
+		//		FRotator LeftRotator = Forward.Rotation() + UKismetMathLibrary::MakeRotator(0, 0, -90.f);
+		//		SetActorRotation(FMath::RInterpConstantTo(GetActorRotation(), LeftRotator, DeltaTime, 700.f));
+		//	}
+		//	
+		//}
+
+		if (IsCameraAtRight()) //카메라 우측 -> 캐릭터도 우측을 바라봄
 		{
-			AddMovementInput(Forward);
+			FRotator RightRotator = Forward.Rotation() + UKismetMathLibrary::MakeRotator(0, 0, 90.f);
+			SetActorRotation(FMath::RInterpConstantTo(GetActorRotation(), RightRotator, DeltaTime, 1000.f));
 		}
-		else
+		else //카메라 좌측 -> 캐릭터도 좌측을 바라봄
 		{
-			if (IsCameraAtRight()) //카메라 우측 -> 캐릭터도 우측을 바라봄
-			{
-				FRotator RightRotator = Forward.Rotation() + UKismetMathLibrary::MakeRotator(0, 0, 90.f);
-				SetActorRotation(FMath::RInterpConstantTo(GetActorRotation(), RightRotator, DeltaTime, 700.f));
-			}
-			else //카메라 좌측 -> 캐릭터도 좌측을 바라봄
-			{
-				FRotator LeftRotator = Forward.Rotation() + UKismetMathLibrary::MakeRotator(0, 0, -90.f);
-				SetActorRotation(FMath::RInterpConstantTo(GetActorRotation(), LeftRotator, DeltaTime, 700.f));
-			}
-			
+			FRotator LeftRotator = Forward.Rotation() + UKismetMathLibrary::MakeRotator(0, 0, -90.f);
+			SetActorRotation(FMath::RInterpConstantTo(GetActorRotation(), LeftRotator, DeltaTime, 1000.f));
 		}
 	}
 
@@ -194,7 +205,7 @@ float AKannaCharacter::TakeDamage(float DamageAmount, FDamageEvent const& Damage
 					FTimerHandle StunTimerHandle;
 					GetWorldTimerManager().SetTimer(StunTimerHandle, this, &AKannaCharacter::EnableMovement, 1.f);
 
-					if (ActionState != EActionState::EAS_Stunned && ActionState != EActionState::EAS_Rolling)
+					if (CanBeStunned())
 					{
 						AnimInstance->Montage_Play(StunMontage);
 						ActionState = EActionState::EAS_Stunned;
@@ -229,6 +240,13 @@ float AKannaCharacter::TakeDamage(float DamageAmount, FDamageEvent const& Damage
 		UGameplayStatics::PlayWorldCameraShake(GetWorld(), HitCameraShake, GetActorLocation(), 0.f, 500.f);
 
 	return DamageAmount;
+}
+
+bool AKannaCharacter::CanBeStunned()
+{
+	return ActionState != EActionState::EAS_Stunned
+		&& ActionState != EActionState::EAS_Rolling
+		&& ActionState != EActionState::EAS_Reloading;
 }
 
 void AKannaCharacter::FadeOutDamageIndicator()
@@ -310,36 +328,43 @@ void AKannaCharacter::Aim()
 
 	if (CharacterState == ECharacterState::ECS_Unarmed || ActionState != EActionState::EAS_Neutral) return;
 
-	if (IsInCover && !GetCharacterMovement()->IsCrouching()) //서서 엄폐중 -> 오른쪽, 왼쪽 조준으로 나뉨
+	if (IsInCover)
 	{
-		FHitResult HitResult;
-
-		FCollisionQueryParams CollisionParameters;
-		CollisionParameters.AddIgnoredActor(this);
-
-		FVector ActorLocation = GetActorLocation();
-		UCharacterMovementComponent* Movement = GetCharacterMovement();
-
-		//벽의 방향
-		FVector WallDirection = Movement->GetPlaneConstraintNormal() * (-1.f);
-
-		CheckLeftRightHit(WallDirection, ActorLocation, HitResult, CollisionParameters);
-
-		if (LeftHit && !RightHit)
-			AimingDirection = EAimingDirection::EAD_Right;
-		else if(RightHit && !LeftHit)
-			AimingDirection = EAimingDirection::EAD_Left;
-		else if (!RightHit && !LeftHit)
+		if (!GetCharacterMovement()->IsCrouching()) //서서 엄폐중 -> 오른쪽, 왼쪽 조준으로 나뉨
 		{
-			if(IsCameraAtRight())
+			FHitResult HitResult;
+
+			FCollisionQueryParams CollisionParameters;
+			CollisionParameters.AddIgnoredActor(this);
+
+			FVector ActorLocation = GetActorLocation();
+			UCharacterMovementComponent* Movement = GetCharacterMovement();
+
+			//벽의 방향
+			FVector WallDirection = Movement->GetPlaneConstraintNormal() * (-1.f);
+
+			CheckLeftRightHit(WallDirection, ActorLocation, HitResult, CollisionParameters);
+
+			if (LeftHit && !RightHit)
 				AimingDirection = EAimingDirection::EAD_Right;
-			else
+			else if (RightHit && !LeftHit)
 				AimingDirection = EAimingDirection::EAD_Left;
+			else if (!RightHit && !LeftHit)
+			{
+				if (IsCameraAtRight())
+					AimingDirection = EAimingDirection::EAD_Right;
+				else
+					AimingDirection = EAimingDirection::EAD_Left;
+			}
+
+			else if (RightHit && LeftHit)// 오른쪽, 왼쪽 모두 빈 공간이 없음 -> 조준 불가
+			{
+				return;
+			}
 		}
-			
-		else if (RightHit && LeftHit)// 오른쪽, 왼쪽 모두 빈 공간이 없음 -> 조준 불가
+		else
 		{
-			return;
+			AimingDirection = EAimingDirection::EAD_Neutral;
 		}
 	}
 	else
@@ -364,7 +389,6 @@ void AKannaCharacter::ReleaseAim()
 
 	if(!IsInCover)
 		GetCharacterMovement()->MaxWalkSpeed = 400.f;
-		//SetNeutralStateSpeed();
 
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 }
@@ -549,27 +573,36 @@ void AKannaCharacter::Fire() // 여기서는 상태 전환, 애니메이션만 �
 
 	if (CurrentWeapon && CurrentWeapon->IsShootable()) // 널체크 -> 발사 가능 확인
 	{
-		CurrentWeapon->Fire(StartPoint, Direction); // 총의 발사는 인터페이스에 delegate
-
-		if (AnimInstance && FireMontage)
-		{
-			AnimInstance->Montage_Play(FireMontage);
-			SpreadCrosshair();
-		}
-		
 		if (FireCameraShake)
 		{
 			UGameplayStatics::PlayWorldCameraShake(GetWorld(), FireCameraShake, GetActorLocation(), 0.f, 500.f);
 		}
 
-		if (CurrentWeapon->IsExSkillReady() && ExSkillGunSound)
+		if (CurrentWeapon->IsExSkillReady()) //Ex 사격
 		{
-			UGameplayStatics::PlaySound2D(GetWorld(), ExSkillGunSound);
+			if (ExSkillGunSound)
+			{
+				UGameplayStatics::PlaySound2D(GetWorld(), ExSkillGunSound);
+			}
+			if (AnimInstance && ExFireMontage)
+			{
+				AnimInstance->Montage_Play(ExFireMontage);
+			}
 		}
-		else
+		else //일반 사격
 		{
-			UGameplayStatics::PlaySound2D(GetWorld(), GunSound);
+			if (GunSound)
+			{
+				UGameplayStatics::PlaySound2D(GetWorld(), GunSound);
+			}
+			if (AnimInstance && FireMontage)
+			{
+				AnimInstance->Montage_Play(FireMontage);
+			}
 		}
+
+		CurrentWeapon->Fire(StartPoint, Direction); // 총의 발사는 인터페이스에 delegate
+		SpreadCrosshair();
 	}
 }
 
@@ -605,21 +638,33 @@ void AKannaCharacter::TakeCover()
 
 void AKannaCharacter::ExSkill()
 {
-	if (CurrentWeapon->HasExSkill && !CurrentWeapon->IsExSkillReady() && CanUseExSkill())
+	if (CurrentWeapon)
 	{
-		CurrentWeapon->ReadyExSkill(); // 무기에 델리게이트
-		Attributes->SubtractExGaugePercent(0.3f);
+		if (CurrentWeapon->HasExSkill && !CurrentWeapon->IsExSkillReady() && CanUseExSkill() && CurrentWeapon->IsShootable())
+		{
+			CurrentWeapon->ReadyExSkill(); // 무기에 델리게이트
+			Attributes->SubtractExGaugePercent(0.3f);
+		}
 	}
 }
 
 void AKannaCharacter::WallTrace()
 {
+	FVector ActorLocation = GetActorLocation();
+	if (GetCharacterMovement()->IsCrouching())
+	{
+		ActorLocation += FVector(0.f, 0.f, 44.f);
+	}
+
 	//낮은 엄폐물 탐지
 	FVector LowStart = GetActorLocation();
 	FVector LowEnd = GetActorLocation() + GetActorForwardVector() * 100.f;
 	//높은 엄폐물 탐지
-	FVector HighStart = GetActorLocation() + FVector(0.f,0.f,80.f);
+	FVector HighStart = GetActorLocation() + FVector(0.f,0.f,70.f);
 	FVector HighEnd = HighStart + GetActorForwardVector() * 100.f;
+
+	DrawDebugLine(GetWorld(), HighStart, HighEnd, FColor(255, 0, 0), true, 10.f, 0, 5.f);
+	DrawDebugLine(GetWorld(), LowStart, LowEnd, FColor(255, 0, 0), true, 10.f, 0, 5.f);
 
 	if (GetWorld())
 	{
@@ -631,13 +676,11 @@ void AKannaCharacter::WallTrace()
 		//높은 엄폐물 탐지 시도
 		if (GetWorld()->LineTraceSingleByChannel(HitResult, HighStart, HighEnd, ECC_GameTraceChannel1, CollisionParameters))
 		{
-			//DrawDebugLine(GetWorld(), HighStart, HighEnd, FColor(255,0,0), true, 10.f, 0, 5.f);
 			StartCover(HitResult.Normal, false);
 		}
 		//낮은 엄폐물 탐지 시도
 		else if (GetWorld()->LineTraceSingleByChannel(HitResult, LowStart, LowEnd, ECC_GameTraceChannel1, CollisionParameters))
 		{
-			//DrawDebugLine(GetWorld(), LowStart, LowEnd, FColor(255, 0, 0), true, 10.f, 0, 5.f);
 			StartCover(HitResult.Normal, true);
 		}
 	}
@@ -777,7 +820,8 @@ void AKannaCharacter::StopCover()
 
 	UnCrouch();
 
-	GetCharacterMovement()->MaxWalkSpeed = 400.f;
+	if(ActionState != EActionState::EAS_Aiming)
+		GetCharacterMovement()->MaxWalkSpeed = 400.f;
 	//GetCharacterMovement()->RotationRate.Yaw = 500.f;
 }
 

@@ -30,8 +30,9 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	virtual void GetHit() override;
-
-	//EEnemyState EnemyState = EEnemyState::EES_Chase;
+	
+	UFUNCTION(BlueprintCallable)
+	bool IsDead();
 
 protected:
 	// Called when the game starts or when spawned
@@ -48,9 +49,6 @@ protected:
 
 	UFUNCTION(BlueprintCallable)
 	void Shoot();
-
-	UFUNCTION(BlueprintCallable)
-	bool IsDead();
 
 	UFUNCTION(BlueprintCallable)
 	void NoticePlayer();
