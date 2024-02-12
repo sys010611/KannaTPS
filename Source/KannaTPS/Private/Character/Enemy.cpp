@@ -105,6 +105,11 @@ bool AEnemy::IsDead()
 	return Attributes->IsDead();
 }
 
+bool AEnemy::IsNotEngaged()
+{
+	return TargetCharacter == nullptr;
+}
+
 float AEnemy::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
 {
 	if (Attributes)
@@ -155,7 +160,6 @@ void AEnemy::PlayHitMontage()
 		PlayMontageBySection(HitMontage, HitMontageSections[Index]);
 	}
 }
-
 
 void AEnemy::PlayMontageBySection(UAnimMontage* Montage, const FName& SectionName)
 {
@@ -220,6 +224,7 @@ void AEnemy::RagdollEffect(const FDamageEvent& DamageEvent)
 
 void AEnemy::NoticePlayer()
 {
+	TargetCharacter = UGameplayStatics::GetPlayerCharacter(GetWorld(), 0);
 	//이동속도 증가
 	GetCharacterMovement()->MaxWalkSpeed = 600.f;
 }
