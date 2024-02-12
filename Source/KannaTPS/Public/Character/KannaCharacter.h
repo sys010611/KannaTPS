@@ -22,6 +22,7 @@ struct FEnhancedInputActionValueBinding;
 class UKannaTPSOverlay;
 class UAttributeComponent;
 class UDamageIndicator;
+class AHalo;
 
 
 UCLASS()
@@ -202,6 +203,9 @@ private:
 	UPROPERTY(BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	FVector SpringArmDefaultOffset;
 
+	UPROPERTY()
+	AHalo* Halo;
+
 	/*Item*/
 	UPROPERTY(VisibleInstanceOnly)
 	AItem* OverlappingItem;
@@ -301,7 +305,7 @@ private:
 
 	/*Spawning Actor Classes*/
 	UPROPERTY(EditDefaultsOnly, meta = (AllowPrivateAccess = "true"), Category = CameraShake)
-	TSubclassOf<AActor> HaloClass;
+	TSubclassOf<AHalo> HaloClass;
 	UPROPERTY(EditDefaultsOnly, meta = (AllowPrivateAccess = "true"), Category = CameraShake)
 	TSubclassOf<AGun> PistolClass;
 

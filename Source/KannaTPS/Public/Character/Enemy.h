@@ -34,6 +34,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	bool IsDead();
 
+	UFUNCTION(BlueprintCallable)
+	bool IsNotEngaged();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

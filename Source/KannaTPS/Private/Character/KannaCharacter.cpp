@@ -23,6 +23,7 @@
 #include "Kismet/KismetSystemLibrary.h"
 #include "Components/PostProcessComponent.h"
 #include "Engine/PostProcessVolume.h"
+#include "Objects/Halo.h"
 
 
 // Sets default values
@@ -95,7 +96,7 @@ void AKannaCharacter::BeginPlay()
 		Volume->Settings.WeightedBlendables.Array.Add(FWeightedBlendable(1.f, ScreenDamageDynamic));
 
 	// 헤일로, 권총 스폰
-	GetWorld()->SpawnActor(HaloClass);
+	Halo = GetWorld()->SpawnActor<AHalo>(HaloClass);
 	GetWorld()->SpawnActor(PistolClass);
 
 	//FLatentInfo 초기화
@@ -186,12 +187,11 @@ float AKannaCharacter::TakeDamage(float DamageAmount, FDamageEvent const& Damage
 	{
 		Attributes->ReceiveDamage(DamageAmount);
 
-		//if (Attributes->IsDead())
-		//{
-		//	Die();
-		//}
-		//else 
-		if (Attributes->GetCurrentHealth() < 40.f)
+		if (Attributes->IsDead())
+		{
+			Die();
+		}
+		else if (Attributes->GetCurrentHealth() < 40.f)
 		{
 			bool IsStunned = UKismetMathLibrary::RandomBoolWithWeight(0.1f);
 			if (IsStunned)
@@ -270,6 +270,8 @@ void AKannaCharacter::Die()
 	{
 		PlayDieMontage(AnimInstance);
 	}
+
+	Halo->BreakHalo();
 }
 
 void AKannaCharacter::EnableMovement()
