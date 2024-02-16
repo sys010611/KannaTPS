@@ -57,6 +57,8 @@ public:
 	UFUNCTION()
 	FORCEINLINE void AddWeaponToList(AGun* Weapon) {WeaponList.Add(Weapon); }
 
+	UFUNCTION(BlueprintCallable)
+	void SetDeadScreen();
 
 protected:
 	// Called when the game starts or when spawned
@@ -145,6 +147,9 @@ protected:
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void SwitchCameraPos();
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void ZoomOutCamera();
 
 
 	// Widget

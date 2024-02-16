@@ -8,6 +8,7 @@
 
 class UTextBlock;
 class UProgressBar;
+class UImage;
 
 UCLASS()
 class KANNATPS_API UKannaTPSOverlay : public UUserWidget
@@ -27,6 +28,8 @@ public:
 
 	void SetExGaugePercent(float percent);
 
+	void SetDeadScreen();
+
 private:
 	// meta = BindWidget은 블루프린트에서의 변수와 연동시키겠다는 의미이다.
 	UPROPERTY(meta = (BindWidget))
@@ -43,4 +46,7 @@ private:
 
 	UPROPERTY(meta = (BindWidget))
 	UTextBlock* ExNumberText;
+
+	UPROPERTY(meta = (BindWidget))
+	UImage* DeadScreen;
 };

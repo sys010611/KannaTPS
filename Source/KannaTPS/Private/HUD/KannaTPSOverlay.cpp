@@ -4,6 +4,7 @@
 #include "HUD/KannaTPSOverlay.h"
 #include "Components/TextBlock.h"
 #include "Components/ProgressBar.h"
+#include "Components/Image.h"
 
 void UKannaTPSOverlay::NativeTick(const FGeometry& MyGeometry, float InDeltatime)
 {
@@ -45,4 +46,9 @@ void UKannaTPSOverlay::ShowAmmoText()
 void UKannaTPSOverlay::SetExGaugePercent(float Percent)
 {
 	ExGauge->SetPercent(Percent);
+}
+
+void UKannaTPSOverlay::SetDeadScreen()
+{
+	DeadScreen->SetVisibility(ESlateVisibility::Visible);
 }

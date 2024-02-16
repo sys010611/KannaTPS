@@ -24,6 +24,7 @@
 #include "Components/PostProcessComponent.h"
 #include "Engine/PostProcessVolume.h"
 #include "Objects/Halo.h"
+#include "GameManager.h"
 
 
 // Sets default values
@@ -110,6 +111,8 @@ void AKannaCharacter::BeginPlay()
 	HealthInfo.Linkage = 0;
 	HealthInfo.ExecutionFunction = FName("EnableHealthRegen");
 	HealthInfo.UUID = 2;
+
+	GetGameInstance()->GetSubsystem<UGameManager>()->ChangeDefaultVolume(1.f);
 }
 
 // Called every frame
@@ -215,7 +218,8 @@ float AKannaCharacter::TakeDamage(float DamageAmount, FDamageEvent const& Damage
 		}
 		else
 		{
-			PlayHitMontage();
+			if(ActionState != EActionState::EAS_Rolling)
+				PlayHitMontage();
 		}
 
 		// 데미지 받고 3초 뒤 자동회복 시작
@@ -256,14 +260,11 @@ void AKannaCharacter::FadeOutDamageIndicator()
 
 void AKannaCharacter::Die()
 {
-	UE_LOG(LogTemp, Log, TEXT("사망"));
+	GetMesh()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 
-	if (ActionState == EActionState::EAS_Aiming)
-	{
-		ReleaseAim();
-	}
+	DisableInput(UGameplayStatics::GetPlayerController(GetWorld(), 0));
 
-	DisableMovement();
+	ZoomOutCamera();
 
 	UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance();
 	if (AnimInstance && DieMontage)
@@ -272,6 +273,9 @@ void AKannaCharacter::Die()
 	}
 
 	Halo->BreakHalo();
+
+	SpringArm->SocketOffset = FVector::UpVector * 30.f;
+	SpringArm->TargetArmLength = 150.f;
 }
 
 void AKannaCharacter::EnableMovement()
@@ -378,8 +382,6 @@ void AKannaCharacter::Aim()
 
 	GetCharacterMovement()->MaxWalkSpeed = 200.f; // 조준 중에는 이동속도 감소
 	GetCharacterMovement()->bOrientRotationToMovement = false; // 캐릭터가 방향키에 따라 회전하지 않음 (조준 방향 유지)
-
-
 }
 
 void AKannaCharacter::ReleaseAim()
@@ -665,8 +667,8 @@ void AKannaCharacter::WallTrace()
 	FVector HighStart = GetActorLocation() + FVector(0.f,0.f,70.f);
 	FVector HighEnd = HighStart + GetActorForwardVector() * 100.f;
 
-	DrawDebugLine(GetWorld(), HighStart, HighEnd, FColor(255, 0, 0), true, 10.f, 0, 5.f);
-	DrawDebugLine(GetWorld(), LowStart, LowEnd, FColor(255, 0, 0), true, 10.f, 0, 5.f);
+	//DrawDebugLine(GetWorld(), HighStart, HighEnd, FColor(255, 0, 0), true, 10.f, 0, 5.f);
+	//DrawDebugLine(GetWorld(), LowStart, LowEnd, FColor(255, 0, 0), true, 10.f, 0, 5.f);
 
 	if (GetWorld())
 	{
@@ -825,6 +827,14 @@ void AKannaCharacter::StopCover()
 	if(ActionState != EActionState::EAS_Aiming)
 		GetCharacterMovement()->MaxWalkSpeed = 400.f;
 	//GetCharacterMovement()->RotationRate.Yaw = 500.f;
+}
+
+void AKannaCharacter::SetDeadScreen()
+{
+	KannaTPSOverlay->SetDeadScreen();
+	DamageIndicator->SetVisibility(ESlateVisibility::Hidden);
+
+	GetGameInstance()->GetSubsystem<UGameManager>()->ChangeDefaultVolume(0.f);
 }
 
 // Called to bind functionality to input
