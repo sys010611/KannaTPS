@@ -15,6 +15,7 @@
 #include "Perception/AIPerceptionSystem.h"
 #include "Perception/AISense_Touch.h"
 #include "Objects/Projectile.h"
+#include "GameManager.h"
 
 // Sets default values
 AEnemy::AEnemy()
@@ -53,6 +54,9 @@ void AEnemy::BeginPlay()
 		if(AssultRifle)
 			AssultRifle->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetIncludingScale, FName("Rifle_Socket"));
 	}
+
+	// 자기 자신을 적 리스트에 추가
+	GetGameInstance()->GetSubsystem<UGameManager>()->ActiveEnemies.Add(this);
 }
 
 // Called every frame
@@ -182,6 +186,9 @@ void AEnemy::Die(FDamageEvent const& DamageEvent)
 	GetController()->UnPossess();
 
 	CeaseFire();
+
+	// 자기 자신을 적 리스트에서 삭제
+	GetGameInstance()->GetSubsystem<UGameManager>()->ActiveEnemies.Remove(this);
 }
 
 void AEnemy::RagdollEffect(const FDamageEvent& DamageEvent)
