@@ -18,3 +18,8 @@ void UGameManager::ChangeDefaultVolume(float volume)
 
 	masterSoundClass->Properties.Volume = volume;
 }
+
+void UGameManager::SetConversation(FString Speaker, FString Content)
+{
+	
+}

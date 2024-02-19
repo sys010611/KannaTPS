@@ -275,7 +275,7 @@ void AKannaCharacter::Die()
 	Halo->BreakHalo();
 
 	SpringArm->SocketOffset = FVector::UpVector * 30.f;
-	SpringArm->TargetArmLength = 150.f;
+	SpringArm->TargetArmLength = 100.f;
 }
 
 void AKannaCharacter::EnableMovement()
