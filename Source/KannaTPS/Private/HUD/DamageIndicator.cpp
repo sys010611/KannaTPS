@@ -24,6 +24,4 @@ void UDamageIndicator::PlayFadeAnim()
 void UDamageIndicator::HideWidget()
 {
 	SetRenderOpacity(0.f);
-
-	UE_LOG(LogTemp, Log, TEXT("위젯 삭제 완료"));
 }

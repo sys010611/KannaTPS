@@ -1,0 +1,16 @@
+// Fill out your copyright notice in the Description page of Project Settings.
+
+
+#include "Managers/ConversationManager.h"
+#include "HUD/Conversation.h"
+
+
+void UConversationManager::SetConversation(const FString& Speaker, const FString& Content)
+{
+	ConversationWidget->SetConversation(Speaker, Content);
+}
+
+void UConversationManager::SetConversationWidget(UConversation* Widget)
+{
+	ConversationWidget = Widget;
+}

@@ -24,7 +24,8 @@
 #include "Components/PostProcessComponent.h"
 #include "Engine/PostProcessVolume.h"
 #include "Objects/Halo.h"
-#include "GameManager.h"
+#include "Managers/GameManager.h"
+#include "Managers/ConversationManager.h"
 
 
 // Sets default values

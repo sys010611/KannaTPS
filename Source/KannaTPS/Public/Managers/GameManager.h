@@ -17,9 +17,6 @@ class KANNATPS_API UGameManager : public UGameInstanceSubsystem
 public:
 	void ChangeDefaultVolume(float volume);
 
-	UFUNCTION(BlueprintCallable)
-	void SetConversation(FString Speaker, FString Content);
-
 	UPROPERTY(BlueprintReadOnly)
 	TArray<AEnemy*> ActiveEnemies;
 };

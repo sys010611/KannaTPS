@@ -15,7 +15,7 @@
 #include "Perception/AIPerceptionSystem.h"
 #include "Perception/AISense_Touch.h"
 #include "Objects/Projectile.h"
-#include "GameManager.h"
+#include "Managers/GameManager.h"
 
 // Sets default values
 AEnemy::AEnemy()
