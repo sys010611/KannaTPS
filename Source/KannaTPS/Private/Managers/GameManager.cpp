@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "GameManager.h"
+#include "Managers/GameManager.h"
 
 // Change the volume of the default SoundClass
 void UGameManager::ChangeDefaultVolume(float volume)
@@ -19,7 +19,3 @@ void UGameManager::ChangeDefaultVolume(float volume)
 	masterSoundClass->Properties.Volume = volume;
 }
 
-void UGameManager::SetConversation(FString Speaker, FString Content)
-{
-	
-}
