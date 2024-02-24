@@ -31,10 +31,10 @@ public:
 
 	virtual void GetHit() override;
 	
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintPure)
 	bool IsDead();
 
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintPure)
 	bool IsNotEngaged();
 
 protected:

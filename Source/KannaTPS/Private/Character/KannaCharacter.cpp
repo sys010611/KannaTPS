@@ -223,6 +223,11 @@ float AKannaCharacter::TakeDamage(float DamageAmount, FDamageEvent const& Damage
 				PlayHitMontage();
 		}
 
+		if (Attributes->GetCurrentHealth() < 25.f)
+		{
+			GetGameInstance()->GetSubsystem<UConversationManager>()->SetMessage(TEXT("헤일로가 깨질 것 같아.."));
+		}
+
 		// 데미지 받고 3초 뒤 자동회복 시작
 		Attributes->DisableHealthRegen();
 

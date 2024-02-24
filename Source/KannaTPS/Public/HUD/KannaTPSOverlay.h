@@ -30,6 +30,10 @@ public:
 
 	void SetDeadScreen();
 
+	void ShowHitMarker();
+
+	void HideHitMarker();
+
 private:
 	// meta = BindWidget은 블루프린트에서의 변수와 연동시키겠다는 의미이다.
 	UPROPERTY(meta = (BindWidget))
@@ -49,4 +53,9 @@ private:
 
 	UPROPERTY(meta = (BindWidget))
 	UImage* DeadScreen;
+
+	UPROPERTY(meta = (BindWidget))
+	UImage* HitMarker;
+
+	FTimerHandle HitMarkerOffHandle;
 };

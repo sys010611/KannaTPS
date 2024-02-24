@@ -9,11 +9,14 @@ void UConversation::NativeConstruct()
 {
 	// 자기 자신을 UConversationManager에 등록한다.
 	GetGameInstance()->GetSubsystem<UConversationManager>()->SetConversationWidget(this);
-	SetRenderOpacity(0.f); // 초기 투명도는 0 (안보임)
 }
 
 void UConversation::SetConversation(const FString& Speaker, const FString& Content)
 {
+	//Content 초기화
+	FullContent = "";
+	CurrentContent = "";
+
 	//타이머 초기화.
 	GetWorld()->GetTimerManager().ClearTimer(TypewriterTimerHandle);
 	GetWorld()->GetTimerManager().ClearTimer(ClearContentHandle);
@@ -23,13 +26,25 @@ void UConversation::SetConversation(const FString& Speaker, const FString& Conte
 	ContentText->SetText(FText::GetEmpty());
 
 	// 투명도 1
-	SetRenderOpacity(1.f);
+	SpeakerText->SetRenderOpacity(1.f);
+	ContentText->SetRenderOpacity(1.f);
+	Column->SetRenderOpacity(1.f);
 
 	// 전체 대사 저장.
 	FullContent = Content;
 
 	// 0.05초마다 SetContentAsSubstring을 호출한다.
-	GetWorld()->GetTimerManager().SetTimer(TypewriterTimerHandle, this, &UConversation::SetContentAsSubstring, 0.05f, true);
+	GetWorld()->GetTimerManager().SetTimer(TypewriterTimerHandle, this, &UConversation::SetContentAsSubstring, 0.03f, true);
+}
+
+void UConversation::SetMessage(const FString& Content)
+{
+	MessageText->SetText(FText::FromString(Content));
+
+	// 투명도 1
+	MessageText->SetRenderOpacity(1.f);
+
+	GetWorld()->GetTimerManager().SetTimer(ClearMessageHandle, [this]() {PlayAnimation(MessageFadeAnim);}, 3.f, false);
 }
 
 void UConversation::SetContentAsSubstring()
@@ -46,12 +61,12 @@ void UConversation::SetContentAsSubstring()
 	{
 		GetWorld()->GetTimerManager().ClearTimer(TypewriterTimerHandle); // 타이머 클리어
 
-		// 2초 뒤 페이드아웃 애니메이션 재생
-		GetWorld()->GetTimerManager().SetTimer(ClearContentHandle, this, &UConversation::PlayFadeAnim, 2.f, false);
+		// 5초 뒤 페이드아웃 애니메이션 재생
+		GetWorld()->GetTimerManager().SetTimer(ClearContentHandle, [this]() {PlayAnimation(FadeAnim); }, 5.f, false);
 	}
 }
 
-void UConversation::PlayFadeAnim()
-{
-	PlayAnimation(FadeAnim);
-}
+//void UConversation::PlayFadeAnim()
+//{
+//	PlayAnimation(FadeAnim);
+//}
