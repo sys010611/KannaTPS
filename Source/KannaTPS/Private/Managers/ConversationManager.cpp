@@ -10,6 +10,11 @@ void UConversationManager::SetConversation(const FString& Speaker, const FString
 	ConversationWidget->SetConversation(Speaker, Content);
 }
 
+void UConversationManager::SetMessage(const FString& Content)
+{
+	ConversationWidget->SetMessage(Content);
+}
+
 void UConversationManager::SetConversationWidget(UConversation* Widget)
 {
 	ConversationWidget = Widget;

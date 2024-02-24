@@ -16,6 +16,7 @@
 #include "Perception/AISense_Touch.h"
 #include "Objects/Projectile.h"
 #include "Managers/GameManager.h"
+#include "Managers/ConversationManager.h"
 
 // Sets default values
 AEnemy::AEnemy()
@@ -127,7 +128,7 @@ float AEnemy::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AC
 		{
 			FPointDamageEvent PointDmg = *((FPointDamageEvent*)(&DamageEvent));
 			{
-				UE_LOG(LogTemp, Warning, TEXT("Hit Point: %s"), *(PointDmg.HitInfo.BoneName.ToString()));
+				//UE_LOG(LogTemp, Warning, TEXT("Hit Point: %s"), *(PointDmg.HitInfo.BoneName.ToString()));
 				if (PointDmg.HitInfo.BoneName == FName("Neck")) //헤드샷 맞으면 추가 데미지
 				{
 					DamageAmount += 25.f;

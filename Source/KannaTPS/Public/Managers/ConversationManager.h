@@ -19,6 +19,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void SetConversation(const FString& Speaker, const FString& Content);
 
+	UFUNCTION(BlueprintCallable)
+	void SetMessage(const FString& Content);
+
 	void SetConversationWidget(UConversation* Widget);
 
 private:

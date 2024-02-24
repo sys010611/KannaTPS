@@ -12,6 +12,10 @@
 #include "Kismet/KismetMathLibrary.h"
 #include "Particles/ParticleSystemComponent.h"
 #include "Particles/ParticleSystem.h"
+#include "Character/Enemy.h"
+#include "GameFramework/HUD.h"
+#include "HUD/KannaTPSHUD.h"
+#include "HUD/KannaTPSOverlay.h"
 
 // Sets default values
 APistol::APistol()
@@ -94,6 +98,16 @@ void APistol::Fire(FVector& StartPoint, FVector& Direction)
 					if (IHitInterface* HitObject = Cast<IHitInterface>(HitResult.GetActor()))
 					{
 						HitObject->GetHit();
+
+						if (Cast<AEnemy>(HitObject))
+						{
+							APlayerController* PlayerController = UGameplayStatics::GetPlayerController(GetWorld(), 0);
+							AKannaTPSHUD* KannaTPSHUD = Cast<AKannaTPSHUD>(PlayerController->GetHUD());
+							if (KannaTPSHUD)
+							{
+								KannaTPSHUD->GetKannaTPSOverlay()->ShowHitMarker();
+							}
+						}
 					}
 
 					UGameplayStatics::ApplyPointDamage(

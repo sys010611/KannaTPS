@@ -52,3 +52,15 @@ void UKannaTPSOverlay::SetDeadScreen()
 {
 	DeadScreen->SetVisibility(ESlateVisibility::Visible);
 }
+
+void UKannaTPSOverlay::ShowHitMarker()
+{
+	HitMarker->SetVisibility(ESlateVisibility::Visible);
+
+	GetWorld()->GetTimerManager().SetTimer(HitMarkerOffHandle, this, &UKannaTPSOverlay::HideHitMarker, 0.07f, false);
+}
+
+void UKannaTPSOverlay::HideHitMarker()
+{
+	HitMarker->SetVisibility(ESlateVisibility::Hidden);
+}
