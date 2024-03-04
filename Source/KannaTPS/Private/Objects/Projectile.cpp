@@ -35,7 +35,7 @@ void AProjectile::Damage(UPrimitiveComponent* HitComponent, AActor* OtherActor, 
 	//맞은 액터가 칸나였을 경우
 	if (Cast<AKannaCharacter>(OtherActor))
 	{
-		UGameplayStatics::ApplyDamage(OtherActor, 20.f, GetInstigator()->GetController(), this, UDamageType::StaticClass());
+		UGameplayStatics::ApplyDamage(OtherActor, 10.f, GetInstigator()->GetController(), this, UDamageType::StaticClass());
 	}
 
 	Destroy();

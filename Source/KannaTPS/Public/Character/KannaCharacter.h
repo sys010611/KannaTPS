@@ -323,5 +323,4 @@ private:
 
 	FLatentActionInfo FadeInfo;
 	FLatentActionInfo HealthInfo;
-
 };

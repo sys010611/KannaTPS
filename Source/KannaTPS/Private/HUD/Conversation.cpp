@@ -11,8 +11,15 @@ void UConversation::NativeConstruct()
 	GetGameInstance()->GetSubsystem<UConversationManager>()->SetConversationWidget(this);
 }
 
-void UConversation::SetConversation(const FString& Speaker, const FString& Content)
+void UConversation::SetConversation()
 {
+	// 큐에서 하나 빼기
+	TPair<FString, FString>* Conversation = ConversationQueue.Peek();
+
+	FString& Speaker = Conversation->Key;
+	FString& Content = Conversation->Value;
+
+
 	//Content 초기화
 	FullContent = "";
 	CurrentContent = "";
@@ -47,6 +54,16 @@ void UConversation::SetMessage(const FString& Content)
 	GetWorld()->GetTimerManager().SetTimer(ClearMessageHandle, [this]() {PlayAnimation(MessageFadeAnim);}, 3.f, false);
 }
 
+void UConversation::GetConversation(const TPair<FString, FString>& Content)
+{
+	bool shouldStartConversation = ConversationQueue.IsEmpty();
+
+	ConversationQueue.Enqueue(Content);
+
+	if(shouldStartConversation)
+		SetConversation();
+}
+
 void UConversation::SetContentAsSubstring()
 {
 	// 현재 내용의 길이에서 1 증가한 것을 현재 길이로
@@ -61,8 +78,20 @@ void UConversation::SetContentAsSubstring()
 	{
 		GetWorld()->GetTimerManager().ClearTimer(TypewriterTimerHandle); // 타이머 클리어
 
-		// 5초 뒤 페이드아웃 애니메이션 재생
-		GetWorld()->GetTimerManager().SetTimer(ClearContentHandle, [this]() {PlayAnimation(FadeAnim); }, 5.f, false);
+		//큐에서 하나 빼기
+		ConversationQueue.Pop();
+
+		// 큐가 비었다면
+		if (ConversationQueue.IsEmpty())
+		{
+			// 5초 뒤 페이드아웃 애니메이션 재생
+			GetWorld()->GetTimerManager().SetTimer(ClearContentHandle, [this]() {PlayAnimation(FadeAnim); }, 5.f, false);
+		}
+		else
+		{
+			//다음 대화 출력
+			GetWorld()->GetTimerManager().SetTimer(ResumeConversationHandle, [this]{SetConversation();}, 2.f, false);
+		}
 	}
 }
 

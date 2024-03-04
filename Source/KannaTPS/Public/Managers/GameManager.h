@@ -7,6 +7,7 @@
 #include "GameManager.generated.h"
 
 class AEnemy;
+class AKannaCharacter;
 
 
 UCLASS()
@@ -17,6 +18,13 @@ class KANNATPS_API UGameManager : public UGameInstanceSubsystem
 public:
 	void ChangeDefaultVolume(float volume);
 
+	void SetKannaDamageable();
+
 	UPROPERTY(BlueprintReadOnly)
 	TArray<AEnemy*> ActiveEnemies;
+
+	UPROPERTY(BlueprintReadOnly)
+	bool IsAlerted;
+
+	AKannaCharacter* KannaCharacter;
 };

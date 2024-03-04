@@ -113,7 +113,12 @@ void AKannaCharacter::BeginPlay()
 	HealthInfo.ExecutionFunction = FName("EnableHealthRegen");
 	HealthInfo.UUID = 2;
 
-	GetGameInstance()->GetSubsystem<UGameManager>()->ChangeDefaultVolume(1.f);
+	UGameManager* GM = GetGameInstance()->GetSubsystem<UGameManager>();
+	GM->KannaCharacter = this;
+	GM->ChangeDefaultVolume(1.f);
+	GM->IsAlerted = false;
+
+	SetCanBeDamaged(false);
 }
 
 // Called every frame
@@ -158,7 +163,7 @@ void AKannaCharacter::Tick(float DeltaTime)
 
 	// 화면 가장자리 데미지 효과
 	float ScreenDamageRadius =
-		FMath::GetMappedRangeValueClamped(TRange<float>(0.f, 100.f), TRange<float>(0.5f, 1.f), Attributes->GetCurrentHealth());
+		FMath::GetMappedRangeValueClamped(TRange<float>(0.f, 100.f), TRange<float>(0.3f, 1.f), Attributes->GetCurrentHealth());
 	ScreenDamageDynamic->SetScalarParameterValue(FName("Radius"), ScreenDamageRadius);
 
 	//EX 게이지 동기화
@@ -187,7 +192,7 @@ void AKannaCharacter::InitKannaTpsOverlay()
 
 float AKannaCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)													
 {
-	if (Attributes)
+	if (Attributes && CanBeDamaged())
 	{
 		Attributes->ReceiveDamage(DamageAmount);
 
@@ -223,7 +228,7 @@ float AKannaCharacter::TakeDamage(float DamageAmount, FDamageEvent const& Damage
 				PlayHitMontage();
 		}
 
-		if (Attributes->GetCurrentHealth() < 25.f)
+		if (Attributes->GetCurrentHealth() < 30.f)
 		{
 			GetGameInstance()->GetSubsystem<UConversationManager>()->SetMessage(TEXT("헤일로가 깨질 것 같아.."));
 		}

@@ -26,7 +26,7 @@ APistol::APistol()
 	FireMode = EFireMode::EFM_SEMIAUTO;
 
 	Range = 10000.f;
-	Damage = 20.f;
+	Damage = 50.f;
 
 	MaxAmmo = 17;
 

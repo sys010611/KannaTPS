@@ -7,7 +7,7 @@
 
 void UConversationManager::SetConversation(const FString& Speaker, const FString& Content)
 {
-	ConversationWidget->SetConversation(Speaker, Content);
+	ConversationWidget->GetConversation(TPair<FString, FString>(Speaker, Content));
 }
 
 void UConversationManager::SetMessage(const FString& Content)

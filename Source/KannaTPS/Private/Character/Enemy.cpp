@@ -234,13 +234,23 @@ void AEnemy::NoticePlayer()
 {
 	TargetCharacter = UGameplayStatics::GetPlayerCharacter(GetWorld(), 0);
 	//이동속도 증가
+
 	GetCharacterMovement()->MaxWalkSpeed = 600.f;
+
+	UGameManager* GM = GetWorld()->GetGameInstance()->GetSubsystem<UGameManager>();
+	if (GM->IsAlerted == false)
+	{
+		GM->IsAlerted = true;
+
+		FTimerHandle Handle;
+		GetWorld()->GetTimerManager().SetTimer(Handle, GM, &UGameManager::SetKannaDamageable, 30.f, false);
+	}
 }
 
 void AEnemy::AwarePlayer()
 {
 	//이동속도 증가
-	GetCharacterMovement()->MaxWalkSpeed = 600.f;
+	//GetCharacterMovement()->MaxWalkSpeed = 600.f;
 }
 
 // Called to bind functionality to input
