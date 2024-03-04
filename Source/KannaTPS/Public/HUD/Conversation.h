@@ -19,8 +19,9 @@ class KANNATPS_API UConversation : public UUserWidget
 public:
 	virtual void NativeConstruct() override; //BeginPlay와 같음.
 
-	void SetConversation(const FString& Speaker, const FString& Content);
+	void SetConversation();
 	void SetMessage(const FString& Content);
+	void GetConversation(const TPair<FString, FString>& Content);
 
 protected:
 	UPROPERTY(BlueprintReadOnly, Transient, meta = (BindWidgetAnim)) // Transient 붙여야함.
@@ -53,4 +54,7 @@ private:
 	FTimerHandle TypewriterTimerHandle; //한 글자씩 치기 위한 타이머
 	FTimerHandle ClearContentHandle; // 대사가 끝난 뒤 페이드아웃을 위한 타이머
 	FTimerHandle ClearMessageHandle; // 
+	FTimerHandle ResumeConversationHandle;
+
+	TQueue<TPair<FString, FString>> ConversationQueue;
 };
