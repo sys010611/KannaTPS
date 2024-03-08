@@ -58,6 +58,11 @@ void AEnemy::BeginPlay()
 
 	// 자기 자신을 적 리스트에 추가
 	GetGameInstance()->GetSubsystem<UGameManager>()->ActiveEnemies.Add(this);
+
+	if (GetGameInstance()->GetSubsystem<UGameManager>()->IsAlerted)
+	{
+		NoticePlayer();
+	}
 }
 
 // Called every frame
@@ -189,7 +194,13 @@ void AEnemy::Die(FDamageEvent const& DamageEvent)
 	CeaseFire();
 
 	// 자기 자신을 적 리스트에서 삭제
-	GetGameInstance()->GetSubsystem<UGameManager>()->ActiveEnemies.Remove(this);
+	UGameManager* GM = GetGameInstance()->GetSubsystem<UGameManager>();
+	GM->ActiveEnemies.Remove(this);
+	
+	if (GM->CheckIfCleared())
+	{
+		GetGameInstance()->GetSubsystem<UConversationManager>()->SetMessage(TEXT("현재 층 확보 완료"));
+	}
 }
 
 void AEnemy::RagdollEffect(const FDamageEvent& DamageEvent)
@@ -237,13 +248,11 @@ void AEnemy::NoticePlayer()
 
 	GetCharacterMovement()->MaxWalkSpeed = 600.f;
 
+	// Alert상태가 아니었을 경우 GameManager를 통해 Alert상태로 전환
 	UGameManager* GM = GetWorld()->GetGameInstance()->GetSubsystem<UGameManager>();
 	if (GM->IsAlerted == false)
 	{
-		GM->IsAlerted = true;
-
-		FTimerHandle Handle;
-		GetWorld()->GetTimerManager().SetTimer(Handle, GM, &UGameManager::SetKannaDamageable, 30.f, false);
+		GM->Alert();
 	}
 }
 

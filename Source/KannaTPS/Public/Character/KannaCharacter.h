@@ -43,7 +43,7 @@ public:
 	FORCEINLINE bool GetIsInCover() const {return IsInCover;}
 	FORCEINLINE EAimingDirection GetAimingDirection() const { return AimingDirection; }
 	FORCEINLINE UKannaTPSOverlay* GetKannaTPSOverlay() { return KannaTPSOverlay; }
-	FORCEINLINE void SetOverlappingItem(AItem* Item) { OverlappingItem = Item; }
+	FORCEINLINE void SetMouseSensitivity(float Value) {MouseSensitivity = Value;}
 
 	UFUNCTION(BlueprintCallable)
 	void SetPunchHitbox(ECollisionEnabled::Type CollisionEnabled);
@@ -59,6 +59,10 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void SetDeadScreen();
+
+	void PlayBGM();
+
+	void StopBGM();
 
 protected:
 	// Called when the game starts or when spawned
@@ -211,10 +215,6 @@ private:
 	UPROPERTY()
 	AHalo* Halo;
 
-	/*Item*/
-	UPROPERTY(VisibleInstanceOnly)
-	AItem* OverlappingItem;
-
 	/*Animation Montage*/
 	UPROPERTY(EditDefaultsOnly, Category = Montages)
 	UAnimMontage* AttackMontage;
@@ -271,6 +271,11 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = Sound)
 	USoundBase* BulletHitSound;
 
+	UPROPERTY(EditDefaultsOnly, Category = Sound)
+	USoundBase* BGM;
+
+	UAudioComponent* BGM_ref;
+
 
 	/*Flag*/
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
@@ -284,7 +289,7 @@ private:
 
 
 	/*Widget*/
-	UPROPERTY()
+	UPROPERTY(BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	UKannaTPSOverlay* KannaTPSOverlay;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
@@ -323,4 +328,7 @@ private:
 
 	FLatentActionInfo FadeInfo;
 	FLatentActionInfo HealthInfo;
+
+	/*Control*/
+	float MouseSensitivity;
 };

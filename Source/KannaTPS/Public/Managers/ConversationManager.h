@@ -24,6 +24,9 @@ public:
 
 	void SetConversationWidget(UConversation* Widget);
 
+	UFUNCTION(BlueprintCallable)
+	bool CheckIfConversationEnded();
+
 private:
 	UPROPERTY()
 	UConversation* ConversationWidget;

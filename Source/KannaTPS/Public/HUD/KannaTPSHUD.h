@@ -14,7 +14,8 @@ class KANNATPS_API AKannaTPSHUD : public AHUD
 	GENERATED_BODY()
 
 public:
-	FORCEINLINE UKannaTPSOverlay* GetKannaTPSOverlay() const {return KannaTPSOverlay;}
+	UFUNCTION(BlueprintCallable)
+	UKannaTPSOverlay* GetKannaTPSOverlay();
 
 protected:
 	virtual void BeginPlay() override;

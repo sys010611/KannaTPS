@@ -5,10 +5,22 @@
 #include "Components/TextBlock.h"
 #include "Components/ProgressBar.h"
 #include "Components/Image.h"
+#include "Kismet/GameplayStatics.h"
 
 void UKannaTPSOverlay::NativeTick(const FGeometry& MyGeometry, float InDeltatime)
 {
 	ExNumberText->SetText(FText::AsNumber((int32)(ExGauge->GetPercent() * 10)));
+	TickActionsAndAnimation(InDeltatime);
+}
+
+void UKannaTPSOverlay::HideOverlay()
+{
+	SetRenderOpacity(0.f);
+}
+
+void UKannaTPSOverlay::ShowOverlay()
+{
+	SetRenderOpacity(1.f);
 }
 
 void UKannaTPSOverlay::SetCurrentAmmoText(int32 Amount)
@@ -63,4 +75,9 @@ void UKannaTPSOverlay::ShowHitMarker()
 void UKannaTPSOverlay::HideHitMarker()
 {
 	HitMarker->SetVisibility(ESlateVisibility::Hidden);
+}
+
+void UKannaTPSOverlay::ShowOption()
+{
+	WBP_Option->SetVisibility(ESlateVisibility::Visible);
 }

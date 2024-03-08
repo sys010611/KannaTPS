@@ -20,8 +20,10 @@ public:
 	virtual void NativeConstruct() override; //BeginPlay와 같음.
 
 	void SetConversation();
-	void SetMessage(const FString& Content);
+	void SetMessage();
 	void GetConversation(const TPair<FString, FString>& Content);
+	void GetMessage(const FString& Content);
+	FORCEINLINE bool CheckIfConversationEnded() {return ConversationQueue.IsEmpty(); };
 
 protected:
 	UPROPERTY(BlueprintReadOnly, Transient, meta = (BindWidgetAnim)) // Transient 붙여야함.
@@ -55,6 +57,9 @@ private:
 	FTimerHandle ClearContentHandle; // 대사가 끝난 뒤 페이드아웃을 위한 타이머
 	FTimerHandle ClearMessageHandle; // 
 	FTimerHandle ResumeConversationHandle;
+	FTimerHandle ResumeMessageHandle;
 
 	TQueue<TPair<FString, FString>> ConversationQueue;
+	TQueue<FString> MessageQueue;
+	//TArray<FString> MessageArray;
 };
