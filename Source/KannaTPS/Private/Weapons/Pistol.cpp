@@ -45,7 +45,7 @@ void APistol::BeginPlay()
 		this->AttachToComponent(KannaCharacter->GetMesh(), FAttachmentTransformRules::SnapToTargetIncludingScale, FName("Pistol_Socket"));
 	}
 
-	TotalAmmo = 255;
+	TotalAmmo = 500;
 	CurrentAmmo = 17;
 
 	GunMesh->SetVisibility(false);
@@ -144,7 +144,7 @@ void APistol::Fire(FVector& StartPoint, FVector& Direction)
 	);
 }
 
-void APistol::FireExSkill(FHitResult& HitResult)
+void APistol::FireExSkill(const FHitResult& HitResult)
 {
 	ExChargeEffectComp->Deactivate();
 

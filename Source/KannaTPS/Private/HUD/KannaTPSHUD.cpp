@@ -4,6 +4,11 @@
 #include "HUD/KannaTPSHUD.h"
 #include "HUD/KannaTPSOverlay.h"
 
+UKannaTPSOverlay* AKannaTPSHUD::GetKannaTPSOverlay()
+{
+	return KannaTPSOverlay; 
+}
+
 void AKannaTPSHUD::BeginPlay()
 {
 	Super::BeginPlay();

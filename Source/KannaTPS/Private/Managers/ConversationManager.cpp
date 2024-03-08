@@ -12,10 +12,15 @@ void UConversationManager::SetConversation(const FString& Speaker, const FString
 
 void UConversationManager::SetMessage(const FString& Content)
 {
-	ConversationWidget->SetMessage(Content);
+	ConversationWidget->GetMessage(Content);
 }
 
 void UConversationManager::SetConversationWidget(UConversation* Widget)
 {
 	ConversationWidget = Widget;
+}
+
+bool UConversationManager::CheckIfConversationEnded()
+{
+	return ConversationWidget->CheckIfConversationEnded();
 }

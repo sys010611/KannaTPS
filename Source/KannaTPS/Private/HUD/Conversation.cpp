@@ -16,6 +16,8 @@ void UConversation::SetConversation()
 	// 큐에서 하나 빼기
 	TPair<FString, FString>* Conversation = ConversationQueue.Peek();
 
+	if(Conversation == nullptr) return;
+
 	FString& Speaker = Conversation->Key;
 	FString& Content = Conversation->Value;
 
@@ -26,7 +28,16 @@ void UConversation::SetConversation()
 
 	//타이머 초기화.
 	GetWorld()->GetTimerManager().ClearTimer(TypewriterTimerHandle);
-	GetWorld()->GetTimerManager().ClearTimer(ClearContentHandle);
+
+	// 마지막 대사를 출력한 참이었다면
+	if (GetWorld()->GetTimerManager().IsTimerActive(ClearContentHandle))
+	{
+		GetWorld()->GetTimerManager().ClearTimer(ClearContentHandle);//메시지 안지워지게 타이머 초기화
+
+		FTimerHandle TimerHandle;
+		GetWorld()->GetTimerManager().SetTimer(TimerHandle, [this]() {SetConversation(); }, 2.f, false); // 2초 딜레이, 재귀호출
+		return;
+	}
 
 	//화자 텍스트는 한번에 설정, 내용 텍스트는 일단 비워둠.
 	SpeakerText->SetText(FText::FromString(Speaker));
@@ -42,26 +53,6 @@ void UConversation::SetConversation()
 
 	// 0.05초마다 SetContentAsSubstring을 호출한다.
 	GetWorld()->GetTimerManager().SetTimer(TypewriterTimerHandle, this, &UConversation::SetContentAsSubstring, 0.03f, true);
-}
-
-void UConversation::SetMessage(const FString& Content)
-{
-	MessageText->SetText(FText::FromString(Content));
-
-	// 투명도 1
-	MessageText->SetRenderOpacity(1.f);
-
-	GetWorld()->GetTimerManager().SetTimer(ClearMessageHandle, [this]() {PlayAnimation(MessageFadeAnim);}, 3.f, false);
-}
-
-void UConversation::GetConversation(const TPair<FString, FString>& Content)
-{
-	bool shouldStartConversation = ConversationQueue.IsEmpty();
-
-	ConversationQueue.Enqueue(Content);
-
-	if(shouldStartConversation)
-		SetConversation();
 }
 
 void UConversation::SetContentAsSubstring()
@@ -90,9 +81,73 @@ void UConversation::SetContentAsSubstring()
 		else
 		{
 			//다음 대화 출력
-			GetWorld()->GetTimerManager().SetTimer(ResumeConversationHandle, [this]{SetConversation();}, 2.f, false);
+			GetWorld()->GetTimerManager().SetTimer(ResumeConversationHandle, [this] {SetConversation(); }, 2.f, false);
 		}
 	}
+}
+
+
+void UConversation::SetMessage()
+{
+	// 마지막 메시지를 출력한 참이었다면
+	if (GetWorld()->GetTimerManager().IsTimerActive(ClearMessageHandle))
+	{
+		GetWorld()->GetTimerManager().ClearTimer(ClearMessageHandle);//메시지 안지워지게 타이머 초기화
+
+		FTimerHandle TimerHandle;
+		GetWorld()->GetTimerManager().SetTimer(TimerHandle, [this](){SetMessage();}, 4.f, false); // 4초 딜레이, 재귀호출
+		return;
+	}
+
+	GetWorld()->GetTimerManager().ClearTimer(ClearMessageHandle);
+
+	FString* Content = MessageQueue.Peek();
+
+	if(Content == nullptr) return;
+
+	MessageText->SetText(FText::FromString(*Content));
+
+	// 투명도 1
+	MessageText->SetRenderOpacity(1.f);
+
+	MessageQueue.Pop();
+	if (MessageQueue.IsEmpty())
+	{
+		GetWorld()->GetTimerManager().SetTimer(ClearMessageHandle, [this]() {PlayAnimation(MessageFadeAnim); }, 4.f, false);
+	}
+	else
+	{
+		//다음 메시지 출력
+		GetWorld()->GetTimerManager().SetTimer(ResumeMessageHandle, [this] {SetMessage(); }, 4.f, false);
+	}
+}
+
+void UConversation::GetConversation(const TPair<FString, FString>& Content)
+{
+	bool ShouldStartConversation = ConversationQueue.IsEmpty();
+
+	ConversationQueue.Enqueue(Content);
+
+	if(ShouldStartConversation)
+		SetConversation();
+}
+
+void UConversation::GetMessage(const FString& Content)
+{
+	if (!MessageQueue.IsEmpty())
+	{
+		if (*MessageQueue.Peek() == Content)
+		{
+			return;
+		}
+	}
+
+	bool ShouldShowMessage = MessageQueue.IsEmpty();
+
+	MessageQueue.Enqueue(Content);
+
+	if (ShouldShowMessage)
+		SetMessage();
 }
 
 //void UConversation::PlayFadeAnim()

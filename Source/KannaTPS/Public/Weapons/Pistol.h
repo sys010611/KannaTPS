@@ -23,7 +23,7 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	virtual void Fire(FVector& StartPoint, FVector& Direction) override;
-	void FireExSkill(FHitResult& HitResult);
+	void FireExSkill(const FHitResult& HitResult);
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

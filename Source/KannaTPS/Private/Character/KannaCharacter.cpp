@@ -26,6 +26,7 @@
 #include "Objects/Halo.h"
 #include "Managers/GameManager.h"
 #include "Managers/ConversationManager.h"
+#include "Components/AudioComponent.h"
 
 
 // Sets default values
@@ -60,8 +61,8 @@ AKannaCharacter::AKannaCharacter()
 	PunchHitbox = CreateDefaultSubobject<USphereComponent>(TEXT("PunchHitbox"));
 	KickHitbox = CreateDefaultSubobject<USphereComponent>(TEXT("KickHitbox"));
 	//소켓에 부착
-	PunchHitbox->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetIncludingScale, TEXT("LeftHand"));
-	KickHitbox->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetIncludingScale, TEXT("RightFoot"));
+	PunchHitbox->AttachToComponent(GetMesh(), FAttachmentTransformRules::KeepRelativeTransform, TEXT("LeftHand"));
+	KickHitbox->AttachToComponent(GetMesh(), FAttachmentTransformRules::KeepRelativeTransform, TEXT("RightFoot"));
 	//충돌판정 없음이 기본
 	PunchHitbox->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	KickHitbox->SetCollisionEnabled(ECollisionEnabled::NoCollision);
@@ -119,6 +120,9 @@ void AKannaCharacter::BeginPlay()
 	GM->IsAlerted = false;
 
 	SetCanBeDamaged(false);
+
+	MouseSensitivity = GM->MouseSensitivity;
+	GM->StartTime = FDateTime::Now();
 }
 
 // Called every frame
@@ -130,34 +134,24 @@ void AKannaCharacter::Tick(float DeltaTime)
 	if (IsInCover && (GetVelocity().Length() == 0) && ActionState == EActionState::EAS_Neutral)
 	{
 		FVector Forward = GetCharacterMovement()->GetPlaneConstraintNormal() * -1.f; //벽면을 바라보는 방향
-		//if (bIsCrouched)
-		//{
-		//	AddMovementInput(Forward);
-		//}
-		//else
-		//{
-		//	if (IsCameraAtRight()) //카메라 우측 -> 캐릭터도 우측을 바라봄
-		//	{
-		//		FRotator RightRotator = Forward.Rotation() + UKismetMathLibrary::MakeRotator(0, 0, 90.f);
-		//		SetActorRotation(FMath::RInterpConstantTo(GetActorRotation(), RightRotator, DeltaTime, 700.f));
-		//	}
-		//	else //카메라 좌측 -> 캐릭터도 좌측을 바라봄
-		//	{
-		//		FRotator LeftRotator = Forward.Rotation() + UKismetMathLibrary::MakeRotator(0, 0, -90.f);
-		//		SetActorRotation(FMath::RInterpConstantTo(GetActorRotation(), LeftRotator, DeltaTime, 700.f));
-		//	}
-		//	
-		//}
 
-		if (IsCameraAtRight()) //카메라 우측 -> 캐릭터도 우측을 바라봄
+		if (bIsCrouched)
 		{
-			FRotator RightRotator = Forward.Rotation() + UKismetMathLibrary::MakeRotator(0, 0, 90.f);
-			SetActorRotation(FMath::RInterpConstantTo(GetActorRotation(), RightRotator, DeltaTime, 1000.f));
+			AddMovementInput(Forward);
 		}
-		else //카메라 좌측 -> 캐릭터도 좌측을 바라봄
+		else
 		{
-			FRotator LeftRotator = Forward.Rotation() + UKismetMathLibrary::MakeRotator(0, 0, -90.f);
-			SetActorRotation(FMath::RInterpConstantTo(GetActorRotation(), LeftRotator, DeltaTime, 1000.f));
+			if (IsCameraAtRight()) //카메라 우측 -> 캐릭터도 우측을 바라봄
+			{
+				FRotator RightRotator = Forward.Rotation() + UKismetMathLibrary::MakeRotator(0, 0, 90.f);
+				SetActorRotation(FMath::RInterpConstantTo(GetActorRotation(), RightRotator, DeltaTime, 1000.f));
+			}
+			else //카메라 좌측 -> 캐릭터도 좌측을 바라봄
+			{
+				FRotator LeftRotator = Forward.Rotation() + UKismetMathLibrary::MakeRotator(0, 0, -90.f);
+				SetActorRotation(FMath::RInterpConstantTo(GetActorRotation(), LeftRotator, DeltaTime, 1000.f));
+			}
+			
 		}
 	}
 
@@ -202,7 +196,7 @@ float AKannaCharacter::TakeDamage(float DamageAmount, FDamageEvent const& Damage
 		}
 		else if (Attributes->GetCurrentHealth() < 40.f)
 		{
-			bool IsStunned = UKismetMathLibrary::RandomBoolWithWeight(0.1f);
+			bool IsStunned = UKismetMathLibrary::RandomBoolWithWeight(0.4f);
 			if (IsStunned)
 			{
 				UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance();
@@ -287,6 +281,11 @@ void AKannaCharacter::Die()
 
 	SpringArm->SocketOffset = FVector::UpVector * 30.f;
 	SpringArm->TargetArmLength = 100.f;
+
+	FTimerHandle TimerHandle;
+
+	GetWorld()->GetTimerManager().SetTimer(TimerHandle, [this](){UGameplayStatics::OpenLevel(GetWorld(), FName("GameOver")); },
+		2.f, false);
 }
 
 void AKannaCharacter::EnableMovement()
@@ -335,8 +334,8 @@ void AKannaCharacter::Look(const FInputActionValue& Value)
 {
 	const FVector2D LookAxisVector = Value.Get<FVector2D>();
 
-	AddControllerPitchInput(LookAxisVector.Y);
-	AddControllerYawInput(LookAxisVector.X);
+	AddControllerPitchInput(LookAxisVector.Y * MouseSensitivity);
+	AddControllerYawInput(LookAxisVector.X * MouseSensitivity);
 }
 
 void AKannaCharacter::Aim()
@@ -406,14 +405,6 @@ void AKannaCharacter::ReleaseAim()
 		GetCharacterMovement()->MaxWalkSpeed = 400.f;
 
 	GetCharacterMovement()->bOrientRotationToMovement = true;
-}
-
-void AKannaCharacter::Interact()
-{
-	if (OverlappingItem)
-	{
-		OverlappingItem->Get();
-	}
 }
 
 void AKannaCharacter::SwitchWeapon()
@@ -689,12 +680,12 @@ void AKannaCharacter::WallTrace()
 		CollisionParameters.AddIgnoredActor(this);
 
 		//높은 엄폐물 탐지 시도
-		if (GetWorld()->LineTraceSingleByChannel(HitResult, HighStart, HighEnd, ECC_GameTraceChannel1, CollisionParameters))
+		if (GetWorld()->LineTraceSingleByChannel(HitResult, HighStart, HighEnd, ECC_GameTraceChannel2, CollisionParameters))
 		{
 			StartCover(HitResult.Normal, false);
 		}
 		//낮은 엄폐물 탐지 시도
-		else if (GetWorld()->LineTraceSingleByChannel(HitResult, LowStart, LowEnd, ECC_GameTraceChannel1, CollisionParameters))
+		else if (GetWorld()->LineTraceSingleByChannel(HitResult, LowStart, LowEnd, ECC_GameTraceChannel2, CollisionParameters))
 		{
 			StartCover(HitResult.Normal, true);
 		}
@@ -732,7 +723,7 @@ void AKannaCharacter::CoverTrace()
 					HitResult, 
 					ActorLocation, 
 					ActorLocation + WallDirection * 200.f,
-					ECollisionChannel::ECC_GameTraceChannel1, 
+					ECollisionChannel::ECC_GameTraceChannel2,
 					CollisionParameters)
 				)
 			{
@@ -790,7 +781,7 @@ void AKannaCharacter::CheckLeftRightHit(FVector& WallDirection, FVector& ActorLo
 	(HitResult,
 		RightStart,
 		RightEnd,
-		ECollisionChannel::ECC_GameTraceChannel1,
+		ECollisionChannel::ECC_GameTraceChannel2,
 		CollisionParameters);
 
 	//이번엔 같은 작업을 왼쪽에서 할 것이다.
@@ -806,7 +797,7 @@ void AKannaCharacter::CheckLeftRightHit(FVector& WallDirection, FVector& ActorLo
 		HitResult,
 		LeftStart,
 		LeftEnd,
-		ECollisionChannel::ECC_GameTraceChannel1,
+		ECollisionChannel::ECC_GameTraceChannel2,
 		CollisionParameters);
 }
 
@@ -848,6 +839,19 @@ void AKannaCharacter::SetDeadScreen()
 	GetGameInstance()->GetSubsystem<UGameManager>()->ChangeDefaultVolume(0.f);
 }
 
+void AKannaCharacter::PlayBGM()
+{
+	if (BGM)
+	{
+		BGM_ref = UGameplayStatics::SpawnSound2D(GetWorld(), BGM);
+	}
+}
+
+void AKannaCharacter::StopBGM()
+{
+	BGM_ref->SetActive(false);
+}
+
 // Called to bind functionality to input
 void AKannaCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
@@ -860,7 +864,7 @@ void AKannaCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComp
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AKannaCharacter::Look);
 		EnhancedInputComponent->BindAction(AimAction, ETriggerEvent::Triggered, this, &AKannaCharacter::Aim);
 		EnhancedInputComponent->BindAction(AimAction, ETriggerEvent::Completed, this, &AKannaCharacter::ReleaseAim);
-		EnhancedInputComponent->BindAction(InteractAction, ETriggerEvent::Triggered, this, &AKannaCharacter::Interact);
+		//EnhancedInputComponent->BindAction(InteractAction, ETriggerEvent::Triggered, this, &AKannaCharacter::Interact);
 		EnhancedInputComponent->BindAction(SwitchWeaponAction, ETriggerEvent::Triggered, this, &AKannaCharacter::SwitchWeapon);
 		EnhancedInputComponent->BindAction(AttackAction, ETriggerEvent::Triggered, this, &AKannaCharacter::Attack);
 		EnhancedInputComponent->BindAction(RollAction, ETriggerEvent::Triggered, this, &AKannaCharacter::Roll);

@@ -18,6 +18,9 @@ class KANNATPS_API UKannaTPSOverlay : public UUserWidget
 public:
 	virtual void NativeTick(const FGeometry& MyGeometry, float InDeltatime) override;
 
+	void HideOverlay();
+	void ShowOverlay();
+
 	void SetCurrentAmmoText(int32 amount);
 
 	void SetTotalAmmoText(int32 amount);
@@ -33,6 +36,13 @@ public:
 	void ShowHitMarker();
 
 	void HideHitMarker();
+
+	UFUNCTION(BlueprintCallable)
+	void ShowOption();
+
+protected:
+	UPROPERTY(BlueprintReadOnly, meta = (BindWidget))
+	UUserWidget* WBP_Option;
 
 private:
 	// meta = BindWidget은 블루프린트에서의 변수와 연동시키겠다는 의미이다.

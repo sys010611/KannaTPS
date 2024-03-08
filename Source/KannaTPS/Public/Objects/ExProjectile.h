@@ -43,5 +43,8 @@ private:
 	UPROPERTY(EditDefaultsOnly)
 	USoundBase* HitSound;
 
+	UPROPERTY(EditDefaultsOnly, meta = (AllowPrivateAccess = "true"), Category = CameraShake)
+	TSubclassOf<UCameraShakeBase> ExHitCameraShake;
+
 	float TextOffset;
 };

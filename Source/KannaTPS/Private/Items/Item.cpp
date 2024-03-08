@@ -4,6 +4,7 @@
 #include "Items/Item.h"
 #include "Components/SphereComponent.h"
 #include "Character/KannaCharacter.h"
+#include "Managers/ConversationManager.h"
 
 // Sets default values
 AItem::AItem()
@@ -24,7 +25,6 @@ void AItem::BeginPlay()
 	Super::BeginPlay();
 
 	Sphere->OnComponentBeginOverlap.AddDynamic(this, &AItem::OnSphereOverlap);
-	Sphere->OnComponentEndOverlap.AddDynamic(this, &AItem::OnSphereOverlapEnd);
 }
 
 
@@ -33,30 +33,15 @@ void AItem::OnSphereOverlap(UPrimitiveComponent* OverlappedComponent, AActor* Ot
 	AKannaCharacter* KannaCharacter = Cast<AKannaCharacter>(OtherActor);
 	if (KannaCharacter)
 	{
-		KannaCharacter->SetOverlappingItem(this);
+		UConversationManager* CM = GetGameInstance()->GetSubsystem<UConversationManager>();
+		CM->SetConversation(TEXT("칸나"), TEXT("이건.. 선생님이 사용하시던.."));
+
+		FTimerHandle TimerHandle;
+
+		std::function<void(void)> func = [CM](){CM->SetMessage(TEXT("싯딤의 상자를 챙겼다."));};
+
+		GetWorld()->GetTimerManager().SetTimer(TimerHandle, func, 1.f, false);
+
+		this->Destroy();
 	}
 }
-
-void AItem::OnSphereOverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
-{
-	AKannaCharacter* KannaCharacter = Cast<AKannaCharacter>(OtherActor);
-	if (KannaCharacter)
-	{
-		KannaCharacter->SetOverlappingItem(nullptr);
-	}
-}
-
-// Called every frame
-void AItem::Tick(float DeltaTime)
-{
-	//Super::Tick(DeltaTime);
-
-	//RunningTime += DeltaTime;
-}
-
-void AItem::Get()
-{
-	UE_LOG(LogTemp, Warning, TEXT("Item get"));
-	Destroy();
-}
-
