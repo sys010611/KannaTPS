@@ -37,6 +37,11 @@ FTimespan UGameManager::GetPlayTime()
 	return EndTime - StartTime;
 }
 
+void UGameManager::ClearActiveEnemies()
+{
+	ActiveEnemies.Reset();
+}
+
 void UGameManager::StopBGM()
 {
 	if(KannaCharacter)
