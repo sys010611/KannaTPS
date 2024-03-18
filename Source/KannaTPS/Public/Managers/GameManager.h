@@ -26,6 +26,9 @@ public:
 	FTimespan GetPlayTime();
 
 	UFUNCTION(BlueprintCallable)
+	void ClearActiveEnemies();
+
+	UFUNCTION(BlueprintCallable)
 	void StopBGM();
 
 	void SetKannaDamageable();
