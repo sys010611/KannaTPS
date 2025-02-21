@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureDictionary>
+ <Item>
+  <Name>km_v_solwoodfloor</Name>
+  <Unk32 value="128" />
+  <Usage>DIFFUSE</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>km_v_solwoodfloor.dds</FileName>
+ </Item>
+ <Item>
+  <Name>km_nt_sol_bookcas1</Name>
+  <Unk32 value="128" />
+  <Usage>DIFFUSE</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>km_nt_sol_bookcas1.dds</FileName>
+ </Item>
+ <Item>
+  <Name>tl_v_sol_plaster1b_n</Name>
+  <Unk32 value="128" />
+  <Usage>NORMAL</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>tl_v_sol_plaster1b_n.dds</FileName>
+ </Item>
+ <Item>
+  <Name>km_v_sol_detail_s</Name>
+  <Unk32 value="128" />
+  <Usage>SPECULAR</Usage>
+  <UsageFlags>X32, X64, X128, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="256" />
+  <Height value="256" />
+  <MipLevels value="7" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>km_v_sol_detail_s.dds</FileName>
+ </Item>
+ <Item>
+  <Name>km_v_solwoodfloor_s</Name>
+  <Unk32 value="128" />
+  <Usage>SPECULAR</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>km_v_solwoodfloor_s.dds</FileName>
+ </Item>
+ <Item>
+  <Name>km_sol_sidechair</Name>
+  <Unk32 value="128" />
+  <Usage>DIFFUSE</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>km_sol_sidechair.dds</FileName>
+ </Item>
+ <Item>
+  <Name>nt_sol_plaster1b</Name>
+  <Unk32 value="128" />
+  <Usage>DIFFUSE</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>nt_sol_plaster1b.dds</FileName>
+ </Item>
+ <Item>
+  <Name>tl_v_sol_furn1_n</Name>
+  <Unk32 value="128" />
+  <Usage>NORMAL</Usage>
+  <UsageFlags>Y4, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="4" />
+  <Height value="4" />
+  <MipLevels value="1" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>tl_v_sol_furn1_n.dds</FileName>
+ </Item>
+ <Item>
+  <Name>km_v_sol_mummy1</Name>
+  <Unk32 value="128" />
+  <Usage>DIFFUSE</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>km_v_sol_mummy1.dds</FileName>
+ </Item>
+ <Item>
+  <Name>ah_solspics4</Name>
+  <Unk32 value="128" />
+  <Usage>DIFFUSE</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="9" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>ah_solspics4.dds</FileName>
+ </Item>
+ <Item>
+  <Name>tl_v_sol_woodpan1_n</Name>
+  <Unk32 value="128" />
+  <Usage>NORMAL</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>tl_v_sol_woodpan1_n.dds</FileName>
+ </Item>
+ <Item>
+  <Name>km_v_sol_wood</Name>
+  <Unk32 value="128" />
+  <Usage>DIFFUSE</Usage>
+  <UsageFlags>X32, X64, X128, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="256" />
+  <Height value="256" />
+  <MipLevels value="7" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>km_v_sol_wood.dds</FileName>
+ </Item>
+ <Item>
+  <Name>km_v_sol_furn1_s</Name>
+  <Unk32 value="128" />
+  <Usage>SPECULAR</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>km_v_sol_furn1_s.dds</FileName>
+ </Item>
+ <Item>
+  <Name>ah_km_v_sol_details1</Name>
+  <Unk32 value="128" />
+  <Usage>DIFFUSE</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="9" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>ah_km_v_sol_details1.dds</FileName>
+ </Item>
+ <Item>
+  <Name>km_v_sol_furn2_s</Name>
+  <Unk32 value="128" />
+  <Usage>SPECULAR</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>km_v_sol_furn2_s.dds</FileName>
+ </Item>
+ <Item>
+  <Name>km_v_sol_wood_s</Name>
+  <Unk32 value="128" />
+  <Usage>SPECULAR</Usage>
+  <UsageFlags>X32, X64, X128, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="256" />
+  <Height value="256" />
+  <MipLevels value="7" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>km_v_sol_wood_s.dds</FileName>
+ </Item>
+ <Item>
+  <Name>km_v_solwoodfloor_n</Name>
+  <Unk32 value="128" />
+  <Usage>NORMAL</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>km_v_solwoodfloor_n.dds</FileName>
+ </Item>
+ <Item>
+  <Name>km_nt_sol_woodpan1</Name>
+  <Unk32 value="128" />
+  <Usage>DIFFUSE</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>km_nt_sol_woodpan1.dds</FileName>
+ </Item>
+ <Item>
+  <Name>tl_v_bank2_r</Name>
+  <Unk32 value="128" />
+  <Usage>DIFFUSE</Usage>
+  <UsageFlags>Y4, X16, X32, Y64, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="128" />
+  <Height value="128" />
+  <MipLevels value="6" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>tl_v_bank2_r.dds</FileName>
+ </Item>
+ <Item>
+  <Name>nt_sol_plaster2b</Name>
+  <Unk32 value="128" />
+  <Usage>DIFFUSE</Usage>
+  <UsageFlags>X32, X64, X128, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="256" />
+  <Height value="256" />
+  <MipLevels value="7" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>nt_sol_plaster2b.dds</FileName>
+ </Item>
+ <Item>
+  <Name>km_v_cognac</Name>
+  <Unk32 value="128" />
+  <Usage>DIFFUSE</Usage>
+  <UsageFlags>X32, Y64, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="64" />
+  <Height value="64" />
+  <MipLevels value="5" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>km_v_cognac.dds</FileName>
+ </Item>
+ <Item>
+  <Name>km_nt_sol_furn1</Name>
+  <Unk32 value="128" />
+  <Usage>DIFFUSE</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>km_nt_sol_furn1.dds</FileName>
+ </Item>
+</TextureDictionary>

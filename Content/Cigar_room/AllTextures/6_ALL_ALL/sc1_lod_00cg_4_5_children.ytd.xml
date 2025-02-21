@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureDictionary>
+ <Item>
+  <Name>sc1_04_slod_s</Name>
+  <Unk32 value="128" />
+  <Usage>SPECULAR</Usage>
+  <UsageFlags>X32, X64, X128, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="256" />
+  <Height value="256" />
+  <MipLevels value="7" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>sc1_04_slod_s.dds</FileName>
+ </Item>
+ <Item>
+  <Name>prop_telegraph_01prop_lodpole_l2</Name>
+  <Unk32 value="128" />
+  <Usage>DIFFUSE</Usage>
+  <UsageFlags>X32, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="32" />
+  <Height value="32" />
+  <MipLevels value="4" />
+  <Format>D3DFMT_DXT5</Format>
+  <FileName>prop_telegraph_01prop_lodpole_l2.dds</FileName>
+ </Item>
+ <Item>
+  <Name>prop_telegraph_01prop_lodpole</Name>
+  <Unk32 value="128" />
+  <Usage>DIFFUSE</Usage>
+  <UsageFlags>X32, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="32" />
+  <Height value="32" />
+  <MipLevels value="4" />
+  <Format>D3DFMT_DXT5</Format>
+  <FileName>prop_telegraph_01prop_lodpole.dds</FileName>
+ </Item>
+ <Item>
+  <Name>sc1_05_superlod_s</Name>
+  <Unk32 value="128" />
+  <Usage>SPECULAR</Usage>
+  <UsageFlags>Y4, X16, X32, Y64, X256, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="256" />
+  <Height value="512" />
+  <MipLevels value="7" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>sc1_05_superlod_s.dds</FileName>
+ </Item>
+ <Item>
+  <Name>sc1_05_superlod</Name>
+  <Unk32 value="128" />
+  <Usage>DIFFUSE</Usage>
+  <UsageFlags>NOT_HALF, Y4, X16, X32, Y64, X256, Y512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="1024" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>sc1_05_superlod.dds</FileName>
+ </Item>
+ <Item>
+  <Name>prop_lod</Name>
+  <Unk32 value="128" />
+  <Usage>DIFFUSE</Usage>
+  <UsageFlags>Y4, X16, X32, Y64, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="128" />
+  <Height value="128" />
+  <MipLevels value="6" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>prop_lod.dds</FileName>
+ </Item>
+ <Item>
+  <Name>slod_prop_bush_lrg_04b_2</Name>
+  <Unk32 value="32" />
+  <Usage>DIFFUSE</Usage>
+  <UsageFlags>Y64, X128, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="256" />
+  <Height value="128" />
+  <MipLevels value="9" />
+  <Format>D3DFMT_DXT5</Format>
+  <FileName>slod_prop_bush_lrg_04b_2.dds</FileName>
+ </Item>
+ <Item>
+  <Name>sc1_00c_superlod</Name>
+  <Unk32 value="128" />
+  <Usage>DIFFUSE</Usage>
+  <UsageFlags>NOT_HALF, X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>sc1_00c_superlod.dds</FileName>
+ </Item>
+ <Item>
+  <Name>sc1_04_slod</Name>
+  <Unk32 value="128" />
+  <Usage>DIFFUSE</Usage>
+  <UsageFlags>NOT_HALF, X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>sc1_04_slod.dds</FileName>
+ </Item>
+ <Item>
+  <Name>sc1_00g_slod_new</Name>
+  <Unk32 value="128" />
+  <Usage>DIFFUSE</Usage>
+  <UsageFlags>Y4, X16, X32, Y64, X256, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="256" />
+  <Height value="512" />
+  <MipLevels value="7" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>sc1_00g_slod_new.dds</FileName>
+ </Item>
+ <Item>
+  <Name>sc1_05_stripe_lod</Name>
+  <Unk32 value="128" />
+  <Usage>DIFFUSE</Usage>
+  <UsageFlags>Y4, X16, X32, Y64, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="128" />
+  <Height value="128" />
+  <MipLevels value="6" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>sc1_05_stripe_lod.dds</FileName>
+ </Item>
+ <Item>
+  <Name>sc1_04_em_club_lod_csc1_04_em_club_lod</Name>
+  <Unk32 value="128" />
+  <Usage>DIFFUSE</Usage>
+  <UsageFlags>X64, Y64, X256, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="256" />
+  <Height value="256" />
+  <MipLevels value="7" />
+  <Format>D3DFMT_DXT5</Format>
+  <FileName>sc1_04_em_club_lod_csc1_04_em_club_lod.dds</FileName>
+ </Item>
+ <Item>
+  <Name>prop_lod_dds</Name>
+  <Unk32 value="32" />
+  <Usage>DIFFUSE</Usage>
+  <UsageFlags>X16, X64, X128, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="256" />
+  <Height value="256" />
+  <MipLevels value="3" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>prop_lod_dds.dds</FileName>
+ </Item>
+ <Item>
+  <Name>slod2_veg_02slod2_veg_02_a</Name>
+  <Unk32 value="128" />
+  <Usage>DIFFUSE</Usage>
+  <UsageFlags>X64, Y64, X256, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="256" />
+  <Height value="256" />
+  <MipLevels value="7" />
+  <Format>D3DFMT_DXT5</Format>
+  <FileName>slod2_veg_02slod2_veg_02_a.dds</FileName>
+ </Item>
+ <Item>
+  <Name>sc1_05_ground_lod</Name>
+  <Unk32 value="128" />
+  <Usage>DIFFUSE</Usage>
+  <UsageFlags>NOT_HALF, Y4, X16, X32, Y64, X256, Y512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="1024" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>sc1_05_ground_lod.dds</FileName>
+ </Item>
+ <Item>
+  <Name>prop_billboard_back_lod</Name>
+  <Unk32 value="128" />
+  <Usage>DIFFUSE</Usage>
+  <UsageFlags>X32, Y64, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="64" />
+  <Height value="64" />
+  <MipLevels value="5" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>prop_billboard_back_lod.dds</FileName>
+ </Item>
+ <Item>
+  <Name>slod_prop_tree_lficus_04_2</Name>
+  <Unk32 value="32" />
+  <Usage>DIFFUSE</Usage>
+  <UsageFlags>X8, X16, X32, X64, X128, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="128" />
+  <Height value="128" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT5</Format>
+  <FileName>slod_prop_tree_lficus_04_2.dds</FileName>
+ </Item>
+</TextureDictionary>

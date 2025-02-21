@@ -1,0 +1,819 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureDictionary>
+ <Item>
+  <Name>hn_gpub_brick_wall1_h</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>hn_gpub_brick_wall1_h.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_shell_Tile_Ceramic_Wc_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_shell_Tile_Ceramic_Wc_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_baseboard_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="10" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_baseboard_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_ceil_moul_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="10" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_ceil_moul_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_ceil_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="10" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_ceil_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_door_frame_moul_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_door_frame_moul_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_shell_YellowCon_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_shell_YellowCon_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_ceil_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="10" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_ceil_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>hn_gpub_build_brick_n</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>hn_gpub_build_brick_n.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_shell_Green_Conc_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_shell_Green_Conc_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_shell_Ceramic_Tile_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_shell_Ceramic_Tile_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_door2_frame_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_door2_frame_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>nxg_tl_v_ranch_plaster_decals_s</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>nxg_tl_v_ranch_plaster_decals_s.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_baseboard_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="10" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_baseboard_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_shell_Green_Conc_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_shell_Green_Conc_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>gz_v_bk_wallnormal_n</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="256" />
+  <Height value="256" />
+  <MipLevels value="7" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>gz_v_bk_wallnormal_n.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_shell_Gold_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_shell_Gold_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_wall_panel_moul_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="10" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_wall_panel_moul_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_window_frame1_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_window_frame1_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_shell_Wood_Parquet_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_shell_Wood_Parquet_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_door2_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_door2_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_shell_Wood3_tile_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_shell_Wood3_tile_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_ceil_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="10" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_ceil_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>nxg_tl_v_ranch_plaster_decals_n</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>nxg_tl_v_ranch_plaster_decals_n.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_door2_frame_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_door2_frame_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_shell_Tile_Ceramic_Wc_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_shell_Tile_Ceramic_Wc_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_shell_Ceil_Wodd_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_shell_Ceil_Wodd_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_door2_frame_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_door2_frame_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_shell_Wood_Parquet_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_shell_Wood_Parquet_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_shell_Wood3_tile_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_shell_Wood3_tile_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_shell_Ceil_Wodd_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_shell_Ceil_Wodd_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_shell_Wood_Parquet_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_shell_Wood_Parquet_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_window_frame1_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_window_frame1_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_shell_Tile_Ceramic_Wc_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_shell_Tile_Ceramic_Wc_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>nxg_tl_v_ranch_plaster_decalsnxg_tl_v_ranch_plaster_decals_a</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X64, Y64, X256, Y512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT5</Format>
+  <FileName>nxg_tl_v_ranch_plaster_decalsnxg_tl_v_ranch_plaster_decals_a.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_door_frame_moul_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_door_frame_moul_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_door1_tile_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_door1_tile_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_wall_panel_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="10" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_wall_panel_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_shell_Wood3_tile_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_shell_Wood3_tile_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_wall_panel_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="10" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_wall_panel_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_door1_tile_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_door1_tile_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_door1_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_door1_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_door2_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_door2_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_wall_panel_moul_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="10" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_wall_panel_moul_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_shell_Green_Conc_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_shell_Green_Conc_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_wall_panel_moul_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="10" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_wall_panel_moul_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_baseboard_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="10" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_baseboard_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>hn_hpub_brick_B_1</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, X2048, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="2048" />
+  <Height value="2048" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>hn_hpub_brick_B_1.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_shell_Ceramic_Tile_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_shell_Ceramic_Tile_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>tl_v_recycle_concrete_normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>tl_v_recycle_concrete_normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_shell_Wc_WallPapper_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_shell_Wc_WallPapper_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_door_frame_moul_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_door_frame_moul_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_shell_Wc_WallPapper_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_shell_Wc_WallPapper_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_door1_tile_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_door1_tile_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_door2_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_door2_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_shell_Ceramic_Tile_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_shell_Ceramic_Tile_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_door1_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_door1_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>nt_ran_olay1nt_ran_olay1_a</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X64, Y64, X256, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="256" />
+  <Height value="256" />
+  <MipLevels value="7" />
+  <Format>D3DFMT_DXT5</Format>
+  <FileName>nt_ran_olay1nt_ran_olay1_a.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_wall_panel_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="10" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_wall_panel_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_shell_Wc_WallPapper_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_shell_Wc_WallPapper_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>hn_cigar_glass_a</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X64, Y64, X256, Y512, Y1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT3</Format>
+  <FileName>hn_cigar_glass_a.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_shell_Gold_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_shell_Gold_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_shell_Ceil_Wodd_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_shell_Ceil_Wodd_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_window_frame1_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_window_frame1_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_shell_Gold_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_shell_Gold_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_ceil_moul_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="10" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_ceil_moul_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_door1_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_door1_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_ceil_moul_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="10" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_ceil_moul_Diffuse.dds</FileName>
+ </Item>
+</TextureDictionary>

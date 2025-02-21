@@ -1,0 +1,1487 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Drawable>
+ <Name>hn_cigar_lounge_proxy</Name>
+ <BoundingSphereCenter x="-1.74169827" y="-0.7643609" z="1.48336518" />
+ <BoundingSphereRadius value="9.875519" />
+ <BoundingBoxMin x="-9.635174" y="-6.20560932" z="-0.8855441" />
+ <BoundingBoxMax x="6.15177727" y="4.67688751" z="3.85227442" />
+ <LodDistHigh value="9998" />
+ <LodDistMed value="9998" />
+ <LodDistLow value="9998" />
+ <LodDistVlow value="9998" />
+ <FlagsHigh value="1" />
+ <FlagsMed value="0" />
+ <FlagsLow value="0" />
+ <FlagsVlow value="0" />
+ <Unknown9A value="9998" />
+ <ShaderGroup>
+  <Unknown30 value="11" />
+  <Shaders>
+   <Item>
+    <Name>normal_spec</Name>
+    <FileName>normal_spec.sps</FileName>
+    <RenderBucket value="0" />
+    <Parameters>
+     <Item name="DiffuseSampler" type="Texture">
+      <Name>seamless_shell_Wood_Parquet_Diffuse</Name>
+     </Item>
+     <Item name="BumpSampler" type="Texture">
+      <Name>seamless_shell_Wood_Parquet_Normal</Name>
+     </Item>
+     <Item name="SpecSampler" type="Texture">
+      <Name>seamless_shell_Wood_Parquet_Glossiness</Name>
+     </Item>
+     <Item name="HardAlphaBlend" type="Vector" x="1" y="0" z="0" w="0" />
+     <Item name="useTessellation" type="Vector" x="0" y="0" z="0" w="0" />
+     <Item name="wetnessMultiplier" type="Vector" x="1" y="0" z="0" w="0" />
+     <Item name="bumpiness" type="Vector" x="1" y="0" z="0" w="0" />
+     <Item name="specMapIntMask" type="Vector" x="1" y="0" z="0" w="0" />
+     <Item name="specularIntensityMult" type="Vector" x="0.5" y="0" z="0" w="0" />
+     <Item name="specularFalloffMult" type="Vector" x="0.5" y="0" z="0" w="0" />
+     <Item name="specularFresnel" type="Vector" x="0.75" y="0" z="0" w="0" />
+    </Parameters>
+   </Item>
+   <Item>
+    <Name>normal_spec</Name>
+    <FileName>normal_spec.sps</FileName>
+    <RenderBucket value="0" />
+    <Parameters>
+     <Item name="DiffuseSampler" type="Texture">
+      <Name>seamless_shell_Wood3_tile_Diffuse</Name>
+     </Item>
+     <Item name="BumpSampler" type="Texture">
+      <Name>seamless_shell_Wood3_tile_Normal</Name>
+     </Item>
+     <Item name="SpecSampler" type="Texture">
+      <Name>seamless_shell_Wood3_tile_Glossiness</Name>
+     </Item>
+     <Item name="HardAlphaBlend" type="Vector" x="1" y="0" z="0" w="0" />
+     <Item name="useTessellation" type="Vector" x="0" y="0" z="0" w="0" />
+     <Item name="wetnessMultiplier" type="Vector" x="1" y="0" z="0" w="0" />
+     <Item name="bumpiness" type="Vector" x="1" y="0" z="0" w="0" />
+     <Item name="specMapIntMask" type="Vector" x="1" y="0" z="0" w="0" />
+     <Item name="specularIntensityMult" type="Vector" x="0.5" y="0" z="0" w="0" />
+     <Item name="specularFalloffMult" type="Vector" x="0.5" y="0" z="0" w="0" />
+     <Item name="specularFresnel" type="Vector" x="0.75" y="0" z="0" w="0" />
+    </Parameters>
+   </Item>
+  </Shaders>
+ </ShaderGroup>
+ <DrawableModelsHigh>
+  <Item>
+   <RenderMask value="255" />
+   <Flags value="0" />
+   <HasSkin value="0" />
+   <BoneIndex value="0" />
+   <Unknown1 value="0" />
+   <Geometries>
+    <Item>
+     <ShaderIndex value="0" />
+     <BoundingBoxMin x="-9.635174" y="-6.20560932" z="-0.8855441" w="0" />
+     <BoundingBoxMax x="6.15177727" y="4.67688751" z="3.85227442" w="0" />
+     <VertexBuffer>
+      <Flags value="0" />
+      <Layout type="GTAV1">
+       <Position />
+       <Normal />
+       <Colour0 />
+       <TexCoord0 />
+       <Tangent />
+      </Layout>
+      <Data>
+       -6.693239 -3.57760119 -0.8855441   0 0 1   50 128 3 255   -0.4427612 -0.4612072   -2.03E-05 1 0 1
+       -6.693239 -4.87566662 -0.8855441   0 0 1   50 128 4 255   -0.8764231 -0.4612072   2.03E-05 1 0 1
+       6.00600624 2.68011642 -0.8855441   0 0 1   191 57 6 255   1.64783859 3.7814002   0 0.9999999 0 1
+       6.00600624 2.68011642 -0.8855441   0 0 1   191 57 6 255   1.64783859 3.7814002   1E-07 1 0 1
+       6.00600624 4.67688751 -0.8855441   0 0 1   130 104 5 255   2.31492662 3.7814002   0 1 0 1
+       6.00600624 -2.094557 -0.8855441   0 0 1   196 50 7 255   0.0526992 3.7814002   0 1 0 1
+       6.00600624 3.154678 -0.8855441   0 0 1   185 63 6 255   1.80638158 3.7814002   1E-07 1 0 1
+       6.00600624 3.154678 -0.8855441   0 0 1   185 63 6 255   1.80638158 3.7814002   1E-07 1 0 1
+       6.00600624 -6.20560837 -0.8855441   0 0 1   174 75 6 255   -1.32073486 3.7814002   0 1 0 1
+       6.00600624 -3.57760072 -0.8855441   0 0 1   196 50 7 255   -0.4427612 3.7814002   0 1 0 1
+       6.00600624 -3.57760072 -0.8855441   1E-07 0 1   196 50 7 255   -0.4427612 3.7814002   0 0.9999999 0 1
+       6.00600624 -4.87566566 -0.8855441   0 0 1   178 71 6 255   -0.8764231 3.7814002   -1E-07 1 0 1
+       6.00600624 0.791084 -0.8855441   0 0 1   196 50 7 255   1.0167439 3.7814002   0 0.9999999 0 1
+       6.00600624 0.791084 -0.8855441   0 0 1   196 50 7 255   1.0167439 3.7814002   0 1 0 1
+       6.00600624 0.6015393 -0.8855441   0 0 1   196 50 7 255   0.9534203 3.7814002   0 1 0 1
+       6.00600624 0.6015393 -0.8855441   -1E-07 0 1   196 50 7 255   0.9534203 3.7814002   0 1 0 1
+       6.00600624 -2.35775971 -0.8855441   0 0 1   196 50 7 255   -0.0352324 3.7814002   0 0.9999999 0 1
+       6.00600624 -2.35775971 -0.8855441   0 0 1   196 50 7 255   -0.0352324 3.7814002   1E-07 1 0 1
+       6.00600624 2.901281 -0.8855441   0 0 1   197 48 6 255   1.7217257 3.7814002   0 1 0 1
+       6.00600624 2.901281 -0.8855441   0 0 1   197 48 6 255   1.7217257 3.7814002   0 0.9999999 0 1
+       6.00600624 -6.035475 -0.8855441   0 0 1   185 64 7 255   -1.26389623 3.7814002   0 1 0 1
+       6.00600624 -6.035475 -0.8855441   0 0 0.9999999   185 64 7 255   -1.26389623 3.7814002   0 1 0 1
+       6.00600624 4.45750046 -0.8855441   0 0 1   137 100 5 255   2.241633 3.7814002   0 1 0 1
+       6.00600624 4.45750046 -0.8855441   0 0 1   137 100 5 255   2.241633 3.7814002   1E-07 0.9999999 0 1
+       6.00600624 -2.15008187 -0.8855441   1E-07 0 1   196 50 7 255   0.0341493 3.7814002   0 1 0 1
+       6.00600624 -2.15008187 -0.8855441   0 0 1   196 50 7 255   0.0341493 3.7814002   1E-07 1 0 1
+       2.13545656 2.68011618 -0.8855441   0 0 1   50 128 3 255   1.64783847 2.48831367   0 1 0 1
+       2.13545656 2.68011618 -0.8855441   0 0 1   50 128 3 255   1.64783859 2.48831367   0 1 0 1
+       2.13545656 2.68011618 -0.8855441   0 0 1   50 128 3 255   1.64783859 2.48831367   0 1 0 1
+       2.13545656 2.68011618 -0.8855441   0 0 1   50 128 3 255   1.64783859 2.48831367   4E-07 0.9999999 0 1
+       2.13545656 4.47730446 -0.8855441   0 0 1   50 128 3 255   2.24824882 2.48831367   0 0 0 1
+       2.13545656 4.47730446 -0.8855441   0 0 1   50 128 3 255   2.248249 2.488314   1.8E-06 1 0 1
+       2.13545656 4.47730446 -0.8855441   0 0 0.9999999   50 128 3 255   2.248249 2.488314   1 0 0 -1
+       2.13545656 4.47730446 -0.8855441   0 0 1   50 128 3 255   2.24824929 2.488314   -3.71E-05 1 0 1
+       2.13545656 -2.09455729 -0.8855441   0 0 0.9999999   50 128 3 255   0.0526992 2.48831367   0 1 0 1
+       2.13545656 -2.09455729 -0.8855441   0 0 1   50 128 3 255   0.0526992 2.48831367   0 0.9999999 0 1
+       2.13545656 -2.09455729 -0.8855441   0 0 1   50 128 3 255   0.0526992 2.48831367   0 1 0 1
+       2.13545656 -2.09455729 -0.8855441   0 0 1   50 128 3 255   0.0526992 2.48831367   0 1 0 1
+       2.13545656 -2.09455729 3.85227442   0 0 -1   50 128 3 255   0.0526992 2.48831367   0 1 0 -1
+       2.13545656 3.15467787 -0.8855441   0 0 1   50 128 3 255   1.80638158 2.48831367   2.9E-06 0.9999999 0 1
+       2.13545656 3.15467787 -0.8855441   0 0 1   50 128 3 255   1.8063817 2.488314   6E-07 1 0 1
+       2.13545656 3.15467787 -0.8855441   0 0 0.9999999   50 128 3 255   1.80638158 2.48831367   0 1 0 1
+       2.13545656 3.15467787 -0.8855441   0 0 1   50 128 3 255   1.8063817 2.48831367   0 1 0 1
+       2.13545656 -6.20560837 -0.8855441   0 0 0.9999999   62 126 3 255   -1.32073474 2.48831344   0 1 0 1
+       2.13545656 -6.20560837 -0.8855441   0 0 1   62 126 3 255   -1.32073474 2.48831344   -4.3E-06 0.9999999 0 1
+       2.13545656 -3.577601 -0.8855441   0 0 0.9999999   50 128 3 255   -0.4427612 2.48831367   0 1 0 1
+       2.13545656 -3.577601 -0.8855441   0 0 1   50 128 3 255   -0.4427612 2.488314   5E-07 1 0 1
+       2.13545656 -3.577601 -0.8855441   0 0 1   50 128 3 255   -0.4427612 2.48831367   0 0.9999999 0 1
+       2.13545656 -4.87566566 -0.8855441   0 0 1   50 128 3 255   -0.8764231 2.48831367   -3E-07 1 0 1
+       2.13545656 -4.87566566 -0.8855441   0 0 0.9999999   50 128 3 255   -0.8764231 2.48831367   0 0.9999999 0 1
+       2.13545656 -4.87566566 -0.8855441   0 0 1   50 128 3 255   -0.8764231 2.48831367   0 0.9999999 0 1
+       2.13545656 0.7910838 -0.8855441   0 0 1   50 128 3 255   1.016744 2.488314   -3.6E-06 1 0 1
+       2.13545656 0.7910838 -0.8855441   0 0 1   50 128 3 255   1.0167439 2.48831367   0 1 0 1
+       2.13545656 0.7910838 -0.8855441   0 0 1   50 128 3 255   1.016744 2.488314   3E-07 1 0 1
+       2.13545656 0.7910838 -0.8855441   0 0 1   50 128 3 255   1.01674378 2.48831367   0 0.9999999 0 1
+       2.13545656 -2.35776 -0.8855441   0 0 1   50 128 3 255   -0.0352324 2.48831367   0 1 0 1
+       2.13545656 -2.35776 -0.8855441   0 0 1   50 128 3 255   -0.0352324 2.48831367   6E-07 0.9999999 0 1
+       2.13545656 -2.35776 -0.8855441   0 0 1   50 128 3 255   -0.0352324 2.488314   3.3E-06 1 0 1
+       2.13545656 2.90128088 -0.8855441   0 0 1   50 128 3 255   1.72172558 2.48831367   0 1 0 1
+       2.13545656 2.90128088 -0.8855441   0 0 1   50 128 3 255   1.7217257 2.48831367   0 1 0 1
+       2.13545656 2.90128088 -0.8855441   0 0 1   50 128 3 255   1.72172582 2.488314   2.8E-06 1 0 1
+       2.13545656 2.90128088 -0.8855441   0 0 1   50 128 3 255   1.7217257 2.48831367   0 0.9999999 0 1
+       2.13545656 0.601541 -0.8855441   0 0 1   50 128 3 255   0.9534209 2.48831367   0 1 0 1
+       2.13545656 0.601541 -0.8855441   0 0 1   50 128 3 255   0.9534209 2.48831367   0 0.9999999 0 1
+       2.13545656 0.601541 -0.8855441   0 0 0.9999999   50 128 3 255   0.9534209 2.48831367   -3.8E-06 0.9999999 0 1
+       2.13545656 0.601541 -0.8855441   0 0 1   50 128 3 255   0.953421 2.48831367   0 1 0 1
+       2.13545656 0.601541 3.85227442   0 0 -1   50 128 3 255   0.953421 2.48831367   0 1 0 -1
+       2.13545656 -6.035475 -0.8855441   0 0 1   60 127 3 255   -1.26389611 2.48831344   0 1 0 1
+       2.13545656 -6.035475 -0.8855441   0 0 1   60 127 3 255   -1.26389623 2.48831344   -5E-07 1 0 1
+       2.13545656 -6.035475 -0.8855441   0 0 1   60 127 3 255   -1.26389635 2.48831367   -4.2E-06 1 0 1
+       2.13545656 -6.035475 -0.8855441   1E-07 0 1   60 127 3 255   -1.26389623 2.48831367   0 0.9999999 0 1
+       2.13545656 4.45750046 -0.8855441   0 0 1   50 128 3 255   2.241633 2.48831367   4E-07 1 0 1
+       2.13545656 4.45750046 -0.8855441   0 0 1   50 128 3 255   2.24163318 2.488314   3.61E-05 1 0 1
+       2.13545656 4.45750046 -0.8855441   0 0 1   50 128 3 255   2.241633 2.48831367   -1.86E-05 1 0 1
+       2.13545656 -2.150082 -0.8855441   0 0 1   50 128 3 255   0.0341493 2.48831367   0 1 0 1
+       2.13545656 -2.150082 -0.8855441   0 0 1   50 128 3 255   0.0341493 2.48831367   3.4E-06 0.9999999 0 1
+       2.13545656 -2.150082 -0.8855441   0 0 1   50 128 3 255   0.0341493 2.48831367   0 1 0 1
+       -9.534503 2.6801157 -0.8855441   0 0 1   50 128 3 255   1.64783859 -1.41042614   0 0.9999999 0 1
+       -9.534503 4.67688656 -0.8855441   0 0 0.9999999   50 128 3 255   2.31492662 -1.41042614   0 1 0 1
+       -9.534503 4.483905 -0.8855441   0 0 1   50 128 3 255   2.25045443 -1.41042614   0 0.9999999 0 1
+       -9.534503 -2.09455585 -0.8855441   0 0 1   50 128 3 255   0.0527 -1.41042614   0 1 0 1
+       -9.534503 3.15467739 -0.8855441   0 0 1   50 128 3 255   1.80638158 -1.41042614   -1E-07 1 0 1
+       -9.534503 0.7910833 -0.8855441   0 0 1   50 128 3 255   1.0167439 -1.41042614   2E-07 0.9999999 0 1
+       -9.534503 2.9012804 -0.8855441   0 0 1   50 128 3 255   1.7217257 -1.41042614   0 1 0 1
+       -9.534503 0.6015425 -0.8855441   0 0 1   50 128 3 255   0.9534215 -1.41042614   -1E-07 1 0 1
+       -9.534503 4.4574995 -0.8855441   0 0 1   50 128 3 255   2.241633 -1.41042614   0 1 0 1
+       2.135457 4.470703 -0.8855441   0.0491171 1.2E-06 0.998793   50 128 3 255   2.24604368 2.488314   2.69E-05 1 -2.5E-06 1
+       2.135457 4.67688751 -0.8855441   0 0 1   50 128 3 255   2.31492662 2.488314   0 1 0 1
+       2.135457 4.67688751 -0.8855441   0 0 1   50 128 3 255   2.31492639 2.488314   1.8E-06 1 0 1
+       6.15177727 -2.094557 -0.8855441   2E-07 0 0.9999999   196 50 7 255   0.0526992 3.8301   0 1 0 1
+       6.15177727 0.6015394 -0.8855441   -3E-07 0 1   196 50 7 255   0.9534203 3.8301   0 1 0 1
+       6.15177727 -2.15008378 -0.8855441   6E-07 0 1   196 50 7 255   0.0341487 3.8301   0 0.9999999 0 1
+       -1.73509181 -6.205609 -0.8855441   0 0 1   50 128 3 255   -1.32073486 1.1952275   -1E-07 1 0 1
+       -1.73509181 -4.875666 -0.8855441   0 0 1   50 128 3 255   -0.8764231 1.1952275   -2E-07 1 0 1
+       -1.73509181 -6.03547525 -0.8855441   0 0 0.9999999   50 128 3 255   -1.26389623 1.1952275   0 1 0 1
+       -1.73509192 -2.09455729 -0.8855441   0 0 1   50 128 3 255   0.0526992 1.1952275   0 0.9999999 0 1
+       -1.73509192 -2.09455729 -0.8855441   0 0 1   50 128 3 255   0.0526992 1.1952275   0 1 0 1
+       -1.73509192 -2.09455729 3.85227442   0 0 -1   50 128 3 255   0.0526992 1.1952275   0 0.9999999 0 -1
+       -1.73509192 -3.577601 -0.8855441   0 0 1   50 128 3 255   -0.4427612 1.1952275   -2E-07 1 0 1
+       -1.73509192 -2.35776 -0.8855441   0 0 1   50 128 3 255   -0.0352324 1.1952275   0 1 0 1
+       -1.73509192 -2.150082 -0.8855441   0 0 1   50 128 3 255   0.0341493 1.1952275   0 1 0 1
+       -1.735092 0.7910837 -0.8855441   0 0 1   50 128 3 255   1.0167439 1.1952275   0 1 0 1
+       -1.735092 0.6015428 -0.8855441   0 0 1   50 128 3 255   0.9534215 1.1952275   -1E-07 1 0 1
+       -1.735092 0.6015428 3.85227442   0 0 -1   50 128 3 255   0.9534215 1.1952275   0 1 0 -1
+       -1.73509216 2.68011618 -0.8855441   0 0 1   50 128 3 255   1.64783859 1.1952275   0 1 0 1
+       -1.73509216 2.68011618 -0.8855441   0 0 1   50 128 3 255   1.64783859 1.1952275   0 1 0 1
+       -1.73509216 3.15467787 -0.8855441   0 0 1   50 128 3 255   1.80638158 1.1952275   0 1 0 1
+       -1.73509216 2.90128088 -0.8855441   0 0 1   50 128 3 255   1.7217257 1.1952275   0 1 0 1
+       -1.73509216 2.90128088 -0.8855441   0 0 0.9999999   50 128 3 255   1.7217257 1.1952275   0 1 0 1
+       -1.73509228 4.676887 -0.8855441   0 0 1   50 128 4 255   2.31492662 1.1952275   0 0.9999999 0 1
+       -1.73509228 4.48390532 -0.8855441   0 0 1   50 128 4 255   2.25045443 1.1952275   0 0.9999999 0 1
+       -1.73509228 4.4575 -0.8855441   0 0 1   50 128 4 255   2.241633 1.1952275   0 1 0 1
+       -6.558551 2.680116 -0.8855441   -4E-07 0 1   50 128 3 255   1.64783883 -0.4162105   4E-07 1 0 1
+       -6.558551 -2.09455752 -0.8855441   0 0 1   50 128 4 255   0.0526992 -0.4162102   0 0.9999999 0 1
+       -6.558551 -2.09455752 -0.8855441   -6.3E-06 0 1   50 128 4 255   0.0526992 -0.4162102   -2E-07 1 0 1
+       -6.558551 2.90128064 -0.8855441   0 0 1   50 128 3 255   1.72172582 -0.4162103   1.1E-06 0.9999999 0 1
+       -9.635174 3.15467739 -0.8855441   0 0 1   50 128 3 255   1.80638158 -1.4440589   0 1 0 1
+       -9.635174 4.4574995 -0.8855441   0 0 1   50 128 3 255   2.241633 -1.4440589   0 1 0 1
+       -6.5879755 -3.57760119 -0.8855441   0 0 1   50 128 3 255   -0.4427612 -0.4260402   -1.9E-05 1 0 1
+       -6.5879755 -4.87566662 -0.8855441   0 0 1   50 128 12 255   -0.8764231 -0.4260402   1.9E-05 1 0 1
+       -6.5400033 -6.20560932 -0.8855441   0 0 1   52 128 12 255   -1.32073486 -0.4100137   0 1 0 1
+       -6.5400033 -6.03547573 -0.8855441   0 0 0.9999999   50 128 14 255   -1.26389623 -0.4100137   -2E-07 1 0 1
+       -6.540004 4.67688656 -0.8855441   0 0 1   50 128 3 255   2.31492662 -0.4100137   0 0.9999999 0 1
+       -6.540004 -2.11310434 -0.8855441   0 0 1   50 128 4 255   0.046503 -0.4100137   0 1 0 1
+       -6.540004 -2.11310434 -0.8855441   0 0 0.9999999   50 128 4 255   0.0526992 -0.4100139   0 1 0 1
+       -6.540004 2.661569 -0.8855441   0 0 1   50 128 3 255   1.64164245 -0.4100139   4E-07 1 0 1
+       -6.540004 2.661569 -0.8855441   -1.2E-06 0 1   50 128 3 255   1.64164257 -0.4100142   6E-07 1 0 1
+       -6.540004 4.483905 -0.8855441   0 0 1   50 128 3 255   2.25045443 -0.4100137   0 1 0 1
+       -6.540004 3.15467763 -0.8855441   0 0 1   50 128 3 255   1.80638158 -0.4100137   -1.1E-06 0.9999999 0 1
+       -6.540004 -2.0760107 -0.8855441   0 0 0.9999999   50 128 4 255   0.0588955 -0.4100139   0 1 0 1
+       -6.540004 -2.0760107 -0.8855441   1.58E-05 0 1   50 128 4 255   0.0588955 -0.4100139   -3E-07 1 0 1
+       -6.540004 -2.0760107 -0.8855441   -1.92E-05 0 1   50 128 4 255   0.0588954 -0.4100139   -3E-07 1 0 1
+       -6.540004 -3.57760119 -0.8855441   0 0 1   50 128 3 255   -0.4427612 -0.4100137   -1.9E-06 1 0 1
+       -6.540004 0.7910835 -0.8855441   0 0 1   50 128 3 255   1.0167439 -0.4100137   3E-07 0.9999999 0 1
+       -6.540004 2.91982746 -0.8855441   0 0 1   50 128 3 255   1.727922 -0.4100142   -2.2E-06 1 0 1
+       -6.540004 2.91982746 -0.8855441   1.7E-06 0 1   50 128 3 255   1.72792208 -0.4100137   0 1 0 1
+       -6.540004 -4.87566662 -0.8855441   -1E-07 0 1   50 128 14 255   -0.8764231 -0.4100137   1.7E-06 1 0 1
+       -6.540004 -2.35776019 -0.8855441   0 0 1   50 128 5 255   -0.0352324 -0.4100137   0 1 0 1
+       -6.540004 0.6015426 -0.8855441   0 0 1   50 128 3 255   0.9534215 -0.4100137   -1E-07 1 0 1
+       -6.540004 2.88273382 -0.8855441   0 0 0.9999999   50 128 3 255   1.72172582 -0.410014   9.6E-06 1 0 1
+       -6.540004 2.88273382 -0.8855441   1E-07 0 1   50 128 3 255   1.71552992 -0.4100138   3.3E-06 1 0 1
+       -6.540004 4.4574995 -0.8855441   0 0 1   50 128 3 255   2.241633 -0.4100137   0 0.9999999 0 1
+       -6.540004 2.69866276 -0.8855441   0 0 0.9999999   50 128 3 255   1.64783883 -0.4100142   0 1 0 1
+       -6.540004 2.69866276 -0.8855441   2.2E-06 0 1   50 128 3 255   1.65403461 -0.4100136   3.9E-06 1 0 1
+       -6.540004 -2.15008044 -0.8855441   0 0 1   50 128 5 255   0.0341499 -0.4100137   2.1E-06 1 0 1
+       -6.52145672 2.680116 -0.8855441   0 0 1   50 128 3 255   1.64783883 -0.4100142   1 0 0 -1
+       -6.52145672 2.680116 -0.8855441   6E-07 0 1   50 128 3 255   1.64783847 -0.4038173   3.4E-06 1 0 1
+       -6.52145672 2.680116 -0.8855441   0 0 1   50 128 3 255   1.64783859 -0.4038177   3E-07 1 0 1
+       -6.52145672 -2.09455752 -0.8855441   0 0 1   50 128 4 255   0.0526992 -0.4100139   1 0 0 -1
+       -6.52145672 -2.09455752 -0.8855441   0 0 1   50 128 4 255   0.0526991 -0.4038175   4.3E-06 1 0 1
+       -6.52145672 -2.09455752 -0.8855441   5.2E-06 0 1   50 128 4 255   0.0526992 -0.4038177   -2E-07 1 0 1
+       -6.52145672 2.90128064 -0.8855441   0 0 1   50 128 3 255   1.72172582 -0.410014   1 0 0 -1
+       -6.52145672 2.90128064 -0.8855441   5E-07 0 1   50 128 3 255   1.72172606 -0.4038174   0 1 0 1
+       -6.52145672 2.90128064 -0.8855441   0 0 1   50 128 3 255   1.72172618 -0.4038175   3.2E-06 1 0 1
+       -6.640608 -4.82303524 -0.8855441   -3E-07 0 1   50 128 4 255   -0.8588399 -0.443624   9.6E-06 1 0 1
+       -6.640608 -3.57760119 -0.8855441   0 0 1   50 128 3 255   -0.4427612 -0.4436237   -2.03E-05 1 0 1
+       -6.640608 -4.87566662 -0.8855441   0 0 1   50 128 8 255   -0.8764231 -0.4436237   2.03E-05 1 0 1
+       -6.640608 -3.63023448 -0.8855441   0 0 1   50 128 3 255   -0.460345 -0.443624   -9.6E-06 1 0 1
+      </Data>
+     </VertexBuffer>
+     <IndexBuffer>
+      <Data>
+       43 21 67 110 141 111 100 149 144 82 138 133 153 104 107 100 34 96 2 61 27 101 147 133
+       114 84 80 120 94 121 136 98 132 79 141 127 154 119 136 7 60 19 156 154 1 155 157 118
+       72 86 30 85 128 141 132 99 137 92 69 94 51 102 64 32 86 87 53 3 29 48 9 47
+       110 88 109 116 85 117 76 5 35 6 71 40 128 111 141 5 90 15 142 126 145 149 123 144
+       115 134 128 133 126 112 138 130 150 128 135 152 132 118 157 114 131 138 153 140 146 140 143 146
+       156 119 154 155 0 157 125 133 147 72 23 86 94 49 93 157 136 132 137 100 144 115 81 83
+       99 74 100 46 17 56 26 107 104 150 102 138 127 109 122 68 11 48 152 106 128 45 93 50
+       15 36 5 82 112 77 103 38 97 41 108 59 28 101 54 121 93 136 14 52 62 89 24 91
+       37 102 95 86 4 87 111 33 110 78 127 122 57 25 75 101 138 102 42 111 106 98 55 99
+       139 134 115 124 129 113 43 8 21 110 127 141 100 96 149 82 84 138 153 146 104 100 74 34
+       2 18 61 101 105 147 114 138 84 120 92 94 136 93 98 79 85 141 7 39 60 85 81 128
+       132 98 99 92 44 69 51 101 102 53 12 3 48 11 9 110 31 88 116 81 85 76 24 5
+       6 22 71 128 106 111 5 89 90 142 112 126 94 70 49 157 154 136 137 99 100 115 128 81
+       99 55 74 46 10 17 26 58 107 150 95 102 127 110 109 68 20 11 152 108 106 45 98 93
+       15 63 36 82 133 112 103 66 38 41 106 108 28 105 101 121 94 93 14 13 52 89 5 24
+       37 65 102 86 23 4 111 73 33 78 79 127 57 16 25 101 133 138 42 73 111 98 45 55
+       139 151 134 124 148 129
+      </Data>
+     </IndexBuffer>
+    </Item>
+    <Item>
+     <ShaderIndex value="1" />
+     <BoundingBoxMin x="-9.532279" y="-2.09233379" z="-0.8855441" w="0" />
+     <BoundingBoxMax x="-6.51542568" y="2.677892" z="-0.8855441" w="0" />
+     <VertexBuffer>
+      <Flags value="0" />
+      <Layout type="GTAV1">
+       <Position />
+       <Normal />
+       <Colour0 />
+       <TexCoord0 />
+       <Tangent />
+      </Layout>
+      <Data>
+       -9.532279 2.67789173 -0.8855441   0 0 1   50 128 3 255   1.33244646 -0.7258341   0 0.9999999 0 1
+       -9.532279 -2.09233379 -0.8855441   0 0 1   50 128 3 255   -0.3438531 -0.7258341   0 1 0 1
+       -6.51542568 2.677892 -0.8855441   0 0 1   50 128 3 255   1.33244646 0.3343146   0 1 0 1
+       -6.51542568 -2.09233356 -0.8855441   0 0 0.9999999   50 128 3 255   -0.3438531 0.3343146   0 0.9999999 0 1
+      </Data>
+     </VertexBuffer>
+     <IndexBuffer>
+      <Data>1 2 0 1 3 2</Data>
+     </IndexBuffer>
+    </Item>
+   </Geometries>
+  </Item>
+ </DrawableModelsHigh>
+ <Lights>
+  <Item>
+   <Position x="3.60049915" y="1.35692215" z="1.45220649" />
+   <Colour r="85" g="32" b="4" />
+   <Flashiness value="0" />
+   <Intensity value="5.6" />
+   <Flags value="286720" />
+   <BoneId value="0" />
+   <Type>Point</Type>
+   <GroupId value="0" />
+   <TimeFlags value="1048320" />
+   <Falloff value="4.6" />
+   <FalloffExponent value="60" />
+   <CullingPlaneNormal x="0" y="0" z="1" />
+   <CullingPlaneOffset value="4.5" />
+   <Unknown45 value="0" />
+   <Unknown46 value="0" />
+   <VolumeIntensity value="1" />
+   <VolumeSizeScale value="1" />
+   <VolumeOuterColour r="255" g="255" b="255" />
+   <LightHash value="150" />
+   <VolumeOuterIntensity value="1" />
+   <CoronaSize value="0" />
+   <VolumeOuterExponent value="1" />
+   <LightFadeDistance value="100" />
+   <ShadowFadeDistance value="0" />
+   <SpecularFadeDistance value="0" />
+   <VolumetricFadeDistance value="0" />
+   <ShadowNearClip value="0.01" />
+   <CoronaIntensity value="1" />
+   <CoronaZBias value="0.1" />
+   <Direction x="0" y="0" z="-1" />
+   <Tangent x="1" y="3.019916E-07" z="0" />
+   <ConeInnerAngle value="0" />
+   <ConeOuterAngle value="0" />
+   <Extent x="1" y="1" z="1" />
+   <ProjectedTextureHash />
+  </Item>
+  <Item>
+   <Position x="3.60049915" y="-2.70720673" z="1.45220649" />
+   <Colour r="85" g="32" b="4" />
+   <Flashiness value="0" />
+   <Intensity value="5.6" />
+   <Flags value="286720" />
+   <BoneId value="0" />
+   <Type>Point</Type>
+   <GroupId value="0" />
+   <TimeFlags value="1048320" />
+   <Falloff value="4.6" />
+   <FalloffExponent value="60" />
+   <CullingPlaneNormal x="0" y="0" z="1" />
+   <CullingPlaneOffset value="4.5" />
+   <Unknown45 value="0" />
+   <Unknown46 value="0" />
+   <VolumeIntensity value="1" />
+   <VolumeSizeScale value="1" />
+   <VolumeOuterColour r="255" g="255" b="255" />
+   <LightHash value="150" />
+   <VolumeOuterIntensity value="1" />
+   <CoronaSize value="0" />
+   <VolumeOuterExponent value="1" />
+   <LightFadeDistance value="100" />
+   <ShadowFadeDistance value="0" />
+   <SpecularFadeDistance value="0" />
+   <VolumetricFadeDistance value="0" />
+   <ShadowNearClip value="0.01" />
+   <CoronaIntensity value="1" />
+   <CoronaZBias value="0.1" />
+   <Direction x="0" y="0" z="-1" />
+   <Tangent x="1" y="3.019916E-07" z="0" />
+   <ConeInnerAngle value="0" />
+   <ConeOuterAngle value="0" />
+   <Extent x="1" y="1" z="1" />
+   <ProjectedTextureHash />
+  </Item>
+  <Item>
+   <Position x="0.481693268" y="1.35692215" z="1.45220649" />
+   <Colour r="85" g="32" b="4" />
+   <Flashiness value="0" />
+   <Intensity value="5.6" />
+   <Flags value="286720" />
+   <BoneId value="0" />
+   <Type>Point</Type>
+   <GroupId value="0" />
+   <TimeFlags value="1048320" />
+   <Falloff value="4.6" />
+   <FalloffExponent value="60" />
+   <CullingPlaneNormal x="0" y="0" z="1" />
+   <CullingPlaneOffset value="4.5" />
+   <Unknown45 value="0" />
+   <Unknown46 value="0" />
+   <VolumeIntensity value="1" />
+   <VolumeSizeScale value="1" />
+   <VolumeOuterColour r="255" g="255" b="255" />
+   <LightHash value="150" />
+   <VolumeOuterIntensity value="1" />
+   <CoronaSize value="0" />
+   <VolumeOuterExponent value="1" />
+   <LightFadeDistance value="100" />
+   <ShadowFadeDistance value="0" />
+   <SpecularFadeDistance value="0" />
+   <VolumetricFadeDistance value="0" />
+   <ShadowNearClip value="0.01" />
+   <CoronaIntensity value="1" />
+   <CoronaZBias value="0.1" />
+   <Direction x="0" y="0" z="-1" />
+   <Tangent x="1" y="3.019916E-07" z="0" />
+   <ConeInnerAngle value="0" />
+   <ConeOuterAngle value="0" />
+   <Extent x="1" y="1" z="1" />
+   <ProjectedTextureHash />
+  </Item>
+  <Item>
+   <Position x="0.481693268" y="-1.9296844" z="1.45220649" />
+   <Colour r="85" g="32" b="4" />
+   <Flashiness value="0" />
+   <Intensity value="2" />
+   <Flags value="286720" />
+   <BoneId value="0" />
+   <Type>Point</Type>
+   <GroupId value="0" />
+   <TimeFlags value="1048320" />
+   <Falloff value="4.6" />
+   <FalloffExponent value="60" />
+   <CullingPlaneNormal x="0" y="0" z="1" />
+   <CullingPlaneOffset value="4.5" />
+   <Unknown45 value="0" />
+   <Unknown46 value="0" />
+   <VolumeIntensity value="1" />
+   <VolumeSizeScale value="1" />
+   <VolumeOuterColour r="255" g="255" b="255" />
+   <LightHash value="150" />
+   <VolumeOuterIntensity value="1" />
+   <CoronaSize value="0" />
+   <VolumeOuterExponent value="1" />
+   <LightFadeDistance value="100" />
+   <ShadowFadeDistance value="0" />
+   <SpecularFadeDistance value="0" />
+   <VolumetricFadeDistance value="0" />
+   <ShadowNearClip value="0.01" />
+   <CoronaIntensity value="1" />
+   <CoronaZBias value="0.1" />
+   <Direction x="0" y="0" z="-1" />
+   <Tangent x="1" y="3.019916E-07" z="0" />
+   <ConeInnerAngle value="0" />
+   <ConeOuterAngle value="0" />
+   <Extent x="1" y="1" z="1" />
+   <ProjectedTextureHash />
+  </Item>
+  <Item>
+   <Position x="-3.82959652" y="1.35692215" z="1.45220649" />
+   <Colour r="85" g="32" b="4" />
+   <Flashiness value="0" />
+   <Intensity value="5.6" />
+   <Flags value="286720" />
+   <BoneId value="0" />
+   <Type>Point</Type>
+   <GroupId value="0" />
+   <TimeFlags value="1048320" />
+   <Falloff value="4.6" />
+   <FalloffExponent value="60" />
+   <CullingPlaneNormal x="0" y="0" z="1" />
+   <CullingPlaneOffset value="4.5" />
+   <Unknown45 value="0" />
+   <Unknown46 value="0" />
+   <VolumeIntensity value="1" />
+   <VolumeSizeScale value="1" />
+   <VolumeOuterColour r="255" g="255" b="255" />
+   <LightHash value="150" />
+   <VolumeOuterIntensity value="1" />
+   <CoronaSize value="0" />
+   <VolumeOuterExponent value="1" />
+   <LightFadeDistance value="100" />
+   <ShadowFadeDistance value="0" />
+   <SpecularFadeDistance value="0" />
+   <VolumetricFadeDistance value="0" />
+   <ShadowNearClip value="0.01" />
+   <CoronaIntensity value="1" />
+   <CoronaZBias value="0.1" />
+   <Direction x="0" y="0" z="-1" />
+   <Tangent x="1" y="3.019916E-07" z="0" />
+   <ConeInnerAngle value="0" />
+   <ConeOuterAngle value="0" />
+   <Extent x="1" y="1" z="1" />
+   <ProjectedTextureHash />
+  </Item>
+  <Item>
+   <Position x="-3.47636127" y="-1.9296844" z="1.45220649" />
+   <Colour r="85" g="32" b="4" />
+   <Flashiness value="0" />
+   <Intensity value="5.6" />
+   <Flags value="286720" />
+   <BoneId value="0" />
+   <Type>Point</Type>
+   <GroupId value="0" />
+   <TimeFlags value="1048320" />
+   <Falloff value="4" />
+   <FalloffExponent value="100" />
+   <CullingPlaneNormal x="0" y="0" z="1" />
+   <CullingPlaneOffset value="4.5" />
+   <Unknown45 value="0" />
+   <Unknown46 value="0" />
+   <VolumeIntensity value="1" />
+   <VolumeSizeScale value="1" />
+   <VolumeOuterColour r="255" g="255" b="255" />
+   <LightHash value="150" />
+   <VolumeOuterIntensity value="1" />
+   <CoronaSize value="0" />
+   <VolumeOuterExponent value="1" />
+   <LightFadeDistance value="100" />
+   <ShadowFadeDistance value="0" />
+   <SpecularFadeDistance value="0" />
+   <VolumetricFadeDistance value="0" />
+   <ShadowNearClip value="0.01" />
+   <CoronaIntensity value="1" />
+   <CoronaZBias value="0.1" />
+   <Direction x="0" y="0" z="-1" />
+   <Tangent x="1" y="3.019916E-07" z="0" />
+   <ConeInnerAngle value="0" />
+   <ConeOuterAngle value="0" />
+   <Extent x="1" y="1" z="1" />
+   <ProjectedTextureHash />
+  </Item>
+  <Item>
+   <Position x="-7.73830462" y="0.29091084" z="1.45220649" />
+   <Colour r="151" g="55" b="6" />
+   <Flashiness value="0" />
+   <Intensity value="8" />
+   <Flags value="286720" />
+   <BoneId value="0" />
+   <Type>Point</Type>
+   <GroupId value="0" />
+   <TimeFlags value="1048320" />
+   <Falloff value="4.6" />
+   <FalloffExponent value="60" />
+   <CullingPlaneNormal x="0" y="0" z="1" />
+   <CullingPlaneOffset value="4.5" />
+   <Unknown45 value="0" />
+   <Unknown46 value="0" />
+   <VolumeIntensity value="1" />
+   <VolumeSizeScale value="1" />
+   <VolumeOuterColour r="255" g="255" b="255" />
+   <LightHash value="150" />
+   <VolumeOuterIntensity value="1" />
+   <CoronaSize value="0" />
+   <VolumeOuterExponent value="1" />
+   <LightFadeDistance value="100" />
+   <ShadowFadeDistance value="0" />
+   <SpecularFadeDistance value="0" />
+   <VolumetricFadeDistance value="0" />
+   <ShadowNearClip value="0.01" />
+   <CoronaIntensity value="1" />
+   <CoronaZBias value="0.1" />
+   <Direction x="0" y="0" z="-1" />
+   <Tangent x="1" y="3.019916E-07" z="0" />
+   <ConeInnerAngle value="0" />
+   <ConeOuterAngle value="0" />
+   <Extent x="1" y="1" z="1" />
+   <ProjectedTextureHash />
+  </Item>
+  <Item>
+   <Position x="-7.84270859" y="3.83537769" z="1.45220649" />
+   <Colour r="85" g="32" b="4" />
+   <Flashiness value="0" />
+   <Intensity value="5.6" />
+   <Flags value="286720" />
+   <BoneId value="0" />
+   <Type>Point</Type>
+   <GroupId value="0" />
+   <TimeFlags value="1048320" />
+   <Falloff value="4.6" />
+   <FalloffExponent value="60" />
+   <CullingPlaneNormal x="0" y="0" z="1" />
+   <CullingPlaneOffset value="4.5" />
+   <Unknown45 value="0" />
+   <Unknown46 value="0" />
+   <VolumeIntensity value="1" />
+   <VolumeSizeScale value="1" />
+   <VolumeOuterColour r="255" g="255" b="255" />
+   <LightHash value="150" />
+   <VolumeOuterIntensity value="1" />
+   <CoronaSize value="0" />
+   <VolumeOuterExponent value="1" />
+   <LightFadeDistance value="100" />
+   <ShadowFadeDistance value="0" />
+   <SpecularFadeDistance value="0" />
+   <VolumetricFadeDistance value="0" />
+   <ShadowNearClip value="0.01" />
+   <CoronaIntensity value="1" />
+   <CoronaZBias value="0.1" />
+   <Direction x="0" y="0" z="-1" />
+   <Tangent x="1" y="3.019916E-07" z="0" />
+   <ConeInnerAngle value="0" />
+   <ConeOuterAngle value="0" />
+   <Extent x="1" y="1" z="1" />
+   <ProjectedTextureHash />
+  </Item>
+  <Item>
+   <Position x="-1.76719475" y="-3.79571724" z="0.716202855" />
+   <Colour r="88" g="26" b="2" />
+   <Flashiness value="0" />
+   <Intensity value="4" />
+   <Flags value="286720" />
+   <BoneId value="0" />
+   <Type>Point</Type>
+   <GroupId value="0" />
+   <TimeFlags value="16777215" />
+   <Falloff value="5" />
+   <FalloffExponent value="12" />
+   <CullingPlaneNormal x="0" y="0" z="1" />
+   <CullingPlaneOffset value="6" />
+   <Unknown45 value="0" />
+   <Unknown46 value="0" />
+   <VolumeIntensity value="1" />
+   <VolumeSizeScale value="1" />
+   <VolumeOuterColour r="255" g="255" b="255" />
+   <LightHash value="150" />
+   <VolumeOuterIntensity value="1" />
+   <CoronaSize value="0" />
+   <VolumeOuterExponent value="1" />
+   <LightFadeDistance value="50" />
+   <ShadowFadeDistance value="0" />
+   <SpecularFadeDistance value="0" />
+   <VolumetricFadeDistance value="0" />
+   <ShadowNearClip value="0.01" />
+   <CoronaIntensity value="1" />
+   <CoronaZBias value="0.1" />
+   <Direction x="0" y="0" z="-1" />
+   <Tangent x="1" y="3.019916E-07" z="0" />
+   <ConeInnerAngle value="0" />
+   <ConeOuterAngle value="0" />
+   <Extent x="1" y="1" z="1" />
+   <ProjectedTextureHash />
+  </Item>
+  <Item>
+   <Position x="4.73868561" y="-4.098145" z="0.751379" />
+   <Colour r="195" g="133" b="49" />
+   <Flashiness value="0" />
+   <Intensity value="10" />
+   <Flags value="286720" />
+   <BoneId value="0" />
+   <Type>Point</Type>
+   <GroupId value="0" />
+   <TimeFlags value="1048320" />
+   <Falloff value="4.6" />
+   <FalloffExponent value="60" />
+   <CullingPlaneNormal x="0" y="0" z="1" />
+   <CullingPlaneOffset value="4.5" />
+   <Unknown45 value="0" />
+   <Unknown46 value="0" />
+   <VolumeIntensity value="1" />
+   <VolumeSizeScale value="1" />
+   <VolumeOuterColour r="255" g="255" b="255" />
+   <LightHash value="150" />
+   <VolumeOuterIntensity value="1" />
+   <CoronaSize value="0" />
+   <VolumeOuterExponent value="1" />
+   <LightFadeDistance value="100" />
+   <ShadowFadeDistance value="0" />
+   <SpecularFadeDistance value="0" />
+   <VolumetricFadeDistance value="0" />
+   <ShadowNearClip value="0.01" />
+   <CoronaIntensity value="1" />
+   <CoronaZBias value="0.1" />
+   <Direction x="0" y="0" z="-1" />
+   <Tangent x="1" y="3.019916E-07" z="0" />
+   <ConeInnerAngle value="0" />
+   <ConeOuterAngle value="0" />
+   <Extent x="1" y="1" z="1" />
+   <ProjectedTextureHash />
+  </Item>
+  <Item>
+   <Position x="-3.51405621" y="-4.02998972" z="1.45220649" />
+   <Colour r="151" g="55" b="6" />
+   <Flashiness value="0" />
+   <Intensity value="8" />
+   <Flags value="286720" />
+   <BoneId value="0" />
+   <Type>Point</Type>
+   <GroupId value="0" />
+   <TimeFlags value="1048320" />
+   <Falloff value="4.6" />
+   <FalloffExponent value="60" />
+   <CullingPlaneNormal x="1" y="0" z="0" />
+   <CullingPlaneOffset value="3.15" />
+   <Unknown45 value="0" />
+   <Unknown46 value="0" />
+   <VolumeIntensity value="1" />
+   <VolumeSizeScale value="1" />
+   <VolumeOuterColour r="255" g="255" b="255" />
+   <LightHash value="150" />
+   <VolumeOuterIntensity value="1" />
+   <CoronaSize value="0" />
+   <VolumeOuterExponent value="1" />
+   <LightFadeDistance value="100" />
+   <ShadowFadeDistance value="0" />
+   <SpecularFadeDistance value="0" />
+   <VolumetricFadeDistance value="0" />
+   <ShadowNearClip value="0.01" />
+   <CoronaIntensity value="1" />
+   <CoronaZBias value="0.1" />
+   <Direction x="0" y="0" z="-1" />
+   <Tangent x="1" y="3.019916E-07" z="0" />
+   <ConeInnerAngle value="0" />
+   <ConeOuterAngle value="0" />
+   <Extent x="1" y="1" z="1" />
+   <ProjectedTextureHash />
+  </Item>
+  <Item>
+   <Position x="4.73868561" y="2.59811783" z="0.6142014" />
+   <Colour r="195" g="133" b="49" />
+   <Flashiness value="0" />
+   <Intensity value="10" />
+   <Flags value="286720" />
+   <BoneId value="0" />
+   <Type>Point</Type>
+   <GroupId value="0" />
+   <TimeFlags value="1048320" />
+   <Falloff value="4.6" />
+   <FalloffExponent value="60" />
+   <CullingPlaneNormal x="0" y="0" z="1" />
+   <CullingPlaneOffset value="4.5" />
+   <Unknown45 value="0" />
+   <Unknown46 value="0" />
+   <VolumeIntensity value="1" />
+   <VolumeSizeScale value="1" />
+   <VolumeOuterColour r="255" g="255" b="255" />
+   <LightHash value="150" />
+   <VolumeOuterIntensity value="1" />
+   <CoronaSize value="0" />
+   <VolumeOuterExponent value="1" />
+   <LightFadeDistance value="100" />
+   <ShadowFadeDistance value="0" />
+   <SpecularFadeDistance value="0" />
+   <VolumetricFadeDistance value="0" />
+   <ShadowNearClip value="0.01" />
+   <CoronaIntensity value="1" />
+   <CoronaZBias value="0.1" />
+   <Direction x="0" y="0" z="-1" />
+   <Tangent x="1" y="3.019916E-07" z="0" />
+   <ConeInnerAngle value="0" />
+   <ConeOuterAngle value="0" />
+   <Extent x="1" y="1" z="1" />
+   <ProjectedTextureHash />
+  </Item>
+  <Item>
+   <Position x="3.61357641" y="1.33451748" z="3.279499" />
+   <Colour r="84" g="43" b="15" />
+   <Flashiness value="0" />
+   <Intensity value="7" />
+   <Flags value="8320" />
+   <BoneId value="0" />
+   <Type>Spot</Type>
+   <GroupId value="0" />
+   <TimeFlags value="1048320" />
+   <Falloff value="8" />
+   <FalloffExponent value="4" />
+   <CullingPlaneNormal x="0" y="0" z="1" />
+   <CullingPlaneOffset value="6" />
+   <Unknown45 value="0" />
+   <Unknown46 value="0" />
+   <VolumeIntensity value="1" />
+   <VolumeSizeScale value="1" />
+   <VolumeOuterColour r="255" g="255" b="255" />
+   <LightHash value="164" />
+   <VolumeOuterIntensity value="1" />
+   <CoronaSize value="0" />
+   <VolumeOuterExponent value="1" />
+   <LightFadeDistance value="0" />
+   <ShadowFadeDistance value="30" />
+   <SpecularFadeDistance value="0" />
+   <VolumetricFadeDistance value="0" />
+   <ShadowNearClip value="0.01" />
+   <CoronaIntensity value="1" />
+   <CoronaZBias value="0.1" />
+   <Direction x="0" y="0" z="-1" />
+   <Tangent x="1" y="3.019916E-07" z="0" />
+   <ConeInnerAngle value="65" />
+   <ConeOuterAngle value="90" />
+   <Extent x="1" y="1" z="1" />
+   <ProjectedTextureHash>hash_72A54B35</ProjectedTextureHash>
+  </Item>
+  <Item>
+   <Position x="3.61357641" y="1.33451748" z="3.279499" />
+   <Colour r="84" g="43" b="15" />
+   <Flashiness value="0" />
+   <Intensity value="6" />
+   <Flags value="8320" />
+   <BoneId value="0" />
+   <Type>Spot</Type>
+   <GroupId value="0" />
+   <TimeFlags value="15728895" />
+   <Falloff value="8" />
+   <FalloffExponent value="4" />
+   <CullingPlaneNormal x="0" y="0" z="1" />
+   <CullingPlaneOffset value="4.5" />
+   <Unknown45 value="0" />
+   <Unknown46 value="0" />
+   <VolumeIntensity value="1" />
+   <VolumeSizeScale value="1" />
+   <VolumeOuterColour r="255" g="255" b="255" />
+   <LightHash value="164" />
+   <VolumeOuterIntensity value="1" />
+   <CoronaSize value="0" />
+   <VolumeOuterExponent value="1" />
+   <LightFadeDistance value="0" />
+   <ShadowFadeDistance value="30" />
+   <SpecularFadeDistance value="0" />
+   <VolumetricFadeDistance value="0" />
+   <ShadowNearClip value="0.01" />
+   <CoronaIntensity value="1" />
+   <CoronaZBias value="0.1" />
+   <Direction x="0" y="0" z="-1" />
+   <Tangent x="1" y="3.019916E-07" z="0" />
+   <ConeInnerAngle value="45" />
+   <ConeOuterAngle value="90" />
+   <Extent x="1" y="1" z="1" />
+   <ProjectedTextureHash>hash_72A54B35</ProjectedTextureHash>
+  </Item>
+  <Item>
+   <Position x="3.61357641" y="-2.7296114" z="3.279499" />
+   <Colour r="84" g="43" b="15" />
+   <Flashiness value="0" />
+   <Intensity value="7" />
+   <Flags value="8320" />
+   <BoneId value="0" />
+   <Type>Spot</Type>
+   <GroupId value="0" />
+   <TimeFlags value="1048320" />
+   <Falloff value="8" />
+   <FalloffExponent value="4" />
+   <CullingPlaneNormal x="0" y="0" z="1" />
+   <CullingPlaneOffset value="4.5" />
+   <Unknown45 value="0" />
+   <Unknown46 value="0" />
+   <VolumeIntensity value="1" />
+   <VolumeSizeScale value="1" />
+   <VolumeOuterColour r="255" g="255" b="255" />
+   <LightHash value="164" />
+   <VolumeOuterIntensity value="1" />
+   <CoronaSize value="0" />
+   <VolumeOuterExponent value="1" />
+   <LightFadeDistance value="0" />
+   <ShadowFadeDistance value="30" />
+   <SpecularFadeDistance value="0" />
+   <VolumetricFadeDistance value="0" />
+   <ShadowNearClip value="0.01" />
+   <CoronaIntensity value="1" />
+   <CoronaZBias value="0.1" />
+   <Direction x="0" y="0" z="-1" />
+   <Tangent x="1" y="3.019916E-07" z="0" />
+   <ConeInnerAngle value="65" />
+   <ConeOuterAngle value="90" />
+   <Extent x="1" y="1" z="1" />
+   <ProjectedTextureHash>hash_72A54B35</ProjectedTextureHash>
+  </Item>
+  <Item>
+   <Position x="3.61357641" y="-2.7296114" z="3.279499" />
+   <Colour r="84" g="43" b="15" />
+   <Flashiness value="0" />
+   <Intensity value="6" />
+   <Flags value="8320" />
+   <BoneId value="0" />
+   <Type>Spot</Type>
+   <GroupId value="0" />
+   <TimeFlags value="15728895" />
+   <Falloff value="8" />
+   <FalloffExponent value="4" />
+   <CullingPlaneNormal x="0" y="0" z="1" />
+   <CullingPlaneOffset value="4.5" />
+   <Unknown45 value="0" />
+   <Unknown46 value="0" />
+   <VolumeIntensity value="1" />
+   <VolumeSizeScale value="1" />
+   <VolumeOuterColour r="255" g="255" b="255" />
+   <LightHash value="164" />
+   <VolumeOuterIntensity value="1" />
+   <CoronaSize value="0" />
+   <VolumeOuterExponent value="1" />
+   <LightFadeDistance value="0" />
+   <ShadowFadeDistance value="30" />
+   <SpecularFadeDistance value="0" />
+   <VolumetricFadeDistance value="0" />
+   <ShadowNearClip value="0.01" />
+   <CoronaIntensity value="1" />
+   <CoronaZBias value="0.1" />
+   <Direction x="0" y="0" z="-1" />
+   <Tangent x="1" y="3.019916E-07" z="0" />
+   <ConeInnerAngle value="45" />
+   <ConeOuterAngle value="90" />
+   <Extent x="1" y="1" z="1" />
+   <ProjectedTextureHash>hash_72A54B35</ProjectedTextureHash>
+  </Item>
+  <Item>
+   <Position x="0.494770527" y="1.33451748" z="3.279499" />
+   <Colour r="84" g="43" b="15" />
+   <Flashiness value="0" />
+   <Intensity value="7" />
+   <Flags value="8576" />
+   <BoneId value="0" />
+   <Type>Spot</Type>
+   <GroupId value="0" />
+   <TimeFlags value="1048320" />
+   <Falloff value="6" />
+   <FalloffExponent value="10" />
+   <CullingPlaneNormal x="0" y="0" z="1" />
+   <CullingPlaneOffset value="4.5" />
+   <Unknown45 value="0" />
+   <Unknown46 value="0" />
+   <VolumeIntensity value="1" />
+   <VolumeSizeScale value="1" />
+   <VolumeOuterColour r="255" g="255" b="255" />
+   <LightHash value="164" />
+   <VolumeOuterIntensity value="1" />
+   <CoronaSize value="0" />
+   <VolumeOuterExponent value="1" />
+   <LightFadeDistance value="0" />
+   <ShadowFadeDistance value="30" />
+   <SpecularFadeDistance value="0" />
+   <VolumetricFadeDistance value="0" />
+   <ShadowNearClip value="0.01" />
+   <CoronaIntensity value="1" />
+   <CoronaZBias value="0.1" />
+   <Direction x="0" y="0" z="-1" />
+   <Tangent x="1" y="3.019916E-07" z="0" />
+   <ConeInnerAngle value="65" />
+   <ConeOuterAngle value="90" />
+   <Extent x="1" y="1" z="1" />
+   <ProjectedTextureHash>hash_72A54B35</ProjectedTextureHash>
+  </Item>
+  <Item>
+   <Position x="0.494770527" y="1.33451748" z="3.279499" />
+   <Colour r="84" g="43" b="15" />
+   <Flashiness value="0" />
+   <Intensity value="7" />
+   <Flags value="8576" />
+   <BoneId value="0" />
+   <Type>Spot</Type>
+   <GroupId value="0" />
+   <TimeFlags value="15728895" />
+   <Falloff value="6" />
+   <FalloffExponent value="10" />
+   <CullingPlaneNormal x="0" y="0" z="1" />
+   <CullingPlaneOffset value="4.5" />
+   <Unknown45 value="0" />
+   <Unknown46 value="0" />
+   <VolumeIntensity value="1" />
+   <VolumeSizeScale value="1" />
+   <VolumeOuterColour r="255" g="255" b="255" />
+   <LightHash value="164" />
+   <VolumeOuterIntensity value="1" />
+   <CoronaSize value="0" />
+   <VolumeOuterExponent value="1" />
+   <LightFadeDistance value="0" />
+   <ShadowFadeDistance value="30" />
+   <SpecularFadeDistance value="0" />
+   <VolumetricFadeDistance value="0" />
+   <ShadowNearClip value="0.01" />
+   <CoronaIntensity value="1" />
+   <CoronaZBias value="0.1" />
+   <Direction x="0" y="0" z="-1" />
+   <Tangent x="1" y="3.019916E-07" z="0" />
+   <ConeInnerAngle value="45" />
+   <ConeOuterAngle value="90" />
+   <Extent x="1" y="1" z="1" />
+   <ProjectedTextureHash>hash_72A54B35</ProjectedTextureHash>
+  </Item>
+  <Item>
+   <Position x="0.494770527" y="-1.95208907" z="3.279499" />
+   <Colour r="84" g="43" b="15" />
+   <Flashiness value="0" />
+   <Intensity value="10" />
+   <Flags value="8192" />
+   <BoneId value="0" />
+   <Type>Spot</Type>
+   <GroupId value="0" />
+   <TimeFlags value="1048320" />
+   <Falloff value="6" />
+   <FalloffExponent value="10" />
+   <CullingPlaneNormal x="0" y="0" z="1" />
+   <CullingPlaneOffset value="4.5" />
+   <Unknown45 value="0" />
+   <Unknown46 value="0" />
+   <VolumeIntensity value="1" />
+   <VolumeSizeScale value="1" />
+   <VolumeOuterColour r="255" g="255" b="255" />
+   <LightHash value="164" />
+   <VolumeOuterIntensity value="1" />
+   <CoronaSize value="0" />
+   <VolumeOuterExponent value="1" />
+   <LightFadeDistance value="0" />
+   <ShadowFadeDistance value="30" />
+   <SpecularFadeDistance value="0" />
+   <VolumetricFadeDistance value="0" />
+   <ShadowNearClip value="0.01" />
+   <CoronaIntensity value="1" />
+   <CoronaZBias value="0.1" />
+   <Direction x="0" y="0" z="-1" />
+   <Tangent x="1" y="3.019916E-07" z="0" />
+   <ConeInnerAngle value="65" />
+   <ConeOuterAngle value="90" />
+   <Extent x="1" y="1" z="1" />
+   <ProjectedTextureHash>hash_72A54B35</ProjectedTextureHash>
+  </Item>
+  <Item>
+   <Position x="0.494770527" y="-1.95208907" z="3.279499" />
+   <Colour r="84" g="43" b="15" />
+   <Flashiness value="0" />
+   <Intensity value="10" />
+   <Flags value="8192" />
+   <BoneId value="0" />
+   <Type>Spot</Type>
+   <GroupId value="0" />
+   <TimeFlags value="15728895" />
+   <Falloff value="8" />
+   <FalloffExponent value="4" />
+   <CullingPlaneNormal x="0" y="0" z="1" />
+   <CullingPlaneOffset value="4.5" />
+   <Unknown45 value="0" />
+   <Unknown46 value="0" />
+   <VolumeIntensity value="1" />
+   <VolumeSizeScale value="1" />
+   <VolumeOuterColour r="255" g="255" b="255" />
+   <LightHash value="164" />
+   <VolumeOuterIntensity value="1" />
+   <CoronaSize value="0" />
+   <VolumeOuterExponent value="1" />
+   <LightFadeDistance value="0" />
+   <ShadowFadeDistance value="30" />
+   <SpecularFadeDistance value="0" />
+   <VolumetricFadeDistance value="0" />
+   <ShadowNearClip value="0.01" />
+   <CoronaIntensity value="1" />
+   <CoronaZBias value="0.1" />
+   <Direction x="0" y="0" z="-1" />
+   <Tangent x="1" y="3.019916E-07" z="0" />
+   <ConeInnerAngle value="45" />
+   <ConeOuterAngle value="90" />
+   <Extent x="1" y="1" z="1" />
+   <ProjectedTextureHash>hash_72A54B35</ProjectedTextureHash>
+  </Item>
+  <Item>
+   <Position x="-4.21173" y="1.33451736" z="3.279499" />
+   <Colour r="84" g="43" b="15" />
+   <Flashiness value="0" />
+   <Intensity value="10" />
+   <Flags value="8576" />
+   <BoneId value="0" />
+   <Type>Spot</Type>
+   <GroupId value="0" />
+   <TimeFlags value="1048320" />
+   <Falloff value="6" />
+   <FalloffExponent value="10" />
+   <CullingPlaneNormal x="0" y="0" z="1" />
+   <CullingPlaneOffset value="4.5" />
+   <Unknown45 value="0" />
+   <Unknown46 value="0" />
+   <VolumeIntensity value="1" />
+   <VolumeSizeScale value="1" />
+   <VolumeOuterColour r="255" g="255" b="255" />
+   <LightHash value="164" />
+   <VolumeOuterIntensity value="1" />
+   <CoronaSize value="0" />
+   <VolumeOuterExponent value="1" />
+   <LightFadeDistance value="0" />
+   <ShadowFadeDistance value="30" />
+   <SpecularFadeDistance value="0" />
+   <VolumetricFadeDistance value="0" />
+   <ShadowNearClip value="0.01" />
+   <CoronaIntensity value="1" />
+   <CoronaZBias value="0.1" />
+   <Direction x="0" y="0" z="-1" />
+   <Tangent x="1" y="3.019916E-07" z="0" />
+   <ConeInnerAngle value="65" />
+   <ConeOuterAngle value="90" />
+   <Extent x="1" y="1" z="1" />
+   <ProjectedTextureHash>hash_72A54B35</ProjectedTextureHash>
+  </Item>
+  <Item>
+   <Position x="-4.21173" y="1.33451736" z="3.279499" />
+   <Colour r="84" g="43" b="15" />
+   <Flashiness value="0" />
+   <Intensity value="10" />
+   <Flags value="8576" />
+   <BoneId value="0" />
+   <Type>Spot</Type>
+   <GroupId value="0" />
+   <TimeFlags value="15728895" />
+   <Falloff value="6" />
+   <FalloffExponent value="10" />
+   <CullingPlaneNormal x="0" y="0" z="1" />
+   <CullingPlaneOffset value="4.5" />
+   <Unknown45 value="0" />
+   <Unknown46 value="0" />
+   <VolumeIntensity value="1" />
+   <VolumeSizeScale value="1" />
+   <VolumeOuterColour r="255" g="255" b="255" />
+   <LightHash value="164" />
+   <VolumeOuterIntensity value="1" />
+   <CoronaSize value="0" />
+   <VolumeOuterExponent value="1" />
+   <LightFadeDistance value="0" />
+   <ShadowFadeDistance value="30" />
+   <SpecularFadeDistance value="0" />
+   <VolumetricFadeDistance value="0" />
+   <ShadowNearClip value="0.01" />
+   <CoronaIntensity value="1" />
+   <CoronaZBias value="0.1" />
+   <Direction x="0" y="0" z="-1" />
+   <Tangent x="1" y="3.019916E-07" z="0" />
+   <ConeInnerAngle value="45" />
+   <ConeOuterAngle value="90" />
+   <Extent x="1" y="1" z="1" />
+   <ProjectedTextureHash>hash_72A54B35</ProjectedTextureHash>
+  </Item>
+  <Item>
+   <Position x="-2.26316261" y="-1.95208848" z="3.279499" />
+   <Colour r="84" g="43" b="15" />
+   <Flashiness value="0" />
+   <Intensity value="10" />
+   <Flags value="8192" />
+   <BoneId value="0" />
+   <Type>Spot</Type>
+   <GroupId value="0" />
+   <TimeFlags value="1048320" />
+   <Falloff value="4" />
+   <FalloffExponent value="10" />
+   <CullingPlaneNormal x="0" y="0" z="1" />
+   <CullingPlaneOffset value="4.5" />
+   <Unknown45 value="0" />
+   <Unknown46 value="0" />
+   <VolumeIntensity value="1" />
+   <VolumeSizeScale value="1" />
+   <VolumeOuterColour r="255" g="255" b="255" />
+   <LightHash value="164" />
+   <VolumeOuterIntensity value="1" />
+   <CoronaSize value="0" />
+   <VolumeOuterExponent value="1" />
+   <LightFadeDistance value="0" />
+   <ShadowFadeDistance value="30" />
+   <SpecularFadeDistance value="0" />
+   <VolumetricFadeDistance value="0" />
+   <ShadowNearClip value="0.01" />
+   <CoronaIntensity value="1" />
+   <CoronaZBias value="0.1" />
+   <Direction x="0" y="0" z="-1" />
+   <Tangent x="1" y="3.019916E-07" z="0" />
+   <ConeInnerAngle value="65" />
+   <ConeOuterAngle value="90" />
+   <Extent x="1" y="1" z="1" />
+   <ProjectedTextureHash>hash_72A54B35</ProjectedTextureHash>
+  </Item>
+  <Item>
+   <Position x="-2.24697542" y="-1.95208848" z="3.279499" />
+   <Colour r="84" g="43" b="15" />
+   <Flashiness value="0" />
+   <Intensity value="10" />
+   <Flags value="8192" />
+   <BoneId value="0" />
+   <Type>Spot</Type>
+   <GroupId value="0" />
+   <TimeFlags value="15728895" />
+   <Falloff value="6" />
+   <FalloffExponent value="10" />
+   <CullingPlaneNormal x="0" y="0" z="1" />
+   <CullingPlaneOffset value="4.5" />
+   <Unknown45 value="0" />
+   <Unknown46 value="0" />
+   <VolumeIntensity value="1" />
+   <VolumeSizeScale value="1" />
+   <VolumeOuterColour r="255" g="255" b="255" />
+   <LightHash value="164" />
+   <VolumeOuterIntensity value="1" />
+   <CoronaSize value="0" />
+   <VolumeOuterExponent value="1" />
+   <LightFadeDistance value="0" />
+   <ShadowFadeDistance value="30" />
+   <SpecularFadeDistance value="0" />
+   <VolumetricFadeDistance value="0" />
+   <ShadowNearClip value="0.01" />
+   <CoronaIntensity value="1" />
+   <CoronaZBias value="0.1" />
+   <Direction x="0" y="0" z="-1" />
+   <Tangent x="1" y="3.019916E-07" z="0" />
+   <ConeInnerAngle value="45" />
+   <ConeOuterAngle value="90" />
+   <Extent x="1" y="1" z="1" />
+   <ProjectedTextureHash>hash_72A54B35</ProjectedTextureHash>
+  </Item>
+  <Item>
+   <Position x="-7.72522736" y="0.268506169" z="3.279499" />
+   <Colour r="84" g="43" b="15" />
+   <Flashiness value="0" />
+   <Intensity value="15" />
+   <Flags value="8576" />
+   <BoneId value="0" />
+   <Type>Spot</Type>
+   <GroupId value="0" />
+   <TimeFlags value="1048320" />
+   <Falloff value="5" />
+   <FalloffExponent value="15" />
+   <CullingPlaneNormal x="0" y="0" z="1" />
+   <CullingPlaneOffset value="4.5" />
+   <Unknown45 value="0" />
+   <Unknown46 value="0" />
+   <VolumeIntensity value="1" />
+   <VolumeSizeScale value="1" />
+   <VolumeOuterColour r="255" g="255" b="255" />
+   <LightHash value="164" />
+   <VolumeOuterIntensity value="1" />
+   <CoronaSize value="0" />
+   <VolumeOuterExponent value="1" />
+   <LightFadeDistance value="0" />
+   <ShadowFadeDistance value="30" />
+   <SpecularFadeDistance value="0" />
+   <VolumetricFadeDistance value="0" />
+   <ShadowNearClip value="0.01" />
+   <CoronaIntensity value="1" />
+   <CoronaZBias value="0.1" />
+   <Direction x="0" y="0" z="-1" />
+   <Tangent x="1" y="3.019916E-07" z="0" />
+   <ConeInnerAngle value="65" />
+   <ConeOuterAngle value="90" />
+   <Extent x="1" y="1" z="1" />
+   <ProjectedTextureHash>hash_72A54B35</ProjectedTextureHash>
+  </Item>
+  <Item>
+   <Position x="-7.72522736" y="0.268506169" z="3.279499" />
+   <Colour r="84" g="43" b="15" />
+   <Flashiness value="0" />
+   <Intensity value="10" />
+   <Flags value="8576" />
+   <BoneId value="0" />
+   <Type>Spot</Type>
+   <GroupId value="0" />
+   <TimeFlags value="15728895" />
+   <Falloff value="5" />
+   <FalloffExponent value="15" />
+   <CullingPlaneNormal x="0" y="0" z="1" />
+   <CullingPlaneOffset value="4.5" />
+   <Unknown45 value="0" />
+   <Unknown46 value="0" />
+   <VolumeIntensity value="1" />
+   <VolumeSizeScale value="1" />
+   <VolumeOuterColour r="255" g="255" b="255" />
+   <LightHash value="164" />
+   <VolumeOuterIntensity value="1" />
+   <CoronaSize value="0" />
+   <VolumeOuterExponent value="1" />
+   <LightFadeDistance value="0" />
+   <ShadowFadeDistance value="30" />
+   <SpecularFadeDistance value="0" />
+   <VolumetricFadeDistance value="0" />
+   <ShadowNearClip value="0.01" />
+   <CoronaIntensity value="1" />
+   <CoronaZBias value="0.1" />
+   <Direction x="0" y="0" z="-1" />
+   <Tangent x="1" y="3.019916E-07" z="0" />
+   <ConeInnerAngle value="45" />
+   <ConeOuterAngle value="90" />
+   <Extent x="1" y="1" z="1" />
+   <ProjectedTextureHash>hash_72A54B35</ProjectedTextureHash>
+  </Item>
+  <Item>
+   <Position x="-7.82963133" y="3.812973" z="3.279499" />
+   <Colour r="84" g="43" b="15" />
+   <Flashiness value="0" />
+   <Intensity value="7" />
+   <Flags value="8576" />
+   <BoneId value="0" />
+   <Type>Spot</Type>
+   <GroupId value="0" />
+   <TimeFlags value="1048320" />
+   <Falloff value="6" />
+   <FalloffExponent value="4" />
+   <CullingPlaneNormal x="0" y="0" z="1" />
+   <CullingPlaneOffset value="4.5" />
+   <Unknown45 value="0" />
+   <Unknown46 value="0" />
+   <VolumeIntensity value="1" />
+   <VolumeSizeScale value="1" />
+   <VolumeOuterColour r="255" g="255" b="255" />
+   <LightHash value="164" />
+   <VolumeOuterIntensity value="1" />
+   <CoronaSize value="0" />
+   <VolumeOuterExponent value="1" />
+   <LightFadeDistance value="0" />
+   <ShadowFadeDistance value="30" />
+   <SpecularFadeDistance value="0" />
+   <VolumetricFadeDistance value="0" />
+   <ShadowNearClip value="0.01" />
+   <CoronaIntensity value="1" />
+   <CoronaZBias value="0.1" />
+   <Direction x="0" y="0" z="-1" />
+   <Tangent x="1" y="3.019916E-07" z="0" />
+   <ConeInnerAngle value="45" />
+   <ConeOuterAngle value="64.32704" />
+   <Extent x="1" y="1" z="1" />
+   <ProjectedTextureHash>hash_72A54B35</ProjectedTextureHash>
+  </Item>
+  <Item>
+   <Position x="-7.82963133" y="3.812973" z="3.279499" />
+   <Colour r="84" g="43" b="15" />
+   <Flashiness value="0" />
+   <Intensity value="7" />
+   <Flags value="8576" />
+   <BoneId value="0" />
+   <Type>Spot</Type>
+   <GroupId value="0" />
+   <TimeFlags value="15728895" />
+   <Falloff value="6" />
+   <FalloffExponent value="4" />
+   <CullingPlaneNormal x="0" y="0" z="1" />
+   <CullingPlaneOffset value="4.5" />
+   <Unknown45 value="0" />
+   <Unknown46 value="0" />
+   <VolumeIntensity value="1" />
+   <VolumeSizeScale value="1" />
+   <VolumeOuterColour r="255" g="255" b="255" />
+   <LightHash value="164" />
+   <VolumeOuterIntensity value="1" />
+   <CoronaSize value="0" />
+   <VolumeOuterExponent value="1" />
+   <LightFadeDistance value="0" />
+   <ShadowFadeDistance value="30" />
+   <SpecularFadeDistance value="0" />
+   <VolumetricFadeDistance value="0" />
+   <ShadowNearClip value="0.01" />
+   <CoronaIntensity value="1" />
+   <CoronaZBias value="0.1" />
+   <Direction x="0" y="0" z="-1" />
+   <Tangent x="1" y="3.019916E-07" z="0" />
+   <ConeInnerAngle value="45" />
+   <ConeOuterAngle value="61.00262" />
+   <Extent x="1" y="1" z="1" />
+   <ProjectedTextureHash>hash_72A54B35</ProjectedTextureHash>
+  </Item>
+  <Item>
+   <Position x="-3.50097942" y="-4.05239439" z="3.279499" />
+   <Colour r="84" g="43" b="15" />
+   <Flashiness value="0" />
+   <Intensity value="10" />
+   <Flags value="8192" />
+   <BoneId value="0" />
+   <Type>Spot</Type>
+   <GroupId value="0" />
+   <TimeFlags value="15728895" />
+   <Falloff value="6" />
+   <FalloffExponent value="10" />
+   <CullingPlaneNormal x="0" y="0" z="1" />
+   <CullingPlaneOffset value="4.5" />
+   <Unknown45 value="0" />
+   <Unknown46 value="0" />
+   <VolumeIntensity value="1" />
+   <VolumeSizeScale value="1" />
+   <VolumeOuterColour r="255" g="255" b="255" />
+   <LightHash value="164" />
+   <VolumeOuterIntensity value="1" />
+   <CoronaSize value="0" />
+   <VolumeOuterExponent value="1" />
+   <LightFadeDistance value="0" />
+   <ShadowFadeDistance value="30" />
+   <SpecularFadeDistance value="0" />
+   <VolumetricFadeDistance value="0" />
+   <ShadowNearClip value="0.01" />
+   <CoronaIntensity value="1" />
+   <CoronaZBias value="0.1" />
+   <Direction x="0" y="0" z="-1" />
+   <Tangent x="1" y="3.019916E-07" z="0" />
+   <ConeInnerAngle value="45" />
+   <ConeOuterAngle value="90" />
+   <Extent x="1" y="1" z="1" />
+   <ProjectedTextureHash>hash_72A54B35</ProjectedTextureHash>
+  </Item>
+  <Item>
+   <Position x="-3.50097942" y="-4.05239439" z="3.279499" />
+   <Colour r="84" g="43" b="15" />
+   <Flashiness value="0" />
+   <Intensity value="10" />
+   <Flags value="8192" />
+   <BoneId value="0" />
+   <Type>Spot</Type>
+   <GroupId value="0" />
+   <TimeFlags value="1048320" />
+   <Falloff value="6" />
+   <FalloffExponent value="10" />
+   <CullingPlaneNormal x="0" y="0" z="1" />
+   <CullingPlaneOffset value="4.5" />
+   <Unknown45 value="0" />
+   <Unknown46 value="0" />
+   <VolumeIntensity value="1" />
+   <VolumeSizeScale value="1" />
+   <VolumeOuterColour r="255" g="255" b="255" />
+   <LightHash value="164" />
+   <VolumeOuterIntensity value="1" />
+   <CoronaSize value="0" />
+   <VolumeOuterExponent value="1" />
+   <LightFadeDistance value="0" />
+   <ShadowFadeDistance value="30" />
+   <SpecularFadeDistance value="0" />
+   <VolumetricFadeDistance value="0" />
+   <ShadowNearClip value="0.01" />
+   <CoronaIntensity value="1" />
+   <CoronaZBias value="0.1" />
+   <Direction x="0" y="0" z="-1" />
+   <Tangent x="1" y="3.019916E-07" z="0" />
+   <ConeInnerAngle value="65" />
+   <ConeOuterAngle value="90" />
+   <Extent x="1" y="1" z="1" />
+   <ProjectedTextureHash>hash_72A54B35</ProjectedTextureHash>
+  </Item>
+  <Item>
+   <Position x="-3.53928161" y="-3.59568977" z="2.72415853" />
+   <Colour r="84" g="43" b="15" />
+   <Flashiness value="0" />
+   <Intensity value="10" />
+   <Flags value="8576" />
+   <BoneId value="0" />
+   <Type>Spot</Type>
+   <GroupId value="0" />
+   <TimeFlags value="16777215" />
+   <Falloff value="6" />
+   <FalloffExponent value="10" />
+   <CullingPlaneNormal x="0" y="0" z="1" />
+   <CullingPlaneOffset value="4.5" />
+   <Unknown45 value="0" />
+   <Unknown46 value="0" />
+   <VolumeIntensity value="1" />
+   <VolumeSizeScale value="1" />
+   <VolumeOuterColour r="255" g="255" b="255" />
+   <LightHash value="164" />
+   <VolumeOuterIntensity value="1" />
+   <CoronaSize value="0" />
+   <VolumeOuterExponent value="1" />
+   <LightFadeDistance value="0" />
+   <ShadowFadeDistance value="30" />
+   <SpecularFadeDistance value="0" />
+   <VolumetricFadeDistance value="0" />
+   <ShadowNearClip value="0.01" />
+   <CoronaIntensity value="1" />
+   <CoronaZBias value="0.1" />
+   <Direction x="0" y="0" z="-1" />
+   <Tangent x="1" y="3.019916E-07" z="0" />
+   <ConeInnerAngle value="45" />
+   <ConeOuterAngle value="90" />
+   <Extent x="1" y="1" z="1" />
+   <ProjectedTextureHash>hash_72A54B35</ProjectedTextureHash>
+  </Item>
+  <Item>
+   <Position x="-3.53928185" y="-2.225656" z="2.294481" />
+   <Colour r="84" g="43" b="15" />
+   <Flashiness value="0" />
+   <Intensity value="7" />
+   <Flags value="8576" />
+   <BoneId value="0" />
+   <Type>Spot</Type>
+   <GroupId value="0" />
+   <TimeFlags value="16777215" />
+   <Falloff value="6" />
+   <FalloffExponent value="10" />
+   <CullingPlaneNormal x="0" y="0" z="1" />
+   <CullingPlaneOffset value="4.5" />
+   <Unknown45 value="0" />
+   <Unknown46 value="0" />
+   <VolumeIntensity value="1" />
+   <VolumeSizeScale value="1" />
+   <VolumeOuterColour r="255" g="255" b="255" />
+   <LightHash value="164" />
+   <VolumeOuterIntensity value="1" />
+   <CoronaSize value="0" />
+   <VolumeOuterExponent value="1" />
+   <LightFadeDistance value="0" />
+   <ShadowFadeDistance value="30" />
+   <SpecularFadeDistance value="0" />
+   <VolumetricFadeDistance value="0" />
+   <ShadowNearClip value="0.01" />
+   <CoronaIntensity value="1" />
+   <CoronaZBias value="0.1" />
+   <Direction x="0" y="0" z="-1" />
+   <Tangent x="1" y="3.019916E-07" z="0" />
+   <ConeInnerAngle value="45" />
+   <ConeOuterAngle value="90" />
+   <Extent x="1" y="1" z="1" />
+   <ProjectedTextureHash>hash_72A54B35</ProjectedTextureHash>
+  </Item>
+ </Lights>
+</Drawable>

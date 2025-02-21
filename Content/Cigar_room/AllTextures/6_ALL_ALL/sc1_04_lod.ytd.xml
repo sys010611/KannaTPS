@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureDictionary>
+ <Item>
+  <Name>sc1_04_lod03_s</Name>
+  <Unk32 value="128" />
+  <Usage>SPECULAR</Usage>
+  <UsageFlags>X32, X64, X128, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="256" />
+  <Height value="256" />
+  <MipLevels value="7" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>sc1_04_lod03_s.dds</FileName>
+ </Item>
+ <Item>
+  <Name>sc1_04_ground_lod</Name>
+  <Unk32 value="128" />
+  <Usage>DIFFUSE</Usage>
+  <UsageFlags>X32, X64, X128, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="256" />
+  <Height value="256" />
+  <MipLevels value="7" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>sc1_04_ground_lod.dds</FileName>
+ </Item>
+ <Item>
+  <Name>chainlink_fencealpha_sc1_04_shutters</Name>
+  <Unk32 value="128" />
+  <Usage>DIFFUSE</Usage>
+  <UsageFlags>X64, X128, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="64" />
+  <Height value="64" />
+  <MipLevels value="5" />
+  <Format>D3DFMT_DXT5</Format>
+  <FileName>chainlink_fencealpha_sc1_04_shutters.dds</FileName>
+ </Item>
+ <Item>
+  <Name>sc1_04_rooflod</Name>
+  <Unk32 value="128" />
+  <Usage>DIFFUSE</Usage>
+  <UsageFlags>Y4, X16, X32, Y64, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="128" />
+  <Height value="128" />
+  <MipLevels value="6" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>sc1_04_rooflod.dds</FileName>
+ </Item>
+ <Item>
+  <Name>sc1_04_lod01</Name>
+  <Unk32 value="128" />
+  <Usage>DIFFUSE</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>sc1_04_lod01.dds</FileName>
+ </Item>
+ <Item>
+  <Name>sc1_04_em_club_lod_csc1_04_em_club_lod</Name>
+  <Unk32 value="128" />
+  <Usage>DIFFUSE</Usage>
+  <UsageFlags>X64, Y64, X256, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="256" />
+  <Height value="256" />
+  <MipLevels value="7" />
+  <Format>D3DFMT_DXT5</Format>
+  <FileName>sc1_04_em_club_lod_csc1_04_em_club_lod.dds</FileName>
+ </Item>
+ <Item>
+  <Name>sc1_04_lod02</Name>
+  <Unk32 value="128" />
+  <Usage>DIFFUSE</Usage>
+  <UsageFlags>X16, X32, Y64, X256, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="128" />
+  <Height value="512" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>sc1_04_lod02.dds</FileName>
+ </Item>
+ <Item>
+  <Name>sc1_04_lod03</Name>
+  <Unk32 value="128" />
+  <Usage>DIFFUSE</Usage>
+  <UsageFlags>NOT_HALF, X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>sc1_04_lod03.dds</FileName>
+ </Item>
+</TextureDictionary>
