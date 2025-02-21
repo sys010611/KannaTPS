@@ -1,0 +1,963 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureDictionary>
+ <Item>
+  <Name>seamless_Globe_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_Globe_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_wardrobe_wood_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_wardrobe_wood_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_display_table2_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_display_table2_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_wardrobe_2_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_wardrobe_2_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_barrel_metal_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_barrel_metal_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_display_table_1_wall_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_display_table_1_wall_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>hn_cigar_furniture_glass_b</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X64, Y64, X256, Y512, Y1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT3</Format>
+  <FileName>hn_cigar_furniture_glass_b.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_bar_shelf1_p1_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_bar_shelf1_p1_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_book_shelf1_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_book_shelf1_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_Globe_map_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_Globe_map_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_book_shelf_mod_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_book_shelf_mod_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_wardrobe_shelf_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_wardrobe_shelf_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_wshop_shelf_cabinets3_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_wshop_shelf_cabinets3_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_fridge_cabinet_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_fridge_cabinet_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_fridge_cabinet_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_fridge_cabinet_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_barrel_wood_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_barrel_wood_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_wshop_shelf_bracket_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_wshop_shelf_bracket_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_bar_shelf1_p2_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_bar_shelf1_p2_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_Globe_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_Globe_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_wshop_shelf_cabinets4_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_wshop_shelf_cabinets4_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_barrel_wood_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_barrel_wood_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_fridge_cabinet_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_fridge_cabinet_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_display_table_cab_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_display_table_cab_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_wshop_shelf_seamless_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_wshop_shelf_seamless_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_barrel_wood_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_barrel_wood_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_fridge_plastic_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_fridge_plastic_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_wshop_shelf_cabinets4_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_wshop_shelf_cabinets4_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_wshop_shelf_bracket_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_wshop_shelf_bracket_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_bar_shelf_tile_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_bar_shelf_tile_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_wardrobe_shelf_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_wardrobe_shelf_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_bar_shelf1_p2_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_bar_shelf1_p2_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_wshop_shelf_cabinets1_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_wshop_shelf_cabinets1_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_book_shelf1_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_book_shelf1_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_Globe_map_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_Globe_map_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_bar_shelf_tile_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_bar_shelf_tile_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_Globe_map_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_Globe_map_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_Globe_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_Globe_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_fridge_plastic_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_fridge_plastic_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_fridge_plastic_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_fridge_plastic_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_display_table_1_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_display_table_1_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_wshop_shelf_seamless_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_wshop_shelf_seamless_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_fridge_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_fridge_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_barrel_metal_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_barrel_metal_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_wshop_shelf_cabinets2_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_wshop_shelf_cabinets2_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_display_table2_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_display_table2_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_bar_shelf1_p3_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_bar_shelf1_p3_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_wardrobe_wood_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_wardrobe_wood_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_wardrobe_shelf_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_wardrobe_shelf_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_display_table_1_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_display_table_1_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_display_table_cab_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_display_table_cab_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_book_shelf1_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_book_shelf1_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_wshop_shelf_cabinets2_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_wshop_shelf_cabinets2_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_display_table_1_wall_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_display_table_1_wall_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_bar_shelf1_p3_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_bar_shelf1_p3_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>tl_v_bank2_glass_a</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="128" />
+  <Height value="128" />
+  <MipLevels value="6" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>tl_v_bank2_glass_a.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_wardrobe_2_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_wardrobe_2_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_display_table_cab_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_display_table_cab_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>tl_v_bank2_glass_s</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="128" />
+  <Height value="128" />
+  <MipLevels value="6" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>tl_v_bank2_glass_s.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_wshop_shelf_cabinets3_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_wshop_shelf_cabinets3_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_wshop_shelf_cabinets3_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_wshop_shelf_cabinets3_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_wshop_shelf_cabinets1_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_wshop_shelf_cabinets1_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_book_shelf_mod_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_book_shelf_mod_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_wshop_shelf_cabinets4_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_wshop_shelf_cabinets4_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_wshop_shelf_cabinets2_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_wshop_shelf_cabinets2_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_wshop_shelf_seamless_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_wshop_shelf_seamless_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_bar_shelf1_p1_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_bar_shelf1_p1_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_wardrobe_wood_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_wardrobe_wood_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_bar_shelf1_p2_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_bar_shelf1_p2_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_wshop_shelf_cabinets1_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_wshop_shelf_cabinets1_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_wshop_shelf_bracket_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_wshop_shelf_bracket_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_bar_shelf1_p3_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_bar_shelf1_p3_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_fridge_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_fridge_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_display_table2_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_display_table2_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_bar_shelf_tile_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_bar_shelf_tile_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_display_table_1_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_display_table_1_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_barrel_metal_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_barrel_metal_Diffuse.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_wardrobe_2_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_wardrobe_2_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_fridge_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_fridge_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_bar_shelf1_p1_Glossiness</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_bar_shelf1_p1_Glossiness.dds</FileName>
+ </Item>
+ <Item>
+  <Name>seamless_display_table_1_wall_Diffuse</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="11" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>seamless_display_table_1_wall_Diffuse.dds</FileName>
+ </Item>
+</TextureDictionary>

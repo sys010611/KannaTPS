@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Drawable>
+ <Name>hane_cigar_art_d_paint_2</Name>
+ <BoundingSphereCenter x="2.93552876E-06" y="0.003402853" z="-0.09521114" />
+ <BoundingSphereRadius value="0.328000873" />
+ <BoundingBoxMin x="-0.165058017" y="0.003402803" z="-0.3786533" />
+ <BoundingBoxMax x="0.165063888" y="0.003402903" z="0.188231" />
+ <LodDistHigh value="9998" />
+ <LodDistMed value="9998" />
+ <LodDistLow value="9998" />
+ <LodDistVlow value="9998" />
+ <FlagsHigh value="1" />
+ <FlagsMed value="0" />
+ <FlagsLow value="0" />
+ <FlagsVlow value="0" />
+ <Unknown9A value="9998" />
+ <ShaderGroup>
+  <Unknown30 value="8" />
+  <Shaders>
+   <Item>
+    <Name>default_spec</Name>
+    <FileName>default_spec.sps</FileName>
+    <RenderBucket value="0" />
+    <Parameters>
+     <Item name="DiffuseSampler" type="Texture">
+      <Name>hn_oil_paint_21</Name>
+     </Item>
+     <Item name="useTessellation" type="Vector" x="0" y="0" z="0" w="0" />
+     <Item name="specularIntensityMult" type="Vector" x="0.6" y="0" z="0" w="0" />
+     <Item name="specularFalloffMult" type="Vector" x="30" y="0" z="0" w="0" />
+     <Item name="specularFresnel" type="Vector" x="0.95" y="0" z="0" w="0" />
+    </Parameters>
+   </Item>
+  </Shaders>
+ </ShaderGroup>
+ <DrawableModelsHigh>
+  <Item>
+   <RenderMask value="255" />
+   <Flags value="0" />
+   <HasSkin value="0" />
+   <BoneIndex value="0" />
+   <Unknown1 value="0" />
+   <Geometries>
+    <Item>
+     <ShaderIndex value="0" />
+     <BoundingBoxMin x="-0.165058017" y="0.003402803" z="-0.3786533" w="0" />
+     <BoundingBoxMax x="0.165063888" y="0.003402903" z="0.188231" w="0" />
+     <VertexBuffer>
+      <Flags value="0" />
+      <Layout type="GTAV1">
+       <Position />
+       <Normal />
+       <Colour0 />
+       <TexCoord0 />
+      </Layout>
+      <Data>
+       -0.1590923 0.0034028 0.0748433   8E-07 -1 -1E-07   50 128 3 255   0.0218362 0.2023629
+       0.1438376 0.0034029 0.1116824   0 -0.9999999 0   50 128 3 255   0.9322975 0.1378853
+       -0.0885075 0.0034029 0.1670063   -1.5E-06 -1 3.3E-06   50 128 3 255   0.2339799 0.0410548
+       0.1650639 0.0034029 0.0345947   2E-07 -1 1E-07   50 128 3 255   0.9960938 0.2728078
+       0.1650639 0.0034029 -0.3786533   3E-07 -1 0   50 128 3 255   0.9960936 0.9960938
+       -0.1202708 0.0034029 0.1434442   -5.2E-06 -1 7E-06   50 128 3 255   0.1385148 0.0822942
+       0.0885135 0.0034029 0.1670063   0 -1 0   50 128 3 255   0.7660199 0.0410548
+       -0.1438316 0.0034028 0.1116824   1.1E-06 -1 -1E-07   50 128 3 255   0.0677023 0.1378852
+       0.1590982 0.0034029 0.0748433   0 -1 0   50 128 3 255   0.9781635 0.2023628
+       0.1202768 0.0034029 0.1434442   0 -1 0   50 128 3 255   0.8614852 0.0822943
+       -0.0516698 0.0034029 0.1822655   -2E-07 -0.9999999 1.2E-06   50 128 3 255   0.3446963 0.0143477
+       -0.0114195 0.0034029 0.188231   0 -1 7E-07   50 128 3 255   0.4656695 0.0039062
+       -0.1650579 0.0034028 0.0345947   4E-07 -1 1E-07   50 128 3 255   0.0039063 0.2728077
+       -0.165058 0.0034028 -0.3786533   3E-07 -0.9999999 0   50 128 3 255   0.0039062 0.9960938
+       0.0114255 0.0034029 0.188231   2E-07 -1 3E-07   50 128 3 255   0.5343305 0.0039064
+       0.0516758 0.0034029 0.1822655   0 -0.9999999 0   50 128 3 255   0.6553036 0.0143474
+      </Data>
+     </VertexBuffer>
+     <IndexBuffer>
+      <Data>
+       12 3 14 13 4 3 3 8 14 8 1 15 14 8 15 1 9 6 6 15 1 14 11 12
+       11 10 0 10 2 7 2 5 7 7 0 10 0 12 11 12 13 3
+      </Data>
+     </IndexBuffer>
+    </Item>
+   </Geometries>
+  </Item>
+ </DrawableModelsHigh>
+ <Lights />
+</Drawable>

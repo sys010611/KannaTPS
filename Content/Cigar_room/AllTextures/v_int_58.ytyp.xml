@@ -1,0 +1,1194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CMapTypes>
+ <extensions />
+ <archetypes>
+  <Item type="CBaseArchetypeDef">
+   <lodDist value="100" />
+   <flags value="0" />
+   <specialAttribute value="0" />
+   <bbMin x="-0.218697" y="-0.233905" z="-0.181303" />
+   <bbMax x="0.218697" y="0.233905" z="0.181303" />
+   <bsCentre x="0" y="0" z="0" />
+   <bsRadius value="0.3679819" />
+   <hdTextureDist value="5" />
+   <name>v_58_alienhead</name>
+   <textureDictionary>v_58_soloff</textureDictionary>
+   <clipDictionary />
+   <drawableDictionary />
+   <physicsDictionary />
+   <assetType>ASSET_TYPE_DRAWABLE</assetType>
+   <assetName>v_58_alienhead</assetName>
+   <extensions />
+  </Item>
+  <Item type="CBaseArchetypeDef">
+   <lodDist value="100" />
+   <flags value="8192" />
+   <specialAttribute value="0" />
+   <bbMin x="-4.134537" y="-4.101368" z="-1.531655" />
+   <bbMax x="4.134537" y="4.101368" z="1.579261" />
+   <bsCentre x="0" y="0" z="0.0238029957" />
+   <bsRadius value="6.027857" />
+   <hdTextureDist value="5" />
+   <name>v_58_ao</name>
+   <textureDictionary>v_58_soloff</textureDictionary>
+   <clipDictionary />
+   <drawableDictionary />
+   <physicsDictionary />
+   <assetType>ASSET_TYPE_DRAWABLE</assetType>
+   <assetName>v_58_ao</assetName>
+   <extensions />
+  </Item>
+  <Item type="CBaseArchetypeDef">
+   <lodDist value="100" />
+   <flags value="0" />
+   <specialAttribute value="0" />
+   <bbMin x="-1.482464" y="-2.603765" z="-1.803037" />
+   <bbMax x="1.482464" y="3.468044" z="2.150332" />
+   <bsCentre x="0" y="0.4321394" z="0.173647523" />
+   <bsRadius value="3.914294" />
+   <hdTextureDist value="5" />
+   <name>v_58_corridor</name>
+   <textureDictionary>v_58_soloff</textureDictionary>
+   <clipDictionary />
+   <drawableDictionary />
+   <physicsDictionary />
+   <assetType>ASSET_TYPE_DRAWABLE</assetType>
+   <assetName>v_58_corridor</assetName>
+   <extensions />
+  </Item>
+  <Item type="CBaseArchetypeDef">
+   <lodDist value="100" />
+   <flags value="0" />
+   <specialAttribute value="0" />
+   <bbMin x="-0.496445" y="-0.511644" z="-0.868859" />
+   <bbMax x="0.492305" y="0.511644" z="0.848801" />
+   <bsCentre x="-0.00207000971" y="0" z="-0.0100290179" />
+   <bsRadius value="1.115247" />
+   <hdTextureDist value="5" />
+   <name>v_58_drinks</name>
+   <textureDictionary>v_58_soloff</textureDictionary>
+   <clipDictionary />
+   <drawableDictionary />
+   <physicsDictionary />
+   <assetType>ASSET_TYPE_DRAWABLE</assetType>
+   <assetName>v_58_drinks</assetName>
+   <extensions />
+  </Item>
+  <Item type="CBaseArchetypeDef">
+   <lodDist value="100" />
+   <flags value="0" />
+   <specialAttribute value="0" />
+   <bbMin x="-0.297839" y="-0.146908" z="-0.100503" />
+   <bbMax x="0.309751" y="0.144308" z="0.340345" />
+   <bsCentre x="0.005955994" y="-0.0012999922" z="0.119921" />
+   <bsRadius value="0.4025914" />
+   <hdTextureDist value="5" />
+   <name>v_58_head</name>
+   <textureDictionary>v_58_soloff</textureDictionary>
+   <clipDictionary />
+   <drawableDictionary />
+   <physicsDictionary />
+   <assetType>ASSET_TYPE_DRAWABLE</assetType>
+   <assetName>v_58_head</assetName>
+   <extensions />
+  </Item>
+  <Item type="CBaseArchetypeDef">
+   <lodDist value="100" />
+   <flags value="0" />
+   <specialAttribute value="0" />
+   <bbMin x="-0.417311" y="-0.395133" z="-1.066143" />
+   <bbMax x="0.417311" y="0.395133" z="1.066143" />
+   <bsCentre x="0" y="0" z="0" />
+   <bsRadius value="1.211173" />
+   <hdTextureDist value="5" />
+   <name>v_58_headdress</name>
+   <textureDictionary>v_58_soloff</textureDictionary>
+   <clipDictionary />
+   <drawableDictionary />
+   <physicsDictionary />
+   <assetType>ASSET_TYPE_DRAWABLE</assetType>
+   <assetName>v_58_headdress</assetName>
+   <extensions />
+  </Item>
+  <Item type="CBaseArchetypeDef">
+   <lodDist value="100" />
+   <flags value="0" />
+   <specialAttribute value="0" />
+   <bbMin x="-0.299915" y="-0.222484" z="-0.321869" />
+   <bbMax x="0.295148" y="0.222485" z="0.321869" />
+   <bsCentre x="-0.00238350034" y="5.066395E-07" z="0" />
+   <bsRadius value="0.4915526" />
+   <hdTextureDist value="5" />
+   <name>v_58_monstrmask1</name>
+   <textureDictionary>v_58_soloff</textureDictionary>
+   <clipDictionary />
+   <drawableDictionary />
+   <physicsDictionary />
+   <assetType>ASSET_TYPE_DRAWABLE</assetType>
+   <assetName>v_58_monstrmask1</assetName>
+   <extensions />
+  </Item>
+  <Item type="CBaseArchetypeDef">
+   <lodDist value="100" />
+   <flags value="0" />
+   <specialAttribute value="0" />
+   <bbMin x="-2.526522" y="-3.078053" z="-0.192633" />
+   <bbMax x="2.526522" y="3.108568" z="0.281433" />
+   <bsCentre x="0" y="0.0152573586" z="0.04439999" />
+   <bsRadius value="4.001008" />
+   <hdTextureDist value="5" />
+   <name>v_58_rugs</name>
+   <textureDictionary>v_58_soloff</textureDictionary>
+   <clipDictionary />
+   <drawableDictionary />
+   <physicsDictionary />
+   <assetType>ASSET_TYPE_DRAWABLE</assetType>
+   <assetName>v_58_rugs</assetName>
+   <extensions />
+  </Item>
+  <Item type="CBaseArchetypeDef">
+   <lodDist value="100" />
+   <flags value="0" />
+   <specialAttribute value="0" />
+   <bbMin x="-0.480919" y="-0.469278" z="-1.360198" />
+   <bbMax x="0.480919" y="0.48126" z="1.360198" />
+   <bsCentre x="0" y="0.005991012" z="0" />
+   <bsRadius value="1.518981" />
+   <hdTextureDist value="5" />
+   <name>v_58_sarcophagus</name>
+   <textureDictionary>v_58_soloff</textureDictionary>
+   <clipDictionary />
+   <drawableDictionary />
+   <physicsDictionary />
+   <assetType>ASSET_TYPE_DRAWABLE</assetType>
+   <assetName>v_58_sarcophagus</assetName>
+   <extensions />
+  </Item>
+  <Item type="CBaseArchetypeDef">
+   <lodDist value="100" />
+   <flags value="0" />
+   <specialAttribute value="0" />
+   <bbMin x="-0.517588" y="-0.530352" z="-0.477124" />
+   <bbMax x="0.517588" y="0.530352" z="0.477124" />
+   <bsCentre x="0" y="0" z="0" />
+   <bsRadius value="0.8813727" />
+   <hdTextureDist value="5" />
+   <name>v_58_sol_boa</name>
+   <textureDictionary>v_58_soloff</textureDictionary>
+   <clipDictionary />
+   <drawableDictionary />
+   <physicsDictionary />
+   <assetType>ASSET_TYPE_DRAWABLE</assetType>
+   <assetName>v_58_sol_boa</assetName>
+   <extensions />
+  </Item>
+  <Item type="CBaseArchetypeDef">
+   <lodDist value="100" />
+   <flags value="0" />
+   <specialAttribute value="0" />
+   <bbMin x="-3.818819" y="-3.878224" z="-0.925855" />
+   <bbMax x="3.818819" y="3.878224" z="0.949867" />
+   <bsCentre x="0" y="0" z="0.0120059848" />
+   <bsRadius value="5.523005" />
+   <hdTextureDist value="5" />
+   <name>v_58_soloff_emis</name>
+   <textureDictionary>v_58_soloff</textureDictionary>
+   <clipDictionary />
+   <drawableDictionary />
+   <physicsDictionary />
+   <assetType>ASSET_TYPE_DRAWABLE</assetType>
+   <assetName>v_58_soloff_emis</assetName>
+   <extensions />
+  </Item>
+  <Item type="CBaseArchetypeDef">
+   <lodDist value="100" />
+   <flags value="0" />
+   <specialAttribute value="0" />
+   <bbMin x="-4.247781" y="-4.250505" z="-1.506184" />
+   <bbMax x="4.247781" y="4.250505" z="1.506184" />
+   <bsCentre x="0" y="0" z="0" />
+   <bsRadius value="6.195081" />
+   <hdTextureDist value="5" />
+   <name>v_58_soloff_furn</name>
+   <textureDictionary>v_58_soloff</textureDictionary>
+   <clipDictionary />
+   <drawableDictionary />
+   <physicsDictionary />
+   <assetType>ASSET_TYPE_DRAWABLE</assetType>
+   <assetName>v_58_soloff_furn</assetName>
+   <extensions />
+  </Item>
+  <Item type="CBaseArchetypeDef">
+   <lodDist value="100" />
+   <flags value="131072" />
+   <specialAttribute value="0" />
+   <bbMin x="-0.340381" y="-0.278451" z="-0.000381" />
+   <bbMax x="0.341255" y="0.327767" z="0.844368" />
+   <bsCentre x="0.000436991453" y="0.0246579945" z="0.4219935" />
+   <bsRadius value="0.6216367" />
+   <hdTextureDist value="5" />
+   <name>v_58_soloff_gchair</name>
+   <textureDictionary>v_58_soloff</textureDictionary>
+   <clipDictionary />
+   <drawableDictionary />
+   <physicsDictionary>v_58_sol_office</physicsDictionary>
+   <assetType>ASSET_TYPE_DRAWABLE</assetType>
+   <assetName>v_58_soloff_gchair</assetName>
+   <extensions />
+  </Item>
+  <Item type="CBaseArchetypeDef">
+   <lodDist value="100" />
+   <flags value="131072" />
+   <specialAttribute value="0" />
+   <bbMin x="-0.340381" y="-0.278451" z="-0.000381" />
+   <bbMax x="0.341255" y="0.327767" z="0.844368" />
+   <bsCentre x="0.000436991453" y="0.0246579945" z="0.4219935" />
+   <bsRadius value="0.6216367" />
+   <hdTextureDist value="5" />
+   <name>v_58_soloff_gchair2</name>
+   <textureDictionary>v_58_soloff</textureDictionary>
+   <clipDictionary />
+   <drawableDictionary />
+   <physicsDictionary>v_58_sol_office</physicsDictionary>
+   <assetType>ASSET_TYPE_DRAWABLE</assetType>
+   <assetName>v_58_soloff_gchair2</assetName>
+   <extensions />
+  </Item>
+  <Item type="CBaseArchetypeDef">
+   <lodDist value="100" />
+   <flags value="0" />
+   <specialAttribute value="0" />
+   <bbMin x="-4.096829" y="-4.18001" z="-1.819791" />
+   <bbMax x="4.09929" y="4.131162" z="1.961867" />
+   <bsCentre x="0.00123071671" y="-0.0244236" z="0.07103801" />
+   <bsRadius value="6.135" />
+   <hdTextureDist value="5" />
+   <name>v_58_soloff_geomns</name>
+   <textureDictionary>v_58_soloff</textureDictionary>
+   <clipDictionary />
+   <drawableDictionary />
+   <physicsDictionary />
+   <assetType>ASSET_TYPE_DRAWABLE</assetType>
+   <assetName>v_58_soloff_geomns</assetName>
+   <extensions />
+  </Item>
+  <Item type="CBaseArchetypeDef">
+   <lodDist value="100" />
+   <flags value="0" />
+   <specialAttribute value="0" />
+   <bbMin x="-1.184245" y="-0.113405" z="-0.1137" />
+   <bbMax x="1.184245" y="0.113405" z="0.1137" />
+   <bsCentre x="0" y="0" z="0" />
+   <bsRadius value="1.195083" />
+   <hdTextureDist value="5" />
+   <name>v_58_soloff_globes</name>
+   <textureDictionary>v_58_soloff</textureDictionary>
+   <clipDictionary />
+   <drawableDictionary />
+   <physicsDictionary />
+   <assetType>ASSET_TYPE_DRAWABLE</assetType>
+   <assetName>v_58_soloff_globes</assetName>
+   <extensions />
+  </Item>
+  <Item type="CBaseArchetypeDef">
+   <lodDist value="100" />
+   <flags value="0" />
+   <specialAttribute value="0" />
+   <bbMin x="-0.558874" y="-0.519645" z="-0.600582" />
+   <bbMax x="0.558874" y="0.519645" z="0.664011" />
+   <bsCentre x="0" y="0" z="0.0317145" />
+   <bsRadius value="0.9910449" />
+   <hdTextureDist value="5" />
+   <name>v_58_soloff_offchair</name>
+   <textureDictionary>v_58_soloff</textureDictionary>
+   <clipDictionary />
+   <drawableDictionary />
+   <physicsDictionary />
+   <assetType>ASSET_TYPE_DRAWABLE</assetType>
+   <assetName>v_58_soloff_offchair</assetName>
+   <extensions />
+  </Item>
+  <Item type="CBaseArchetypeDef">
+   <lodDist value="100" />
+   <flags value="2048" />
+   <specialAttribute value="0" />
+   <bbMin x="-4.211699" y="-4.204751" z="0.000675" />
+   <bbMax x="3.983402" y="4.14643" z="3.935512" />
+   <bsCentre x="-0.114148617" y="-0.0291605" z="1.96809351" />
+   <bsRadius value="6.172213" />
+   <hdTextureDist value="5" />
+   <name>v_58_soloff_shdblk</name>
+   <textureDictionary />
+   <clipDictionary />
+   <drawableDictionary />
+   <physicsDictionary />
+   <assetType>ASSET_TYPE_DRAWABLE</assetType>
+   <assetName>v_58_soloff_shdblk</assetName>
+   <extensions />
+  </Item>
+  <Item type="CBaseArchetypeDef">
+   <lodDist value="100" />
+   <flags value="0" />
+   <specialAttribute value="0" />
+   <bbMin x="-4.211699" y="-4.170314" z="-0.000306" />
+   <bbMax x="3.983402" y="4.14643" z="3.842346" />
+   <bsCentre x="-0.114148617" y="-0.01194191" z="1.92101991" />
+   <bsRadius value="6.146012" />
+   <hdTextureDist value="5" />
+   <name>v_58_soloff_shell</name>
+   <textureDictionary>v_58_soloff</textureDictionary>
+   <clipDictionary />
+   <drawableDictionary />
+   <physicsDictionary />
+   <assetType>ASSET_TYPE_DRAWABLE</assetType>
+   <assetName>v_58_soloff_shell</assetName>
+   <extensions />
+  </Item>
+  <Item type="CBaseArchetypeDef">
+   <lodDist value="100" />
+   <flags value="536870912" />
+   <specialAttribute value="0" />
+   <bbMin x="-3.493056" y="-4.22277" z="-0.084928" />
+   <bbMax x="4.883714" y="4.256914" z="3.901939" />
+   <bsCentre x="0.695328951" y="0.0170722" z="1.90850544" />
+   <bsRadius value="6.284315" />
+   <hdTextureDist value="5" />
+   <name>v_58_sols_reflect</name>
+   <textureDictionary>v_58_soloff</textureDictionary>
+   <clipDictionary />
+   <drawableDictionary />
+   <physicsDictionary />
+   <assetType>ASSET_TYPE_DRAWABLE</assetType>
+   <assetName>v_58_sols_reflect</assetName>
+   <extensions />
+  </Item>
+  <Item type="CMloArchetypeDef">
+   <lodDist value="20" />
+   <flags value="0" />
+   <specialAttribute value="0" />
+   <bbMin x="0" y="0" z="0" />
+   <bbMax x="0" y="0" z="0" />
+   <bsCentre x="0" y="0" z="0" />
+   <bsRadius value="0" />
+   <hdTextureDist value="5" />
+   <name>v_58_sol_office</name>
+   <textureDictionary />
+   <clipDictionary />
+   <drawableDictionary />
+   <physicsDictionary>v_58_sol_office</physicsDictionary>
+   <assetType>ASSET_TYPE_ASSETLESS</assetType>
+   <assetName>v_58_sol_office</assetName>
+   <extensions />
+   <mloFlags value="0" />
+   <entities>
+    <Item type="CEntityDef">
+     <archetypeName>v_58_soloff_geomns</archetypeName>
+     <flags value="18350082" />
+     <guid value="3290578223" />
+     <position x="-0.068999" y="0.040234" z="1.872273" />
+     <rotation x="0" y="0" z="0" w="1" />
+     <scaleXY value="1" />
+     <scaleZ value="1" />
+     <parentIndex value="-1" />
+     <lodDist value="100" />
+     <childLodDist value="0" />
+     <lodLevel>LODTYPES_DEPTH_ORPHANHD</lodLevel>
+     <numChildren value="0" />
+     <priorityLevel>PRI_REQUIRED</priorityLevel>
+     <extensions />
+     <ambientOcclusionMultiplier value="255" />
+     <artificialAmbientOcclusion value="255" />
+     <tintValue value="0" />
+    </Item>
+    <Item type="CEntityDef">
+     <archetypeName>v_58_soloff_offchair</archetypeName>
+     <flags value="18350082" />
+     <guid value="546770194" />
+     <position x="-0.769776046" y="2.97382" z="0.602694035" />
+     <rotation x="0" y="0" z="0" w="1" />
+     <scaleXY value="1" />
+     <scaleZ value="1" />
+     <parentIndex value="-1" />
+     <lodDist value="100" />
+     <childLodDist value="0" />
+     <lodLevel>LODTYPES_DEPTH_ORPHANHD</lodLevel>
+     <numChildren value="0" />
+     <priorityLevel>PRI_REQUIRED</priorityLevel>
+     <extensions />
+     <ambientOcclusionMultiplier value="255" />
+     <artificialAmbientOcclusion value="255" />
+     <tintValue value="0" />
+    </Item>
+    <Item type="CEntityDef">
+     <archetypeName>v_58_soloff_emis</archetypeName>
+     <flags value="18350082" />
+     <guid value="3811985952" />
+     <position x="0.020072" y="-0.072087" z="2.224681" />
+     <rotation x="0" y="0" z="0" w="1" />
+     <scaleXY value="1" />
+     <scaleZ value="1" />
+     <parentIndex value="-1" />
+     <lodDist value="100" />
+     <childLodDist value="0" />
+     <lodLevel>LODTYPES_DEPTH_ORPHANHD</lodLevel>
+     <numChildren value="0" />
+     <priorityLevel>PRI_REQUIRED</priorityLevel>
+     <extensions />
+     <ambientOcclusionMultiplier value="255" />
+     <artificialAmbientOcclusion value="255" />
+     <tintValue value="0" />
+    </Item>
+    <Item type="CEntityDef">
+     <archetypeName>prop_whiskey_bottle</archetypeName>
+     <flags value="18350082" />
+     <guid value="85570343" />
+     <position x="-3.27655983" y="3.26116014" z="0.788296" />
+     <rotation x="0" y="0" z="-0.31376195" w="0.9495017" />
+     <scaleXY value="1" />
+     <scaleZ value="1" />
+     <parentIndex value="-1" />
+     <lodDist value="-1" />
+     <childLodDist value="0" />
+     <lodLevel>LODTYPES_DEPTH_ORPHANHD</lodLevel>
+     <numChildren value="0" />
+     <priorityLevel>PRI_REQUIRED</priorityLevel>
+     <extensions />
+     <ambientOcclusionMultiplier value="255" />
+     <artificialAmbientOcclusion value="255" />
+     <tintValue value="0" />
+    </Item>
+    <Item type="CEntityDef">
+     <archetypeName>v_ilev_sol_windl</archetypeName>
+     <flags value="18350082" />
+     <guid value="3475180593" />
+     <position x="-1.100785" y="4.141592" z="1.567647" />
+     <rotation x="0" y="0" z="0" w="1" />
+     <scaleXY value="1" />
+     <scaleZ value="1" />
+     <parentIndex value="-1" />
+     <lodDist value="-1" />
+     <childLodDist value="0" />
+     <lodLevel>LODTYPES_DEPTH_ORPHANHD</lodLevel>
+     <numChildren value="0" />
+     <priorityLevel>PRI_REQUIRED</priorityLevel>
+     <extensions />
+     <ambientOcclusionMultiplier value="255" />
+     <artificialAmbientOcclusion value="255" />
+     <tintValue value="0" />
+    </Item>
+    <Item type="CEntityDef">
+     <archetypeName>v_ilev_sol_windr</archetypeName>
+     <flags value="18350082" />
+     <guid value="1579014636" />
+     <position x="0.600273967" y="4.141592" z="1.567647" />
+     <rotation x="0" y="0" z="0" w="1" />
+     <scaleXY value="1" />
+     <scaleZ value="1" />
+     <parentIndex value="-1" />
+     <lodDist value="-1" />
+     <childLodDist value="0" />
+     <lodLevel>LODTYPES_DEPTH_ORPHANHD</lodLevel>
+     <numChildren value="0" />
+     <priorityLevel>PRI_REQUIRED</priorityLevel>
+     <extensions />
+     <ambientOcclusionMultiplier value="255" />
+     <artificialAmbientOcclusion value="255" />
+     <tintValue value="0" />
+    </Item>
+    <Item type="CEntityDef">
+     <archetypeName>v_ilev_sol_windl</archetypeName>
+     <flags value="18350082" />
+     <guid value="2321884904" />
+     <position x="-4.134272" y="-0.600977" z="1.567647" />
+     <rotation x="0" y="0" z="0.7071068" w="-0.707106769" />
+     <scaleXY value="1" />
+     <scaleZ value="1" />
+     <parentIndex value="-1" />
+     <lodDist value="-1" />
+     <childLodDist value="0" />
+     <lodLevel>LODTYPES_DEPTH_ORPHANHD</lodLevel>
+     <numChildren value="0" />
+     <priorityLevel>PRI_REQUIRED</priorityLevel>
+     <extensions />
+     <ambientOcclusionMultiplier value="255" />
+     <artificialAmbientOcclusion value="255" />
+     <tintValue value="0" />
+    </Item>
+    <Item type="CEntityDef">
+     <archetypeName>v_ilev_sol_windr</archetypeName>
+     <flags value="18350082" />
+     <guid value="3060984322" />
+     <position x="-4.134272" y="1.10008192" z="1.567647" />
+     <rotation x="0" y="0" z="0.7071068" w="-0.707106769" />
+     <scaleXY value="1" />
+     <scaleZ value="1" />
+     <parentIndex value="-1" />
+     <lodDist value="-1" />
+     <childLodDist value="0" />
+     <lodLevel>LODTYPES_DEPTH_ORPHANHD</lodLevel>
+     <numChildren value="0" />
+     <priorityLevel>PRI_REQUIRED</priorityLevel>
+     <extensions />
+     <ambientOcclusionMultiplier value="255" />
+     <artificialAmbientOcclusion value="255" />
+     <tintValue value="0" />
+    </Item>
+    <Item type="CEntityDef">
+     <archetypeName>v_58_soloff_furn</archetypeName>
+     <flags value="18350082" />
+     <guid value="421999920" />
+     <position x="0.045966" y="-0.0552699976" z="1.503433" />
+     <rotation x="0" y="0" z="0" w="1" />
+     <scaleXY value="1" />
+     <scaleZ value="1" />
+     <parentIndex value="-1" />
+     <lodDist value="100" />
+     <childLodDist value="0" />
+     <lodLevel>LODTYPES_DEPTH_ORPHANHD</lodLevel>
+     <numChildren value="0" />
+     <priorityLevel>PRI_REQUIRED</priorityLevel>
+     <extensions />
+     <ambientOcclusionMultiplier value="255" />
+     <artificialAmbientOcclusion value="255" />
+     <tintValue value="0" />
+    </Item>
+    <Item type="CEntityDef">
+     <archetypeName>v_58_rugs</archetypeName>
+     <flags value="18350082" />
+     <guid value="1134873227" />
+     <position x="-0.271574" y="-0.356845" z="0.181063" />
+     <rotation x="0" y="0" z="0" w="1" />
+     <scaleXY value="1" />
+     <scaleZ value="1" />
+     <parentIndex value="-1" />
+     <lodDist value="100" />
+     <childLodDist value="0" />
+     <lodLevel>LODTYPES_DEPTH_ORPHANHD</lodLevel>
+     <numChildren value="0" />
+     <priorityLevel>PRI_REQUIRED</priorityLevel>
+     <extensions />
+     <ambientOcclusionMultiplier value="255" />
+     <artificialAmbientOcclusion value="255" />
+     <tintValue value="0" />
+    </Item>
+    <Item type="CEntityDef">
+     <archetypeName>prop_bottle_brandy</archetypeName>
+     <flags value="18350082" />
+     <guid value="1702416110" />
+     <position x="-3.401217" y="3.189656" z="0.7867" />
+     <rotation x="0" y="0" z="0.7372773" w="-0.6755903" />
+     <scaleXY value="1" />
+     <scaleZ value="1" />
+     <parentIndex value="-1" />
+     <lodDist value="-1" />
+     <childLodDist value="0" />
+     <lodLevel>LODTYPES_DEPTH_ORPHANHD</lodLevel>
+     <numChildren value="0" />
+     <priorityLevel>PRI_REQUIRED</priorityLevel>
+     <extensions />
+     <ambientOcclusionMultiplier value="255" />
+     <artificialAmbientOcclusion value="255" />
+     <tintValue value="0" />
+    </Item>
+    <Item type="CEntityDef">
+     <archetypeName>prop_bottle_cognac</archetypeName>
+     <flags value="18350082" />
+     <guid value="3246059534" />
+     <position x="-3.063211" y="3.144082" z="0.781032" />
+     <rotation x="0" y="0" z="-0.4226179" w="0.906307936" />
+     <scaleXY value="1" />
+     <scaleZ value="1" />
+     <parentIndex value="-1" />
+     <lodDist value="-1" />
+     <childLodDist value="0" />
+     <lodLevel>LODTYPES_DEPTH_ORPHANHD</lodLevel>
+     <numChildren value="0" />
+     <priorityLevel>PRI_REQUIRED</priorityLevel>
+     <extensions />
+     <ambientOcclusionMultiplier value="255" />
+     <artificialAmbientOcclusion value="255" />
+     <tintValue value="0" />
+    </Item>
+    <Item type="CEntityDef">
+     <archetypeName>prop_cherenkov_01</archetypeName>
+     <flags value="18350082" />
+     <guid value="3603490239" />
+     <position x="-3.360206" y="3.360966" z="0.7867" />
+     <rotation x="0" y="0" z="0" w="1" />
+     <scaleXY value="1" />
+     <scaleZ value="1" />
+     <parentIndex value="-1" />
+     <lodDist value="-1" />
+     <childLodDist value="0" />
+     <lodLevel>LODTYPES_DEPTH_ORPHANHD</lodLevel>
+     <numChildren value="0" />
+     <priorityLevel>PRI_REQUIRED</priorityLevel>
+     <extensions />
+     <ambientOcclusionMultiplier value="255" />
+     <artificialAmbientOcclusion value="255" />
+     <tintValue value="0" />
+    </Item>
+    <Item type="CEntityDef">
+     <archetypeName>prop_bar_cockshaker</archetypeName>
+     <flags value="18350082" />
+     <guid value="3616031532" />
+     <position x="-3.135067" y="3.34369016" z="0.781272" />
+     <rotation x="0" y="0" z="0" w="1" />
+     <scaleXY value="1" />
+     <scaleZ value="1" />
+     <parentIndex value="-1" />
+     <lodDist value="-1" />
+     <childLodDist value="0" />
+     <lodLevel>LODTYPES_DEPTH_ORPHANHD</lodLevel>
+     <numChildren value="0" />
+     <priorityLevel>PRI_REQUIRED</priorityLevel>
+     <extensions />
+     <ambientOcclusionMultiplier value="255" />
+     <artificialAmbientOcclusion value="255" />
+     <tintValue value="0" />
+    </Item>
+    <Item type="CEntityDef">
+     <archetypeName>v_58_drinks</archetypeName>
+     <flags value="18350082" />
+     <guid value="3307835447" />
+     <position x="-3.292907" y="3.35090017" z="0.866458" />
+     <rotation x="0" y="0" z="0" w="1" />
+     <scaleXY value="1" />
+     <scaleZ value="1" />
+     <parentIndex value="-1" />
+     <lodDist value="100" />
+     <childLodDist value="0" />
+     <lodLevel>LODTYPES_DEPTH_ORPHANHD</lodLevel>
+     <numChildren value="0" />
+     <priorityLevel>PRI_REQUIRED</priorityLevel>
+     <extensions />
+     <ambientOcclusionMultiplier value="255" />
+     <artificialAmbientOcclusion value="255" />
+     <tintValue value="0" />
+    </Item>
+    <Item type="CEntityDef">
+     <archetypeName>v_58_monstrmask1</archetypeName>
+     <flags value="18350082" />
+     <guid value="1029646019" />
+     <position x="3.3762722" y="3.287734" z="2.314222" />
+     <rotation x="0" y="0" z="-0.08715597" w="0.9961947" />
+     <scaleXY value="1" />
+     <scaleZ value="1" />
+     <parentIndex value="-1" />
+     <lodDist value="100" />
+     <childLodDist value="0" />
+     <lodLevel>LODTYPES_DEPTH_ORPHANHD</lodLevel>
+     <numChildren value="0" />
+     <priorityLevel>PRI_REQUIRED</priorityLevel>
+     <extensions />
+     <ambientOcclusionMultiplier value="255" />
+     <artificialAmbientOcclusion value="255" />
+     <tintValue value="0" />
+    </Item>
+    <Item type="CEntityDef">
+     <archetypeName>v_58_alienhead</archetypeName>
+     <flags value="18350082" />
+     <guid value="2904267653" />
+     <position x="-3.03581786" y="-3.78385687" z="1.582798" />
+     <rotation x="0" y="0" z="0" w="1" />
+     <scaleXY value="1" />
+     <scaleZ value="1" />
+     <parentIndex value="-1" />
+     <lodDist value="100" />
+     <childLodDist value="0" />
+     <lodLevel>LODTYPES_DEPTH_ORPHANHD</lodLevel>
+     <numChildren value="0" />
+     <priorityLevel>PRI_REQUIRED</priorityLevel>
+     <extensions />
+     <ambientOcclusionMultiplier value="255" />
+     <artificialAmbientOcclusion value="255" />
+     <tintValue value="0" />
+    </Item>
+    <Item type="CEntityDef">
+     <archetypeName>v_58_sarcophagus</archetypeName>
+     <flags value="18350082" />
+     <guid value="2961240144" />
+     <position x="-3.24922085" y="-1.498756" z="1.38545907" />
+     <rotation x="0" y="0" z="-0.30070594" w="0.953716934" />
+     <scaleXY value="1" />
+     <scaleZ value="1" />
+     <parentIndex value="-1" />
+     <lodDist value="100" />
+     <childLodDist value="0" />
+     <lodLevel>LODTYPES_DEPTH_ORPHANHD</lodLevel>
+     <numChildren value="0" />
+     <priorityLevel>PRI_REQUIRED</priorityLevel>
+     <extensions />
+     <ambientOcclusionMultiplier value="255" />
+     <artificialAmbientOcclusion value="255" />
+     <tintValue value="0" />
+    </Item>
+    <Item type="CEntityDef">
+     <archetypeName>v_58_head</archetypeName>
+     <flags value="18350082" />
+     <guid value="3737119947" />
+     <position x="-3.044812" y="-3.759753" z="0.998516" />
+     <rotation x="0" y="0" z="0" w="1" />
+     <scaleXY value="1" />
+     <scaleZ value="1" />
+     <parentIndex value="-1" />
+     <lodDist value="100" />
+     <childLodDist value="0" />
+     <lodLevel>LODTYPES_DEPTH_ORPHANHD</lodLevel>
+     <numChildren value="0" />
+     <priorityLevel>PRI_REQUIRED</priorityLevel>
+     <extensions />
+     <ambientOcclusionMultiplier value="255" />
+     <artificialAmbientOcclusion value="255" />
+     <tintValue value="0" />
+    </Item>
+    <Item type="CEntityDef">
+     <archetypeName>v_ilev_sol_off_door01</archetypeName>
+     <flags value="18350082" />
+     <guid value="2180067134" />
+     <position x="4.076152" y="-2.623731" z="1.093587" />
+     <rotation x="0" y="0" z="0.7071068" w="0.707106769" />
+     <scaleXY value="1" />
+     <scaleZ value="1" />
+     <parentIndex value="-1" />
+     <lodDist value="-1" />
+     <childLodDist value="0" />
+     <lodLevel>LODTYPES_DEPTH_ORPHANHD</lodLevel>
+     <numChildren value="0" />
+     <priorityLevel>PRI_REQUIRED</priorityLevel>
+     <extensions />
+     <ambientOcclusionMultiplier value="255" />
+     <artificialAmbientOcclusion value="255" />
+     <tintValue value="0" />
+    </Item>
+    <Item type="CEntityDef">
+     <archetypeName>v_58_corridor</archetypeName>
+     <flags value="18350082" />
+     <guid value="2591710198" />
+     <position x="5.48347569" y="-1.50466108" z="1.693483" />
+     <rotation x="0" y="0" z="0" w="1" />
+     <scaleXY value="1" />
+     <scaleZ value="1" />
+     <parentIndex value="-1" />
+     <lodDist value="100" />
+     <childLodDist value="0" />
+     <lodLevel>LODTYPES_DEPTH_ORPHANHD</lodLevel>
+     <numChildren value="0" />
+     <priorityLevel>PRI_REQUIRED</priorityLevel>
+     <extensions />
+     <ambientOcclusionMultiplier value="255" />
+     <artificialAmbientOcclusion value="255" />
+     <tintValue value="0" />
+    </Item>
+    <Item type="CEntityDef">
+     <archetypeName>v_58_soloff_gchair</archetypeName>
+     <flags value="18350082" />
+     <guid value="3753712723" />
+     <position x="0.651502967" y="-0.071277" z="0.016345" />
+     <rotation x="0" y="0" z="0" w="1" />
+     <scaleXY value="1" />
+     <scaleZ value="1" />
+     <parentIndex value="-1" />
+     <lodDist value="100" />
+     <childLodDist value="0" />
+     <lodLevel>LODTYPES_DEPTH_ORPHANHD</lodLevel>
+     <numChildren value="0" />
+     <priorityLevel>PRI_REQUIRED</priorityLevel>
+     <extensions />
+     <ambientOcclusionMultiplier value="255" />
+     <artificialAmbientOcclusion value="255" />
+     <tintValue value="0" />
+    </Item>
+    <Item type="CEntityDef">
+     <archetypeName>v_58_headdress</archetypeName>
+     <flags value="18350082" />
+     <guid value="3266568316" />
+     <position x="-3.405444" y="2.432812" z="1.066182" />
+     <rotation x="0" y="0" z="0" w="1" />
+     <scaleXY value="1" />
+     <scaleZ value="1" />
+     <parentIndex value="-1" />
+     <lodDist value="100" />
+     <childLodDist value="0" />
+     <lodLevel>LODTYPES_DEPTH_ORPHANHD</lodLevel>
+     <numChildren value="0" />
+     <priorityLevel>PRI_REQUIRED</priorityLevel>
+     <extensions />
+     <ambientOcclusionMultiplier value="255" />
+     <artificialAmbientOcclusion value="255" />
+     <tintValue value="0" />
+    </Item>
+    <Item type="CEntityDef">
+     <archetypeName>v_58_sol_boa</archetypeName>
+     <flags value="18350082" />
+     <guid value="2182366832" />
+     <position x="3.234008" y="3.115159" z="1.801757" />
+     <rotation x="0" y="0" z="0" w="1" />
+     <scaleXY value="1" />
+     <scaleZ value="1" />
+     <parentIndex value="-1" />
+     <lodDist value="100" />
+     <childLodDist value="0" />
+     <lodLevel>LODTYPES_DEPTH_ORPHANHD</lodLevel>
+     <numChildren value="0" />
+     <priorityLevel>PRI_REQUIRED</priorityLevel>
+     <extensions />
+     <ambientOcclusionMultiplier value="255" />
+     <artificialAmbientOcclusion value="255" />
+     <tintValue value="0" />
+    </Item>
+    <Item type="CEntityDef">
+     <archetypeName>v_58_soloff_gchair2</archetypeName>
+     <flags value="18350082" />
+     <guid value="372258281" />
+     <position x="-0.874367" y="-0.098019" z="0.016345" />
+     <rotation x="0" y="0" z="0.152206942" w="0.988348663" />
+     <scaleXY value="1" />
+     <scaleZ value="1" />
+     <parentIndex value="-1" />
+     <lodDist value="100" />
+     <childLodDist value="0" />
+     <lodLevel>LODTYPES_DEPTH_ORPHANHD</lodLevel>
+     <numChildren value="0" />
+     <priorityLevel>PRI_REQUIRED</priorityLevel>
+     <extensions />
+     <ambientOcclusionMultiplier value="255" />
+     <artificialAmbientOcclusion value="255" />
+     <tintValue value="0" />
+    </Item>
+    <Item type="CEntityDef">
+     <archetypeName>v_58_ao</archetypeName>
+     <flags value="18350082" />
+     <guid value="3761168842" />
+     <position x="0.106159" y="-0.076014" z="1.543148" />
+     <rotation x="0" y="0" z="0" w="1" />
+     <scaleXY value="1" />
+     <scaleZ value="1" />
+     <parentIndex value="-1" />
+     <lodDist value="100" />
+     <childLodDist value="0" />
+     <lodLevel>LODTYPES_DEPTH_ORPHANHD</lodLevel>
+     <numChildren value="0" />
+     <priorityLevel>PRI_REQUIRED</priorityLevel>
+     <extensions />
+     <ambientOcclusionMultiplier value="255" />
+     <artificialAmbientOcclusion value="255" />
+     <tintValue value="0" />
+    </Item>
+    <Item type="CEntityDef">
+     <archetypeName>v_58_soloff_globes</archetypeName>
+     <flags value="18350082" />
+     <guid value="274436122" />
+     <position x="-0.0530090034" y="-3.838821" z="2.409391" />
+     <rotation x="0" y="0" z="0" w="1" />
+     <scaleXY value="1" />
+     <scaleZ value="1" />
+     <parentIndex value="-1" />
+     <lodDist value="100" />
+     <childLodDist value="0" />
+     <lodLevel>LODTYPES_DEPTH_ORPHANHD</lodLevel>
+     <numChildren value="0" />
+     <priorityLevel>PRI_REQUIRED</priorityLevel>
+     <extensions />
+     <ambientOcclusionMultiplier value="255" />
+     <artificialAmbientOcclusion value="255" />
+     <tintValue value="0" />
+    </Item>
+    <Item type="CEntityDef">
+     <archetypeName>v_58_soloff_shell</archetypeName>
+     <flags value="18350080" />
+     <guid value="1401449347" />
+     <position x="0.045966" y="0.0249220058" z="0.003345" />
+     <rotation x="0" y="0" z="0" w="1" />
+     <scaleXY value="1" />
+     <scaleZ value="1" />
+     <parentIndex value="-1" />
+     <lodDist value="100" />
+     <childLodDist value="0" />
+     <lodLevel>LODTYPES_DEPTH_ORPHANHD</lodLevel>
+     <numChildren value="0" />
+     <priorityLevel>PRI_REQUIRED</priorityLevel>
+     <extensions />
+     <ambientOcclusionMultiplier value="255" />
+     <artificialAmbientOcclusion value="255" />
+     <tintValue value="0" />
+    </Item>
+    <Item type="CEntityDef">
+     <archetypeName>v_58_soloff_shdblk</archetypeName>
+     <flags value="18350080" />
+     <guid value="2321465015" />
+     <position x="0.045966" y="0.0249220058" z="0.003345" />
+     <rotation x="0" y="0" z="0" w="1" />
+     <scaleXY value="1" />
+     <scaleZ value="1" />
+     <parentIndex value="-1" />
+     <lodDist value="100" />
+     <childLodDist value="0" />
+     <lodLevel>LODTYPES_DEPTH_ORPHANHD</lodLevel>
+     <numChildren value="0" />
+     <priorityLevel>PRI_REQUIRED</priorityLevel>
+     <extensions />
+     <ambientOcclusionMultiplier value="255" />
+     <artificialAmbientOcclusion value="255" />
+     <tintValue value="0" />
+    </Item>
+    <Item type="CEntityDef">
+     <archetypeName>v_58_sols_reflect</archetypeName>
+     <flags value="35127298" />
+     <guid value="3463250074" />
+     <position x="-0.768573046" y="0.00742800534" z="0.003345" />
+     <rotation x="0" y="0" z="0" w="1" />
+     <scaleXY value="1" />
+     <scaleZ value="1" />
+     <parentIndex value="-1" />
+     <lodDist value="100" />
+     <childLodDist value="0" />
+     <lodLevel>LODTYPES_DEPTH_ORPHANHD</lodLevel>
+     <numChildren value="0" />
+     <priorityLevel>PRI_REQUIRED</priorityLevel>
+     <extensions />
+     <ambientOcclusionMultiplier value="255" />
+     <artificialAmbientOcclusion value="255" />
+     <tintValue value="0" />
+    </Item>
+   </entities>
+   <rooms itemType="CMloRoomDef">
+    <Item>
+     <name>limbo</name>
+     <bbMin x="-4.261629" y="-4.215342" z="-0.081583" />
+     <bbMax x="4.115141" y="4.26434231" z="3.938857" />
+     <blend value="1" />
+     <timecycleName />
+     <secondaryTimecycleName />
+     <flags value="96" />
+     <portalCount value="6" />
+     <floorId value="0" />
+     <exteriorVisibiltyDepth value="-1" />
+     <attachedObjects>27 28 29</attachedObjects>
+    </Item>
+    <Item>
+     <name>GtaMloRoom001</name>
+     <bbMin x="-3.358889" y="-4.305775" z="-0.109554052" />
+     <bbMax x="7.83451557" y="4.195235" z="3.84381485" />
+     <blend value="1" />
+     <timecycleName>v_solomons</timecycleName>
+     <secondaryTimecycleName />
+     <flags value="103" />
+     <portalCount value="6" />
+     <floorId value="0" />
+     <exteriorVisibiltyDepth value="-1" />
+     <attachedObjects>
+      0 1 2 3 4 5 6 7 8 9
+      10 11 12 13 14 15 16 17 18 19
+      20 21 22 23 24 25 26
+     </attachedObjects>
+    </Item>
+   </rooms>
+   <portals itemType="CMloPortalDef">
+    <Item>
+     <roomFrom value="1" />
+     <roomTo value="0" />
+     <flags value="73" />
+     <mirrorPriority value="0" />
+     <opacity value="0" />
+     <audioOcclusion value="0" />
+     <corners>
+      <Item>-4.148567, -0.6897991, 2.993201, NaN</Item>
+      <Item>-4.148567, 1.210201, 2.993201, NaN</Item>
+      <Item>-4.148567, 1.210201, 0.09320092, NaN</Item>
+      <Item>-4.148567, -0.6897991, 0.09320092, NaN</Item>
+     </corners>
+     <attachedObjects />
+    </Item>
+    <Item>
+     <roomFrom value="1" />
+     <roomTo value="0" />
+     <flags value="73" />
+     <mirrorPriority value="0" />
+     <opacity value="0" />
+     <audioOcclusion value="0" />
+     <corners>
+      <Item>-4.148567, -2.161842, 2.973147, NaN</Item>
+      <Item>-4.148567, -1.061842, 2.973147, NaN</Item>
+      <Item>-4.148567, -1.061842, 0.9231471, NaN</Item>
+      <Item>-4.148567, -2.161842, 0.9231471, NaN</Item>
+     </corners>
+     <attachedObjects />
+    </Item>
+    <Item>
+     <roomFrom value="1" />
+     <roomTo value="0" />
+     <flags value="73" />
+     <mirrorPriority value="0" />
+     <opacity value="0" />
+     <audioOcclusion value="0" />
+     <corners>
+      <Item>-4.148567, 1.50338006, 2.973147, NaN</Item>
+      <Item>-4.148567, 2.60338, 2.973147, NaN</Item>
+      <Item>-4.148567, 2.60338, 0.9231471, NaN</Item>
+      <Item>-4.148567, 1.50338006, 0.9231471, NaN</Item>
+     </corners>
+     <attachedObjects />
+    </Item>
+    <Item>
+     <roomFrom value="1" />
+     <roomTo value="0" />
+     <flags value="73" />
+     <mirrorPriority value="0" />
+     <opacity value="0" />
+     <audioOcclusion value="0" />
+     <corners>
+      <Item>1.00351691, 4.16359472, 2.973147, NaN</Item>
+      <Item>2.103517, 4.16359472, 2.973147, NaN</Item>
+      <Item>2.103517, 4.16359472, 0.9231471, NaN</Item>
+      <Item>1.00351691, 4.16359472, 0.9231471, NaN</Item>
+     </corners>
+     <attachedObjects />
+    </Item>
+    <Item>
+     <roomFrom value="1" />
+     <roomTo value="0" />
+     <flags value="73" />
+     <mirrorPriority value="0" />
+     <opacity value="0" />
+     <audioOcclusion value="0" />
+     <corners>
+      <Item>-2.66170478, 4.163594, 2.973147, NaN</Item>
+      <Item>-1.56170487, 4.163594, 2.973147, NaN</Item>
+      <Item>-1.56170487, 4.163594, 0.9231471, NaN</Item>
+      <Item>-2.66170478, 4.163594, 0.9231471, NaN</Item>
+     </corners>
+     <attachedObjects />
+    </Item>
+    <Item>
+     <roomFrom value="1" />
+     <roomTo value="0" />
+     <flags value="73" />
+     <mirrorPriority value="0" />
+     <opacity value="0" />
+     <audioOcclusion value="0" />
+     <corners>
+      <Item>-1.189661, 4.163594, 2.993201, NaN</Item>
+      <Item>0.710339069, 4.163594, 2.993201, NaN</Item>
+      <Item>0.710339069, 4.163594, 0.09320092, NaN</Item>
+      <Item>-1.189661, 4.163594, 0.09320092, NaN</Item>
+     </corners>
+     <attachedObjects />
+    </Item>
+   </portals>
+   <entitySets itemType="CMloEntitySet" />
+   <timeCycleModifiers itemType="CMloTimeCycleModifier">
+    <Item>
+     <name>int_noambientmult</name>
+     <sphere x="3.39587712" y="3.357861" z="1.92448807" w="1" />
+     <percentage value="30" />
+     <range value="2" />
+     <startHour value="0" />
+     <endHour value="0" />
+    </Item>
+    <Item>
+     <name>int_noambientmult</name>
+     <sphere x="-3.819629" y="3.81413" z="1.92448807" w="1" />
+     <percentage value="30" />
+     <range value="2" />
+     <startHour value="0" />
+     <endHour value="0" />
+    </Item>
+    <Item>
+     <name>int_noambientmult</name>
+     <sphere x="-3.224643" y="-3.390919" z="1.92448807" w="1" />
+     <percentage value="30" />
+     <range value="2" />
+     <startHour value="0" />
+     <endHour value="0" />
+    </Item>
+    <Item>
+     <name>int_noambientmult</name>
+     <sphere x="3.39587712" y="-3.525547" z="1.92448807" w="1" />
+     <percentage value="30" />
+     <range value="2" />
+     <startHour value="0" />
+     <endHour value="0" />
+    </Item>
+    <Item>
+     <name>int_noambientmult</name>
+     <sphere x="3.59558415" y="2.4854672" z="0.24797" w="0.4" />
+     <percentage value="100" />
+     <range value="0.25" />
+     <startHour value="0" />
+     <endHour value="0" />
+    </Item>
+    <Item>
+     <name>int_noambientmult</name>
+     <sphere x="-0.210548" y="1.716527" z="0.24797" w="0.4" />
+     <percentage value="100" />
+     <range value="0.25" />
+     <startHour value="0" />
+     <endHour value="0" />
+    </Item>
+    <Item>
+     <name>int_noambientmult</name>
+     <sphere x="-3.06882381" y="-2.366802" z="0.24797" w="0.4" />
+     <percentage value="100" />
+     <range value="0.25" />
+     <startHour value="0" />
+     <endHour value="0" />
+    </Item>
+   </timeCycleModifiers>
+  </Item>
+  <Item type="CMloArchetypeDef">
+   <lodDist value="100" />
+   <flags value="0" />
+   <specialAttribute value="0" />
+   <bbMin x="0" y="0" z="0" />
+   <bbMax x="0" y="0" z="0" />
+   <bsCentre x="0" y="0" z="0" />
+   <bsRadius value="0" />
+   <hdTextureDist value="5" />
+   <name>v_trialstad</name>
+   <textureDictionary />
+   <clipDictionary />
+   <drawableDictionary />
+   <physicsDictionary>v_trialstad</physicsDictionary>
+   <assetType>ASSET_TYPE_ASSETLESS</assetType>
+   <assetName>v_trialstad</assetName>
+   <extensions />
+   <mloFlags value="0" />
+   <entities />
+   <rooms itemType="CMloRoomDef">
+    <Item>
+     <name>limbo</name>
+     <bbMin x="3.40282347E+38" y="3.40282347E+38" z="3.40282347E+38" />
+     <bbMax x="-3.40282347E+38" y="-3.40282347E+38" z="-3.40282347E+38" />
+     <blend value="1" />
+     <timecycleName />
+     <secondaryTimecycleName />
+     <flags value="96" />
+     <portalCount value="0" />
+     <floorId value="0" />
+     <exteriorVisibiltyDepth value="-1" />
+     <attachedObjects />
+    </Item>
+    <Item>
+     <name>Trial_mainroom</name>
+     <bbMin x="3.40282347E+38" y="3.40282347E+38" z="3.40282347E+38" />
+     <bbMax x="-3.40282347E+38" y="-3.40282347E+38" z="-3.40282347E+38" />
+     <blend value="1" />
+     <timecycleName />
+     <secondaryTimecycleName />
+     <flags value="96" />
+     <portalCount value="0" />
+     <floorId value="0" />
+     <exteriorVisibiltyDepth value="-1" />
+     <attachedObjects />
+    </Item>
+   </rooms>
+   <portals itemType="CMloPortalDef" />
+   <entitySets itemType="CMloEntitySet" />
+   <timeCycleModifiers itemType="CMloTimeCycleModifier" />
+  </Item>
+ </archetypes>
+ <name>v_int_58</name>
+ <dependencies />
+ <compositeEntityTypes itemType="CCompositeEntityType" />
+</CMapTypes>
