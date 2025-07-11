@@ -6,6 +6,8 @@
 #include "Character/KannaCharacter.h"
 #include "Managers/ConversationManager.h"
 
+#include <functional>
+
 // Sets default values
 AItem::AItem()
 {

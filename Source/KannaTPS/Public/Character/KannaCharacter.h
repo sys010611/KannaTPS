@@ -331,4 +331,6 @@ private:
 
 	/*Control*/
 	float MouseSensitivity;
+
+	TSubclassOf<class UKannaTPSOption> KannaTPSOption;
 };

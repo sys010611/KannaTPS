@@ -27,7 +27,7 @@
 #include "Managers/GameManager.h"
 #include "Managers/ConversationManager.h"
 #include "Components/AudioComponent.h"
-
+#include "HUD/KannaTPSOption.h"
 
 // Sets default values
 AKannaCharacter::AKannaCharacter()
@@ -114,15 +114,15 @@ void AKannaCharacter::BeginPlay()
 	HealthInfo.ExecutionFunction = FName("EnableHealthRegen");
 	HealthInfo.UUID = 2;
 
-	UGameManager* GM = GetGameInstance()->GetSubsystem<UGameManager>();
-	GM->KannaCharacter = this;
-	GM->ChangeDefaultVolume(1.f);
-	GM->IsAlerted = false;
+	if (UGameManager* GM = GetGameInstance()->GetSubsystem<UGameManager>())
+	{
+		GM->KannaCharacter = this;
+		GM->IsAlerted = false;
+		MouseSensitivity = GM->MouseSensitivity;
+		GM->StartTime = FDateTime::Now();
+	}
 
 	SetCanBeDamaged(false);
-
-	MouseSensitivity = GM->MouseSensitivity;
-	GM->StartTime = FDateTime::Now();
 }
 
 // Called every frame
@@ -836,7 +836,9 @@ void AKannaCharacter::SetDeadScreen()
 	KannaTPSOverlay->SetDeadScreen();
 	DamageIndicator->SetVisibility(ESlateVisibility::Hidden);
 
-	GetGameInstance()->GetSubsystem<UGameManager>()->ChangeDefaultVolume(0.f);
+	// 뮤트
+	if (UGameManager* GM = GetGameInstance()->GetSubsystem<UGameManager>())
+		GM->Mute();
 }
 
 void AKannaCharacter::PlayBGM()

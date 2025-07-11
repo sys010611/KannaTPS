@@ -5,32 +5,8 @@
 #include "Kismet/GameplayStatics.h"
 #include "Character/KannaCharacter.h"
 #include "Managers/ConversationManager.h"
+#include "Sound/SoundClass.h"
 
-// Change the volume of the default SoundClass
-void UGameManager::ChangeDefaultVolume(float volume)
-{
-	const FSoftObjectPath DefaultSoundClassName = GetDefault<UAudioSettings>()->DefaultSoundClassName;
-
-	if (!DefaultSoundClassName.IsValid())
-		return;
-
-	USoundClass* masterSoundClass = LoadObject<USoundClass>(nullptr, *DefaultSoundClassName.ToString());
-
-	if (masterSoundClass == nullptr)
-		return;
-
-	masterSoundClass->Properties.Volume = volume;
-}
-
-void UGameManager::ChangeMouseSensitivity(float Value)
-{
-	MouseSensitivity = Value;
-
-	if (KannaCharacter)
-	{
-		KannaCharacter->SetMouseSensitivity(Value);
-	}
-}
 
 FTimespan UGameManager::GetPlayTime()
 {
@@ -54,7 +30,7 @@ void UGameManager::SetKannaDamageable()
 
 	GetGameInstance()->GetSubsystem<UConversationManager>()->
 		SetConversation(TEXT("PMC 지휘관"), 
-		TEXT("전 병력, 현 시간 부로 HD탄 사용을 허가한다. 다시 한번 전파한다. HD탄 사용을 허가한다."));
+		TEXT("전 병력, 현 시간 부로 HD탄 사용을 허가한다."));
 
 	FTimerHandle TimerHandle;
 
@@ -75,10 +51,6 @@ void UGameManager::Alert()
 			(
 				TEXT("PMC 병사"), TEXT("공안국장이 배신했다! 공격 개시!")
 			);
-			GetWorld()->GetGameInstance()->GetSubsystem<UConversationManager>()->SetConversation
-			(
-				TEXT("칸나"), TEXT("배신이라니.. 난 너희들 편이었던 적이 없어.")
-			);
 		}, 5.f, false);
 
 	FTimerHandle DamageableHandle;
@@ -90,5 +62,17 @@ void UGameManager::Alert()
 bool UGameManager::CheckIfCleared()
 {
 	return ActiveEnemies.Num() == 0;
+}
+
+void UGameManager::Mute()
+{
+	UGameplayStatics::SetSoundMixClassOverride(GetWorld(), SoundMix, SoundBGMClass, 0, 1, 0);
+	UGameplayStatics::SetSoundMixClassOverride(GetWorld(), SoundMix, SoundBGMClass, 0, 1, 0);
+}
+
+void UGameManager::Unmute()
+{
+	UGameplayStatics::SetSoundMixClassOverride(GetWorld(), SoundMix, SoundBGMClass, BGMVolume, 1, 0);
+	UGameplayStatics::SetSoundMixClassOverride(GetWorld(), SoundMix, SoundBGMClass, SFXVolume, 1, 0);
 }
 

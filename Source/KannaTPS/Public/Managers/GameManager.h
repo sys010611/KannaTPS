@@ -8,7 +8,7 @@
 
 class AEnemy;
 class AKannaCharacter;
-
+class USaveGame;
 
 UCLASS()
 class KANNATPS_API UGameManager : public UGameInstanceSubsystem
@@ -16,12 +16,6 @@ class KANNATPS_API UGameManager : public UGameInstanceSubsystem
 	GENERATED_BODY()
 	
 public:
-	UFUNCTION(BlueprintCallable)
-	void ChangeDefaultVolume(float volume);
-
-	UFUNCTION(BlueprintCallable)
-	void ChangeMouseSensitivity(float Value);
-
 	UFUNCTION(BlueprintCallable)
 	FTimespan GetPlayTime();
 
@@ -37,6 +31,12 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	bool CheckIfCleared();
+
+	UFUNCTION(BlueprintCallable)
+	void Mute();
+
+	UFUNCTION(BlueprintCallable)
+	void Unmute();
 
 	UPROPERTY(BlueprintReadOnly)
 	TArray<AEnemy*> ActiveEnemies;
@@ -55,4 +55,11 @@ public:
 	FDateTime StartTime;
 	UPROPERTY(BlueprintReadWrite)
 	FDateTime EndTime;
+
+	USoundMix* SoundMix;
+	USoundClass* SoundBGMClass;
+	USoundClass* SoundSFXClass;
+
+	float BGMVolume;
+	float SFXVolume;
 };

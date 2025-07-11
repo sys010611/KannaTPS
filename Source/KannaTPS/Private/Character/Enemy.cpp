@@ -17,6 +17,7 @@
 #include "Objects/Projectile.h"
 #include "Managers/GameManager.h"
 #include "Managers/ConversationManager.h"
+#include "Engine/DamageEvents.h"
 
 // Sets default values
 AEnemy::AEnemy()
@@ -194,12 +195,14 @@ void AEnemy::Die(FDamageEvent const& DamageEvent)
 	CeaseFire();
 
 	// 자기 자신을 적 리스트에서 삭제
-	UGameManager* GM = GetGameInstance()->GetSubsystem<UGameManager>();
-	GM->ActiveEnemies.Remove(this);
-	
-	if (GM->CheckIfCleared())
+	if (UGameManager* GM = GetGameInstance()->GetSubsystem<UGameManager>())
 	{
-		GetGameInstance()->GetSubsystem<UConversationManager>()->SetMessage(TEXT("현재 층 확보 완료"));
+		GM->ActiveEnemies.Remove(this);
+
+		if (GM->CheckIfCleared())
+		{
+			GetGameInstance()->GetSubsystem<UConversationManager>()->SetMessage(TEXT("현재 층 확보 완료"));
+		}
 	}
 }
 
@@ -249,10 +252,12 @@ void AEnemy::NoticePlayer()
 	GetCharacterMovement()->MaxWalkSpeed = 600.f;
 
 	// Alert상태가 아니었을 경우 GameManager를 통해 Alert상태로 전환
-	UGameManager* GM = GetWorld()->GetGameInstance()->GetSubsystem<UGameManager>();
-	if (GM->IsAlerted == false)
+	if (UGameManager* GM = GetWorld()->GetGameInstance()->GetSubsystem<UGameManager>())
 	{
-		GM->Alert();
+		if (GM->IsAlerted == false)
+		{
+			GM->Alert();
+		}
 	}
 }
 
