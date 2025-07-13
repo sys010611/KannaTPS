@@ -20,9 +20,6 @@ public:
 	FTimespan GetPlayTime();
 
 	UFUNCTION(BlueprintCallable)
-	void ClearActiveEnemies();
-
-	UFUNCTION(BlueprintCallable)
 	void StopBGM();
 
 	void SetKannaDamageable();
@@ -38,8 +35,8 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void Unmute();
 
-	UPROPERTY(BlueprintReadOnly)
-	TArray<AEnemy*> ActiveEnemies;
+	UPROPERTY(BlueprintReadWrite)
+	TArray<int> RemainingEnemyCount;
 
 	UPROPERTY(BlueprintReadOnly)
 	bool IsAlerted;
@@ -62,4 +59,7 @@ public:
 
 	float BGMVolume;
 	float SFXVolume;
+
+	UPROPERTY(BlueprintReadWrite)
+	int CurrentFloor;
 };

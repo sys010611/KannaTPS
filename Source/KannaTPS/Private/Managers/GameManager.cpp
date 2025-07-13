@@ -13,11 +13,6 @@ FTimespan UGameManager::GetPlayTime()
 	return EndTime - StartTime;
 }
 
-void UGameManager::ClearActiveEnemies()
-{
-	ActiveEnemies.Reset();
-}
-
 void UGameManager::StopBGM()
 {
 	if(KannaCharacter)
@@ -49,7 +44,7 @@ void UGameManager::Alert()
 		{
 			GetWorld()->GetGameInstance()->GetSubsystem<UConversationManager>()->SetConversation
 			(
-				TEXT("PMC 병사"), TEXT("공안국장이 배신했다! 공격 개시!")
+				TEXT("PMC 병사"), TEXT("공안국장이 침입했다. 공격 개시하겠다.")
 			);
 		}, 5.f, false);
 
@@ -61,18 +56,21 @@ void UGameManager::Alert()
 
 bool UGameManager::CheckIfCleared()
 {
-	return ActiveEnemies.Num() == 0;
+	if(RemainingEnemyCount.Num() > CurrentFloor)
+		return RemainingEnemyCount[CurrentFloor] == 0;
+	
+	check(false);
+	return true;
 }
 
 void UGameManager::Mute()
 {
 	UGameplayStatics::SetSoundMixClassOverride(GetWorld(), SoundMix, SoundBGMClass, 0, 1, 0);
-	UGameplayStatics::SetSoundMixClassOverride(GetWorld(), SoundMix, SoundBGMClass, 0, 1, 0);
+	UGameplayStatics::SetSoundMixClassOverride(GetWorld(), SoundMix, SoundSFXClass, 0, 1, 0);
 }
 
 void UGameManager::Unmute()
 {
 	UGameplayStatics::SetSoundMixClassOverride(GetWorld(), SoundMix, SoundBGMClass, BGMVolume, 1, 0);
-	UGameplayStatics::SetSoundMixClassOverride(GetWorld(), SoundMix, SoundBGMClass, SFXVolume, 1, 0);
+	UGameplayStatics::SetSoundMixClassOverride(GetWorld(), SoundMix, SoundSFXClass, SFXVolume, 1, 0);
 }
-

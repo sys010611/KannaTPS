@@ -41,11 +41,11 @@ void UKannaTPSOption::InitSettings(TSubclassOf<USaveGame> SaveGameClass, USoundM
 		ChangeSound(InSoundMix, InSoundBGMClass, SaveGameInstance->BGMValue, "BGM");
 
 		SFXSlider->SetValue(SaveGameInstance->SFXValue);
-		ChangeSound(InSoundMix, InSoundBGMClass, SaveGameInstance->SFXValue, "SFX");
+		ChangeSound(InSoundMix, InSoundSFXClass, SaveGameInstance->SFXValue, "SFX");
 	} // Set Sound Settings
 }
 
-void UKannaTPSOption::ChangeSound(USoundMix* InSoundMix, USoundClass* InSoundBGMClass, float Volume, FString Mode)
+void UKannaTPSOption::ChangeSound(USoundMix* InSoundMix, USoundClass* InSoundClass, float Volume, FString Mode)
 {
 	if (UKannaTPSSaveGame* SaveGameInstance = Cast<UKannaTPSSaveGame>(UGameplayStatics::LoadGameFromSlot("DefaultSaveSlot", 0)))
 	{
@@ -56,7 +56,7 @@ void UKannaTPSOption::ChangeSound(USoundMix* InSoundMix, USoundClass* InSoundBGM
 
 			if (UGameplayStatics::SaveGameToSlot(SaveGameInstance, "DefaultSaveSlot", 0))
 			{
-				UGameplayStatics::SetSoundMixClassOverride(GetWorld(), InSoundMix, InSoundBGMClass, Volume, 1, 0);
+				UGameplayStatics::SetSoundMixClassOverride(GetWorld(), InSoundMix, InSoundClass, Volume, 1, 0);
 
 				if (UGameManager* GM = GetGameInstance()->GetSubsystem<UGameManager>())
 					GM->BGMVolume = Volume;				
@@ -69,7 +69,7 @@ void UKannaTPSOption::ChangeSound(USoundMix* InSoundMix, USoundClass* InSoundBGM
 
 			if (UGameplayStatics::SaveGameToSlot(SaveGameInstance, "DefaultSaveSlot", 0))
 			{
-				UGameplayStatics::SetSoundMixClassOverride(GetWorld(), InSoundMix, InSoundBGMClass, Volume, 1, 0);
+				UGameplayStatics::SetSoundMixClassOverride(GetWorld(), InSoundMix, InSoundClass, Volume, 1, 0);
 
 				if (UGameManager* GM = GetGameInstance()->GetSubsystem<UGameManager>())
 					GM->SFXVolume = Volume;

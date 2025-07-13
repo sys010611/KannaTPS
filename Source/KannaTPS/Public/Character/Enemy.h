@@ -59,6 +59,9 @@ protected:
 	UFUNCTION(BlueprintCallable)
 	void AwarePlayer();
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void SetBBTargetActor();
+
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Sound")
 	USoundAttenuation* GunfireAttenuation;
 

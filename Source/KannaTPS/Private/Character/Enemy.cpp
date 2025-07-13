@@ -57,8 +57,6 @@ void AEnemy::BeginPlay()
 			AssultRifle->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetIncludingScale, FName("Rifle_Socket"));
 	}
 
-	// 자기 자신을 적 리스트에 추가
-	GetGameInstance()->GetSubsystem<UGameManager>()->ActiveEnemies.Add(this);
 
 	if (GetGameInstance()->GetSubsystem<UGameManager>()->IsAlerted)
 	{
@@ -197,7 +195,8 @@ void AEnemy::Die(FDamageEvent const& DamageEvent)
 	// 자기 자신을 적 리스트에서 삭제
 	if (UGameManager* GM = GetGameInstance()->GetSubsystem<UGameManager>())
 	{
-		GM->ActiveEnemies.Remove(this);
+		GM->RemainingEnemyCount[GM->CurrentFloor]--;
+		UE_LOG(LogTemp, Warning, TEXT("%d floor REMAINING : %d"), GM->CurrentFloor, GM->RemainingEnemyCount[GM->CurrentFloor]);
 
 		if (GM->CheckIfCleared())
 		{
@@ -247,6 +246,7 @@ void AEnemy::RagdollEffect(const FDamageEvent& DamageEvent)
 void AEnemy::NoticePlayer()
 {
 	TargetCharacter = UGameplayStatics::GetPlayerCharacter(GetWorld(), 0);
+	SetBBTargetActor();
 	//이동속도 증가
 
 	GetCharacterMovement()->MaxWalkSpeed = 600.f;

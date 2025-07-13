@@ -36,7 +36,7 @@ void AItem::OnSphereOverlap(UPrimitiveComponent* OverlappedComponent, AActor* Ot
 	if (KannaCharacter)
 	{
 		UConversationManager* CM = GetGameInstance()->GetSubsystem<UConversationManager>();
-		CM->SetConversation(TEXT("칸나"), TEXT("이건.. 선생님이 사용하시던.."));
+		CM->SetConversation(TEXT("칸나"), TEXT("이건 선생님이 사용하시던.."));
 
 		FTimerHandle TimerHandle;
 

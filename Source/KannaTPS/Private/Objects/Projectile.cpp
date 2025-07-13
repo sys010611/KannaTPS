@@ -38,5 +38,6 @@ void AProjectile::Damage(UPrimitiveComponent* HitComponent, AActor* OtherActor, 
 		UGameplayStatics::ApplyDamage(OtherActor, 10.f, GetInstigator()->GetController(), this, UDamageType::StaticClass());
 	}
 
+	UE_LOG(LogTemp, Warning, TEXT("Hit Actor : %s"), *OtherActor->GetName());
 	Destroy();
 }
