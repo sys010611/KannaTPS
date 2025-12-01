@@ -22,7 +22,7 @@
 // Sets default values
 AEnemy::AEnemy()
 {
- 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
 	GetMesh()->SetCollisionObjectType(ECollisionChannel::ECC_WorldDynamic);
@@ -33,7 +33,7 @@ AEnemy::AEnemy()
 	//HealthBarWidget = CreateDefaultSubobject<UHealthBarComponent>(TEXT("HealthBar"));
 	//HealthBarWidget->SetupAttachment(GetRootComponent());
 
-	//엉뚱한 곳을 향하지 않도록
+	// 変な方向を向かないように
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 	bUseControllerRotationPitch = false;
 	bUseControllerRotationYaw = false;
@@ -47,13 +47,13 @@ AEnemy::AEnemy()
 void AEnemy::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 	if (AssultRifleClass)
 	{
 		FActorSpawnParameters Param;
 		Param.Owner = this;
 		AssultRifle = GetWorld()->SpawnActor<AGun>(AssultRifleClass, Param);
-		if(AssultRifle)
+		if (AssultRifle)
 			AssultRifle->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetIncludingScale, FName("Rifle_Socket"));
 	}
 
@@ -76,21 +76,21 @@ void AEnemy::OneShot()
 	if (!TargetCharacter)
 		return;
 
-	// 플레이어를 바라보도록
+	// プレイヤーの方を見るように
 	FRotator DesiredRotation = UKismetMathLibrary::FindLookAtRotation(GetActorLocation(), TargetCharacter->GetActorLocation());
 
-	//피치 설정
+	// ピッチの設定
 	Pitch = DesiredRotation.Pitch;
 	if (TargetCharacter->bIsCrouched)
 		Pitch += 5;
 
-	//그 외 설정
+	// その他の設定
 	SetActorRotation(FRotator(0.f, DesiredRotation.Yaw, DesiredRotation.Roll));
 
-	//투사체 스폰
+	// 発射体をスポーン
 	FVector SpawnLocation = BulletStartPos->GetComponentLocation();
 	FRotator SpawnRotation = BulletStartPos->GetComponentRotation();
-	//투사체 방향에 랜덤성 부여
+	// 発射体の方向にランダム性を付与
 	SpawnRotation.Pitch += FMath::RandRange(-3.f, 3.f);
 	SpawnRotation.Yaw += FMath::RandRange(-3.f, 3.f);
 
@@ -100,7 +100,7 @@ void AEnemy::OneShot()
 
 	UGameplayStatics::PlaySoundAtLocation(GetWorld(), GunSound, GetActorLocation(), 1.f, 1.f, 0.f, SoundAttenuation);
 	AssultRifle->PlayMuzzleFlashEffect();
-	
+
 	return;
 }
 
@@ -127,13 +127,13 @@ float AEnemy::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AC
 			return DamageAmount;
 
 
-		// 총알의 충격을 받는 연출
+		// 弾丸の衝撃を受ける演出
 		if (DamageEvent.IsOfType(FPointDamageEvent::ClassID))
 		{
 			FPointDamageEvent PointDmg = *((FPointDamageEvent*)(&DamageEvent));
 			{
 				//UE_LOG(LogTemp, Warning, TEXT("Hit Point: %s"), *(PointDmg.HitInfo.BoneName.ToString()));
-				if (PointDmg.HitInfo.BoneName == FName("Neck")) //헤드샷 맞으면 추가 데미지
+				if (PointDmg.HitInfo.BoneName == FName("Neck")) // ヘッドショットなら追加ダメージ
 				{
 					DamageAmount += 25.f;
 				}
@@ -141,19 +141,19 @@ float AEnemy::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AC
 		}
 
 		Attributes->ReceiveDamage(DamageAmount);
-		
+
 		if (Attributes->IsDead())
 			Die(DamageEvent);
 	}
 
 	UE_LOG(LogTemp, Warning, TEXT("Enemy HP: %f"), Attributes->GetCurrentHealth())
 
-	// 플레이어 감지 자극
-	UAIPerceptionSystem* PerceptionSystem = UAIPerceptionSystem::GetCurrent(this);
+		// プレイヤー感知刺激
+		UAIPerceptionSystem* PerceptionSystem = UAIPerceptionSystem::GetCurrent(this);
 	PerceptionSystem->OnEvent(FAITouchEvent(this, EventInstigator->GetPawn(), GetActorLocation()));
 
 	if (BulletHitSound)
-	UGameplayStatics::PlaySoundAtLocation(GetWorld(), BulletHitSound, GetActorLocation(), 1.f, 1.f, 0.f, SoundAttenuation);
+		UGameplayStatics::PlaySoundAtLocation(GetWorld(), BulletHitSound, GetActorLocation(), 1.f, 1.f, 0.f, SoundAttenuation);
 
 	return DamageAmount;
 }
@@ -184,15 +184,15 @@ void AEnemy::PlayMontageBySection(UAnimMontage* Montage, const FName& SectionNam
 
 void AEnemy::Die(FDamageEvent const& DamageEvent)
 {
-	//죽을 때 래그돌 효과 (함수가 너무 길어져서 따로 떼어냄)
+	// 死亡時のラグドール効果（関数が長くなりすぎたので分離）
 	RagdollEffect(DamageEvent);
 
-	//AI 컨트롤러 떼기
+	// AIコントローラーを外す
 	GetController()->UnPossess();
 
 	CeaseFire();
 
-	// 자기 자신을 적 리스트에서 삭제
+	// 自分自身を敵リストから削除
 	if (UGameManager* GM = GetGameInstance()->GetSubsystem<UGameManager>())
 	{
 		GM->RemainingEnemyCount[GM->CurrentFloor]--;
@@ -207,7 +207,7 @@ void AEnemy::Die(FDamageEvent const& DamageEvent)
 
 void AEnemy::RagdollEffect(const FDamageEvent& DamageEvent)
 {
-	// 캡슐 콜라이더 비활성화
+	// カプセルコライダーを無効化
 	UCapsuleComponent* Capsule = GetCapsuleComponent();
 	Capsule->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	Capsule->SetCollisionResponseToAllChannels(ECR_Ignore);
@@ -216,11 +216,11 @@ void AEnemy::RagdollEffect(const FDamageEvent& DamageEvent)
 	SetActorEnableCollision(true);
 
 	GetMesh()->SetAllBodiesSimulatePhysics(true);
-	GetMesh()->SetSimulatePhysics(true); // 래그돌을 활성화하는 핵심 함수이다.
+	GetMesh()->SetSimulatePhysics(true); // ラグドールを有効化する核心関数
 	GetMesh()->WakeAllRigidBodies();
 	GetMesh()->bBlendPhysics = true;
 
-	//Movement Component 비활성화
+	// Movement Component を無効化
 	UCharacterMovementComponent* MovementComp = Cast<UCharacterMovementComponent>(GetMovementComponent());
 	if (MovementComp)
 	{
@@ -229,11 +229,11 @@ void AEnemy::RagdollEffect(const FDamageEvent& DamageEvent)
 		MovementComp->SetComponentTickEnabled(false);
 	}
 
-	//30초 뒤에 시체 사라짐
+	// 30秒後に死体が消える
 	SetLifeSpan(30.f);
 	AssultRifle->SetLifeSpan(30.f);
 
-	// 총알의 충격을 받는 연출
+	// 弾丸の衝撃を受ける演出
 	if (DamageEvent.IsOfType(FPointDamageEvent::ClassID))
 	{
 		FPointDamageEvent PointDmg = *((FPointDamageEvent*)(&DamageEvent));
@@ -247,11 +247,11 @@ void AEnemy::NoticePlayer()
 {
 	TargetCharacter = UGameplayStatics::GetPlayerCharacter(GetWorld(), 0);
 	SetBBTargetActor();
-	//이동속도 증가
+	// 移動速度を上昇
 
 	GetCharacterMovement()->MaxWalkSpeed = 600.f;
 
-	// Alert상태가 아니었을 경우 GameManager를 통해 Alert상태로 전환
+	// Alert状態でない場合 GameManager を通して Alert状態に変更
 	if (UGameManager* GM = GetWorld()->GetGameInstance()->GetSubsystem<UGameManager>())
 	{
 		if (GM->IsAlerted == false)
@@ -263,7 +263,7 @@ void AEnemy::NoticePlayer()
 
 void AEnemy::AwarePlayer()
 {
-	//이동속도 증가
+	// 移動速度を上昇
 	//GetCharacterMovement()->MaxWalkSpeed = 600.f;
 }
 
@@ -274,7 +274,7 @@ void AEnemy::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 }
 
-void AEnemy::GetHit() // 파티클 이펙트 기능 담당, 데미지 판정은 따로 TakeDamage에서
+void AEnemy::GetHit() // パーティクルエフェクトの処理担当、ダメージ判定は別の TakeDamage で行う
 {
 	PlayHitMontage();
 }

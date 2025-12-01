@@ -32,7 +32,7 @@ void AProjectile::Tick(float DeltaTime)
 
 void AProjectile::Damage(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
-	//맞은 액터가 칸나였을 경우
+	// 当たったアクターがカンナだった場合
 	if (Cast<AKannaCharacter>(OtherActor))
 	{
 		UGameplayStatics::ApplyDamage(OtherActor, 10.f, GetInstigator()->GetController(), this, UDamageType::StaticClass());

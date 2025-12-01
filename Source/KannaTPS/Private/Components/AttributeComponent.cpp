@@ -26,7 +26,7 @@ void UAttributeComponent::BeginPlay()
 	Super::BeginPlay();
 
 	// ...
-	
+
 }
 
 
@@ -35,7 +35,7 @@ void UAttributeComponent::TickComponent(float DeltaTime, ELevelTick TickType, FA
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	// 체력 자동회복
+	// 体力の自動回復
 	if (IsRecovering)
 	{
 		CurrentHealth += DeltaTime * RecoverRate;
@@ -45,13 +45,13 @@ void UAttributeComponent::TickComponent(float DeltaTime, ELevelTick TickType, FA
 			IsRecovering = false;
 		}
 	}
-	// EX 게이지 증가
+	// EXゲージ増加
 	ExGaugePercent += DeltaTime * ExRegenRate;
 	ExGaugePercent = FMath::Clamp(ExGaugePercent, 0, 1.f);
 }
 
 void UAttributeComponent::ReceiveDamage(float Damage)
 {
-	CurrentHealth = FMath::Clamp(CurrentHealth-Damage, 0.f, 100.f);
+	CurrentHealth = FMath::Clamp(CurrentHealth - Damage, 0.f, 100.f);
 }
 

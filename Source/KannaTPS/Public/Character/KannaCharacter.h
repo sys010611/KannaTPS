@@ -174,9 +174,9 @@ protected:
 	void CheckLeftRightHit(FVector& WallDirection, FVector& ActorLocation, FHitResult& HitResult, FCollisionQueryParams& CollisionParameters);
 	void StartCover(FVector& PlaneNormal, bool IsLowCover);
 	void StopCover();
-	//캐릭터의 오른쪽에서 정면으로 라인트레이싱 한 결과를 담는 변수
+	// キャラクターの右側から前方へライン・トレースした結果を保持する変数
 	bool RightHit;
-	//캐릭터의 왼쪽에서 정면으로 라인트레이싱 한 결과를 담는 변수
+	// キャラクターの左側から前方へライン・トレースした結果を保持する変数
 	bool LeftHit;
 
 private:

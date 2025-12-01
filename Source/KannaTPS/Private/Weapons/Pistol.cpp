@@ -20,7 +20,7 @@
 // Sets default values
 APistol::APistol()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
 
 	FireMode = EFireMode::EFM_SEMIAUTO;
@@ -37,10 +37,10 @@ APistol::APistol()
 void APistol::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 	if (KannaCharacter)
 	{
-		KannaCharacter->AddWeaponToList(this); //권총은 시작할 때부터 가지고 있어야 한다.
+		KannaCharacter->AddWeaponToList(this); // 拳銃は開始時から所持している必要がある。
 
 		this->AttachToComponent(KannaCharacter->GetMesh(), FAttachmentTransformRules::SnapToTargetIncludingScale, FName("Pistol_Socket"));
 	}
@@ -56,11 +56,11 @@ void APistol::ReadyExSkill()
 {
 	Super::ReadyExSkill();
 
-	// 총구로 빛 모이는 이펙트
+	// マズルに光が集まるエフェクト
 	if (ExChargeEffect)
 	{
 		ExChargeEffectComp = UGameplayStatics::SpawnEmitterAttached(
-			ExChargeEffect, Muzzle, NAME_None, FVector::ZeroVector, FRotator(90.f, 0.f,0.f), FVector::One() * 10);
+			ExChargeEffect, Muzzle, NAME_None, FVector::ZeroVector, FRotator(90.f, 0.f, 0.f), FVector::One() * 10);
 	}
 }
 
@@ -130,11 +130,11 @@ void APistol::Fire(FVector& StartPoint, FVector& Direction)
 		AnimInstance->Montage_Play(SlideMontage);
 	}
 
-	//총구 화염 효과
+	// マズルフラッシュ効果
 	PlayMuzzleFlashEffect();
 
 
-	//소음 효과
+	// 騒音効果
 	UAISense_Hearing::ReportNoiseEvent(
 		GetWorld(),
 		GetActorLocation(),
@@ -148,7 +148,7 @@ void APistol::FireExSkill(const FHitResult& HitResult)
 {
 	ExChargeEffectComp->Deactivate();
 
-	//투사체 스폰
+	// 投射物をスポーンする
 	FVector SpawnLocation = Muzzle->GetComponentLocation();
 	FRotator SpawnRotation = UKismetMathLibrary::FindLookAtRotation(SpawnLocation, HitResult.ImpactPoint);
 

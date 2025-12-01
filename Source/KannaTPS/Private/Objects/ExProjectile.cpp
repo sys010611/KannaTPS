@@ -22,7 +22,7 @@ AExProjectile::AExProjectile()
 void AExProjectile::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 	Projectile->OnComponentHit.AddDynamic(this, &AExProjectile::Damage);
 }
 
@@ -35,7 +35,7 @@ void AExProjectile::Tick(float DeltaTime)
 
 void AExProjectile::Damage(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
-	//맞은 액터가 AEnemy였을 경우
+	// 命中したアクターが AEnemy の場合
 	if (AEnemy* Enemy = Cast<AEnemy>(OtherActor))
 	{
 		if (!Enemy->IsDead())
@@ -54,7 +54,7 @@ void AExProjectile::Damage(UPrimitiveComponent* HitComponent, AActor* OtherActor
 
 			FTimerHandle TimerHandle;
 			GetWorld()->GetTimerManager().SetTimer
-				(TimerHandle, [World]() {UGameplayStatics::SetGlobalTimeDilation(World, 1.f); }, 0.3f, false);
+			(TimerHandle, [World]() { UGameplayStatics::SetGlobalTimeDilation(World, 1.f); }, 0.3f, false);
 		}
 	}
 	Destroy();
@@ -64,7 +64,7 @@ void AExProjectile::SpawnBustedText(const FVector& SpawnLocation, const FVector&
 {
 	FRotator SpawnRotation = UKismetMathLibrary::FindLookAtRotation(SpawnLocation, InstigatorLocation);
 	SpawnRotation.Pitch = 0.f;
-	SpawnRotation += FRotator(0.f, 180.f, 0.f); // 뒤집기
+	SpawnRotation += FRotator(0.f, 180.f, 0.f); // 反転させる
 
 	FActorSpawnParameters Param;
 	Param.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;

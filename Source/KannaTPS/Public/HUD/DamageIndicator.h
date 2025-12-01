@@ -30,7 +30,7 @@ protected:
 
 	virtual void NativeOnInitialized() override;
 
-	UPROPERTY(BlueprintReadOnly, Transient, meta = (BindWidgetAnim)) // Transient 붙여야함.
+	UPROPERTY(BlueprintReadOnly, Transient, meta = (BindWidgetAnim))
 	class UWidgetAnimation* FadeAnim;
 
 private:

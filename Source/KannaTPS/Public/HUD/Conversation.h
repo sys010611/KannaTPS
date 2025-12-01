@@ -17,24 +17,24 @@ class KANNATPS_API UConversation : public UUserWidget
 	GENERATED_BODY()
 
 public:
-	virtual void NativeConstruct() override; //BeginPlay와 같음.
+	virtual void NativeConstruct() override; // BeginPlay と同じ。
 
 	void SetConversation();
 	void SetMessage();
 	void GetConversation(const TPair<FString, FString>& Content);
 	void GetMessage(const FString& Content);
-	FORCEINLINE bool CheckIfConversationEnded() {return ConversationQueue.IsEmpty(); };
+	FORCEINLINE bool CheckIfConversationEnded() { return ConversationQueue.IsEmpty(); };
 
 protected:
-	UPROPERTY(BlueprintReadOnly, Transient, meta = (BindWidgetAnim)) // Transient 붙여야함.
-	class UWidgetAnimation* FadeAnim; 
+	UPROPERTY(BlueprintReadOnly, Transient, meta = (BindWidgetAnim))
+	class UWidgetAnimation* FadeAnim;
 
-	UPROPERTY(BlueprintReadOnly, Transient, meta = (BindWidgetAnim)) // Transient 붙여야함.
-	class UWidgetAnimation* MessageFadeAnim; 
+	UPROPERTY(BlueprintReadOnly, Transient, meta = (BindWidgetAnim))
+	class UWidgetAnimation* MessageFadeAnim;
 
 private:
-	void SetContentAsSubstring(); //한 글자씩 늘려서 출력해주는 함수.
-	//void PlayFadeAnim(); // 애니메이션 재생 함수
+	void SetContentAsSubstring(); // 一文字ずつ増やして表示する関数。
+	//void PlayFadeAnim(); // アニメーション再生関数
 
 
 	UPROPERTY(meta = (BindWidget))
@@ -49,12 +49,12 @@ private:
 	UPROPERTY(meta = (BindWidget))
 	UTextBlock* MessageText;
 
-	// 현재 출력 중인 대사의 전체 / 일부.
+	// 現在表示中のセリフ（全文 / 一部）。
 	FString FullContent;
 	FString CurrentContent;
 
-	FTimerHandle TypewriterTimerHandle; //한 글자씩 치기 위한 타이머
-	FTimerHandle ClearContentHandle; // 대사가 끝난 뒤 페이드아웃을 위한 타이머
+	FTimerHandle TypewriterTimerHandle; // 一文字ずつ表示するためのタイマー
+	FTimerHandle ClearContentHandle; // セリフ表示後のフェードアウト用タイマー
 	FTimerHandle ClearMessageHandle; // 
 	FTimerHandle ResumeConversationHandle;
 	FTimerHandle ResumeMessageHandle;

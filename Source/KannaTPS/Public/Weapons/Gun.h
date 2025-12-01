@@ -40,7 +40,7 @@ public:
 	FORCEINLINE UArrowComponent* GetMuzzle() {return Muzzle;}
 	FORCEINLINE virtual void ReadyExSkill() {ExSkillReady = true;}
 
-	// 총기를 안보이게 했을 때 이벤트. 탄창도 같이 숨기는 역할을 함.
+	// 銃器を非表示にしたときのイベント。マガジンも一緒に隠す役割をする。
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnVisibilityChanged(bool Visibility);
 
